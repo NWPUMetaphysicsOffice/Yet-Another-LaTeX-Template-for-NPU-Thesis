@@ -1,0 +1,11 @@
+*.swp
+*.acn
+*.bbl
+*.blg
+*.glo
+*.ist
+*.log
+*.out
+*.synctex.gz
+*.thm
+*.toc

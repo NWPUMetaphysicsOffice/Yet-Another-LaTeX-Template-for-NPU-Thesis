@@ -1,0 +1,315 @@
+%------------------------------------------------------------------------------%
+%                                                                              %
+%   LaTeX Template for Master Thesis of Northwestern Polytechnical University %
+%   Environment Config: TeXLive 2017                                           %
+%   * XeTeX 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX)                      %
+%   * BibTeX 0.99d (TeX Live 2017/W32TeX)                                      %
+%   Version: 1.4.0                                                             %
+%                                                                              %
+%------------------------------------------------------------------------------%
+%   Copyright by kidozh, MIT-LICENSE                          %
+%------------------------------------------------------------------------------%
+
+
+%---------------------------------纸张大小设置---------------------------------%
+\usepackage{geometry}
+% 普通A4格式缩进
+% \geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+% 论文标准缩进
+\geometry{left=1.18in,right=1.18in,top=0.98in,bottom=0.98in}
+%------------------------------------------------------------------------------%
+
+
+%----------------------------------必要库支持----------------------------------%
+
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{layouts}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{clrscode}
+\usepackage{gensymb}
+\usepackage[final]{pdfpages}
+\usepackage{setspace}
+\usepackage{ragged2e}
+%------------------------------------------------------------------------------%
+
+
+%--------------------------------设置标题与目录--------------------------------%
+\usepackage[sf]{titlesec}
+\usepackage{titletoc}
+%------------------------------------------------------------------------------%
+
+
+%--------------------------------添加书签超链接--------------------------------%
+\usepackage[unicode=true,colorlinks=false,pdfborder={0 0 0}]{hyperref}
+% 在此处修改打开文件操作
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=true,      % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdfnewwindow=true,      % links in new PDF window
+}
+% 在此处添加文章基础信息
+\hypersetup{
+    pdftitle={title},
+    pdfauthor={author},
+    pdfsubject={subject},
+    pdfcreator={creator},
+    pdfproducer={producer},
+    pdfkeywords={key1  key2  key3}
+}
+%------------------------------------------------------------------------------%
+
+
+%---------------------------------设置字体大小---------------------------------%
+\usepackage{type1cm}
+% 字号与行距，统一前缀s(a.k.a size)
+\newcommand{\sChuhao}{\fontsize{42pt}{63pt}\selectfont}                 % 初号, 1.5倍
+\newcommand{\sYihao}{\fontsize{26pt}{36pt}\selectfont}                  % 一号, 1.4倍
+\newcommand{\sErhao}{\fontsize{22pt}{28pt}\selectfont}                  % 二号, 1.25倍
+\newcommand{\sXiaoer}{\fontsize{18pt}{18pt}\selectfont}                 % 小二, 单倍
+\newcommand{\sSanhao}{\fontsize{16pt}{24pt}\selectfont}                 % 三号, 1.5倍
+\newcommand{\sXiaosan}{\fontsize{15pt}{22pt}\selectfont}                % 小三, 1.5倍
+\newcommand{\sSihao}{\fontsize{14pt}{21pt}\selectfont}                  % 四号, 1.5倍
+\newcommand{\sSHalfXiaosi}{\fontsize{13pt}{19pt}\selectfont}            % 半小四, 1.5倍
+\newcommand{\sHalfXiaosi}{\fontsize{13pt}{16.25pt}\selectfont}          % 半小四, 1.25倍
+\newcommand{\sRealHalfXiaosi}{\fontsize{12.5pt}{16.25pt}\selectfont}    % 模板中的半小四, 1.25倍
+\newcommand{\sXiaosi}{\fontsize{12pt}{14.4pt}\selectfont}               % 小四, 1.25倍
+\newcommand{\sLargeWuhao}{\fontsize{11pt}{11pt}\selectfont}             % 大五, 单倍
+\newcommand{\sWuhao}{\fontsize{10.5pt}{10.5pt}\selectfont}              % 五号, 单倍
+\newcommand{\sXiaowu}{\fontsize{9pt}{9pt}\selectfont}                   % 小五, 单倍
+\newcommand{\sNormalParagraph}{\fontsize{12pt}{20pt}\selectfont}
+%------------------------------------------------------------------------------%
+
+
+%---------------------------------设置中文字体---------------------------------%
+\usepackage{fontspec}
+\usepackage[SlantFont,BoldFont,CJKchecksingle]{xeCJK}
+\usepackage{CJKnumb}
+% 使用 Adobe 字体
+\newcommand\adobeSog{SimSun}
+\newcommand\adobeHei{SimHei}
+\newcommand\adobeKai{Adobe Kaiti Std}
+\newcommand\adobeFag{Adobe Fangsong Std}
+\newcommand\TNRFag{Times New Roman}
+\newcommand\codeFont{Consolas}
+% 设置字体
+\defaultfontfeatures{Mapping=tex-text}
+\setCJKmainfont[ItalicFont=\adobeKai, BoldFont=\adobeHei]{\adobeSog}
+\setCJKsansfont[ItalicFont=\adobeKai, BoldFont=\adobeHei]{\adobeSog}
+\setCJKmonofont{\codeFont}
+\setmonofont{\codeFont}
+\setmainfont{\TNRFag}
+% 设置字体族
+\setCJKfamilyfont{song}{\adobeSog}      % 宋体
+\setCJKfamilyfont{hei}{\adobeHei}       % 黑体
+\setCJKfamilyfont{kai}{\adobeKai}       % 楷体
+\setCJKfamilyfont{fang}{\adobeFag}      % 仿宋体
+\setCJKfamilyfont{tnr}{\TNRFag}
+% 用于页眉学校名，特殊字体，powerby https://github.com/ecomfe/fonteditor
+\setCJKfamilyfont{nwpu}{nwpuname}
+% 新建字体命令，统一前缀f(a.k.a font)
+\newcommand{\fSong}{\CJKfamily{song}}
+\newcommand{\fHei}{\CJKfamily{hei}}
+\newcommand{\fFang}{\CJKfamily{fang}}
+\newcommand{\fKai}{\CJKfamily{kai}}
+\newcommand{\fNWPU}{\CJKfamily{nwpu}}
+\newcommand{\fTNR}{\CJKfamily{tnr}}
+%------------------------------------------------------------------------------%
+
+
+%------------------------------添加插图与表格控制------------------------------%
+\usepackage{graphicx}
+\usepackage[font=small,labelsep=quad]{caption}
+\usepackage{subfigure}
+\usepackage{wrapfig}
+\usepackage{multirow,makecell}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{setspace}
+\captionsetup[table]{labelfont=bf,textfont=bf}
+%------------------------------------------------------------------------------%
+
+
+%---------------------------------添加列表控制---------------------------------%
+\usepackage{enumerate}
+\usepackage{enumitem}
+%------------------------------------------------------------------------------%
+
+
+%---------------------------------设置引用格式---------------------------------%
+\renewcommand\figureautorefname{图}
+\renewcommand\tableautorefname{表}
+\renewcommand\equationautorefname{式}
+\newcommand\myreference[1]{[\ref{#1}]}
+\newcommand\eqrefe[1]{式(\ref{#1})}
+% 增加 \ucite 命令使显示的引用为上标形式
+\newcommand{\ucite}[1]{$^{\mbox{\scriptsize \cite{#1}}}$}
+\renewcommand\arraystretch{1.4}
+\renewcommand\theequation{\thesection.\arabic{equation}}
+\renewcommand{\thefigure}{\thechapter-\arabic{figure}}
+% \renewcommand{\thesubfigure}{\thechapter-\arabic{figure} (\alph{subfigure})}
+\renewcommand{\thetable}{\thechapter-\arabic{table}}
+%------------------------------------------------------------------------------%
+
+
+%--------------------------------设置定理类环境--------------------------------%
+\usepackage[amsthm,thmmarks]{ntheorem}
+\newtheorem{myexample}{例}
+\newtheorem{thm}{定理}
+%------------------------------------------------------------------------------%
+
+
+%--------------------------设置中文段落缩进与正文版式--------------------------%
+\XeTeXlinebreaklocale "zh"                      % 使用中文的换行风格
+\XeTeXlinebreakskip = 0pt plus 1pt              % 调整换行逻辑的弹性大小
+\usepackage{indentfirst}                        % 段首空格设置
+\setlength{\parindent}{26pt}                    % 段首空格长度
+\setlength{\parskip}{3pt plus 1pt minus 1pt}    % 段落间距
+\renewcommand{\baselinestretch}{1.25}           % 行距
+%------------------------------------------------------------------------------%
+
+
+%----------------------------设置段落标题与目录格式----------------------------%
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+\newcommand\chapterID[1]{第\CJKnumber{#1}章}
+\renewcommand{\chaptername}{\thechapter~~}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\renewcommand{\bibname}{参考文献}
+\renewcommand{\contentsname}{目~录}
+\newcommand{\keywords}[1]{\\ \\ \textbf{关~键~词}：#1}
+
+
+\titleformat{\chapter}[hang]{\normalfont\sSanhao\filcenter\fHei\bf}%
+    {\fHei \sSanhao{\chaptertitlename}}{20pt}{\sSanhao}
+\titleformat{\section}[hang]{\fHei \bf \sSihao}%
+    {\fHei \sSihao \thesection}{0.5em}{}{}
+\titleformat{\subsection}[hang]{\fHei \bf \sSHalfXiaosi}%
+    {\sSHalfXiaosi \thesubsection}{0.5em}{}{}
+\titleformat{\subsubsection}[hang]{\fHei \bf}%
+    {(\arabic{subsubsection})}{0.5em}{}{}   % 小标题式的subsubsection:(4) 标题
+
+% 缩小正文中各级标题之间的缩进
+\titlespacing{\chapter}{0pt}{-3ex plus .1ex minus .2ex}{0.25em}
+\titlespacing{\section}{0pt}{-0.2em}{0em}
+\titlespacing{\subsection}{0pt}{0.5em}{0em}
+\titlespacing{\subsubsection}{0pt}{0.25em}{0pt}
+
+% 定义目录中各级标题之间的格式以及缩进
+\dottedcontents{section}[1.16cm]{}{1.8em}{5pt}
+\dottedcontents{subsection}[2.00cm]{}{2.7em}{5pt}
+\dottedcontents{subsubsection}[2.86cm]{}{3.4em}{5pt}
+\titlecontents{chapter}[0pt]{\fHei \sS \vspace{0.5em}}%
+    {\contentsmargin{0pt}\fHei\makebox[0pt][l]{\chapterID{\thecontentslabel}}\hspace{3.8em}}%
+    {\contentsmargin{0pt}\fHei}%
+    {\titlerule*[.5pc]{.}\contentspage}[\vspace{0em}]
+%------------------------------------------------------------------------------%
+
+
+%---------------------------------设置页眉页脚---------------------------------%
+\usepackage{fancyhdr}
+\usepackage{fancyref}
+%\addtolength{\headsep}{-0.1cm}          %页眉位置
+%\addtolength{\footskip}{-0.1cm}         %页脚位置
+\addtolength{\topmargin}{0.5cm}
+\newcommand{\makeheadrule}{
+    \makebox[0pt][l]{\rule[.7\baselineskip]{\headwidth}{0.8pt}}
+    \vskip-.8\baselineskip
+}
+\makeatletter
+\renewcommand{\headrule}{%
+    {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi\makeheadrule}}
+
+
+\pagestyle{fancyplain}
+%\fancypagestyle{plain}
+\fancyhf{}
+\fancyfoot[C,C]{\sWuhao~\thepage~}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter~~ #1}{}}
+% set for page heade
+
+%\chead{\sXiaowu \leftmark}
+\fancyhead{}
+\fancyhead[CEH]{西北工业大学硕士学位论文}
+\fancyhead[COH]{\leftmark}
+%\fancyhead{RE,LO}{\sXiaowu \leftmark}
+
+%\chead{\sXiaowu \raisebox{0.04cm}%
+%	
+%   }
+%}
+%------------------------------------------------------------------------------%
+
+
+%----------------------------------其他补充设置--------------------------------%
+% 重置列表环境的间隔
+% \let\orig@Itemize =\itemize
+% \let\orig@Enumerate =\enumerate
+% \let\orig@Description =\description
+
+% \def\Myspacing{
+%     \itemsep=1.5ex \topsep=-0.5ex \partopsep=0pt \parskip=0pt \parsep=0.5ex
+% }
+
+% \def\newitemsep{
+%     \renewenvironment{itemize}{\orig@Itemize\Myspacing}{\endlist}
+%     \renewenvironment{enumerate}{\orig@Enumerate\Myspacing}{\endlist}
+%     \renewenvironment{description}{\orig@Description\Myspacing}{\endlist}
+% }
+
+% \def\olditemsep{
+%     \renewenvironment{itemize}{\orig@Itemize}{\endlist}
+%     \renewenvironment{enumerate}{\orig@Enumerate}{\endlist}
+%     \renewenvironment{description}{\orig@Description}{\endlist}
+% }
+
+% \newitemsep
+% 下划线
+\newcommand\dlmu@underline[2][5cm]%
+    {\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+\let\coverunderline\dlmu@underline
+%------------------------------------------------------------------------------%
+
+
+%----------------------------------添加代码控制--------------------------------%
+\usepackage{listings}
+\lstset{
+    basicstyle=\footnotesize\ttfamily,
+    numbers=left,
+    numberstyle=\tiny,
+    numbersep=5pt,
+    tabsize=4,
+    extendedchars=true,
+    breaklines=true,
+    keywordstyle=\color{blue}\bfseries,
+    numberstyle=\color{purple},
+    commentstyle=\color[rgb]{0, 0.4, 0}\bfseries,
+    stringstyle=\color{violet}\ttfamily\bfseries,
+    rulesepcolor=\color{red!20!green!20!blue!20},
+    showspaces=false,
+    showtabs=false,
+    frame=shadowbox,
+    framexrightmargin=5pt,
+    framexbottommargin=4pt,
+    showstringspaces=false,
+    escapeinside=`', %逃逸字符(1左面的键)，用于显示中文
+}
+\renewcommand{\lstlistingname}{CODE}
+\lstloadlanguages{% Check Dokumentation for further languages, page 12
+    Pascal, C++, Java, Ruby, Python, Matlab, R, Haskell
+}
+%------------------------------------------------------------------------------%
+% glossary
+\usepackage[acronym]{glossaries} 
+\makeglossaries
+\loadglsentries{glossaries}
+
+
+\endinput
+% 这是简单的 thesis(book) 的导言区设置，不能单独编译。

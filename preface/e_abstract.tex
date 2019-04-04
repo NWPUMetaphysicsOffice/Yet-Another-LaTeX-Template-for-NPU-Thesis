@@ -1,0 +1,23 @@
+\renewcommand{\baselinestretch}{1.5}
+\fontsize{12pt}{13pt}\selectfont
+
+\chapter[ABSTRACT]{Abstract}
+\markboth{Abstract}{ABSTRACT}
+
+Accurate tool wear monitoring and forecasting are of great significance to ensure the quality of product, promote productivity and reduce cost. In this thesis, tool wear monitoring and degrading models are built based on machining signal. It can provide a firm evidence for high-efficient use of tool and good product quality. This thesis works on those points which are listed below:
+
+\begin{enumerate}
+	\item In-process tool wear monitoring based on \gls{resnet} under signal machining condition and future forecasting based on \gls{rnn} \\
+	By multiple sensors, machining signals are collected individually. Then this high-dimensional data will be decomposed by wavelet transformation for further use of \gls{resnet} to monitor real-time tool wear value. Encoding historical and future tool wear value, a \gls{lstm} based \gls{rnn} can give tool wear in the upcoming time. This approach can forecast tool wear in different time length according to the requirement of machining.
+	\item Data repair, on-line monitoring and model's transferring\\
+	Using \gls{rf} approach, data repair could be finished. Collecting machining signals and taking corresponding parameters as latent space, \gls{resnet} can infer in-process tool wear value in different machining condition.
+	\item Deep learning model's visualization based on \gls{tda}\\
+	Using \gls{tsne} algorithm for convolution kernel \gls{resnet} finishes \gls{pca}. Then both \gls{dbscan} and \gls{hdbscan_zh} methods are used to conduct \gls{tda} with low-dimensional primary content of kernel parameters. After that, parameter's distribution of kernel weights is obtained to show how \gls{cnn} process machining signal. It allows us to evaluate the performance of deep learning technology and improve the transparency and interpretation of current deep learning research.
+\end{enumerate}
+
+By comparison with peer work, it's proven that the methods proposed by this thesis can accurately monitor in-process tool wear, reuse signal features in different machining condition and firstly solve forecasting problem. In addition, \gls{tda} and other visualization approaches are also taken to indicate deep model's working principles and features.
+
+\noindent {\textbf{Key Words:}} \quad Tool wear monitor, deep learning, live forecast, visualization
+
+\clearpage
+\endinput

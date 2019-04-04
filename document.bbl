@@ -1,0 +1,277 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\selectlanguage}[1]{\relax}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{kegg1984one}
+Kegg RL.
+\newblock One-line machine and process diagnostics[J].
+\newblock CIRP Annals-Manufacturing Technology.
+\newblock 1984, 33(2):469--473.
+
+\bibitem{kurada1997review}
+Kurada S, Bradley C.
+\newblock A review of machine vision sensors for tool condition monitoring[J].
+\newblock Computers in industry.
+\newblock 1997, 34(1):55--72.
+
+\bibitem{marksberry2008comprehensive}
+Marksberry P, Jawahir I.
+\newblock A comprehensive tool-wear/tool-life performance model in the
+  evaluation of NDM (near dry machining) for sustainable manufacturing[J].
+\newblock International Journal of Machine Tools and Manufacture.
+\newblock 2008, 48(7):878--886.
+
+\bibitem{si2017data}
+Si XS et~al.
+\newblock Data-Driven Remaining Useful Life Prognosis Techniques[J].
+\newblock Springer Series in Reliability Engineering.
+\newblock 2017.
+
+\bibitem{liang2017experimental}
+Liang X, Liu Z.
+\newblock Experimental investigations on effects of tool flank wear on surface
+  integrity during orthogonal dry cutting of Ti-6Al-4V[J].
+\newblock The International Journal of Advanced Manufacturing Technology.
+\newblock 2017, 93(5-8):1617--1626.
+
+\bibitem{jeon1988optical}
+Jeon J, Kim SW.
+\newblock Optical flank wear monitoring of cutting tools by image
+  processing[J].
+\newblock Wear.
+\newblock 1988, 127(2):207--217.
+
+\bibitem{giardini1996neural}
+Giardini C, Ceretti E, Maccarini G.
+\newblock A neural network architecture for tool wear detection through digital
+  camera observations[C].
+\newblock In Advanced Manufacturing Systems and TechnologySpringer.
+\newblock 1996, :137--144.
+
+\bibitem{shahabi2009cycle}
+Shahabi H, Ratnam M.
+\newblock In-cycle monitoring of tool nose wear and surface roughness of turned
+  parts using machine vision[J].
+\newblock The International Journal of Advanced Manufacturing Technology.
+\newblock 2009, 40(11-12):1148--1157.
+
+\bibitem{xiong2011cutting}
+Xiong G, Liu J, Avila A.
+\newblock Cutting tool wear measurement by using active contour model based
+  image processing[C].
+\newblock In Mechatronics and Automation (ICMA), 2011 International Conference
+  on. IEEE2011:670--675.
+
+\bibitem{dimla2000line}
+Dimla~Sr D, Lister P.
+\newblock On-line metal cutting tool condition monitoring.: I: force and
+  vibration analyses[J].
+\newblock International Journal of Machine Tools and Manufacture.
+\newblock 2000, 40(5):739--768.
+
+\bibitem{saglam2003tool}
+Saglam H, Unuvar A.
+\newblock Tool condition monitoring in milling based on cutting forces by a
+  neural network[J].
+\newblock International Journal of Production Research.
+\newblock 2003, 41(7):1519--1532.
+
+\bibitem{polini2007monitoring}
+Polini W, Turchetta S.
+\newblock Monitoring of diamond disk wear in stone cutting by means of force or
+  acceleration sensors[J].
+\newblock The International Journal of Advanced Manufacturing Technology.
+\newblock 2007, 35(5-6):454--467.
+
+\bibitem{yesilyurt2007tool}
+Yesilyurt I, Ozturk H.
+\newblock Tool condition monitoring in milling using vibration analysis[J].
+\newblock International journal of production research.
+\newblock 2007, 45(4):1013--1028.
+
+\bibitem{lin1996tool}
+Lin S, Lin R.
+\newblock Tool wear monitoring in face milling using force signals[J].
+\newblock Wear.
+\newblock 1996, 198(1-2):136--142.
+
+\bibitem{fu2011cutting}
+Fu P, Li WL, Zhu LQ.
+\newblock Cutting tool wear monitoring based on wavelet denoising and fractal
+  theory[C].
+\newblock In Applied Mechanics and Materials. Trans Tech
+  Publvol.~482011:349--352.
+
+\bibitem{zhang2008tool}
+Zhang JZ, Chen JC.
+\newblock Tool condition monitoring in an end-milling operation based on the
+  vibration signal collected through a microcontroller-based data acquisition
+  system[J].
+\newblock The International Journal of Advanced Manufacturing Technology.
+\newblock 2008, 39(1):118--128.
+
+\bibitem{dimla2000sensor}
+Dimla DE.
+\newblock Sensor signals for tool-wear monitoring in metal cutting
+  operations—a review of methods[J].
+\newblock International Journal of Machine Tools and Manufacture.
+\newblock 2000, 40(8):1073--1098.
+
+\bibitem{kim2011fuzzy}
+Kim D, Jeon D.
+\newblock Fuzzy-logic control of cutting forces in CNC milling processes using
+  motor currents as indirect force sensors[J].
+\newblock Precision Engineering.
+\newblock 2011, 35(1):143--152.
+
+\bibitem{drouillet2016tool}
+Drouillet C et~al.
+\newblock Tool life predictions in milling using spindle power with the neural
+  network technique[J].
+\newblock Journal of Manufacturing Processes.
+\newblock 2016, 22:161--168.
+
+\bibitem{wong2004experimental}
+Wong T, Kim W, Kwon P.
+\newblock Experimental support for a model-based prediction of tool wear[J].
+\newblock Wear.
+\newblock 2004, 257(7):790--798.
+
+\bibitem{huang2000neural}
+Huang PT, Chen JC.
+\newblock Neural network-based tool breakage monitoring system for end milling
+  operations[J].
+\newblock Journal of industrial technology.
+\newblock 2000, 16(2):2--7.
+
+\bibitem{rizal2013online}
+Rizal M et~al.
+\newblock Online tool wear prediction system in the turning process using an
+  adaptive neuro-fuzzy inference system[J].
+\newblock Applied Soft Computing.
+\newblock 2013, 13(4):1960--1968.
+
+\bibitem{yao1999tool}
+Yao Y, Li X, Yuan Z.
+\newblock Tool wear detection with fuzzy classification and wavelet fuzzy
+  neural network[J].
+\newblock International Journal of Machine Tools and Manufacture.
+\newblock 1999, 39(10):1525--1538.
+
+\bibitem{benkedjouh2015health}
+Benkedjouh T et~al.
+\newblock Health assessment and life prediction of cutting tools based on
+  support vector regression[J].
+\newblock Journal of Intelligent Manufacturing.
+\newblock 2015, 26(2):213--223.
+
+\bibitem{chen2005artificial}
+Chen JC, Chen JC.
+\newblock An artificial-neural-networks-based in-process tool wear prediction
+  system in milling operations[J].
+\newblock The International Journal of Advanced Manufacturing Technology.
+\newblock 2005, 25(5):427--434.
+
+\bibitem{ezugwu1995tool}
+Ezugwu E, Arthur S, Hines E.
+\newblock Tool-wear prediction using artificial neural networks[J].
+\newblock Journal of materials Processing technology.
+\newblock 1995, 49(3-4):255--264.
+
+\bibitem{ghosh2007estimation}
+Ghosh N et~al.
+\newblock Estimation of tool wear during CNC milling using neural network-based
+  sensor fusion[J].
+\newblock Mechanical Systems and Signal Processing.
+\newblock 2007, 21(1):466--479.
+
+\bibitem{palanisamy2008prediction}
+Palanisamy P, Rajendran I, Shanmugasundaram S.
+\newblock Prediction of tool wear using regression and ANN models in
+  end-milling operation[J].
+\newblock The International Journal of Advanced Manufacturing Technology.
+\newblock 2008, 37(1):29--41.
+
+\bibitem{quiza2008comparing}
+Quiza R, Figueira L, Davim JP.
+\newblock Comparing statistical models and artificial neural networks on
+  predicting the tool wear in hard machining D2 AISI steel[J].
+\newblock The International Journal of Advanced Manufacturing Technology.
+\newblock 2008, 37(7-8):641--648.
+
+\bibitem{sick2002line}
+Sick B.
+\newblock On-line and indirect tool wear monitoring in turning with artificial
+  neural networks: a review of more than a decade of research[J].
+\newblock Mechanical Systems and Signal Processing.
+\newblock 2002, 16(4):487--546.
+
+\bibitem{曾广圣2017基于多信息和多模型融合的刀具磨损预测性评估的方法研究}
+曾广圣.
+\newblock
+  基于多信息和多模型融合的刀具磨损预测性评估的方法研究[D].
+\newblock 中国科学院大学 (中国科学院沈阳计算技术研究所).
+\newblock 2017.
+
+\bibitem{zhao2019deep}
+Zhao R et~al.
+\newblock Deep learning and its applications to machine health monitoring[J].
+\newblock Mechanical Systems and Signal Processing.
+\newblock 2019, 115:213--237.
+
+\bibitem{jia2016deep}
+Jia F et~al.
+\newblock Deep neural networks: A promising tool for fault characteristic
+  mining and intelligent diagnosis of rotating machinery with massive data[J].
+\newblock Mechanical Systems and Signal Processing.
+\newblock 2016, 72:303--315.
+
+\bibitem{pan2010survey}
+Pan SJ, Yang Q.
+\newblock A survey on transfer learning[J].
+\newblock IEEE Transactions on knowledge and data engineering.
+\newblock 2010, 22(10):1345--1359.
+
+\bibitem{wang2002hidden}
+Wang L, Mehrabi MG, Kannatey-Asibu E.
+\newblock Hidden Markov model-based tool wear monitoring in turning[J].
+\newblock Journal of Manufacturing Science and Engineering.
+\newblock 2002, 124(3):651--658.
+
+\bibitem{karandikar2014tool}
+Karandikar JM, Abbas AE, Schmitz TL.
+\newblock Tool life prediction using Bayesian updating. Part 2: Turning tool
+  life using a Markov Chain Monte Carlo approach[J].
+\newblock Precision Engineering.
+\newblock 2014, 38(1):18--27.
+
+\bibitem{ertunc2001decision}
+Ertunc H, Loparo K.
+\newblock A decision fusion algorithm for tool wear condition monitoring in
+  drilling[J].
+\newblock International Journal of Machine Tools and Manufacture.
+\newblock 2001, 41(9):1347--1362.
+
+\bibitem{caggiano2018multiple}
+Caggiano A et~al.
+\newblock Multiple Sensor Monitoring for Tool Wear Forecast in Drilling of
+  CFRP/CFRP Stacks with Traditional and Innovative Drill Bits[J].
+\newblock Procedia CIRP.
+\newblock 2018, 67:404--409.
+
+\bibitem{martinov2015real}
+Martinov GM, Grigoryev AS, Nikishechkin PA.
+\newblock Real-time diagnosis and forecasting algorithms of the tool wear in
+  the CNC systems[C].
+\newblock In International Conference in Swarm Intelligence.
+  Springer2015:115--126.
+
+\bibitem{martinova2012diagnostics}
+Martinova L, Grigoryev A, Sokolov S.
+\newblock Diagnostics and forecasting of cutting tool wear at CNC machines[J].
+\newblock Automation and remote control.
+\newblock 2012, 73(4):742--749.
+
+\end{thebibliography}

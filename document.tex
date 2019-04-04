@@ -1,0 +1,107 @@
+\documentclass[9pt,a4paper,openany,twoside]{book}
+
+% 格式控制
+\input{settings/thesis-setting}
+
+% 非格式控制插件
+% \usepackage{math-symbols}
+\usepackage{plug-ins/math-symbols}
+% \input{plug-ins/aerocoeffs}
+
+% 插图目录
+\graphicspath{{figures/}}
+
+% 仅用于测试
+\usepackage{blindtext}
+
+\title{\textsf{基于XXXX的XXXX}}
+\author{{\kai XXXX}}
+\date{20XX年X月}
+
+\begin{document}
+
+\sloppy
+
+\pagenumbering{Roman}
+
+% 封皮
+\frontmatter
+\input{settings/cover.tex}
+\clearpage
+\thispagestyle{empty}
+\phantom{s}
+\clearpage
+\renewcommand{\baselinestretch}{1.2}
+\input{settings/eng_cover.tex} 
+
+\newpage
+\clearpage
+\thispagestyle{empty}
+\phantom{s}
+\clearpage
+
+\setcounter{page}{1}
+\renewcommand{\baselinestretch}{1.25}
+
+% 中文摘要
+\include{preface/c_abstract}
+% 英文摘要
+\newpage
+\clearpage
+\thispagestyle{empty}
+\phantom{s}
+\clearpage
+
+\include{preface/e_abstract}
+\newpage
+\clearpage
+\thispagestyle{empty}
+\phantom{s}
+\clearpage
+
+\renewcommand{\baselinestretch}{1}
+\fontsize{12pt}{20pt}\selectfont
+\phantomsection
+\addcontentsline{toc}{chapter}{\fHei 目录}
+\tableofcontents
+%\clearpage
+
+
+\mainmatter
+
+\cleardoublepage
+
+\renewcommand{\baselinestretch}{1.0}
+% \sRealHalfXiaosi
+\sNormalParagraph
+
+% 正文内容
+\input{chapters/chapter01}
+\cleardoublepage
+
+\input{chapters/chapter02}
+\input{chapters/chapter03}
+
+% 参考文献设置
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\fHei 参考文献}
+\sWuhao
+
+% npu专用
+\bibliographystyle{settings/nputhesis}
+
+% 参考文献位置
+\bibliography{references/reference}
+
+% 附录
+\backmatter
+\cleardoublepage
+\input{appendix/appendix.tex}
+\input{appendix/acknowledgements.tex}
+\cleardoublepage
+\input{appendix/design-conclusion.tex}
+\cleardoublepage
+
+\clearpage
+\end{document}

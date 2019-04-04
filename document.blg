@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/W32TeX)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: document.aux
+A level-1 auxiliary file: preface/c_abstract.aux
+A level-1 auxiliary file: preface/e_abstract.aux
+The style file: settings/nputhesis.bst
+Database file #1: references/reference.bib
+Warning--I didn't find a database entry for "knuth1986the"
+Warning--I didn't find a database entry for "lamport1989latex:"
+You've used 40 entries,
+            2790 wiz_defined-function locations,
+            864 strings with 12147 characters,
+and the built_in function-call counts, 29863 in all, are:
+= -- 3475
+> -- 352
+< -- 1
++ -- 176
+- -- 88
+* -- 1896
+:= -- 2710
+add.period$ -- 160
+call.type$ -- 40
+change.case$ -- 8
+chr.to.int$ -- 0
+cite$ -- 40
+duplicate$ -- 3823
+empty$ -- 2508
+format.name$ -- 124
+if$ -- 6455
+int.to.chr$ -- 0
+int.to.str$ -- 40
+missing$ -- 247
+newline$ -- 244
+num.names$ -- 40
+pop$ -- 1847
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 250
+stack$ -- 0
+substring$ -- 4236
+swap$ -- 536
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 75
+width$ -- 42
+write$ -- 448
+(There were 2 warnings)
