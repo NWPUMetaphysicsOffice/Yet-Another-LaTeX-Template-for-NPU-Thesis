@@ -7,6 +7,8 @@
 
 本repo直接来自于开源库[LaTeX-Template-For-NPU-Thesis](https://github.com/NWPUMetaphysicsOffice/LaTeX-Template-For-NPU-Thesis)
 
+本repo格式参照于2014年西北工业大学研究生院编写的[西北工业大学博士研究生学位论文编写规则（试用版）](http://gs.nwpu.edu.cn/info/1143/1139.htm)
+
 ## Usage
 
 1. clone这个项目到本地
