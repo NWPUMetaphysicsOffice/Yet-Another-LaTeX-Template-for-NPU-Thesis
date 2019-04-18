@@ -1,4 +1,4 @@
-# LaTeX Template For NPU thesis
+# LaTeX Template For NPU PHD/Master thesis
 
 ![Platfrom](https://img.shields.io/badge/Platfrom-TeXLive2016-3D6117.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -32,7 +32,7 @@
 ```bibtex
 @misc{NWPUThesisLaTeXTemplate,
     title={{{\LaTeX}}-Template-For-NPU-Thesis},
-    author={Shangkun Shen and Zhihe Wang},
+    author={Shangkun Shen and Jiduo Zhang},
     year={2016},
     month={05}
 }
