@@ -12,8 +12,8 @@
 ## Usage
 
 1. clone这个项目到本地
-2. 直接对 `example.tex` 文件进行修改
-3. 如有必要，请仿照 `example.tex` 在 *导言区* 引用 `\input{settings/thesis-setting}`
+2. 直接对 `document.tex` 文件进行修改
+3. 如有必要，请仿照 `document.tex` 在 *导言区* 引用 `\input{settings/thesis-setting}`
 4. 如有必要，修改 `makefile` 文件的 `MAIN` 选项为自己 `tex` 文档的文件名
 5. make & Enjoy
 
