@@ -14,9 +14,9 @@
 %---------------------------------纸张大小设置---------------------------------%
 \usepackage{geometry}
 % 普通A4格式缩进
-% \geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+ \geometry{left=2.5cm,right=2.5cm,top=2.54cm,bottom=2.54cm}
 % 论文标准缩进
-\geometry{left=1.18in,right=1.18in,top=0.98in,bottom=0.98in}
+%\geometry{left=1.18in,right=1.18in,top=0.98in,bottom=0.98in}
 %------------------------------------------------------------------------------%
 
 
@@ -73,9 +73,9 @@
 \newcommand{\sSanhao}{\fontsize{16pt}{24pt}\selectfont}                 % 三号, 1.5倍
 \newcommand{\sXiaosan}{\fontsize{15pt}{22pt}\selectfont}                % 小三, 1.5倍
 \newcommand{\sSihao}{\fontsize{14pt}{21pt}\selectfont}                  % 四号, 1.5倍
-\newcommand{\sSHalfXiaosi}{\fontsize{13pt}{19pt}\selectfont}            % 半小四, 1.5倍
+\newcommand{\sSHalfXiaosi}{\fontsize{13pt}{20pt}\selectfont}            % 半小四, 1.5倍
 \newcommand{\sHalfXiaosi}{\fontsize{13pt}{16.25pt}\selectfont}          % 半小四, 1.25倍
-\newcommand{\sRealHalfXiaosi}{\fontsize{12.5pt}{16.25pt}\selectfont}    % 模板中的半小四, 1.25倍
+\newcommand{\sRealHalfXiaosi}{\fontsize{12.5pt}{13pt}\selectfont}    % 模板中的半小四, 约1倍
 \newcommand{\sXiaosi}{\fontsize{12pt}{14.4pt}\selectfont}               % 小四, 1.25倍
 \newcommand{\sLargeWuhao}{\fontsize{11pt}{11pt}\selectfont}             % 大五, 单倍
 \newcommand{\sWuhao}{\fontsize{10.5pt}{10.5pt}\selectfont}              % 五号, 单倍
@@ -91,8 +91,8 @@
 % 使用 Adobe 字体
 \newcommand\adobeSog{SimSun}
 \newcommand\adobeHei{SimHei}
-\newcommand\adobeKai{Adobe Kaiti Std}
-\newcommand\adobeFag{Adobe Fangsong Std}
+\newcommand\adobeKai{KaiTi}
+\newcommand\adobeFag{FangSong}
 \newcommand\TNRFag{Times New Roman}
 \newcommand\codeFont{Consolas}
 % 设置字体
@@ -130,7 +130,7 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{setspace}
-\captionsetup[table]{labelfont=bf,textfont=bf}
+%\captionsetup[table]{labelfont=bf,textfont=bf}
 %------------------------------------------------------------------------------%
 
 
@@ -149,7 +149,7 @@
 % 增加 \ucite 命令使显示的引用为上标形式
 \newcommand{\ucite}[1]{$^{\mbox{\scriptsize \cite{#1}}}$}
 \renewcommand\arraystretch{1.4}
-\renewcommand\theequation{\thesection.\arabic{equation}}
+\renewcommand\theequation{\thechapter-\arabic{equation}}
 \renewcommand{\thefigure}{\thechapter-\arabic{figure}}
 % \renewcommand{\thesubfigure}{\thechapter-\arabic{figure} (\alph{subfigure})}
 \renewcommand{\thetable}{\thechapter-\arabic{table}}
@@ -205,9 +205,9 @@
 \dottedcontents{section}[1.16cm]{}{1.8em}{5pt}
 \dottedcontents{subsection}[2.00cm]{}{2.7em}{5pt}
 \dottedcontents{subsubsection}[2.86cm]{}{3.4em}{5pt}
-\titlecontents{chapter}[0pt]{\fHei \sS \vspace{0.5em}}%
-    {\contentsmargin{0pt}\fHei\makebox[0pt][l]{\chapterID{\thecontentslabel}}\hspace{3.8em}}%
-    {\contentsmargin{0pt}\fHei}%
+\titlecontents{chapter}[0pt]{\fSong \sRealHalfXiaosi \vspace{0.5em}}%
+    {\contentsmargin{0pt}\fSong\makebox[0pt][l]{\chapterID{\thecontentslabel}}\hspace{3.8em}}%
+    {\contentsmargin{0pt}\fSong}%
     {\titlerule*[.5pc]{.}\contentspage}[\vspace{0em}]
 %------------------------------------------------------------------------------%
 

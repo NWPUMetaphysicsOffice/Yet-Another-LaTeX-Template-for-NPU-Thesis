@@ -1,6 +1,6 @@
 # LaTeX Template For NPU PHD/Master thesis
 
-![Platfrom](https://img.shields.io/badge/Platfrom-TeXLive2016-3D6117.svg)
+![Platfrom](https://img.shields.io/badge/Platfrom-TeXLive2017-3D6117.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ## Origin
@@ -19,8 +19,8 @@
 
 ## Note
 
-* 根据西北工业大学博士研究生学位论文编写规则，本TeX模板使用的是Windows下的**宋体**和**Times New Roman**
-* `cover.tex` 文件为论文的中文封面页,  `eng_cover.tex` 文件为论文的中文封面页
+* 根据西北工业大学博士研究生学位论文编写规则，本TeX模板使用的是Windows下的**宋体**、**黑体**、**楷体**、**仿宋**和**Times New Roman**
+* `cover.tex` 文件为论文的中文封面页,  `eng_cover.tex` 文件为论文的英文封面页
 * 所有字体大小的控制命令统一前缀为`s(a.k.a size)`, 所有字体格式的控制命令统一前缀为`f(a.k.a font)`
 * `makefile` 中的 `close`, `clean` 以及 `wipe` 选项为 `windows` 专用, 并且假设使用了 `Acrobat` 打开了当前 pdf 文件
 
@@ -32,9 +32,9 @@
 ```bibtex
 @misc{NWPUThesisLaTeXTemplate,
     title={{{\LaTeX}}-Template-For-NPU-Thesis},
-    author={Shangkun Shen and Jiduo Zhang},
-    year={2016},
-    month={05}
+    author={Shangkun Shen and Jiduo Zhang and Zhihe Wang},
+    year={2019},
+    month={10}
 }
 ```
 
