@@ -475,6 +475,10 @@ FUNCTION {format.names}
       nameptr max.num.authors >
         { bbl.et.al
           #1 'namesleft :=
+          nameptr #1 >
+            { " " swap$ * * }
+            'skip$
+          if$
         }
         { t "others" =
             { bbl.et.al }
@@ -490,13 +494,14 @@ FUNCTION {format.names}
                 { t #1 "{ll}{ff}" format.name$ }
               if$
             }
-          if$
+          if$  
+          nameptr #1 >
+            { ", " swap$ * * }
+            'skip$
+          if$        
         }
       if$
-      nameptr #1 >
-        { ", " swap$ * * }
-        'skip$
-      if$
+      
       nameptr #1 + 'nameptr :=
       namesleft #1 - 'namesleft :=
     }
