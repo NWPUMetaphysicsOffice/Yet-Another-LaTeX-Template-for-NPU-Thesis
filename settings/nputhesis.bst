@@ -1353,7 +1353,8 @@ FUNCTION {incollection}
   format.mark "" output.after
   new.block
   format.translators output
-  new.slash
+  %new.slash
+  new.block
   format.editors output
   new.block
   format.series.vol.num.booktitle "booktitle" output.check
