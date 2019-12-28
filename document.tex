@@ -54,10 +54,10 @@
 
 \include{preface/e_abstract}
 \newpage
-\clearpage
 \thispagestyle{empty}
-\phantom{s}
-\clearpage
+\cleardoublepage
+%\phantom{s}
+%\clearpage
 
 \renewcommand{\baselinestretch}{1}
 \fontsize{12pt}{20pt}\selectfont
@@ -78,8 +78,8 @@
 % 正文内容
 \input{chapters/chapter01}
 \cleardoublepage
-
 \input{chapters/chapter02}
+\cleardoublepage
 \input{chapters/chapter03}
 
 % 参考文献设置
@@ -88,18 +88,25 @@
 \addcontentsline{toc}{chapter}{\hspace{-0.3em} 参考文献}
 \sWuhao
 
-% npu专用
+% npu专用A
 \bibliographystyle{settings/nputhesis}
 
 % 参考文献位置
 \bibliography{references/reference}
+%\clearpage
+ \sRealHalfXiaosi
+
+
 
 % 附录
 \backmatter
 \cleardoublepage
 \input{appendix/appendix.tex}
 \input{appendix/acknowledgements.tex}
+\setlength{\parindent}{0pt}  
+\input{appendix/mywork.tex}
 \cleardoublepage
+\phantomsection
 
 
 \clearpage
