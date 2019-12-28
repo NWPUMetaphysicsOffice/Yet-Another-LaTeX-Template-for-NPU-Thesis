@@ -9,13 +9,14 @@ emmmmm
 
 \section{表格}
 
-使用 \href{http://www.tablesgenerator.com/}{http://www.tablesgenerator.com/} 生成, 可粘贴Excel.
+使用 \href{http://www.tablesgenerator.com/}{http://www.tablesgenerator.com/} 生成, 可粘贴Excel.效果如表\ref{my-label}所示.
+注意表中的字号（五号）和表格宽度（通栏）.
 
 \begin{table}[!h]
     \centering
-    \caption{My caption}
+    \caption{表格标题}
     \label{my-label}
-    \begin{tabular}{@{}llll@{}}
+    \begin{tabularx}{\textwidth}{CCCC}
         \toprule
         $A$ & $B$ & $A+B$ & $A\times B$ \\ \midrule
         1   & 6   & 7     & 6           \\
@@ -23,7 +24,7 @@ emmmmm
         3   & 8   & 11    & 24          \\
         4   & 9   & 13    & 36          \\
         5   & 10  & 15    & 50          \\ \bottomrule
-    \end{tabular}
+    \end{tabularx}
 \end{table}
 
 \section{公式}

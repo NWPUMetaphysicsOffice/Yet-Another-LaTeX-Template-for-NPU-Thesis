@@ -122,7 +122,7 @@
 
 %------------------------------添加插图与表格控制------------------------------%
 \usepackage{graphicx}
-\usepackage[font=small,labelsep=quad]{caption}
+\usepackage[font=normalsize,labelsep=quad]{caption}
 \usepackage{subfigure}
 \usepackage{wrapfig}
 \usepackage{multirow,makecell}
@@ -130,7 +130,20 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{setspace}
-%\captionsetup[table]{labelfont=bf,textfont=bf}
+
+%设置标题为五号
+\DeclareCaptionFont{cWuhao}{\sWuhao}
+\captionsetup[table]{labelfont=cWuhao,textfont=cWuhao}
+\captionsetup[figure]{labelfont=cWuhao,textfont=cWuhao}
+
+%设置表格的列格式
+\newcolumntype{C}{>{\centering\arraybackslash}X}    %居中等宽 
+
+%设置表格默认字号为五号
+\let\oldtabularx\tabularx
+\renewcommand{\tabularx}{\sWuhao\oldtabularx}
+\let\oldtabular\tabular
+\renewcommand{\tabular}{\sWuhao\oldtabular}
 %------------------------------------------------------------------------------%
 
 
@@ -309,7 +322,6 @@
 \usepackage[acronym]{glossaries} 
 \makeglossaries
 \loadglsentries{glossaries}
-
 
 \endinput
 % 这是简单的 thesis(book) 的导言区设置，不能单独编译。
