@@ -1,27 +1,26 @@
 %------------------------------------------------------------------------------%
 %                                                                              %
-%   LaTeX Template for Master Thesis of Northwestern Polytechnical University %
+%   LaTeX Template for Master Thesis of Northwestern Polytechnical University  %
 %   Environment Config: TeXLive 2017                                           %
 %   * XeTeX 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX)                      %
 %   * BibTeX 0.99d (TeX Live 2017/W32TeX)                                      %
-%   Version: 1.4.0                                                             %
+%   Version: 1.5.0                                                             %
 %                                                                              %
 %------------------------------------------------------------------------------%
-%   Copyright by kidozh, MIT-LICENSE                          %
+%   Copyright by kidozh, GPLv3-LICENSE                                         %
 %------------------------------------------------------------------------------%
 
 
 %---------------------------------纸张大小设置---------------------------------%
 \usepackage{geometry}
 % 普通A4格式缩进
- \geometry{left=2.5cm,right=2.5cm,top=2.54cm,bottom=2.54cm}
+\geometry{left=2.5cm,right=2.5cm,top=2.54cm,bottom=2.54cm}
 % 论文标准缩进
 %\geometry{left=1.18in,right=1.18in,top=0.98in,bottom=0.98in}
 %------------------------------------------------------------------------------%
 
 
 %----------------------------------必要库支持----------------------------------%
-
 \usepackage{xcolor}
 \usepackage{tikz}
 \usepackage{layouts}
@@ -73,9 +72,9 @@
 \newcommand{\sSanhao}{\fontsize{16pt}{24pt}\selectfont}                 % 三号, 1.5倍
 \newcommand{\sXiaosan}{\fontsize{15pt}{22pt}\selectfont}                % 小三, 1.5倍
 \newcommand{\sSihao}{\fontsize{14pt}{21pt}\selectfont}                  % 四号, 1.5倍
-\newcommand{\sSHalfXiaosi}{\fontsize{13pt}{20pt}\selectfont}            % 半小四, 1.5倍
-\newcommand{\sHalfXiaosi}{\fontsize{13pt}{16.25pt}\selectfont}          % 半小四, 1.25倍
-\newcommand{\sRealHalfXiaosi}{\fontsize{12.5pt}{13pt}\selectfont}    % 模板中的半小四, 约1倍
+\newcommand{\sLargeHalfXiaosi}{\fontsize{13pt}{19pt}\selectfont}        % 半小四, 1.5倍
+\newcommand{\sHalfXiaosi}{\fontsize{12.5pt}{16.25pt}\selectfont}        % 半小四, 1.25倍
+\newcommand{\sRealHalfXiaosi}{\fontsize{12.5pt}{13pt}\selectfont}       % 半小四, 约1倍
 \newcommand{\sXiaosi}{\fontsize{12pt}{14.4pt}\selectfont}               % 小四, 1.25倍
 \newcommand{\sLargeWuhao}{\fontsize{11pt}{11pt}\selectfont}             % 大五, 单倍
 \newcommand{\sWuhao}{\fontsize{10.5pt}{10.5pt}\selectfont}              % 五号, 单倍
@@ -88,26 +87,26 @@
 \usepackage{fontspec}
 \usepackage[SlantFont,BoldFont,CJKchecksingle]{xeCJK}
 \usepackage{CJKnumb}
-% 使用 Adobe 字体
-\newcommand\adobeSog{SimSun}
-\newcommand\adobeHei{SimHei}
-\newcommand\adobeKai{KaiTi}
-\newcommand\adobeFag{FangSong}
-\newcommand\TNRFag{Times New Roman}
+% 使用默认字体
+\newcommand\defaultSog{SimSun}
+\newcommand\defaultHei{SimHei}
+\newcommand\defaultKai{KaiTi}
+\newcommand\defaultFag{FangSong}
+\newcommand\defaultEngFont{Times New Roman}
 \newcommand\codeFont{Consolas}
 % 设置字体
 \defaultfontfeatures{Mapping=tex-text}
-\setCJKmainfont[ItalicFont=\adobeKai, BoldFont=\adobeHei]{\adobeSog}
-\setCJKsansfont[ItalicFont=\adobeKai, BoldFont=\adobeHei]{\adobeSog}
+\setCJKmainfont[ItalicFont=\defaultKai, BoldFont=\defaultHei]{\defaultSog}
+\setCJKsansfont[ItalicFont=\defaultKai, BoldFont=\defaultHei]{\defaultSog}
 \setCJKmonofont{\codeFont}
 \setmonofont{\codeFont}
-\setmainfont{\TNRFag}
+\setmainfont{\defaultEngFont}
 % 设置字体族
-\setCJKfamilyfont{song}{\adobeSog}      % 宋体
-\setCJKfamilyfont{hei}{\adobeHei}       % 黑体
-\setCJKfamilyfont{kai}{\adobeKai}       % 楷体
-\setCJKfamilyfont{fang}{\adobeFag}      % 仿宋体
-\setCJKfamilyfont{tnr}{\TNRFag}
+\setCJKfamilyfont{song}{\defaultSog}      % 宋体
+\setCJKfamilyfont{hei}{\defaultHei}       % 黑体
+\setCJKfamilyfont{kai}{\defaultKai}       % 楷体
+\setCJKfamilyfont{fang}{\defaultFag}      % 仿宋体
+\setCJKfamilyfont{tnr}{\defaultEngFont}
 % 用于页眉学校名，特殊字体，powerby https://github.com/ecomfe/fonteditor
 \setCJKfamilyfont{nwpu}{nwpuname}
 % 新建字体命令，统一前缀f(a.k.a font)
@@ -137,7 +136,7 @@
 \captionsetup[figure]{labelfont=cWuhao,textfont=cWuhao}
 
 %设置表格的列格式
-\newcolumntype{C}{>{\centering\arraybackslash}X}    %居中等宽 
+\newcolumntype{C}{>{\centering\arraybackslash}X}    % 居中等宽 
 
 %设置表格默认字号为五号
 \let\oldtabularx\tabularx
@@ -195,18 +194,18 @@
 \renewcommand{\figurename}{图}
 \renewcommand{\tablename}{表}
 \renewcommand{\bibname}{参考文献}
-\renewcommand{\contentsname}{目~录}
+\renewcommand{\contentsname}{目~~~~录}
 \newcommand{\keywords}[1]{\\ \\ \textbf{关~键~词}：#1}
 
 
 \titleformat{\chapter}[hang]{\normalfont\sSanhao\filcenter\fHei\bf}%
-    {\fHei \sSanhao{\chaptertitlename}}{20pt}{\sSanhao}
+{\fHei \sSanhao{\chaptertitlename}}{20pt}{\sSanhao}
 \titleformat{\section}[hang]{\fHei \bf \sSihao}%
-    {\fHei \sSihao \thesection}{0.5em}{}{}
-\titleformat{\subsection}[hang]{\fHei \bf \sSHalfXiaosi}%
-    {\sSHalfXiaosi \thesubsection}{0.5em}{}{}
+{\fHei \sSihao \thesection}{0.5em}{}{}
+\titleformat{\subsection}[hang]{\fHei \bf \sLargeHalfXiaosi}%
+{\sLargeHalfXiaosi \thesubsection}{0.5em}{}{}
 \titleformat{\subsubsection}[hang]{\fHei \bf}%
-    {(\arabic{subsubsection})}{0.5em}{}{}   % 小标题式的subsubsection:(4) 标题
+{(\arabic{subsubsection})}{0.5em}{}{}   % 小标题式的subsubsection:(4) 标题
 
 % 缩小正文中各级标题之间的缩进
 \titlespacing{\chapter}{0pt}{-3ex plus .1ex minus .2ex}{0.25em}
@@ -219,9 +218,9 @@
 \dottedcontents{subsection}[2.00cm]{}{2.7em}{5pt}
 \dottedcontents{subsubsection}[2.86cm]{}{3.4em}{5pt}
 \titlecontents{chapter}[0pt]{\fSong \sRealHalfXiaosi \vspace{0.5em}}%
-    {\contentsmargin{0pt}\fSong\makebox[0pt][l]{\thecontentslabel}\hspace{1.5em}}%
-    {\contentsmargin{0pt}\fSong}%
-    {\titlerule*[.5pc]{.}\contentspage}[\vspace{0em}]
+{\contentsmargin{0pt}\fSong\makebox[0pt][l]{\thecontentslabel}\hspace{1.5em}}%
+{\contentsmargin{0pt}\fSong}%
+{\titlerule*[.5pc]{.}\contentspage}[\vspace{0em}]
 %------------------------------------------------------------------------------%
 
 
@@ -285,7 +284,7 @@
 % \newitemsep
 % 下划线
 \newcommand\dlmu@underline[2][5cm]%
-    {\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
 \let\coverunderline\dlmu@underline
 %------------------------------------------------------------------------------%
 
@@ -318,10 +317,13 @@
     Pascal, C++, Java, Ruby, Python, Matlab, R, Haskell
 }
 %------------------------------------------------------------------------------%
-% glossary
-\usepackage[acronym]{glossaries} 
+
+
+%---------------------------------设置词汇总表---------------------------------%
+\usepackage[acronym]{glossaries}
 \makeglossaries
 \loadglsentries{glossaries}
+%------------------------------------------------------------------------------%
 
 \endinput
 % 这是简单的 thesis(book) 的导言区设置，不能单独编译。
