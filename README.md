@@ -1,43 +1,78 @@
-# LaTeX Template For NPU PHD/Master thesis
+# LaTeX Template For NPU PhD/Master thesis
 
-![Platfrom](https://img.shields.io/badge/Platfrom-TeXLive2017-3D6117.svg)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+![TeX-Document](https://img.shields.io/badge/TeX-Document-3D6117.svg)
+[![License](https://img.shields.io/badge/license-GNU_General_Public_License_v3.0-blue.svg)](LICENSE)
+![Status](https://img.shields.io/badge/status-complete-brightgreen.svg)
+![Version](https://img.shields.io/badge/version-v1.5.0.0428-674EA7.svg)
 
-## Origin
+| TeXLive Environment                                                  | Status             |
+| -------------------------------------------------------------------- | ------------------ |
+| ![TeXLive2016](https://img.shields.io/badge/TeXLive-2016-3D6117.svg) | :heavy_check_mark: |
+| ![TeXLive2017](https://img.shields.io/badge/TeXLive-2017-3D6117.svg) | :heavy_check_mark: |
+| ![TeXLive2018](https://img.shields.io/badge/TeXLive-2018-3D6117.svg) | :heavy_check_mark: |
+| ![TeXLive2019](https://img.shields.io/badge/TeXLive-2019-3D6117.svg) | :heavy_check_mark: |
+| ![TeXLive2020](https://img.shields.io/badge/TeXLive-2020-3D6117.svg) | :heavy_check_mark: |
 
-本repo直接来自于开源库[LaTeX-Template-For-NPU-Thesis](https://github.com/NWPUMetaphysicsOffice/LaTeX-Template-For-NPU-Thesis)
 
-本repo格式参照于2014年西北工业大学研究生院编写的[西北工业大学博士研究生学位论文编写规则（试用版）](http://gs.nwpu.edu.cn/info/1143/1139.htm)
+这是在西北工业大学硕博研究生毕业设计论文格式的要求下的一份 LaTeX 文档类型模板。使用者无需修改导言区文档类型，直接在发布版的基础上，修改章节标题，撰写内容，即可完成毕业设计论文任务。
 
-## Usage
+本 repo 主要基于开源库 [LaTeX-Template-For-NPU-Thesis](https://github.com/polossk/LaTeX-Template-For-NPU-Thesis) 之上修改而成，格式参照于 2014 年西北工业大学研究生院编写的[西北工业大学博士研究生学位论文编写规则（试用版）](http://gs.nwpu.edu.cn/info/1143/1139.htm)。
 
-1. clone这个项目到本地
-2. 直接对 `document.tex` 文件进行修改
-3. 如有必要，请仿照 `document.tex` 在 *导言区* 引用 `\input{settings/thesis-setting}`
+
+
+## 使用说明
+
+1. 下载这个项目的 zip 包到到本地
+2. 直接对 `document.tex` 文件进行修改，对应的摘要、章节内容、附录文件均已经默认生成，在此基础上加以修改即可
+3. 如有必要，也可以请仿照 `document.tex` 在 *导言区* 引用 `\input{settings/thesis-setting}` 来直接设置文档格式
 4. 如有必要，修改 `makefile` 文件的 `MAIN` 选项为自己 `tex` 文档的文件名
 5. make & Enjoy
 
-## Note
+## 注意事项以及常见问题
 
-* 根据西北工业大学博士研究生学位论文编写规则，本TeX模板使用的是Windows下的**宋体**、**黑体**、**楷体**、**仿宋**和**Times New Roman**
-* `cover.tex` 文件为论文的中文封面页,  `eng_cover.tex` 文件为论文的英文封面页
-* 所有字体大小的控制命令统一前缀为`s(a.k.a size)`, 所有字体格式的控制命令统一前缀为`f(a.k.a font)`
-* `makefile` 中的 `close`, `clean` 以及 `wipe` 选项为 `windows` 专用, 并且假设使用了 `Acrobat` 打开了当前 pdf 文件
-
-* 如有任何问题，请发issue
-* 欢迎fork
+* **字体问题**
+  * 本模板使用的是 **Windows** 系统的自带字体（宋体，黑体，楷体，仿宋，Times New Roman）
+  * 其他系统用户请自行检查修改 `settings/thesis-setting.tex` 中的字体配置
+* **`makefile` 问题**
+  * 本模板提供了简单的 `makefile` 文件来控制编译流程
+  * 这份 `makefile` 中的 `close`, `clean` 以及 `wipe` 选项为 `windows` 专用, 并且假设使用了 `Acrobat` 打开了当前 pdf 文件
+  * 对于 Linux 玩家而言，没有比这份 `makefile` 更简单的版本了，在此基础上稍作修改即可使用
+* **预创建文件及部分格式符说明**
+  * `cover.tex` 为论文的封面页
+  * `eng_cover.tex` 文件为论文的英文封面页
+  * 字体大小（size）的控制命令统一前缀为 `s`
+  * 字体格式（font）的控制命令统一前缀为 `f`
+* **开源许可问题**
+  * 基于 [GPLv3-LICENSE](LICENSE)
+  * 如有帮助，请在自己的文章中引用；如果在此基础上新增/删除/更改，请按照开源许可的要求继续保持开源，且同时继续使用相同开源许可
+* **其他可能的模板使用问题**
+  * 在编译过程中，如果遇到卡在字体缓冲问题，请先关闭当前进程，并用管理员模式打开命令提示符（或终端），键入 `fc-cache -f -v` 强制刷新字体缓存即可
+  * 模板成型于 **2019 年**。如果后期有任何格式上的变化，欢迎 fork-modify-pull-request 或者在 [issue](https://github.com/NWPUMetaphysicsOffice/LaTeX-Template-For-NPU-PhD-Master-Thesis/issues) 中详细说明新旧格式，我们乐意解决模板使用的问题
+  * **恕制作者们不解答任何 LaTeX 使用问题**
 
 ## BibTeX
 
 ```bibtex
 @misc{NWPUThesisLaTeXTemplate,
     title={{{\LaTeX}}-Template-For-NPU-Thesis},
-    author={Shangkun Shen and Jiduo Zhang and Zhihe Wang},
-    year={2019},
-    month={10}
+    author={Shangkun Shen and Zhihe Wang and Jiduo Zhang and Weijia Zhang},
+    year={2016},
+    month={05}
 }
 ```
 
-## LICENCE
+## Copyright
 
-MIT LICENCE
+Use this code whatever you want, under the circumstances of acknowleged the
+GPL license this page below. Star this repository if you like, and it will
+be very generous of you!
+
+## License
+
+Copyright (c) 2016-2020 *NWPU Metaphysics Office* <https://github.com/NWPUMetaphysicsOffice>
+
+This repo is under the license of **GNU General Public License v3.0**. Go 
+and check [license](LICENSE) for details.
+
+The association *NWPU Metaphysics Office* is a club-like student group. The
+members are cfrpg, kidozh, njzwj, polossk, in alphabet order.
