@@ -180,8 +180,8 @@
 \XeTeXlinebreakskip = 0pt plus 1pt              % 调整换行逻辑的弹性大小
 \usepackage{indentfirst}                        % 段首空格设置
 \setlength{\parindent}{24.7pt}                  % 段首空格长度
-\setlength{\parskip}{3pt plus 1pt minus 1pt}    % 段落间距
-\renewcommand{\baselinestretch}{1.25}           % 行距
+\setlength{\parskip}{0pt}    % 段落间距
+\renewcommand{\baselinestretch}{1.0}           % 行距
 %------------------------------------------------------------------------------%
 
 
@@ -208,7 +208,7 @@
 {(\arabic{subsubsection})}{0.5em}{}{}   % 小标题式的subsubsection:(4) 标题
 
 % 缩小正文中各级标题之间的缩进
-\titlespacing{\chapter}{0pt}{12pt}{12pt}
+\titlespacing{\chapter}{0pt}{-8pt}{11pt}
 \titlespacing{\section}{0pt}{7pt}{0em}
 \titlespacing{\subsection}{0pt}{6.5pt}{0em}
 \titlespacing{\subsubsection}{0pt}{0.25em}{0pt}
