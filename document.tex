@@ -41,7 +41,7 @@
 \clearpage
 
 \setcounter{page}{1}
-\renewcommand{\baselinestretch}{1.25}
+\renewcommand{\baselinestretch}{1.0}
 
 % 中文摘要
 \include{preface/c_abstract}
@@ -59,8 +59,7 @@
 %\phantom{s}
 %\clearpage
 
-\renewcommand{\baselinestretch}{1}
-\fontsize{12pt}{20pt}\selectfont
+\sNormalParagraph
 \phantomsection
 \addcontentsline{toc}{chapter}{目~~~~录}
 \tableofcontents
@@ -71,8 +70,6 @@
 
 \cleardoublepage
 
-\renewcommand{\baselinestretch}{1.0}
-% \sRealHalfXiaosi
 \sNormalParagraph
 
 % 正文内容
@@ -86,7 +83,6 @@
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{参考文献}
-\sWuhao
 
 % npu专用A
 \bibliographystyle{settings/nputhesis}
@@ -94,8 +90,6 @@
 % 参考文献位置
 \bibliography{references/reference}
 %\clearpage
-\sRealHalfXiaosi
-
 
 % 附录
 \backmatter
