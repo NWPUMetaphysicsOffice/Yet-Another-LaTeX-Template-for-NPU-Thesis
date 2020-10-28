@@ -1,4 +1,4 @@
-# Yet Another LaTeX Template For NPU Thesis
+# Yet Another NPU Thesis Template
 
 ![PhD-Thesis](https://img.shields.io/badge/PhD-Thesis-D11A2D.svg)
 ![Master-Thesis](https://img.shields.io/badge/Master-Thesis-1177B0.svg)
@@ -6,7 +6,7 @@
 ![TeX-Document](https://img.shields.io/badge/TeX-Document-3D6117.svg)
 [![License](https://img.shields.io/badge/license-GNU_General_Public_License_v3.0-blue.svg)](LICENSE)
 ![Status](https://img.shields.io/badge/status-complete-brightgreen.svg)
-![Version](https://img.shields.io/badge/version-v1.5.0.0428-674EA7.svg)
+![Version](https://img.shields.io/badge/version-v1.5.1.1028-674EA7.svg)
 
 | TeXLive Environment                                                  | Status             |
 | -------------------------------------------------------------------- | ------------------ |
@@ -16,12 +16,9 @@
 | ![TeXLive2019](https://img.shields.io/badge/TeXLive-2019-3D6117.svg) | :heavy_check_mark: |
 | ![TeXLive2020](https://img.shields.io/badge/TeXLive-2020-3D6117.svg) | :heavy_check_mark: |
 
-
 这是在西北工业大学硕博研究生毕业设计论文格式的要求下的一份 LaTeX 文档类型模板。使用者无需修改导言区文档类型，直接在发布版的基础上，修改章节标题，撰写内容，即可完成毕业设计论文任务。
 
 本 repo 主要基于开源库 [LaTeX-Template-For-NPU-Thesis](https://github.com/polossk/LaTeX-Template-For-NPU-Thesis) 之上修改而成，格式参照于 2014 年西北工业大学研究生院编写的[西北工业大学博士研究生学位论文编写规则（试用版）](http://gs.nwpu.edu.cn/info/1143/1139.htm)。
-
-
 
 ## 使用说明
 
@@ -40,9 +37,19 @@
   * 本模板提供了简单的 `makefile` 文件来控制编译流程
   * 这份 `makefile` 中的 `close`, `clean` 以及 `wipe` 选项为 `windows` 专用, 并且假设使用了 `Acrobat` 打开了当前 pdf 文件
   * 对于 Linux 玩家而言，没有比这份 `makefile` 更简单的版本了，在此基础上稍作修改即可使用
-* **预创建文件及部分格式符说明**
-  * `cover.tex` 为论文的封面页
-  * `eng_cover.tex` 文件为论文的英文封面页
+* **预创建文件**
+  * 以下文件按照实际论文中出现顺序排序
+  |   文件目录    |         文件名         |             说明             |
+  | :-----------: | :--------------------: | :--------------------------: |
+  | `frontmatter` |    `coverpage.tex`     |       封面页（外封面）       |
+  | `frontmatter` |  `frontpage_chs.tex`   | 中文标题页（题名页/内封面）  |
+  | `frontmatter` |  `frontpage_eng.tex`   |          英文标题页          |
+  | `frontmatter` |   `abstract_chs.tex`   |           中文摘要           |
+  | `frontmatter` |   `abstract_eng.tex`   |           英文摘要           |
+  | `backmatter`  |     `appendix.tex`     |             附录             |
+  | `backmatter`  | `acknowledgements.tex` |             致谢             |
+  | `backmatter`  |      `mywork.tex`      | 发表的学术论文和参加科研情况 |
+* **格式符说明**
   * 字体大小（size）的控制命令统一前缀为 `s`
   * 字体格式（font）的控制命令统一前缀为 `f`
 * **开源许可问题**
