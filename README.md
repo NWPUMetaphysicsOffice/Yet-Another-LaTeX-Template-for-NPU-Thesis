@@ -1,12 +1,15 @@
 # Yet Another NPU Thesis Template
 
+![Poster](poster.png)
+
 ![PhD-Thesis](https://img.shields.io/badge/PhD-Thesis-D11A2D.svg)
 ![Master-Thesis](https://img.shields.io/badge/Master-Thesis-1177B0.svg)
-
 ![TeX-Document](https://img.shields.io/badge/TeX-Document-3D6117.svg)
 [![License](https://img.shields.io/badge/license-GNU_General_Public_License_v3.0-blue.svg)](LICENSE)
+
 ![Status](https://img.shields.io/badge/status-complete-brightgreen.svg)
 ![Version](https://img.shields.io/badge/version-v1.5.1.1028-674EA7.svg)
+
 
 | TeXLive Environment                                                  | Status             |
 | -------------------------------------------------------------------- | ------------------ |
