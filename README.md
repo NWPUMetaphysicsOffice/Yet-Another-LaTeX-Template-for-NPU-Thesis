@@ -18,15 +18,15 @@
 
 这是在西北工业大学硕博研究生毕业设计论文格式的要求下的一份 LaTeX 文档类型模板。使用者无需修改导言区文档类型，直接在发布版的基础上，修改章节标题，撰写内容，即可完成毕业设计论文任务。
 
-本 repo 主要基于开源库 [LaTeX-Template-For-NPU-Thesis](https://github.com/polossk/LaTeX-Template-For-NPU-Thesis) 之上修改而成，格式参照于 2014 年西北工业大学研究生院编写的[西北工业大学博士研究生学位论文编写规则（试用版）](http://gs.nwpu.edu.cn/info/1143/1139.htm)。
+本 repo 主要基于开源库 [polossk/LaTeX-Template-For-NPU-Thesis](https://github.com/polossk/LaTeX-Template-For-NPU-Thesis) 之上修改而成，格式参照于 2014 年西北工业大学研究生院编写的[西北工业大学博士研究生学位论文编写规则（试用版）](http://gs.nwpu.edu.cn/info/1143/1139.htm)。
 
 ## 使用说明
 
 1. 下载这个项目的 zip 包到到本地
 2. 直接对 `document.tex` 文件进行修改，对应的摘要、章节内容、附录文件均已经默认生成，在此基础上加以修改即可
-3. 如有必要，也可以请仿照 `document.tex` 在 *导言区* 引用 `\input{settings/thesis-setting}` 来直接设置文档格式
+3. 如有必要，也可以请仿照 `document.tex` 在**导言区**引用 `\input{settings/thesis-setting}` 来直接设置文档格式
 4. 如有必要，修改 `makefile` 文件的 `MAIN` 选项为自己 `tex` 文档的文件名
-5. make & Enjoy
+5. *make & Enjoy*
 
 ## 注意事项以及常见问题
 
@@ -39,16 +39,21 @@
   * 对于 Linux 玩家而言，没有比这份 `makefile` 更简单的版本了，在此基础上稍作修改即可使用
 * **预创建文件**
   * 以下文件按照实际论文中出现顺序排序
-  |   文件目录    |         文件名         |             说明             |
-  | :-----------: | :--------------------: | :--------------------------: |
-  | `frontmatter` |    `coverpage.tex`     |       封面页（外封面）       |
-  | `frontmatter` |  `frontpage_chs.tex`   | 中文标题页（题名页/内封面）  |
-  | `frontmatter` |  `frontpage_eng.tex`   |          英文标题页          |
-  | `frontmatter` |   `abstract_chs.tex`   |           中文摘要           |
-  | `frontmatter` |   `abstract_eng.tex`   |           英文摘要           |
-  | `backmatter`  |     `appendix.tex`     |             附录             |
-  | `backmatter`  | `acknowledgements.tex` |             致谢             |
-  | `backmatter`  |      `mywork.tex`      | 发表的学术论文和参加科研情况 |
+  
+  |       |                   展示                    |                       展示                        |                    展示                     |
+  | :---: | :---------------------------------------: | :-----------------------------------------------: | :-----------------------------------------: |
+  | 预览  |    ![coverpage](preview/coverpage.png)    |    ![frontpage_chs](preview/frontpage_chs.png)    | ![frontpage_eng](preview/frontpage_eng.png) |
+  | 说明  |             封面页（外封面）              |            中文标题页（题名页/内封面）            |                 英文标题页                  |
+  | 目录  |               `frontmatter`               |                   `frontmatter`                   |                `frontmatter`                |
+  | 文件  |              `coverpage.tex`              |                `frontpage_chs.tex`                |             `frontpage_eng.tex`             |
+  | 预览  | ![abstract_chs](preview/abstract_chs.png) |     ![abstract_eng](preview/abstract_eng.png)     |    ![references](preview/references.png)    |
+  | 说明  |                 中文摘要                  |                     英文摘要                      |                  参考文献                   |
+  | 目录  |               `frontmatter`               |                   `frontmatter`                   |                `references`                 |
+  | 文件  |            `abstract_chs.tex`             |                `abstract_eng.tex`                 |               `reference.bib`               |
+  | 预览  |     ![appendix](preview/appendix.png)     | ![acknowledgements](preview/acknowledgements.png) |        ![mywork](preview/mywork.png)        |
+  | 说明  |                   附录                    |                       致谢                        |        发表的学术论文和参加科研情况         |
+  | 目录  |               `backmatter`                |                   `backmatter`                    |                `backmatter`                 |
+  | 文件  |              `appendix.tex`               |              `acknowledgements.tex`               |                `mywork.tex`                 |
 * **格式符说明**
   * 字体大小（size）的控制命令统一前缀为 `s`
   * 字体格式（font）的控制命令统一前缀为 `f`
@@ -57,7 +62,7 @@
   * 如有帮助，请在自己的文章中引用；如果在此基础上新增/删除/更改，请按照开源许可的要求继续保持开源，且同时继续使用相同开源许可
 * **其他可能的模板使用问题**
   * 在编译过程中，如果遇到卡在字体缓冲问题，请先关闭当前进程，并用管理员模式打开命令提示符（或终端），键入 `fc-cache -f -v` 强制刷新字体缓存即可
-  * 模板成型于 **2019 年**。如果后期有任何格式上的变化，欢迎 fork-modify-pull-request 或者在 [issue](https://github.com/NWPUMetaphysicsOffice/LaTeX-Template-For-NPU-PhD-Master-Thesis/issues) 中详细说明新旧格式，我们乐意解决模板使用的问题
+  * 模板成型于 **2019 年**。如果后期有任何格式上的变化，欢迎 *fork-modify-pull-request* 或者在 [issue](hhttps://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/issues) 中详细说明新旧格式之差异，我们乐意解决模板使用的问题
   * **恕制作者们不解答任何 LaTeX 使用问题**
 
 ## BibTeX
@@ -89,6 +94,4 @@ members are cfrpg, kidozh, njzwj, polossk, in alphabet order.
 
 ## 彩蛋
 
-* ![PhD-Thesis](https://img.shields.io/badge/PhD-Thesis-D11A2D.svg)
-![Master-Thesis](https://img.shields.io/badge/Master-Thesis-1177B0.svg)
-分别对应着博士服与硕士服的颜色。
+* ![PhD-Thesis](https://img.shields.io/badge/PhD-Thesis-D11A2D.svg) ![Master-Thesis](https://img.shields.io/badge/Master-Thesis-1177B0.svg) 分别对应着博士服与硕士服的颜色。
