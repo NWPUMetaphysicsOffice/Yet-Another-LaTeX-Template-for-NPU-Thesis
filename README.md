@@ -9,7 +9,7 @@
 
 ![Status](https://img.shields.io/badge/status-complete-brightgreen.svg)
 ![Version](https://img.shields.io/badge/version-v1.5.1.1028-674EA7.svg)
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4159248.svg)](https://doi.org/10.5281/zenodo.4159248)
 
 | TeXLive Environment                                                  | Status             |
 | -------------------------------------------------------------------- | ------------------ |
@@ -71,11 +71,15 @@
 ## BibTeX
 
 ```bibtex
-@misc{NWPUThesisLaTeXTemplate,
-    title={{{\LaTeX}}-Template-For-NPU-Thesis},
-    author={Shangkun Shen and Zhihe Wang and Jiduo Zhang and Weijia Zhang},
-    year={2016},
-    month={05}
+@software{NWPUThesisLaTeXTemplate,
+    author      = {Shangkun Shen and Zhihe Wang and Jiduo Zhang and Weijia Zhang},
+    title       = {Yet Another {{\LaTeX}} Template for NPU Thesis},
+    month       = {11},
+    year        = {2019},
+    publisher   = {Zenodo},
+    journal     = {GitHub repository},
+    doi         = {10.5281/zenodo.4159248},
+    url         = {https://doi.org/10.5281/zenodo.4159248}
 }
 ```
 
