@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/badge/license-GNU_General_Public_License_v3.0-blue.svg)](LICENSE)
 
 ![Status](https://img.shields.io/badge/status-complete-brightgreen.svg)
-![Version](https://img.shields.io/badge/version-v1.5.1.1028-674EA7.svg)
+![Version](https://img.shields.io/badge/version-v1.5.2.1030-674EA7.svg)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4159248.svg)](https://doi.org/10.5281/zenodo.4159248)
 
 | TeXLive Environment                                                  | Status             |
@@ -72,8 +72,8 @@
 
 ```bibtex
 @software{NWPUThesisLaTeXTemplate,
-    author      = {Shangkun Shen and Zhihe Wang and Jiduo Zhang and Weijia Zhang},
     title       = {Yet Another {{\LaTeX}} Template for NPU Thesis},
+    author      = {Shangkun Shen and Zhihe Wang and Jiduo Zhang and Weijia Zhang},
     month       = {11},
     year        = {2019},
     publisher   = {Zenodo},
