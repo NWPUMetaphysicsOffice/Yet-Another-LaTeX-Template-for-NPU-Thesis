@@ -1,0 +1,66 @@
+\begin{titlepage}
+	\bfseries
+	\linespread{1.25}
+	\begin{center}
+		\hfill% default \bf font
+		\fHei\sWuhao
+		\newlength{\maxlength}
+		\settowidth{\maxlength}{学校代码~:~ 2000000000}
+		\newlength{\namelength}
+		\settowidth{\namelength}{学校代码~学校代码}
+		\begin{minipage}{\maxlength}
+			\vskip.5cm
+			\renewcommand\arraystretch{1.2}
+			\begin{tabular}{|c|c|}\hline
+				{学 \hfill 校 \hfill 代 \hfill 码} & 10699      \\ \hline
+				{分 \hfill 类 \hfill 号}           & O242       \\ \hline
+				{密 \hfill 级}                     & 公开       \\ \hline
+				{学 \hfill 号}                     & 2000123456 \\ \hline
+			\end{tabular}
+		\end{minipage}
+		\par\vspace{9cm}
+		\fSong\sErhao
+		\begin{minipage}[t]{2cm}
+			\hfill 题目 \\
+		\end{minipage}
+		\setbox123=\hbox{
+			\begin{minipage}[t]{12cm}
+				\begin{center}
+					\fHei 基于导师喜好的研究生学位论文 \\
+					命名方法的关键技术研究
+				\end{center}
+			\end{minipage} }
+		\setbox124=\hbox{
+			\begin{minipage}[t]{12cm}
+				\begin{center}
+					\uline{\hfill\quad\hfill} \\
+					\uline{\hfill\quad\hfill} \\
+				\end{center}
+			\end{minipage} }
+		\hskip-0.5cm
+		\copy123\kern-\wd123\box124
+		\sSanhao\fKai
+		\par\vspace{2.5\baselineskip}
+		\begin{minipage}{5cm}
+			{作者} \uline{\hfill\authorname\hfill}
+		\end{minipage}
+		\par\vspace{2.5\baselineskip}
+		\settowidth{\namelength}{申请学位日期}
+		\begin{minipage}{12.5cm}
+			\noindent
+			\makebox[\namelength][s]{学科、专业}\hspace{0.2cm}
+			{\uline{\hfill \makebox{\fSong{看文档找规律专业}} \hfill}} \par
+			\vspace{0.5\baselineskip}
+			\makebox[\namelength][s]{指导教师}\hspace{0.2cm}
+			{\uline{\hfill \makebox{\fSong{自学成才}} \hfill}} \par
+			\vspace{0.5\baselineskip}
+			\makebox[\namelength][s]{申请学位日期}\hspace{0.2cm}
+			{\uline{\hfill \makebox{\fTNR{20XX}\fSong{年}\fTNR{X}\fSong{月}} \hfill}}
+		\end{minipage}
+		\vspace{2\baselineskip}
+	\end{center}
+\end{titlepage}
+
+\fSong \normalsize
+
+\endinput

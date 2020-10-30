@@ -1,22 +1,25 @@
 %------------------------------------------------------------------------------%
 %                                                                              %
-%   LaTeX Template for Master Thesis of Northwestern Polytechnical University  %
+%   LaTeX Template for Thesis of Northwestern Polytechnical University         %
 %   Environment Config: TeXLive 2017                                           %
 %   * XeTeX 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX)                      %
 %   * BibTeX 0.99d (TeX Live 2017/W32TeX)                                      %
-%   Version: 1.5.0                                                             %
+%   Version: 1.5.1                                                             %
 %                                                                              %
 %------------------------------------------------------------------------------%
-%   Copyright by kidozh, GPLv3-LICENSE                                         %
+%   Authors: kidozh, cfrpg, polossk, njzwj (in no particular order)            %
+%   * kidozh:   Origin version, *main contributor                              %
+%   * cfrpg:    Collaborator                                                   %
+%   * polossk:  Collaborator                                                   %
+%   * njzwj:    Collaborator                                                   %
+%------------------------------------------------------------------------------%
+%   Copyright by NWPU Metaphysics Office, GPLv3-LICENSE                        %
 %------------------------------------------------------------------------------%
 
 
 %---------------------------------纸张大小设置---------------------------------%
 \usepackage{geometry}
-% 普通A4格式缩进
-\geometry{left=2.5cm,right=2.5cm,top=2.54cm,bottom=2.54cm}
-% 论文标准缩进
-%\geometry{left=1.18in,right=1.18in,top=0.98in,bottom=0.98in}
+\geometry{left=2.5cm,right=2.5cm,top=2.54cm,bottom=2.54cm} % 普通A4格式缩进
 %------------------------------------------------------------------------------%
 
 
@@ -29,6 +32,7 @@
 \usepackage{gensymb}
 \usepackage[final]{pdfpages}
 \usepackage{setspace}
+\usepackage{ulem}
 \usepackage{ragged2e}
 %------------------------------------------------------------------------------%
 
@@ -102,19 +106,16 @@
 \setmonofont{\codeFont}
 \setmainfont{\defaultEngFont}
 % 设置字体族
-\setCJKfamilyfont{song}{\defaultSog}      % 宋体
-\setCJKfamilyfont{hei}{\defaultHei}       % 黑体
-\setCJKfamilyfont{kai}{\defaultKai}       % 楷体
-\setCJKfamilyfont{fang}{\defaultFag}      % 仿宋体
-\setCJKfamilyfont{tnr}{\defaultEngFont}
-% 用于页眉学校名，特殊字体，powerby https://github.com/ecomfe/fonteditor
-\setCJKfamilyfont{nwpu}{nwpuname}
+\setCJKfamilyfont{song}{\defaultSog}            % 宋体
+\setCJKfamilyfont{hei}{\defaultHei}             % 黑体
+\setCJKfamilyfont{kai}{\defaultKai}             % 楷体
+\setCJKfamilyfont{fang}{\defaultFag}            % 仿宋体
+\setCJKfamilyfont{tnr}{\defaultEngFont}         % Times New Roman
 % 新建字体命令，统一前缀f(a.k.a font)
 \newcommand{\fSong}{\CJKfamily{song}}
 \newcommand{\fHei}{\CJKfamily{hei}}
 \newcommand{\fFang}{\CJKfamily{fang}}
 \newcommand{\fKai}{\CJKfamily{kai}}
-\newcommand{\fNWPU}{\CJKfamily{nwpu}}
 \newcommand{\fTNR}{\CJKfamily{tnr}}
 %------------------------------------------------------------------------------%
 
@@ -129,16 +130,15 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{setspace}
-
-%设置标题为五号
+% 设置标题为五号
 \DeclareCaptionFont{cWuhao}{\sWuhao}
 \captionsetup[table]{labelfont=cWuhao,textfont=cWuhao}
 \captionsetup[figure]{labelfont=cWuhao,textfont=cWuhao}
-
-%设置表格的列格式
-\newcolumntype{C}{>{\centering\arraybackslash}X}    % 居中等宽 
-
-%设置表格默认字号为五号
+% 设置表格的列格式
+\newcolumntype{C}{>{\centering\arraybackslash}X}    % 等宽居中
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}  % 等宽左对齐
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}   % 等宽右对齐
+% 设置表格默认字号为五号
 \let\oldtabularx\tabularx
 \renewcommand{\tabularx}{\sWuhao\oldtabularx}
 \let\oldtabular\tabular
@@ -180,32 +180,30 @@
 \XeTeXlinebreakskip = 0pt plus 1pt              % 调整换行逻辑的弹性大小
 \usepackage{indentfirst}                        % 段首空格设置
 \setlength{\parindent}{24.7pt}                  % 段首空格长度
-\setlength{\parskip}{0pt}    % 段落间距
-\renewcommand{\baselinestretch}{1.0}           % 行距
+\setlength{\parskip}{0pt}                       % 段落间距
+\renewcommand{\baselinestretch}{1.0}            % 行距
 %------------------------------------------------------------------------------%
 
 
 %----------------------------设置段落标题与目录格式----------------------------%
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{2}
-
-%\newcommand\chapterID[1]{第\CJKnumber{#1}章}
+\setcounter{secnumdepth}{3}                     % 标题计数器深度
+\setcounter{tocdepth}{2}                        % 目录中标题深度
+% 重新设置引用名
 \renewcommand{\chaptername}{\thechapter~~}
 \renewcommand{\figurename}{图}
 \renewcommand{\tablename}{表}
 \renewcommand{\bibname}{参考文献}
 \renewcommand{\contentsname}{目~~~~录}
 \newcommand{\keywords}[1]{\\ \\ \textbf{关~键~词}：#1}
-
-
-\titleformat{\chapter}[hang]{\normalfont\sSanhao\filcenter\fHei\bf}%
-{\fHei \sSanhao{\chaptertitlename}}{20pt}{\sSanhao}
-\titleformat{\section}[hang]{\fHei \bf \sSihao}%
-{\fHei \sSihao \thesection}{0.5em}{}{}
-\titleformat{\subsection}[hang]{\fHei \bf \sLargeHalfXiaosi}%
-{\sLargeHalfXiaosi \thesubsection}{0.5em}{}{}
-\titleformat{\subsubsection}[hang]{\fHei \bf}%
-{(\arabic{subsubsection})}{0.5em}{}{}   % 小标题式的subsubsection:(4) 标题
+% 标题格式
+\titleformat{\chapter}[hang]{\normalfont\sSanhao\filcenter\fHei\bf}{%
+    \fHei \sSanhao{\chaptertitlename}}{20pt}{\sSanhao}
+\titleformat{\section}[hang]{\fHei \bf \sSihao}{%
+    \fHei \sSihao \thesection}{0.5em}{}{}
+\titleformat{\subsection}[hang]{\fHei \bf \sLargeHalfXiaosi}{%
+    \sLargeHalfXiaosi \thesubsection}{0.5em}{}{}
+\titleformat{\subsubsection}[hang]{\fHei \bf}{%
+    (\arabic{subsubsection})}{0.5em}{}{}  % 小标题格式 “(4) 标题”
 
 % 缩小正文中各级标题之间的缩进
 \titlespacing{\chapter}{0pt}{-8pt}{11pt}
@@ -217,18 +215,17 @@
 \dottedcontents{section}[1.16cm]{}{1.8em}{5pt}
 \dottedcontents{subsection}[2.00cm]{}{2.7em}{5pt}
 \dottedcontents{subsubsection}[2.86cm]{}{3.4em}{5pt}
-\titlecontents{chapter}[0pt]{\fSong \sRealHalfXiaosi \vspace{0.5em}}%
-{\contentsmargin{0pt}\fSong\makebox[0pt][l]{\thecontentslabel}\hspace{1.5em}}%
-{\contentsmargin{0pt}\fSong}%
-{\titlerule*[.5pc]{.}\contentspage}[\vspace{0em}]
+\titlecontents{chapter}[0pt]{\fSong\sRealHalfXiaosi\vspace{0.5em}}{%
+    \contentsmargin{0pt}\fSong\makebox[0pt][l]{\thecontentslabel}\hspace{1.5em}}{%
+    \contentsmargin{0pt}\fSong}{\titlerule*[.5pc]{.}\contentspage}[\vspace{0em}]
 %------------------------------------------------------------------------------%
 
 
 %---------------------------------设置页眉页脚---------------------------------%
 \usepackage{fancyhdr}
 \usepackage{fancyref}
-%\addtolength{\headsep}{-0.1cm}          %页眉位置
-%\addtolength{\footskip}{-0.1cm}         %页脚位置
+% \addtolength{\headsep}{-0.1cm}                % 页眉位置
+% \addtolength{\footskip}{-0.1cm}               % 页脚位置
 \addtolength{\topmargin}{0.5cm}
 \newcommand{\makeheadrule}{
     \makebox[0pt][l]{\rule[.7\baselineskip]{\headwidth}{3.4pt}}
@@ -239,25 +236,16 @@
 \makeatletter
 \renewcommand{\headrule}{%
     {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi\makeheadrule}}
-
-
+\makeatother
 \pagestyle{fancyplain}
-%\fancypagestyle{plain}
 \fancyhf{}
 \fancyfoot[C,C]{\sWuhao~\thepage~}
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter~~ #1}{}}
-% set for page heade
-
-%\chead{\sXiaowu \leftmark}
+% 页眉设置
 \fancyhead{}
-\fancyhead[CEH]{西北工业大学硕士学位论文}
+\fancyhead[CEH]{西北工业大学硕士学位论文}           % 硕士版本
+\fancyhead[CEH]{西北工业大学博士学位论文}           % 博士版本
 \fancyhead[COH]{\leftmark}
-%\fancyhead{RE,LO}{\sXiaowu \leftmark}
-
-%\chead{\sXiaowu \raisebox{0.04cm}%
-%	
-%   }
-%}
 %------------------------------------------------------------------------------%
 
 
@@ -285,9 +273,11 @@
 
 % \newitemsep
 % 下划线
-\newcommand\dlmu@underline[2][5cm]%
-{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+\makeatletter
+\newcommand\dlmu@underline[2][5cm]{%
+    \hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
 \let\coverunderline\dlmu@underline
+\makeatother
 %------------------------------------------------------------------------------%
 
 
@@ -312,7 +302,7 @@
     framexrightmargin=5pt,
     framexbottommargin=4pt,
     showstringspaces=false,
-    escapeinside=`', %逃逸字符(1左面的键)，用于显示中文
+    escapeinside=`', % 逃逸字符(1左面的键)，用于显示中文
 }
 \renewcommand{\lstlistingname}{CODE}
 \lstloadlanguages{% Check Dokumentation for further languages, page 12

@@ -4,7 +4,6 @@
 \input{settings/thesis-setting}
 
 % 非格式控制插件
-% \usepackage{math-symbols}
 \usepackage{plug-ins/math-symbols}
 % \input{plug-ins/aerocoeffs}
 
@@ -14,93 +13,81 @@
 % 仅用于测试
 \usepackage{blindtext}
 
-\title{\textsf{基于XXXX的XXXX}}
-\author{{\kai XXXX}}
+%------------------------------------------------------------------------------%
+% 标题、作者、送审日期                                                         %
+%------------------------------------------------------------------------------%
+\title{基于XXXX的XXXX}
+\newcommand{\authorname}{OvO}
+\author{\authorname}
 \date{20XX年X月}
-
+%------------------------------------------------------------------------------%
+% 文档开始                                                                     %
+%------------------------------------------------------------------------------%
 \begin{document}
-
 \sloppy
-
-
-% 封皮
+%------------------------------------------------------------------------------%
+% 封皮、中英标题页                                                             %
+%------------------------------------------------------------------------------%
 \frontmatter
+\thispagestyle{empty}
+\input{frontmatter/coverpage}                   % 封皮页
+\newpage\clearpage
+
+\thispagestyle{empty}
+\input{frontmatter/frontpage_chs}               % 中文标题页
+\newpage\clearpage
+
+\thispagestyle{empty}
+\input{frontmatter/frontpage_eng}               % 英文标题页
+\newpage\clearpage
+%------------------------------------------------------------------------------%
+% 设置页码与文档格式                                                           %
+%------------------------------------------------------------------------------%
 \pagenumbering{Roman}
-\input{settings/cover.tex}
-\clearpage
-\thispagestyle{empty}
-\phantom{s}
-\clearpage
-\renewcommand{\baselinestretch}{1.2}
-\input{settings/eng_cover.tex}
-
-\newpage
-\clearpage
-\thispagestyle{empty}
-\phantom{s}
-\clearpage
-
 \setcounter{page}{1}
 \renewcommand{\baselinestretch}{1.0}
-
-% 中文摘要
-\include{preface/c_abstract}
-% 英文摘要
-\newpage
-\clearpage
+%------------------------------------------------------------------------------%
+% 中英文摘要                                                                   %
+%------------------------------------------------------------------------------%
 \thispagestyle{empty}
-\phantom{s}
-\clearpage
+\include{frontmatter/abstract_chs}              % 中文摘要
+\newpage\clearpage
 
-\include{preface/e_abstract}
-\newpage
 \thispagestyle{empty}
-\cleardoublepage
-%\phantom{s}
-%\clearpage
-
+\include{frontmatter/abstract_eng}              % 英文摘要
+\newpage\cleardoublepage
+%------------------------------------------------------------------------------%
+% 目录                                                                         %
+%------------------------------------------------------------------------------%
 \sNormalParagraph
 \phantomsection
-\addcontentsline{toc}{chapter}{目~~~~录}
+\addcontentsline{toc}{chapter}{目~~~~录}        % 目录
 \tableofcontents
-%\clearpage
-
-
+\cleardoublepage
+%------------------------------------------------------------------------------%
+% 正文                                                                         %
+%------------------------------------------------------------------------------%
 \mainmatter
-
-\cleardoublepage
-
 \sNormalParagraph
-
-% 正文内容
-\input{chapters/chapter01}
+\input{chapters/chapter01}                      % 第 1 章
 \cleardoublepage
-\input{chapters/chapter02}
+\input{chapters/chapter02}                      % 第 2 章
 \cleardoublepage
-\input{chapters/chapter03}
-
-% 参考文献设置
+\input{chapters/chapter03}                      % 第 3 章
 \cleardoublepage
+%------------------------------------------------------------------------------%
+% 参考文献设置                                                                 %
+%------------------------------------------------------------------------------%
 \phantomsection
 \addcontentsline{toc}{chapter}{参考文献}
-
-% npu专用A
-\bibliographystyle{settings/nputhesis}
-
-% 参考文献位置
-\bibliography{references/reference}
-%\clearpage
-
-% 附录
+\bibliographystyle{settings/nputhesis}          % 参考文献格式
+\bibliography{references/reference}             % 参考文献 bib 文件
+\cleardoublepage
+%------------------------------------------------------------------------------%
+% 附录                                                                         %
+%------------------------------------------------------------------------------%
 \backmatter
-\cleardoublepage
-\input{appendix/appendix.tex}
-\input{appendix/acknowledgements.tex}
-\setlength{\parindent}{0pt}
-\input{appendix/mywork.tex}
-\cleardoublepage
-\phantomsection
-
-
-\clearpage
+\input{backmatter/appendix}                     % 附录
+\input{backmatter/acknowledgements}             % 致谢
+\input{backmatter/mywork}                       % 参加科研情况
 \end{document}
