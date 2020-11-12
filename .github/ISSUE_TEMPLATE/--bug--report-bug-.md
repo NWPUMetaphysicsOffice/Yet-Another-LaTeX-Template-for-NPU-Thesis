@@ -15,6 +15,7 @@ assignees: ''
 1. 代码版本(Code version)（留空则默认最新）：
 2. 操作系统 (OS)：
 3. Tex Live版本，其他Tex版本也请注明 (Version of Tex Live or other Tex distribution)：
+4. Tex 编译器 (Tex compiler, eg. XeTeX): 
 
 **错误内容 (Error contents)**
 
