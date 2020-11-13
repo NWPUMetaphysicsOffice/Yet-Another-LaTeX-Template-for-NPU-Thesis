@@ -10,3 +10,5 @@
 *.thm
 *.toc
 *.aux
+*.lof
+*.lot
