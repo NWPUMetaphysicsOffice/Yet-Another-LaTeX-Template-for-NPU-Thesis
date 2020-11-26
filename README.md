@@ -35,6 +35,7 @@
 
 * **字体问题**
   * 本模板使用的是 **Windows** 系统的自带字体（宋体，黑体，楷体，仿宋，Times New Roman）
+  * Mac系统在字体册应用中查看对应字体的英文名字(与Windows下的英文名字不同)，然后在 `settings/thesis-setting.tex` 中替换即可
   * 其他系统用户请自行检查修改 `settings/thesis-setting.tex` 中的字体配置
 * **`makefile` 问题**
   * 本模板提供了简单的 `makefile` 文件来控制编译流程
