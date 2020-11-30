@@ -41,7 +41,9 @@
 \usepackage[sf]{titlesec}
 \usepackage{titletoc}
 %------------------------------------------------------------------------------%
-
+%--------------------------------判断操作系统----------------------------------%
+\usepackage{ifplatform}
+%------------------------------------------------------------------------------%
 
 %--------------------------------添加书签超链接--------------------------------%
 \usepackage[unicode=true,colorlinks=false,pdfborder={0 0 0}]{hyperref}
@@ -92,12 +94,24 @@
 \usepackage[SlantFont,BoldFont,CJKchecksingle]{xeCJK}
 \usepackage{CJKnumb}
 % 使用默认字体
+% windows环境
+\ifwindows
 \newcommand\defaultSog{SimSun}
 \newcommand\defaultHei{SimHei}
 \newcommand\defaultKai{KaiTi}
 \newcommand\defaultFag{FangSong}
 \newcommand\defaultEngFont{Times New Roman}
 \newcommand\codeFont{Consolas}
+\fi
+% MacOS环境
+\ifmacosx
+\newcommand\defaultSog{SimSong}
+\newcommand\defaultHei{Heiti SC}
+\newcommand\defaultKai{Kaiti SC}
+\newcommand\defaultFag{STFangSong}
+\newcommand\defaultEngFont{Times New Roman}
+\newcommand\codeFont{Consolas}
+\fi
 % 设置字体
 \defaultfontfeatures{Mapping=tex-text}
 \setCJKmainfont[ItalicFont=\defaultKai, BoldFont=\defaultHei]{\defaultSog}
