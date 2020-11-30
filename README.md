@@ -34,8 +34,9 @@
 ## 注意事项以及常见问题
 
 * **字体问题**
-  * 本模板使用的是 **Windows** 系统的自带字体（宋体，黑体，楷体，仿宋，Times New Roman）
-  * Mac系统在字体册应用中查看对应字体的英文名字(与Windows下的英文名字不同)，然后在 `settings/thesis-setting.tex` 中替换即可
+  * 本模板使用的是 **Windows** 系统的自带字体（宋体，黑体，楷体，仿宋，Times New Roman，Consolas），Windows环境下目前能保证字体的指向正确。
+  * 本模板目前兼容MacOSX用户。若字体出现异常，在字体册应用中查看对应字体的英文名字(与Windows下的英文名字不同)后，请在`settings/thesis-setting.tex`中替换**MacOS**环境下的字体即可。若出现故障，请发issue联系开发者团队以便修改相关配置，以帮助更多的MacOS用户。
+  * 非Windows版本的用户（包括MacOSX，Linux用户）需要安装Consolas字体后正确使用，安装方法请参考此链接：[Install Consolas font on Mac](https://gist.github.com/nmcc/4e8ead6c380d8331fedd04e1aa41d351)
   * 其他系统用户请自行检查修改 `settings/thesis-setting.tex` 中的字体配置
 * **`makefile` 问题**
   * 本模板提供了简单的 `makefile` 文件来控制编译流程
