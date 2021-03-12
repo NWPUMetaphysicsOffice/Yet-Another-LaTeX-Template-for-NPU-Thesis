@@ -45,21 +45,28 @@
   * 对于 Linux 玩家而言，没有比这份 `makefile` 更简单的版本了，在此基础上稍作修改即可使用
 * **预创建文件**
   * 以下文件按照实际论文中出现顺序排序
-  
-  |       |                   展示                    |                       展示                        |                    展示                     |
-  | :---: | :---------------------------------------: | :-----------------------------------------------: | :-----------------------------------------: |
-  | 预览  |    ![coverpage](preview/coverpage.png)    |    ![frontpage_chs](preview/frontpage_chs.png)    | ![frontpage_eng](preview/frontpage_eng.png) |
-  | 说明  |             封面页（外封面）              |            中文标题页（题名页/内封面）            |                 英文标题页                  |
-  | 目录  |               `frontmatter`               |                   `frontmatter`                   |                `frontmatter`                |
-  | 文件  |              `coverpage.tex`              |                `frontpage_chs.tex`                |             `frontpage_eng.tex`             |
-  | 预览  | ![abstract_chs](preview/abstract_chs.png) |     ![abstract_eng](preview/abstract_eng.png)     |    ![references](preview/references.png)    |
-  | 说明  |                 中文摘要                  |                     英文摘要                      |                  参考文献                   |
-  | 目录  |               `frontmatter`               |                   `frontmatter`                   |                `references`                 |
-  | 文件  |            `abstract_chs.tex`             |                `abstract_eng.tex`                 |               `reference.bib`               |
-  | 预览  |     ![appendix](preview/appendix.png)     | ![acknowledgements](preview/acknowledgements.png) |        ![mywork](preview/mywork.png)        |
-  | 说明  |                   附录                    |                       致谢                        |        发表的学术论文和参加科研情况         |
-  | 目录  |               `backmatter`                |                   `backmatter`                    |                `backmatter`                 |
-  | 文件  |              `appendix.tex`               |              `acknowledgements.tex`               |                `mywork.tex`                 |
+  |       |                    展示                     |                       展示                        |
+  | :---: | :-----------------------------------------: | :-----------------------------------------------: |
+  | 预览  |     ![coverpage](preview/coverpage.png)     |    ![frontpage_chs](preview/frontpage_chs.png)    |
+  | 说明  |              封面页（外封面）               |            中文标题页（题名页/内封面）            |
+  | 目录  |                `frontmatter`                |                   `frontmatter`                   |
+  | 文件  |               `coverpage.tex`               |                `frontpage_chs.tex`                |
+  | 预览  | ![frontpage_eng](preview/frontpage_eng.png) |     ![abstract_chs](preview/abstract_chs.png)     |
+  | 说明  |                 英文标题页                  |                     中文摘要                      |
+  | 目录  |                `frontmatter`                |                   `frontmatter`                   |
+  | 文件  |             `frontpage_eng.tex`             |                `abstract_chs.tex`                 |
+  | 预览  |  ![abstract_eng](preview/abstract_eng.png)  |       ![references](preview/references.png)       |
+  | 说明  |                  英文摘要                   |                     参考文献                      |
+  | 目录  |                `frontmatter`                |                   `references`                    |
+  | 文件  |             `abstract_eng.tex`              |                  `reference.bib`                  |
+  | 预览  |      ![appendix](preview/appendix.png)      | ![acknowledgements](preview/acknowledgements.png) |
+  | 说明  |                    附录                     |                       致谢                        |
+  | 目录  |                `backmatter`                 |                   `backmatter`                    |
+  | 文件  |               `appendix.tex`                |              `acknowledgements.tex`               |
+  | 预览  |        ![mywork](preview/mywork.png)        |        ![statement](preview/statement.png)        |
+  | 说明  |        发表的学术论文和参加科研情况         |                    原创性声明                     |
+  | 目录  |                `backmatter`                 |                   `backmatter`                    |
+  | 文件  |                `mywork.tex`                 |                  `statement.tex`                  |
 * **格式符说明**
   * 字体大小（size）的控制命令统一前缀为 `s`
   * 字体格式（font）的控制命令统一前缀为 `f`
