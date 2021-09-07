@@ -126,7 +126,7 @@ FUNCTION {bbl.et.al}
         { "他" }
         { entry.lang lang.ru =
             { "идр" }
-            { "et~al." }
+            { ", et~al." }
           if$
         }
       if$
