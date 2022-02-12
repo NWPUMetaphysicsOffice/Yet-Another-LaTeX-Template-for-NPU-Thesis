@@ -92,8 +92,15 @@
 %---------------------------------设置中文字体---------------------------------%
 \usepackage{fontspec}
 \usepackage[SlantFont,BoldFont,CJKchecksingle]{xeCJK}
-\usepackage{CJKnumb}
+% \usepackage{CJKnumb} % 除非出现中文数字编号，否则不推荐使用
 % 使用默认字体
+% MAYDAY! MAYDAY! 紧急使用的字体配置（使用 Adobe 字体库救急）
+% \newcommand\defaultSog{Adobe Song Std}
+% \newcommand\defaultHei{Adobe Heiti Std}
+% \newcommand\defaultKai{Adobe Kaiti Std}
+% \newcommand\defaultFag{Adobe FangSong Std}
+% \newcommand\defaultEngFont{Times New Roman}
+% \newcommand\codeFont{Consolas}
 % windows环境
 \ifwindows
     \newcommand\defaultSog{SimSun}
@@ -105,9 +112,9 @@
 \fi
 % MacOS环境
 \ifmacosx
-    \newcommand\defaultSog{SimSong}
-    \newcommand\defaultHei{Heiti SC}
-    \newcommand\defaultKai{Kaiti SC}
+    \newcommand\defaultSog{STSongti-SC-Regular}
+    \newcommand\defaultHei{STHeiti}
+    \newcommand\defaultKai{STKaiti}
     \newcommand\defaultFag{STFangSong}
     \newcommand\defaultEngFont{Times New Roman}
     \newcommand\codeFont{Consolas}
@@ -268,8 +275,7 @@
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter~~ #1}{}}
 % 页眉设置
 \fancyhead{}
-\fancyhead[CEH]{西北工业大学硕士学位论文}           % 硕士版本
-\fancyhead[CEH]{西北工业大学博士学位论文}           % 博士版本
+\fancyhead[CEH]{西北工业大学博士学位论文}           % 默认博士版本
 \fancyhead[COH]{\leftmark}
 %------------------------------------------------------------------------------%
 
@@ -337,9 +343,9 @@
 
 
 %---------------------------------设置词汇总表---------------------------------%
-\usepackage[acronym]{glossaries}
-\makeglossaries
-\loadglsentries{glossaries}
+% \usepackage[acronym]{glossaries}
+% \makeglossaries
+% \loadglsentries{glossaries}
 %------------------------------------------------------------------------------%
 
 \endinput
