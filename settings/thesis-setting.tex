@@ -34,6 +34,7 @@
 \usepackage{setspace}
 \usepackage{ulem}
 \usepackage{ragged2e}
+\usepackage{appendix}
 %------------------------------------------------------------------------------%
 
 
@@ -186,6 +187,7 @@
 \renewcommand\figureautorefname{图}
 \renewcommand\tableautorefname{表}
 \renewcommand\equationautorefname{式}
+\renewcommand\appendixautorefname{附录}
 \newcommand\myreference[1]{[\ref{#1}]}
 \newcommand\eqrefe[1]{式(\ref{#1})}
 % 增加 \ucite 命令使显示的引用为上标形式
@@ -195,6 +197,36 @@
 \renewcommand{\thefigure}{\thechapter-\arabic{figure}}
 % \renewcommand{\thesubfigure}{\thechapter-\arabic{figure} (\alph{subfigure})}
 \renewcommand{\thetable}{\thechapter-\arabic{table}}
+%------------------------------------------------------------------------------%
+
+
+
+\newlength{\maxlengthofappname}
+\settowidth{\maxlengthofappname}{附~~~~录M}
+
+%---------------------------------设置附录格式---------------------------------%
+\let\oldappendix\appendix% Store \appendix
+\newcommand{\thesisappendix}{% Update \appendix
+    \oldappendix% Default \appendix
+    \setcounter{chapter}{0}
+    \renewcommand{\thechapter}{附录\Alph{chapter}}
+    \renewcommand{\appendixname}{附录}
+    \titleformat{\chapter}[hang]{\normalfont\sSanhao\filcenter\fHei\bf}{%
+        \fHei\sSanhao{\thechapter}}{20pt}{\sSanhao}
+    \titlecontents{chapter}[0pt]{\fSong\sRealHalfXiaosi\vspace{0.5em}}{%
+        \contentsmargin{0pt}\fSong\makebox[0pt][l]{\thecontentslabel}\hspace{\maxlengthofappname}}{%
+        \contentsmargin{0pt}\fSong}{\titlerule*[.5pc]{.}\contentspage}[\vspace{0em}]
+    \renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}
+    \renewcommand{\theequation}{\alph{chapter}-\arabic{equation}}
+    \renewcommand{\thetable}{\alph{chapter}-\arabic{table}}
+    \renewcommand{\thefigure}{\alph{chapter}-\arabic{figure}}
+    % \renewcommand{\thetheorem}{\alph{chapter}.\arabic{theorem}}
+    % \renewcommand{\theaxiom}{\alph{chapter}.\arabic{axiom}}
+    % \renewcommand{\thecorollary}{\alph{chapter}.\arabic{corollary}}
+    % \renewcommand{\thelemma}{\alph{chapter}.\arabic{lemma}}
+    % \renewcommand{\thedefinition}{\alph{chapter}.\arabic{definition}}
+    % \renewcommand{\theexample}{\alph{chapter}.\arabic{example}}
+}
 %------------------------------------------------------------------------------%
 
 
