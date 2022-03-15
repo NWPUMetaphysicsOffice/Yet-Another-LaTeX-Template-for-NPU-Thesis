@@ -1,7 +1,21 @@
 TEX      = xelatex
 BIB      = bibtex
-MAIN     = document
+MKI      = makeindex
+MAIN     = yanputhesis
 TEXARGS  = -synctex=1 -shell-escape
+
+main: close wipe clean makecls open
+
+sample: close wipesample clean texsample opensample
+
+samplebib: close wipesample clean texsamplebib opensample
+
+makecls: $(MAIN).dtx
+	$(TEX) $<
+	makeindex -s gglo.ist -o $(MAIN).gls $(MAIN).glo
+	makeindex -s gind.ist -o $(MAIN).ind $(MAIN).idx
+	$(TEX) $<
+	$(TEX) $<
 
 ifeq ($(OS), Windows_NT)
     PLATFORM = Windows
@@ -24,28 +38,35 @@ else
     CLOSE = kill -9 $(PID)
 endif
 
-target: close wipe clean tex open
-
-tex: $(MAIN).tex
-	$(TEX) $(TEXARGS) $<
-	$(BIB) $(MAIN).aux
+texsample: $(MAIN)-sample.tex
 	$(TEX) $(TEXARGS) $<
 	$(TEX) $(TEXARGS) $<
 
-nobib: $(MAIN).tex
+texsamplebib: $(MAIN)-sample.tex
+	$(TEX) $(TEXARGS) $<
+	$(BIB) $(MAIN)-sample.aux
 	$(TEX) $(TEXARGS) $<
 	$(TEX) $(TEXARGS) $<
 
 open: $(MAIN).pdf
 	$(OPEN) $(MAIN).pdf
 
+opensample: $(MAIN)-sample.pdf
+	$(OPEN) $(MAIN)-sample.pdf
+
 close:
 	@$(CLOSE) || echo not found
 
 clean:
-	$(RM) *.aux *.bbl *.blg *.log *.out *.gz *.toc *.thm *.fdb_latexmk *.fls *.nav *.snm *.vrb *.spl *.lof *.lot *.ist *.glo *.acn
+	$(RM) *.gls *.glo *.ind *.idx
+	$(RM) *.ilg *.aux *.toc *.aux
+	$(RM) *.hd *.out *.thm *.gz
+	$(RM) *.log *.lof *.lot *.bbl *.blg
 
 wipe:
 	$(RM) $(MAIN).pdf
+
+wipesample:
+	$(RM) $(MAIN)-sample.pdf
 
 .PHONY: open close clean wipe
