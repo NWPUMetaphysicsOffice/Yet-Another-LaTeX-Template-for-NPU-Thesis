@@ -162,6 +162,7 @@ and the derived files           yanputhesis.ins,
 %% 导言区：请自行添加额外宏包
 %%-----------------------------------------------------------------------------%
 \usepackage{blindtext}                                      % 生成无意义文本
+\usepackage{metalogo}                                       % 软件标志
 %%=============================================================================%
 %% 参考文献（也可以是独立文件）
 %%-----------------------------------------------------------------------------%
@@ -190,7 +191,6 @@ and the derived files           yanputhesis.ins,
   publisher = {Addison-Wesley Professional},
   year      = {1989}
 }
-
 
 @article{szegedy2015going,
   title   = {Going deeper with convolutions},
@@ -246,8 +246,10 @@ and the derived files           yanputhesis.ins,
 \school{数学与统计学院}{School of Mathematics and Statistics}% 学院
 \major{数学}{Philosophy in Mathematics}                     % 专业 博士请添加 Ph
 \advisor{李四海}{Sihai Li}                                  % 导师
-\studentnumber{2016100602}                                  % 学号
-\funding{本研究得到玄学基金（编号23336666）资助。}          % 基金资助
+\studentnumber{2016123456}                                  % 学号
+\funding{本研究得到玄学基金（编号23336666）资助．}{         % 基金资助
+    The present work is supported by Funding of Metaphysics %
+    (Project No：23336666).}                                %
 %%=============================================================================%
 %% 文档开始
 %%-----------------------------------------------------------------------------%
@@ -259,18 +261,18 @@ and the derived files           yanputhesis.ins,
 \maketitle                                                  % 封皮页及标题页
 %%-----------------------------------------------------------------------------%
 \begin{abstract}                                            % 中文摘要开始
-这是在西北工业大学本科毕业设计、硕博研究生毕业论文格式的要求下的一份 LaTeX 文
-档类模板. 使用者无需额外修改格式控制细节, 直接在所发布的样例基础上, 修改章节标
-题, 撰写内容, 即可完成毕业设计论文任务.                     %
+    这是在西北工业大学本科毕业设计、硕博研究生毕业论文格式的要求下的一份 LaTeX
+    文档类模板．使用者无需额外修改格式控制细节，直接在所发布的样例基础上，修改章
+    节标题，撰写内容，即可完成毕业设计论文任务．            %
     \begin{keywords}                                        % 中文关键词开始
-    学位论文, 模板, \LaTeX                                  %
+        学位论文，模板，\LaTeX                              %
     \end{keywords}                                          % 中文关键词结束
 \end{abstract}                                              % 中文摘要结束
 %%-----------------------------------------------------------------------------%
 \begin{engabstract}                                         % 英文摘要开始
-\noindent \blindtext                                        %
+    \noindent \blindtext                                        %
     \begin{engkeywords}                                     % 英文关键词开始
-    thesis, template, \LaTeX                                %
+        thesis, template, \LaTeX                                %
     \end{engkeywords}                                       % 英文关键词结束
 \end{engabstract}                                           % 英文摘要结束
 %%-----------------------------------------------------------------------------%
@@ -289,11 +291,67 @@ emmmmm
 \subsubsection{这是小小标题}
 搞这么多层大丈夫?
 
+\section{公式}
+简单行内公式 $a+b=233$，超高公式会被压缩 $\frac{1}{2}=0.5$ 或者使用
+\lstinline`\displaystyle` 防止被压缩：$\displaystyle \frac{1}{2}=0.5$．
+
+简单的不标号单行公式
+$$a_0+a_1+a_2=\sqrt{233}$$
+需要标号和起名的公式如\autoref{eq:eqtest} 所示．测试下 autoref \autoref{eq:eqtest}
+\begin{equation}
+    \label{eq:eqtest}
+    a_0 + a_1 + a_2 = \sqrt{233}
+\end{equation}
+
+\section{特殊符号}
+
+用\href{http://detexify.kirelabs.org/classify.html}{
+    http://detexify.kirelabs.org/classify.html}画出来．
+
+\section{参考文献的引用}
+
+\LaTeX{} 中要求参考文献使用 \lstinline`\cite` 进行参考引用，若论文要求中说明需在
+文字的右上角注明引用，请使用预定义好的命令 \lstinline`\ucite` 进行参考引用．举个
+不恰当的例子，比如本论文模板的原版
+`LaTeX-Template-For-NPU-Thesis'\ucite{NWPUThesisLaTeXTemplate} 要求务必声明引用,
+同时预配置了插件 `math-symbols' \ucite{MathSymbolsinLaTeXbypolossk}．对组件的引
+用是每一名科学工作者的基本素养（一本正经）．对于需要引用但是并不需要明确指明引用
+位置的文献，请使用 \lstinline`\nocite` 命令．
+
+在此同时感谢真正的 dalao 高德纳开发了全世界版本号最接近 $\pi$ 的软件
+\LaTeX \ucite{knuth1986the}\nocite{lamport1989latex}．
+
+测试额外的引用文献 \ucite{szegedy2015going, shen2021peridynamic,
+    chen2014maiyuan}．其中最后一篇为中文文献．
+
+\section{标点符号的选择}
+
+根据《中华人民共和国国家标准 GB/T 15834-1995》及《出版工作中的语言文字规范》中提
+及，“科学技术中文图书，如果涉及公式、算式较多，句号可以统一用英文句号‘．’，省略
+号用英文三个点的省略号‘…’”．如果您是中文的科技论文写作者，建议您使用全角英文句
+号“\lstinline`．`”间隔句子．如果是人文学科则可以不做处理．您也可以在一开始先使用
+中文句号‘。’，最后批量替换即可．
+
+\section{萌新如何编译}
+
+\begin{enumerate}
+    \setlength{\itemsep}{0pt}
+    \item 安装正确版本的 TexLive 2021
+    \item 使用自带的 TeXworks 打开 \lstinline`yanputhesis-sample.tex`
+    \item 左上角下拉框选择工具
+    \item 依次使用 \lstinline`XeLaTeX-BibTeX-XeLaTeX-XeLaTeX` 编译
+\end{enumerate}
+
+\cleardoublepage
+
+\chapter{插入图表以及如何引用}
+\chaptermark{插入图表以及如何引用}
+
 \section{表格}
 
 使用 \href{http://www.tablesgenerator.com/}{http://www.tablesgenerator.com/} 生
-成, 可粘贴Excel.效果如表\ref{my-label}所示.
-注意表中的字号（五号）和表格宽度（通栏）.
+成, 可粘贴Excel．效果如表\ref{my-label}所示．注意表中的字号（五号）和表格宽度（
+通栏）．外部请用 \lstinline`table` 环境, 内部使用 \lstinline`tabularx` 即可．
 
 \begin{table}[!h]
     \centering
@@ -310,49 +368,47 @@ emmmmm
     \end{tabularx}
 \end{table}
 
-\section{公式}
-简单行内公式$a+b=233$，超高公式会被压缩$\frac{1}{2}=0.5$或者使用
-\lstinline`\displaystyle`防止被压缩：$\displaystyle \frac{1}{2}=0.5$.
+\section{插图}
 
-简单的不标号单行公式
-$$a_0+a_1+a_2=\sqrt{233}$$
-需要标号和起名的公式如\autoref{eq:eqtest}所示. 测试下autoref \autoref{eq:eqtest}
-\begin{equation}
-    \label{eq:eqtest}
-    a_0+a_1+a_2=\sqrt{233}
-\end{equation}
+请直接使用 \lstinline`figure` 环境，内部使用 \lstinline`includegraphics` 即可．
+如果需要多张子图排版，请在 \lstinline`figure` 环境内部使用 \lstinline`minipage`
+预先设置总的浮动体宽度，然后再使用 \lstinline`subfigure` 环境进行排版．
 
-\section{特殊符号}
+测试下文章内的图片引用．如\autoref{fig:example} 和\autoref{fig:example2} 所示，
+这是两幅插图．在这其中\autoref{subfig:example2-subfig1} 是第一幅子图，
+\autoref{subfig:example2-subfig2} 是第二幅子图．
 
-用\href{http://detexify.kirelabs.org/classify.html}{
-    http://detexify.kirelabs.org/classify.html}画出来.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.2]{poster.png}
+    \caption{
+        这里是个普通的标题
+    }
+    \label{fig:example}
+\end{figure}
 
-\section{参考文献的引用}
-
-\LaTeX{} 中要求参考文献使用 \lstinline`\cite` 进行参考引用，若论文要求中说明需在
-文字的右上角注明引用，请使用预定义好的命令 \lstinline`\ucite` 进行参考引用. 举个
-不恰当的例子，比如本论文模板的原版
-`LaTeX-Template-For-NPU-Thesis'\ucite{NWPUThesisLaTeXTemplate} 要求务必声明引用，
-同时预配置了插件 `math-symbols' \ucite{MathSymbolsinLaTeXbypolossk}. 对组件的引
-用是每一名科学工作者的基本素养（一本正经）. 对于需要引用但是并不需要明确指明引用
-位置的文献, 请使用 \lstinline`\nocite` 命令.
-
-在此同时感谢真正的 dalao 高德纳开发了全世界版本号最接近 $\pi$ 的软件
-\LaTeX{}\ucite{knuth1986the}\nocite{lamport1989latex}.
-
-测试额外的引用文献 \ucite{szegedy2015going, shen2021peridynamic, chen2014maiyuan}.
-其中最后一篇为中文文献.
-
-\section{标点符号的选择}
-
-根据《中华人民共和国国家标准 GB/T 15834-1995》及《出版工作中的语言文字规范》中提
-及，“科学技术中文图书，如果涉及公式、算式较多，句号可以统一用英文句号(.)，省略号
-用英文三个点的省略号（…）”. 如果您是中文的科技论文写作者，建议您使用英文句号
-(\lstinline`. `)间隔句子. 如果是人文学科则可以不做处理.
+\begin{figure}[htp]
+    \centering
+    \begin{minipage}[t]{0.96\textwidth}
+        \centering
+        \begin{subfigure}[t]{0.47\textwidth}
+            \centering
+            \includegraphics[scale=0.1]{poster.png}
+            \caption{\label{subfig:example2-subfig1}}
+        \end{subfigure}
+        \begin{subfigure}[t]{0.47\textwidth}
+            \centering
+            \includegraphics[scale=0.1]{poster.png}
+            \caption{\label{subfig:example2-subfig2}}
+        \end{subfigure}
+    \end{minipage}
+    \caption{这里是另一个普通的标题}
+    \label{fig:example2}
+\end{figure}
 
 \section{插入源代码}
 
-这里给出一个 Hello World 的样例，如\autoref{code:hello-world} 所示。
+这里给出一个 Hello World 的样例，如\autoref{code:hello-world} 所示．
 
 \begin{lstlisting}[language={C++}, label={code:hello-world},
     caption={Hello\_World.cpp}]
@@ -367,15 +423,19 @@ int main()
 }
 \end{lstlisting}
 
-\section{萌新如何编译}
+\section{引用以及其他编写建议}
 
-\begin{enumerate}
-    \setlength{\itemsep}{0pt}
-    \item 安装正确版本的 TexLive 2021
-    \item 使用自带的 TeXworks 打开 \lstinline`document.tex`
-    \item 左上角下拉框选择工具
-    \item 依次使用 \lstinline`XeLaTeX-BibTeX-XeLaTeX-XeLaTeX` 编译
-\end{enumerate}
+\LaTeX 提供了 \lstinline`ref` 和 \lstinline`autoref` 两种引用方式，其中前者只显
+示序号，后者可以显示提示语，如“\autoref{code:hello-world}”表示引用代码，
+而“\autoref{subfig:example2-subfig2}”表示引用图片的子图.为了方便引用以及作者阅读，
+本人强烈建议使用 \lstinline`autoref` 来统一处理引用问题，同时在每一个
+\lstinline`autoref` 添加提示语，如 \lstinline`fig` 和 \lstinline`tab` 分别表示插
+图和表格．
+
+由于 \XeLaTeX 在处理中文时，会自动在中文之间添加空格，所以请放心地在编写文档时换
+行，防止某一行过长导致阅读时的不便．另外中英文之间的空格（包括命令）并未做严格限
+制．本文推荐除在不影响最终成文的结果这一前提下，为保持文档的美观与易读，请自行选
+择合适的编写方式．
 
 \cleardoublepage
 %%=============================================================================%
@@ -387,7 +447,7 @@ int main()
 
 \section{测试附录子标题}
 
-这是一份附录，请放置一些独立的证明、源代码、或其他辅助资料。
+这是一份附录，请放置一些独立的证明、源代码、或其他辅助资料．
 
 \begin{equation}
     C = 2 \pi r
@@ -401,7 +461,7 @@ int main()
 
 \chapter{另一份说明}
 
-这是另一份附录，请放置一些独立的证明、源代码、或其他辅助资料。
+这是另一份附录，请放置一些独立的证明、源代码、或其他辅助资料．
 
 \begin{equation}
     S = \pi r^2
@@ -413,7 +473,22 @@ int main()
 
 \cleardoublepage
 %%=============================================================================%
+%% 文档附页部分（致谢、参加科研情况、知识产权与原创性声明）
 %%-----------------------------------------------------------------------------%
+\backmatter                                                 % 文档附页部分
+%%-----------------------------------------------------------------------------%
+\begin{acknowledgements}                                    % 致谢开始
+    感谢我的老师和我的朋友们……
+\end{acknowledgements}                                      % 致谢结束
+%%-----------------------------------------------------------------------------%
+\begin{accomplishments}                                     % 参加科研情况开始
+    [1] Shen S, Yang Z, Han F, et al．Peridynamic modeling with energy-based surface
+    correction for fracture simulation of random porous materials[J]．Theoretical
+    and Applied Fracture Mechanics, 2021, 114: 102987．
+\end{accomplishments}                                       % 参加科研情况结束
+%%-----------------------------------------------------------------------------%
+\makestatement                                              % 知识产权与原创性声明
+%%=============================================================================%
 %% 文档结束
 %%-----------------------------------------------------------------------------%
 \end{document}
@@ -424,6 +499,12 @@ int main()
 %^^A---------------------------------------------------------------------------%
 % \section{安装说明}
 %
+% \begin{itemize}
+%     \item 本模板提供了 make 工具用于辅助生成 cls 文档类及样例.
+%     \item 命令行内输入 |make && make samplebib| 一次性生成所需文件.
+%     \item 命令行内输入 |make sample| 生成不带参考文献的样例.
+%     \item 命令行内输入 |make samplebib| 生成带有参考文献的样例.
+% \end{itemize}
 %
 %^^A---------------------------------------------------------------------------%
 % \section{代码实现}
@@ -491,7 +572,7 @@ int main()
 %     \item 使用 |layouts| 添加文字分栏排版功能.
 %     \item 使用 |titlesec| 和 |titletoc| 添加目录及标题控制.
 %     \item 使用 |fancyhdr| 和 |fancyref| 添加页眉及页脚控制.
-%     \item 使用 |natbib| 添加引用参考文献功能，并且设置中文上标引用格式.
+%     \item 使用 |natbib| 添加引用参考文献功能, 并且设置中文上标引用格式.
 %     \item 使用 |enumerate| 和 |enumitem| 添加插入列表功能.
 %     \item 添加插入图表和整页 PDF 文件功能, 并使用 |caption| 控制排版格式.
 %     \item 使用 |ntheorem| 添加插入定理环境功能.
@@ -539,28 +620,28 @@ int main()
 %%-----------------------------------------------------------------------------%
 \RequirePackage{ifplatform}                                 % 跨平台字体控制依赖
 \if@npu@font@adobe                                          % 检测 Adobe 选项
-    \newcommand\defaultSog{Adobe Song Std}                  % 宋体，用于正文
-    \newcommand\defaultHei{Adobe Heiti Std}                 % 黑体，用于标题
-    \newcommand\defaultKai{Adobe Kaiti Std}                 % 楷体，一般用于强调
-    \newcommand\defaultFag{Adobe FangSong Std}              % 仿宋，一般用于强调
+    \newcommand\defaultSog{Adobe Song Std}                  % 宋体, 用于正文
+    \newcommand\defaultHei{Adobe Heiti Std}                 % 黑体, 用于标题
+    \newcommand\defaultKai{Adobe Kaiti Std}                 % 楷体, 一般用于强调
+    \newcommand\defaultFag{Adobe FangSong Std}              % 仿宋, 一般用于强调
 \else                                                       % 使用系统自带字体
     \ifwindows                                              % Windows 环境
-        \newcommand\defaultSog{SimSun}                      % 宋体，用于正文
-        \newcommand\defaultHei{SimHei}                      % 黑体，用于标题
-        \newcommand\defaultKai{KaiTi}                       % 楷体，一般用于强调
-        \newcommand\defaultFag{FangSong}                    % 仿宋，一般用于强调
+        \newcommand\defaultSog{SimSun}                      % 宋体, 用于正文
+        \newcommand\defaultHei{SimHei}                      % 黑体, 用于标题
+        \newcommand\defaultKai{KaiTi}                       % 楷体, 一般用于强调
+        \newcommand\defaultFag{FangSong}                    % 仿宋, 一般用于强调
     \fi                                                     %
     \ifmacosx                                               % macOS 环境
-        \newcommand\defaultSog{STSongti-SC-Regular}         % 宋体，用于正文
-        \newcommand\defaultHei{STHeiti}                     % 黑体，用于标题
-        \newcommand\defaultKai{STKaiti}                     % 楷体，一般用于强调
-        \newcommand\defaultFag{STFangSong}                  % 仿宋，一般用于强调
+        \newcommand\defaultSog{STSongti-SC-Regular}         % 宋体, 用于正文
+        \newcommand\defaultHei{STHeiti}                     % 黑体, 用于标题
+        \newcommand\defaultKai{STKaiti}                     % 楷体, 一般用于强调
+        \newcommand\defaultFag{STFangSong}                  % 仿宋, 一般用于强调
     \fi                                                     %
     \iflinux                                                % Linux 环境
-        \newcommand\defaultSog{SimSun}                      % 宋体，用于正文
-        \newcommand\defaultHei{SimHei}                      % 黑体，用于标题
-        \newcommand\defaultKai{KaiTi}                       % 楷体，一般用于强调
-        \newcommand\defaultFag{FangSong}                    % 仿宋，一般用于强调
+        \newcommand\defaultSog{SimSun}                      % 宋体, 用于正文
+        \newcommand\defaultHei{SimHei}                      % 黑体, 用于标题
+        \newcommand\defaultKai{KaiTi}                       % 楷体, 一般用于强调
+        \newcommand\defaultFag{FangSong}                    % 仿宋, 一般用于强调
     \fi                                                     %
 \fi                                                         %
 \newcommand\defaultEngFont{Times New Roman}                 % 英文文本默认字体
@@ -663,7 +744,7 @@ int main()
 \RequirePackage{xcolor}                                     % 颜色库
 \RequirePackage{tikz}                                       % tikz 矢量图绘制
 \RequirePackage[labelsep=quad]{caption}                     % 浮动体标题控制
-\RequirePackage{subfigure}                                  % 子图
+\RequirePackage{subcaption}                                 % 子图
 \RequirePackage{wrapfig}                                    % 文字环绕
 \RequirePackage{multirow, makecell}                         % 合并单元格
 \RequirePackage{longtable}                                  % 长表格（跨页表格）
@@ -674,6 +755,8 @@ int main()
 \DeclareCaptionFont{cWuhao}{\sWuhao}                        % 图表标题为五号
 \captionsetup[table]{labelfont=cWuhao,textfont=cWuhao}      %
 \captionsetup[figure]{labelfont=cWuhao,textfont=cWuhao}     %
+\captionsetup[subtable]{labelformat=simple}                 %
+\captionsetup[subfigure]{labelformat=simple}                %
 \let\oldtabular\tabular                                     % 表格内容为五号
 \renewcommand{\tabular}{\sWuhao\oldtabular}                 %
 \let\oldtabularx\tabularx                                   %
@@ -692,7 +775,7 @@ int main()
 %%-----------------------------------------------------------------------------%
 \RequirePackage{listings}                                   % 添加插入代码控制
 \lstset{                                                    % 代码样式
-    basicstyle=\color[HTML]{000000}\footnotesize\ttfamily,  % 等宽字体 9pt 字号
+    basicstyle=\color[HTML]{000000}\small\ttfamily,         % 等宽字体 10pt 字号
     numbers=left,                                           % 左侧加入行号
     numberstyle=\tiny,                                      % 行号 6pt 字号
     numbersep=5pt,                                          % 行号与代码间隔
@@ -801,25 +884,33 @@ int main()
     \newcommand{\nwpu@eng@degree}{Bachelor}                 %
 \fi                                                         %
 \if@npu@type@bcl                                            % 本科特殊设置
-    \newcommand{\nwpu@chs@doctitle}{本科毕业设计论文}       % 文档名
-    \newcommand{\nwpu@chs@header}{                          % 页眉
-        \nwpu@chs@schoolname 本科毕业设计论文}              %
+    \newcommand{\nwpu@chs@doctitle}{本科毕业设计论文}       % 文档名和页眉
+    \newcommand{\nwpu@chs@header}{{\nwpu@chs@schoolname}本科毕业设计论文}
 \else                                                       % 其他页眉统一设置
     \newcommand{\nwpu@chs@doctitle}{{\nwpu@chs@degree}学位论文}
-    \newcommand{\nwpu@chs@header}{                          % 页眉
-        \nwpu@chs@schoolname\nwpu@chs@doctitle}             %
+    \newcommand{\nwpu@chs@header}{\nwpu@chs@schoolname\nwpu@chs@doctitle}
 \fi                                                         %
-\newcommand{\nwpu@eng@doctitle}{\nwpu@eng@degree Thesis}    % 英文文档名
-\newcommand{\nwpu@eng@header}{                              % 英文页眉
-    \nwpu@eng@doctitle of \nwpu@eng@schoolname}             %
+\newcommand{\nwpu@eng@doctitle}{\nwpu@eng@degree Thesis}    % 英文文档名和页眉
+\newcommand{\nwpu@eng@header}{\nwpu@eng@doctitle of \nwpu@eng@schoolname}
+%%-----------------------------------------------------------------------------%
+\if@npu@lang@chs                                            % 定制中文特殊页面
+    \newcommand{\nwpu@page@ack}{致{\quad}谢}                %
+    \newcommand{\nwpu@page@acp}{攻读{\nwpu@chs@degree}学位期%
+        间发表的学术论文和参加科研情况}                     %
+\else                                                       % 定制英文特殊页面
+    \newcommand{\nwpu@page@ack}{Acknowledgements}           %
+    \newcommand{\nwpu@page@acp}{Published Papers and        %
+        Participated in Scientific Research During the Study%
+        for \nwpu@eng@degree Degree}                        %
+\fi                                                         %
 %%=============================================================================%
 %    \end{macrocode}
 %
 % \subsection{中文占位符及个人信息填写}
 %
 % \begin{itemize}
-%     \item 人工录入中文标点符号。
-%     \item 添加中英文个人信息录入，包括：
+%     \item 人工录入中文标点符号.
+%     \item 添加中英文个人信息录入, 包括：
 %     \begin{itemize}
 %         \item 标题 |\title{中文}{English}|
 %         \item 作者 |\author{中文}{English}|
@@ -828,8 +919,7 @@ int main()
 %         \item 专业 |\major{中文}{English}|
 %         \item 导师 |\advisor{中文}{English}|
 %         \item 学号 |\studentnumber{数字}|
-%         \item 基金资助详情 |\funding{中文文本}|，例如
-%               |\funding{本研究得到玄学基金（编号23336666）资助。}|
+%         \item 基金资助详情 |\funding{中文}{English}|
 %     \end{itemize}
 % \end{itemize}
 %
@@ -853,6 +943,7 @@ int main()
 \newcommand{\nwpu@chs@school}{\chs@space}                   % 学院（中文）
 \newcommand{\nwpu@chs@major}{\chs@space}                    % 专业（中文）
 \newcommand{\nwpu@chs@advisor}{\chs@space}                  % 导师（中文）
+\newcommand{\nwpu@chs@funding}{\chs@space}                  % 基金赞助（中文）
 %%-----------------------------------------------------------------------------%
 \newcommand{\nwpu@eng@title}{\chs@space}                    % 标题（英文）
 \newcommand{\nwpu@eng@author}{\chs@space}                   % 作者（英文）
@@ -860,6 +951,7 @@ int main()
 \newcommand{\nwpu@eng@school}{\chs@space}                   % 学院（英文）
 \newcommand{\nwpu@eng@major}{\chs@space}                    % 专业（英文）
 \newcommand{\nwpu@eng@advisor}{\chs@space}                  % 导师（英文）
+\newcommand{\nwpu@eng@funding}{\chs@space}                  % 基金赞助（英文）
 %%-----------------------------------------------------------------------------%
 \newcommand{\nwpu@uid}{2000123456}                          % 学号
 \newcommand{\nwpu@funding}{\chs@space}                      % 基金资助
@@ -888,8 +980,11 @@ int main()
     \renewcommand{\nwpu@chs@advisor}{#1}                    %
     \renewcommand{\nwpu@eng@advisor}{#2}                    %
 }                                                           %
+\newcommand{\funding}[2]{                                   % 设置基金资助
+    \renewcommand{\nwpu@chs@funding}{#1}                    %
+    \renewcommand{\nwpu@eng@funding}{#2}                    %
+}                                                           %
 \newcommand{\studentnumber}[1]{\renewcommand{\nwpu@uid}{#1}}% 设置学号
-\newcommand{\funding}[1]{\renewcommand{\nwpu@funding}{#1}}  % 设置基金资助
 %%=============================================================================%
 %    \end{macrocode}
 %
@@ -1050,11 +1145,8 @@ int main()
 %%-----------------------------------------------------------------------------%
 \renewcommand{\maketitle}{                                  % 重制 maketitle
     \make@nwpu@coverpage                                    % 封皮页
-    % \newpage \clearpage                                     %
     \make@nwpu@chs@title                                    % 中文标题页
-    % \newpage \clearpage                                     %
     \make@nwpu@eng@title                                    % 英文标题页
-    % \newpage \thispagestyle{empty} \cleardoublepage         %
     \pagenumbering{Roman}                                   % 页码使用大写罗马字母
     \setcounter{page}{1}                                    % 页码从 1 开始
     \renewcommand{\baselinestretch}{1.0}                    % 默认单倍行距
@@ -1079,7 +1171,7 @@ int main()
     \sDefault                                               %
     \chapter[摘{\quad}要]{摘{\quad}要}                      %
     \markboth{摘{\quad}要}{摘{\quad}要}                     %
-}{\vfill\sWuhao \noindent \nwpu@funding \par \cleardoublepage}%
+}{\vfill\sWuhao \noindent \nwpu@chs@funding \par \cleardoublepage}
 \newenvironment{keywords}{                                  %
     \vspace{2\baselineskip} \par                            %
     \noindent \textbf{关键词：}\quad}{}                     %
@@ -1089,7 +1181,8 @@ int main()
 \newenvironment{engabstract}{                               %
     \sDefault                                               %
     \chapter[\textbf{ABSTRACT}]{Abstract}                   %
-    \markboth{Abstract}{ABSTRACT}}{\cleardoublepage}        %
+    \markboth{Abstract}{ABSTRACT}                           %
+}{\vfill\sWuhao \noindent \nwpu@eng@funding \par \cleardoublepage}        %
 \newenvironment{engkeywords}{                               %
     \vspace{2\baselineskip} \par                            %
     \noindent \textbf{Key Words:}\quad}{}                   %
@@ -1110,18 +1203,21 @@ int main()
 %%-----------------------------------------------------------------------------%
 \let\old@toc\tableofcontents                                % 目录
 \renewcommand{\tableofcontents}{                            %
-    \sDefault\phantomsection\addcontentsline{toc}{chapter}{ %
-        \contentsname} \old@toc \cleardoublepage            %
+    \sDefault\phantomsection                                %
+    \addcontentsline{toc}{chapter}{\contentsname}           %
+    \old@toc \cleardoublepage                               %
 }                                                           %
 \let\old@lof\listoffigures                                  % 图目录
 \renewcommand{\listoffigures}{                              %
-    \sDefault\phantomsection\addcontentsline{toc}{chapter}{ %
-        \listfigurename} \old@lof \cleardoublepage          %
+    \sDefault\phantomsection                                %
+    \addcontentsline{toc}{chapter}{\listfigurename}         %
+    \old@lof \cleardoublepage                               %
 }                                                           %
 \let\old@log\listoftables                                   % 表目录
 \renewcommand{\listoftables}{                               %
-    \sDefault\phantomsection\addcontentsline{toc}{chapter}{ %
-        \listtablename} \old@log \cleardoublepage           %
+    \sDefault\phantomsection                                %
+    \addcontentsline{toc}{chapter}{\listtablename}          %
+    \old@log \cleardoublepage                               %
 }                                                           %
 %%=============================================================================%
 %    \end{macrocode}
@@ -1129,9 +1225,9 @@ int main()
 % \subsection{参考文献及附录处理}
 %
 % \begin{itemize}
-%     \item 通过命令 |\bibliography{filename}| 加入对应文件名的 bibtex 文献。
-%     \item 附录要求使用大写英文字母表示章节编号，引用时使用小写英文字母。
-%     \item 定制目录及正文中章节名的格式。
+%     \item 通过命令 |\bibliography{filename}| 加入对应文件名的 bibtex 文献.
+%     \item 附录要求使用大写英文字母表示章节编号, 引用时使用小写英文字母.
+%     \item 定制目录及正文中章节名的格式.
 % \end{itemize}
 %
 %    \begin{macrocode}
@@ -1177,61 +1273,78 @@ int main()
 }                                                           %
 %%=============================================================================%
 %    \end{macrocode}
-
+%
+% \subsection{附页部分}
+%
+% \begin{itemize}
+%     \item 在 |acknowledgements| 环境内填写致谢
+%     \item 在 |accomplishments| 环境内填写参加科研情况
+%     \item 使用 |\makestatement| 添加知识产权与原创性声明
+% \end{itemize}
+%
 %    \begin{macrocode}
 %%=============================================================================%
+%% 附页部分
 %%-----------------------------------------------------------------------------%
-%%=============================================================================%
-%    \end{macrocode}
-
-%    \begin{macrocode}
-%%=============================================================================%
+\newenvironment{acknowledgements}{                          % 致谢
+    \renewcommand{\baselinestretch}{1.5}                    %
+    \fontsize{12pt}{13pt}\selectfont                        %
+    \phantomsection\chapter*{\nwpu@page@ack}                %
+    \markboth{\nwpu@page@ack}{\nwpu@page@ack}               %
+    \addcontentsline{toc}{chapter}{\nwpu@page@ack}          %
+}{\par \cleardoublepage}                                    %
 %%-----------------------------------------------------------------------------%
-%%=============================================================================%
-%    \end{macrocode}
-
-%    \begin{macrocode}
-%%=============================================================================%
+\newenvironment{accomplishments}{                           % 参加科研情况
+    \renewcommand{\baselinestretch}{1.5}                    %
+    \fontsize{12pt}{13pt}\selectfont                        %
+    \phantomsection\chapter*{\nwpu@page@acp}                %
+    \markboth{\nwpu@page@acp}{}                             %
+    \addcontentsline{toc}{chapter}{\nwpu@page@acp}          %
+    \newlength{\oldparindent}                               %
+    \setlength{\oldparindent}{\parindent}                   %
+    \setlength{\parindent}{0pt}                             %
+}{\setlength{\parindent}{\oldparindent} \cleardoublepage}   %
 %%-----------------------------------------------------------------------------%
-%%=============================================================================%
-%    \end{macrocode}
-
-%    \begin{macrocode}
-%%=============================================================================%
-%%-----------------------------------------------------------------------------%
-%%=============================================================================%
-%    \end{macrocode}
-
-%    \begin{macrocode}
-%%=============================================================================%
-%%-----------------------------------------------------------------------------%
-%%=============================================================================%
-%    \end{macrocode}
-
-%    \begin{macrocode}
-%%=============================================================================%
-%%-----------------------------------------------------------------------------%
-%%=============================================================================%
-%    \end{macrocode}
-
-
-
-%    \begin{macrocode}
-%%=============================================================================%
-%%-----------------------------------------------------------------------------%
+\newcommand{\makestatement}{                                % 知识产权与原创性声明
+\begin{titlepage}
+    \linespread{1.5}
+    \parskip=7pt
+    \vspace*{0pt}
+    \fSong\sSihao
+    \centerline{\bf 西北工业大学}
+    \centerline{\bf 学位论文知识产权声明书}
+    \fSong\sWuhao
+    本人完全了解学校有关保护知识产权的规定，即：研究生在校攻读学位期间论文工作的
+    知识产权单位属于西北工业大学。学校有权保留并向国家有关部门或机构送交论文的复
+    印件和电子版。本人允许论文被查阅和借阅。学校可以将本学位论文的全部或部分内容
+    编入有关数据库进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论
+    文。同时本人保证，毕业后结合学位论文研究课题再撰写的文章一律注明作者单位为西
+    北工业大学。\par
+    保密论文待解密后适用本声明。\par
+    学位论文作者签名{~:~}\underline{\qquad\qquad\qquad} \hfill
+    指导教师签名{~:~}\underline{\qquad\qquad\qquad} \par
+    \hspace*{3cm} {年\qquad 月\qquad 日} \hfill\hspace*{3cm} {年\qquad 月\qquad 日}
+    \vspace*{30pt} \par
+    \hbox to \hsize{\leaders\hbox to 1em{\hss--\hss}\hfill} \par
+    \vspace*{50pt}
+    \fSong\sSihao
+    \centerline{\bf 西北工业大学}
+    \centerline{\bf 学位论文原创性声明}
+    \fSong\sWuhao
+    秉承学校严谨的学风和优良的科学道德，本人郑重声明：所呈交的学位论文，是本人在
+    导师的指导下进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容和致
+    谢的地方外，本论文不包含任何其他个人或集体已经公开发表或撰写过的研究成果，不
+    包含本人或其他已申请学位或其他用途使用过的成果。对本文的研究做出重要贡献的个
+    人和集体，均已在文中以明确方式表明。\par
+    本人学位论文与资料若有不实，愿意承担一切相关的法律责任。\par
+    \hspace*{5.5cm}
+    \hfill 学位论文作者签名{~:~}\underline{\qquad\qquad\qquad}\par
+    \hfill\hspace*{8.5cm} {年\qquad 月\qquad 日}
+\end{titlepage}
+}                                                           %
 %%=============================================================================%
 %</class>
 %    \end{macrocode}
-%
-%^^A---------------------------------------------------------------------------%
-%
-%^^A---------------------------------------------------------------------------%
-%
-%
-%^^A---------------------------------------------------------------------------%
-
-
-
 
 % \Finale
 \endinput

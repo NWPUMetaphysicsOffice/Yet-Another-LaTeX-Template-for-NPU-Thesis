@@ -4,7 +4,13 @@ MKI      = makeindex
 MAIN     = yanputhesis
 TEXARGS  = -synctex=1 -shell-escape
 
-main: $(MAIN).dtx
+main: close wipe clean makecls open
+
+sample: close wipesample clean texsample opensample
+
+samplebib: close wipesample clean texsamplebib opensample
+
+makecls: $(MAIN).dtx
 	$(TEX) $<
 	makeindex -s gglo.ist -o $(MAIN).gls $(MAIN).glo
 	makeindex -s gind.ist -o $(MAIN).ind $(MAIN).idx
@@ -32,12 +38,11 @@ else
     CLOSE = kill -9 $(PID)
 endif
 
-
-sample: $(MAIN)-sample.tex
+texsample: $(MAIN)-sample.tex
 	$(TEX) $(TEXARGS) $<
 	$(TEX) $(TEXARGS) $<
 
-samplebib: $(MAIN)-sample.tex
+texsamplebib: $(MAIN)-sample.tex
 	$(TEX) $(TEXARGS) $<
 	$(BIB) $(MAIN)-sample.aux
 	$(TEX) $(TEXARGS) $<
@@ -46,17 +51,22 @@ samplebib: $(MAIN)-sample.tex
 open: $(MAIN).pdf
 	$(OPEN) $(MAIN).pdf
 
+opensample: $(MAIN)-sample.pdf
+	$(OPEN) $(MAIN)-sample.pdf
+
 close:
 	@$(CLOSE) || echo not found
 
 clean:
 	$(RM) *.gls *.glo *.ind *.idx
 	$(RM) *.ilg *.aux *.toc *.aux
-	$(RM) *.hd *.out *.thm
-	$(RM) *.log *.lof *.lot
-
+	$(RM) *.hd *.out *.thm *.gz
+	$(RM) *.log *.lof *.lot *.bbl *.blg
 
 wipe:
 	$(RM) $(MAIN).pdf
+
+wipesample:
+	$(RM) $(MAIN)-sample.pdf
 
 .PHONY: open close clean wipe

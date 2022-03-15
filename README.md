@@ -21,16 +21,16 @@
 ## 使用说明
 
 1. 下载这个项目的 zip 包到到本地
-2. 直接对 `document.tex` 文件进行修改，对应的摘要、章节内容、附录文件均已经默认生成，在此基础上加以修改即可
-3. 如有必要，也可以请仿照 `document.tex` 在**导言区**引用 `\input{settings/thesis-setting}` 来直接设置文档格式
+2. 直接对 `yanputhesis-sample.tex` 文件进行修改，对应的摘要、章节内容、附录文件均已经默认生成，在此基础上加以修改即可
+3. 如有必要，也可以请仿照 `yanputhesis-sample.tex` 在**导言区**引用 `\documentclass[lang=chs, degree=phd, blindreview=false, adobe=true]{yanputhesis}` 来直接设置文档格式
 4. 如有必要，修改 `makefile` 文件的 `MAIN` 选项为自己 `tex` 文档的文件名
-5. *make & Enjoy*
+5. *make samplebib & Enjoy*
 
 ## 注意事项以及常见问题
 
 * **博士学位论文 or 硕士学位论文？**
-  * 本模版默认为博士学位论文，并且兼容硕士学位论文，但是不兼容本科毕业设计论文。
-  * 硕士如需使用，请使用编辑器搜索 `% 硕士请修改此处` 注释标志，并修改“博士”文本为“硕士”即可。
+  * 本模版默认为博士学位论文，并且兼容硕士学位论文，但是不兼容本科毕业设计论文（未来计划兼容）。
+  * 硕士如需使用，请使用编辑器搜索 `degree=phd` 标志，并修改 `phd` 文本为 `mst` 即可。
   * 本科毕业设计论文请直接使用 [polossk/LaTeX-Template-For-NPU-Thesis](https://github.com/polossk/LaTeX-Template-For-NPU-Thesis) 模板，使用方式和本模板类似，不再赘述。
 * **字体问题**
   * 本模板使用的是 **Windows** 系统的自带字体（宋体、黑体、楷体、仿宋、Times New Roman、Consolas），Windows 环境下目前能保证字体的指向正确。
@@ -45,14 +45,16 @@
   * Linux用户请自行检查修改 `settings/thesis-setting.tex` 中的Linux字体配置
   * 其他用户（例如 Cygwin ）请发 issue 以获得帮助，或者注释掉 `\ifwindows` 之后的关于跨平台的字体控制代码，直接修改上方已经被注释掉的 `MAYDAY!` 字体配置。
 * **`makefile` 问题**
-  * 本模板提供了简单的 `makefile` 文件来控制编译流程。
-  * 默认流程为关闭当前已打开的输出 pdf 文件并删除，清理缓存文件，编译 tex 文档并打开。
-  * 这份 `makefile` 提供了 `tex`（默认） 和 `nobib` 两种编译选项，后者不处理参考文献目录。
-  * 同时提供了 `open`, `close`, `clean`, `wipe` 四个快捷指令，其效果如下：
-    * `open`：使用 Acrobat 打开输出的 pdf 文件；
+  * 本模板提供了简单的 `makefile` 文件来控制编译流程，可以编译 `dtx` 文件从而得到模板类 `cls` 文件，也可以编译大论文文档 `yanputhesis-sample.tex`。
+  * 所有基本流程为关闭当前已打开的输出 pdf 文件并删除，清理缓存文件，编译 tex 文档并打开。
+  * 默认选项 `make` 或者 `make main` 负责编译编译 `dtx` 文件从而得到模板类 `yanputhesis.cls` 文件和样例文件 `yanputhesis-sample.tex`。
+  * 提供选项 `make sample` 负责生成不含参考文献的样例文档 `yanputhesis-sample.pdf`
+  * 提供选项 `make samplebib` 负责生成含有参考文献的样例文档 `yanputhesis-sample.pdf`
+  * 同时提供了 `open[sample]`, `close`, `clean`, `wipe[sample]` 四组快捷指令，其效果如下：
+    * `open[sample]`：使用 Acrobat 打开输出的 pdf 文件；
     * `close`：终止 Acrobat 进程从而关闭输出的 pdf 文件（会误伤其他以打开的文件）；
     * `clean`：删除 `*.aux` 和其他缓存文件；
-    * `wipe`：删除输出的 pdf 文件；
+    * `wipe[sample]`：删除输出的 pdf 文件；
   * 对于 Linux 玩家而言，可参考上述功能，并在此 `makefile` 基础上稍作修改即可使用。
 * **预创建文件**
   * 以下文件按照实际论文中出现顺序排序
@@ -87,7 +89,7 @@
   * 如有帮助，请在自己的文章中引用；如果在此基础上新增/删除/更改，请按照开源许可的要求继续保持开源，且同时继续使用相同开源许可
 * **其他可能的模板使用问题**
   * 在编译过程中，如果遇到卡在字体缓冲问题，请先关闭当前进程，并用管理员模式打开命令提示符（或终端），键入 `fc-cache -f -v` 强制刷新字体缓存即可
-  * 模板成型于 **2019 年**。如果后期有任何格式上的变化，欢迎 *fork-modify-pull-request* 或者在 [issue](hhttps://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/issues) 中详细说明新旧格式之差异，我们乐意解决模板使用的问题
+  * 模板成型于 **2022 年**。如果后期有任何格式上的变化，欢迎 *fork-modify-pull-request* 或者在 [issue](hhttps://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/issues) 中详细说明新旧格式之差异，我们乐意解决模板使用的问题
   * **恕制作者们不解答任何 LaTeX 使用问题**
 
 ## BibTeX

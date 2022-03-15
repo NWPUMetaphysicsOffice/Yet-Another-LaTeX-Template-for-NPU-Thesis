@@ -81,28 +81,28 @@
 %%-----------------------------------------------------------------------------%
 \RequirePackage{ifplatform}                                 % 跨平台字体控制依赖
 \if@npu@font@adobe                                          % 检测 Adobe 选项
-    \newcommand\defaultSog{Adobe Song Std}                  % 宋体，用于正文
-    \newcommand\defaultHei{Adobe Heiti Std}                 % 黑体，用于标题
-    \newcommand\defaultKai{Adobe Kaiti Std}                 % 楷体，一般用于强调
-    \newcommand\defaultFag{Adobe FangSong Std}              % 仿宋，一般用于强调
+    \newcommand\defaultSog{Adobe Song Std}                  % 宋体, 用于正文
+    \newcommand\defaultHei{Adobe Heiti Std}                 % 黑体, 用于标题
+    \newcommand\defaultKai{Adobe Kaiti Std}                 % 楷体, 一般用于强调
+    \newcommand\defaultFag{Adobe FangSong Std}              % 仿宋, 一般用于强调
 \else                                                       % 使用系统自带字体
     \ifwindows                                              % Windows 环境
-        \newcommand\defaultSog{SimSun}                      % 宋体，用于正文
-        \newcommand\defaultHei{SimHei}                      % 黑体，用于标题
-        \newcommand\defaultKai{KaiTi}                       % 楷体，一般用于强调
-        \newcommand\defaultFag{FangSong}                    % 仿宋，一般用于强调
+        \newcommand\defaultSog{SimSun}                      % 宋体, 用于正文
+        \newcommand\defaultHei{SimHei}                      % 黑体, 用于标题
+        \newcommand\defaultKai{KaiTi}                       % 楷体, 一般用于强调
+        \newcommand\defaultFag{FangSong}                    % 仿宋, 一般用于强调
     \fi                                                     %
     \ifmacosx                                               % macOS 环境
-        \newcommand\defaultSog{STSongti-SC-Regular}         % 宋体，用于正文
-        \newcommand\defaultHei{STHeiti}                     % 黑体，用于标题
-        \newcommand\defaultKai{STKaiti}                     % 楷体，一般用于强调
-        \newcommand\defaultFag{STFangSong}                  % 仿宋，一般用于强调
+        \newcommand\defaultSog{STSongti-SC-Regular}         % 宋体, 用于正文
+        \newcommand\defaultHei{STHeiti}                     % 黑体, 用于标题
+        \newcommand\defaultKai{STKaiti}                     % 楷体, 一般用于强调
+        \newcommand\defaultFag{STFangSong}                  % 仿宋, 一般用于强调
     \fi                                                     %
     \iflinux                                                % Linux 环境
-        \newcommand\defaultSog{SimSun}                      % 宋体，用于正文
-        \newcommand\defaultHei{SimHei}                      % 黑体，用于标题
-        \newcommand\defaultKai{KaiTi}                       % 楷体，一般用于强调
-        \newcommand\defaultFag{FangSong}                    % 仿宋，一般用于强调
+        \newcommand\defaultSog{SimSun}                      % 宋体, 用于正文
+        \newcommand\defaultHei{SimHei}                      % 黑体, 用于标题
+        \newcommand\defaultKai{KaiTi}                       % 楷体, 一般用于强调
+        \newcommand\defaultFag{FangSong}                    % 仿宋, 一般用于强调
     \fi                                                     %
 \fi                                                         %
 \newcommand\defaultEngFont{Times New Roman}                 % 英文文本默认字体
@@ -205,7 +205,7 @@
 \RequirePackage{xcolor}                                     % 颜色库
 \RequirePackage{tikz}                                       % tikz 矢量图绘制
 \RequirePackage[labelsep=quad]{caption}                     % 浮动体标题控制
-\RequirePackage{subfigure}                                  % 子图
+\RequirePackage{subcaption}                                 % 子图
 \RequirePackage{wrapfig}                                    % 文字环绕
 \RequirePackage{multirow, makecell}                         % 合并单元格
 \RequirePackage{longtable}                                  % 长表格（跨页表格）
@@ -216,6 +216,8 @@
 \DeclareCaptionFont{cWuhao}{\sWuhao}                        % 图表标题为五号
 \captionsetup[table]{labelfont=cWuhao,textfont=cWuhao}      %
 \captionsetup[figure]{labelfont=cWuhao,textfont=cWuhao}     %
+\captionsetup[subtable]{labelformat=simple}                 %
+\captionsetup[subfigure]{labelformat=simple}                %
 \let\oldtabular\tabular                                     % 表格内容为五号
 \renewcommand{\tabular}{\sWuhao\oldtabular}                 %
 \let\oldtabularx\tabularx                                   %
@@ -234,7 +236,7 @@
 %%-----------------------------------------------------------------------------%
 \RequirePackage{listings}                                   % 添加插入代码控制
 \lstset{                                                    % 代码样式
-    basicstyle=\color[HTML]{000000}\footnotesize\ttfamily,  % 等宽字体 9pt 字号
+    basicstyle=\color[HTML]{000000}\small\ttfamily,         % 等宽字体 10pt 字号
     numbers=left,                                           % 左侧加入行号
     numberstyle=\tiny,                                      % 行号 6pt 字号
     numbersep=5pt,                                          % 行号与代码间隔
@@ -331,17 +333,25 @@
     \newcommand{\nwpu@eng@degree}{Bachelor}                 %
 \fi                                                         %
 \if@npu@type@bcl                                            % 本科特殊设置
-    \newcommand{\nwpu@chs@doctitle}{本科毕业设计论文}       % 文档名
-    \newcommand{\nwpu@chs@header}{                          % 页眉
-        \nwpu@chs@schoolname 本科毕业设计论文}              %
+    \newcommand{\nwpu@chs@doctitle}{本科毕业设计论文}       % 文档名和页眉
+    \newcommand{\nwpu@chs@header}{{\nwpu@chs@schoolname}本科毕业设计论文}
 \else                                                       % 其他页眉统一设置
     \newcommand{\nwpu@chs@doctitle}{{\nwpu@chs@degree}学位论文}
-    \newcommand{\nwpu@chs@header}{                          % 页眉
-        \nwpu@chs@schoolname\nwpu@chs@doctitle}             %
+    \newcommand{\nwpu@chs@header}{\nwpu@chs@schoolname\nwpu@chs@doctitle}
 \fi                                                         %
-\newcommand{\nwpu@eng@doctitle}{\nwpu@eng@degree Thesis}    % 英文文档名
-\newcommand{\nwpu@eng@header}{                              % 英文页眉
-    \nwpu@eng@doctitle of \nwpu@eng@schoolname}             %
+\newcommand{\nwpu@eng@doctitle}{\nwpu@eng@degree Thesis}    % 英文文档名和页眉
+\newcommand{\nwpu@eng@header}{\nwpu@eng@doctitle of \nwpu@eng@schoolname}
+%%-----------------------------------------------------------------------------%
+\if@npu@lang@chs                                            % 定制中文特殊页面
+    \newcommand{\nwpu@page@ack}{致{\quad}谢}                %
+    \newcommand{\nwpu@page@acp}{攻读{\nwpu@chs@degree}学位期%
+        间发表的学术论文和参加科研情况}                     %
+\else                                                       % 定制英文特殊页面
+    \newcommand{\nwpu@page@ack}{Acknowledgements}           %
+    \newcommand{\nwpu@page@acp}{Published Papers and        %
+        Participated in Scientific Research During the Study%
+        for \nwpu@eng@degree Degree}                        %
+\fi                                                         %
 %%=============================================================================%
 %%=============================================================================%
 %% 中文占位符及个人信息填写
@@ -362,6 +372,7 @@
 \newcommand{\nwpu@chs@school}{\chs@space}                   % 学院（中文）
 \newcommand{\nwpu@chs@major}{\chs@space}                    % 专业（中文）
 \newcommand{\nwpu@chs@advisor}{\chs@space}                  % 导师（中文）
+\newcommand{\nwpu@chs@funding}{\chs@space}                  % 基金赞助（中文）
 %%-----------------------------------------------------------------------------%
 \newcommand{\nwpu@eng@title}{\chs@space}                    % 标题（英文）
 \newcommand{\nwpu@eng@author}{\chs@space}                   % 作者（英文）
@@ -369,6 +380,7 @@
 \newcommand{\nwpu@eng@school}{\chs@space}                   % 学院（英文）
 \newcommand{\nwpu@eng@major}{\chs@space}                    % 专业（英文）
 \newcommand{\nwpu@eng@advisor}{\chs@space}                  % 导师（英文）
+\newcommand{\nwpu@eng@funding}{\chs@space}                  % 基金赞助（英文）
 %%-----------------------------------------------------------------------------%
 \newcommand{\nwpu@uid}{2000123456}                          % 学号
 \newcommand{\nwpu@funding}{\chs@space}                      % 基金资助
@@ -397,8 +409,11 @@
     \renewcommand{\nwpu@chs@advisor}{#1}                    %
     \renewcommand{\nwpu@eng@advisor}{#2}                    %
 }                                                           %
+\newcommand{\funding}[2]{                                   % 设置基金资助
+    \renewcommand{\nwpu@chs@funding}{#1}                    %
+    \renewcommand{\nwpu@eng@funding}{#2}                    %
+}                                                           %
 \newcommand{\studentnumber}[1]{\renewcommand{\nwpu@uid}{#1}}% 设置学号
-\newcommand{\funding}[1]{\renewcommand{\nwpu@funding}{#1}}  % 设置基金资助
 %%=============================================================================%
 %%=============================================================================%
 %% 封皮页
@@ -545,11 +560,8 @@
 %%-----------------------------------------------------------------------------%
 \renewcommand{\maketitle}{                                  % 重制 maketitle
     \make@nwpu@coverpage                                    % 封皮页
-    % \newpage \clearpage                                     %
     \make@nwpu@chs@title                                    % 中文标题页
-    % \newpage \clearpage                                     %
     \make@nwpu@eng@title                                    % 英文标题页
-    % \newpage \thispagestyle{empty} \cleardoublepage         %
     \pagenumbering{Roman}                                   % 页码使用大写罗马字母
     \setcounter{page}{1}                                    % 页码从 1 开始
     \renewcommand{\baselinestretch}{1.0}                    % 默认单倍行距
@@ -562,7 +574,7 @@
     \sDefault                                               %
     \chapter[摘{\quad}要]{摘{\quad}要}                      %
     \markboth{摘{\quad}要}{摘{\quad}要}                     %
-}{\vfill\sWuhao \noindent \nwpu@funding \par \cleardoublepage}%
+}{\vfill\sWuhao \noindent \nwpu@chs@funding \par \cleardoublepage}
 \newenvironment{keywords}{                                  %
     \vspace{2\baselineskip} \par                            %
     \noindent \textbf{关键词：}\quad}{}                     %
@@ -572,7 +584,8 @@
 \newenvironment{engabstract}{                               %
     \sDefault                                               %
     \chapter[\textbf{ABSTRACT}]{Abstract}                   %
-    \markboth{Abstract}{ABSTRACT}}{\cleardoublepage}        %
+    \markboth{Abstract}{ABSTRACT}                           %
+}{\vfill\sWuhao \noindent \nwpu@eng@funding \par \cleardoublepage}        %
 \newenvironment{engkeywords}{                               %
     \vspace{2\baselineskip} \par                            %
     \noindent \textbf{Key Words:}\quad}{}                   %
@@ -582,18 +595,21 @@
 %%-----------------------------------------------------------------------------%
 \let\old@toc\tableofcontents                                % 目录
 \renewcommand{\tableofcontents}{                            %
-    \sDefault\phantomsection\addcontentsline{toc}{chapter}{ %
-        \contentsname} \old@toc \cleardoublepage            %
+    \sDefault\phantomsection                                %
+    \addcontentsline{toc}{chapter}{\contentsname}           %
+    \old@toc \cleardoublepage                               %
 }                                                           %
 \let\old@lof\listoffigures                                  % 图目录
 \renewcommand{\listoffigures}{                              %
-    \sDefault\phantomsection\addcontentsline{toc}{chapter}{ %
-        \listfigurename} \old@lof \cleardoublepage          %
+    \sDefault\phantomsection                                %
+    \addcontentsline{toc}{chapter}{\listfigurename}         %
+    \old@lof \cleardoublepage                               %
 }                                                           %
 \let\old@log\listoftables                                   % 表目录
 \renewcommand{\listoftables}{                               %
-    \sDefault\phantomsection\addcontentsline{toc}{chapter}{ %
-        \listtablename} \old@log \cleardoublepage           %
+    \sDefault\phantomsection                                %
+    \addcontentsline{toc}{chapter}{\listtablename}          %
+    \old@log \cleardoublepage                               %
 }                                                           %
 %%=============================================================================%
 %%=============================================================================%
@@ -637,33 +653,65 @@
     \renewcommand{\theexample}{\alph{chapter}.\arabic{example}}
 }                                                           %
 %%=============================================================================%
-
 %%=============================================================================%
+%% 附页部分
 %%-----------------------------------------------------------------------------%
-%%=============================================================================%
-
-%%=============================================================================%
+\newenvironment{acknowledgements}{                          % 致谢
+    \renewcommand{\baselinestretch}{1.5}                    %
+    \fontsize{12pt}{13pt}\selectfont                        %
+    \phantomsection\chapter*{\nwpu@page@ack}                %
+    \markboth{\nwpu@page@ack}{\nwpu@page@ack}               %
+    \addcontentsline{toc}{chapter}{\nwpu@page@ack}          %
+}{\par \cleardoublepage}                                    %
 %%-----------------------------------------------------------------------------%
-%%=============================================================================%
-
-%%=============================================================================%
+\newenvironment{accomplishments}{                           % 参加科研情况
+    \renewcommand{\baselinestretch}{1.5}                    %
+    \fontsize{12pt}{13pt}\selectfont                        %
+    \phantomsection\chapter*{\nwpu@page@acp}                %
+    \markboth{\nwpu@page@acp}{}                             %
+    \addcontentsline{toc}{chapter}{\nwpu@page@acp}          %
+    \newlength{\oldparindent}                               %
+    \setlength{\oldparindent}{\parindent}                   %
+    \setlength{\parindent}{0pt}                             %
+}{\setlength{\parindent}{\oldparindent} \cleardoublepage}   %
 %%-----------------------------------------------------------------------------%
-%%=============================================================================%
-
-%%=============================================================================%
-%%-----------------------------------------------------------------------------%
-%%=============================================================================%
-
-%%=============================================================================%
-%%-----------------------------------------------------------------------------%
-%%=============================================================================%
-
-%%=============================================================================%
-%%-----------------------------------------------------------------------------%
-%%=============================================================================%
-
-%%=============================================================================%
-%%-----------------------------------------------------------------------------%
+\newcommand{\makestatement}{                                % 知识产权与原创性声明
+\begin{titlepage}
+    \linespread{1.5}
+    \parskip=7pt
+    \vspace*{0pt}
+    \fSong\sSihao
+    \centerline{\bf 西北工业大学}
+    \centerline{\bf 学位论文知识产权声明书}
+    \fSong\sWuhao
+    本人完全了解学校有关保护知识产权的规定，即：研究生在校攻读学位期间论文工作的
+    知识产权单位属于西北工业大学。学校有权保留并向国家有关部门或机构送交论文的复
+    印件和电子版。本人允许论文被查阅和借阅。学校可以将本学位论文的全部或部分内容
+    编入有关数据库进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论
+    文。同时本人保证，毕业后结合学位论文研究课题再撰写的文章一律注明作者单位为西
+    北工业大学。\par
+    保密论文待解密后适用本声明。\par
+    学位论文作者签名{~:~}\underline{\qquad\qquad\qquad} \hfill
+    指导教师签名{~:~}\underline{\qquad\qquad\qquad} \par
+    \hspace*{3cm} {年\qquad 月\qquad 日} \hfill\hspace*{3cm} {年\qquad 月\qquad 日}
+    \vspace*{30pt} \par
+    \hbox to \hsize{\leaders\hbox to 1em{\hss--\hss}\hfill} \par
+    \vspace*{50pt}
+    \fSong\sSihao
+    \centerline{\bf 西北工业大学}
+    \centerline{\bf 学位论文原创性声明}
+    \fSong\sWuhao
+    秉承学校严谨的学风和优良的科学道德，本人郑重声明：所呈交的学位论文，是本人在
+    导师的指导下进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容和致
+    谢的地方外，本论文不包含任何其他个人或集体已经公开发表或撰写过的研究成果，不
+    包含本人或其他已申请学位或其他用途使用过的成果。对本文的研究做出重要贡献的个
+    人和集体，均已在文中以明确方式表明。\par
+    本人学位论文与资料若有不实，愿意承担一切相关的法律责任。\par
+    \hspace*{5.5cm}
+    \hfill 学位论文作者签名{~:~}\underline{\qquad\qquad\qquad}\par
+    \hfill\hspace*{8.5cm} {年\qquad 月\qquad 日}
+\end{titlepage}
+}                                                           %
 %%=============================================================================%
 
 %% 
