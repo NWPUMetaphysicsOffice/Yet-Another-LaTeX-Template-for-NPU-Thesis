@@ -163,6 +163,7 @@ and the derived files           yanputhesis.ins,
 %%-----------------------------------------------------------------------------%
 \usepackage{blindtext}                                      % 生成无意义文本
 \usepackage{metalogo}                                       % 软件标志
+\usepackage{amsmath}                                        % 基础数学库
 %%=============================================================================%
 %% 参考文献（也可以是独立文件）
 %%-----------------------------------------------------------------------------%
@@ -277,8 +278,9 @@ and the derived files           yanputhesis.ins,
 \end{engabstract}                                           % 英文摘要结束
 %%-----------------------------------------------------------------------------%
 \tableofcontents                                            % 目录
-\listoffigures                                              % 图目录（学校并未要求）
-\listoftables                                               % 表目录（学校并未要求）
+\listoffigures                                              % 图目录（学校未做要求）
+\listoftables                                               % 表目录（学校未做要求）
+\printnomenclature                                          % 符号表（学校未做要求）
 %%-----------------------------------------------------------------------------%
 \mainmatter
 \sDefault
@@ -449,12 +451,16 @@ int main()
 
 这是一份附录，请放置一些独立的证明、源代码、或其他辅助资料．
 
+\nomenclature{$r$}{圆（或球）的半径}
+\nomenclature{$C$}{圆的周长}
+\nomenclature{$S$}{圆的面积}
+
 \begin{equation}
     C = 2 \pi r
 \end{equation}
 
 \begin{equation}
-    S = 4 \pi r^2
+    S = \pi r^2
 \end{equation}
 
 \cleardoublepage
@@ -463,12 +469,15 @@ int main()
 
 这是另一份附录，请放置一些独立的证明、源代码、或其他辅助资料．
 
+\nomenclature{$S_{\text{sphere}}$}{球的表面积}
+\nomenclature{$V_{\text{sphere}}$}{球的体积}
+
 \begin{equation}
-    S = \pi r^2
+    S_{\text{sphere}} = 4 \pi r^2
 \end{equation}
 
 \begin{equation}
-    V = \frac43 \pi r^3
+    V_{\text{sphere}} = \frac43 \pi r^3
 \end{equation}
 
 \cleardoublepage
@@ -482,9 +491,9 @@ int main()
 \end{acknowledgements}                                      % 致谢结束
 %%-----------------------------------------------------------------------------%
 \begin{accomplishments}                                     % 参加科研情况开始
-    [1] Shen S, Yang Z, Han F, et al．Peridynamic modeling with energy-based surface
-    correction for fracture simulation of random porous materials[J]．Theoretical
-    and Applied Fracture Mechanics, 2021, 114: 102987．
+    [1] Shen S, Yang Z, Han F, et al. Peridynamic modeling with energy-based surface
+    correction for fracture simulation of random porous materials[J]. Theoretical
+    and Applied Fracture Mechanics, 2021, 114: 102987.
 \end{accomplishments}                                       % 参加科研情况结束
 %%-----------------------------------------------------------------------------%
 \makestatement                                              % 知识产权与原创性声明
@@ -500,10 +509,10 @@ int main()
 % \section{安装说明}
 %
 % \begin{itemize}
-%     \item 本模板提供了 make 工具用于辅助生成 cls 文档类及样例.
-%     \item 命令行内输入 |make && make samplebib| 一次性生成所需文件.
-%     \item 命令行内输入 |make sample| 生成不带参考文献的样例.
-%     \item 命令行内输入 |make samplebib| 生成带有参考文献的样例.
+%     \item 本模板提供了 make 工具用于辅助生成 cls 文档类及样例．
+%     \item 命令行内输入 |make && make samplebib| 一次性生成所需文件．
+%     \item 命令行内输入 |make sample| 生成不带参考文献的样例．
+%     \item 命令行内输入 |make samplebib| 生成带有参考文献的样例．
 % \end{itemize}
 %
 %^^A---------------------------------------------------------------------------%
@@ -513,17 +522,17 @@ int main()
 % \subsection{文档选项和基础文档类型控制}
 %
 % \begin{itemize}
-%     \item 本模板基于 book 类实现, 通过选项来控制生成版本的类型.
-%     \item 本模板使用 |xkeyval| 辅助控制文档选项. 新建布尔变量用于标记文档类型
-%     为本科、硕士、或博士版本. 针对不同的模板类型, 将对应的标记置为真值 |true|,
-%     其余为假值 |false|.
-%     \item 声明选项 lang, 可选参数为 |chs|, |eng|, 分别对应中英文论文模板.
+%     \item 本模板基于 book 类实现, 通过选项来控制生成版本的类型．
+%     \item 本模板使用 |xkeyval| 辅助控制文档选项．新建布尔变量用于标记文档类型
+%     为本科、硕士、或博士版本．针对不同的模板类型, 将对应的标记置为真值 |true|,
+%     其余为假值 |false|．
+%     \item 声明选项 lang, 可选参数为 |chs|, |eng|, 分别对应中英文论文模板．
 %     \item 声明选项 degree, 可选参数为 |phd|,  |master|, |bachelor|, 分别对应博
-%     士、硕士、和本科毕业设计论文.
-%     \item 声明选项 blindreview, 用于生成盲评版本, 并储存在对应的布尔变量上.
+%     士、硕士、和本科毕业设计论文．
+%     \item 声明选项 blindreview, 用于生成盲评版本, 并储存在对应的布尔变量上．
 %     \item 声明选项 adobe, 用于指定模板使用 Adobe 中文字体生成（需自行准备宋体、
-%     黑体、楷体、仿宋字体文件）.
-%     \item 本模板默认选项为中文博士非盲评版本, 且不使用 Adobe 中文字体.
+%     黑体、楷体、仿宋字体文件）．
+%     \item 本模板默认选项为中文博士非盲评版本, 且不使用 Adobe 中文字体．
 % \end{itemize}
 %
 %    \begin{macrocode}
@@ -561,24 +570,25 @@ int main()
 % \subsection{格式控制及组件控制}
 %
 % \begin{itemize}
-%     \item 使用 |geometry| 来控制纸张尺寸以及页边距大小.
-%     \item 使用 |hyperref| 添加书签超链接, 并设置通过 Acrobat 打开的默认选项.
-%     \item 使用 |type1cm| 控制字号与行距, 统一前缀 s(a.k.a size).
-%     \item 使用 |ifplatform| 控制不同平台下的字体.
-%     \item 使用 |fontspec| 以及 |xeCJK| 控制中英文字体, 统一前缀 f(a.k.a font),
-%           并且设置中文段落及换行风格.
-%     \item 使用 |indentfirst| 添加段首空格控制.
-%     \item 使用 |ulem| 添加下划线控制.
-%     \item 使用 |layouts| 添加文字分栏排版功能.
-%     \item 使用 |titlesec| 和 |titletoc| 添加目录及标题控制.
-%     \item 使用 |fancyhdr| 和 |fancyref| 添加页眉及页脚控制.
-%     \item 使用 |natbib| 添加引用参考文献功能, 并且设置中文上标引用格式.
-%     \item 使用 |enumerate| 和 |enumitem| 添加插入列表功能.
-%     \item 添加插入图表和整页 PDF 文件功能, 并使用 |caption| 控制排版格式.
-%     \item 使用 |ntheorem| 添加插入定理环境功能.
-%     \item 使用 |listings| 添加插入源代码功能.
-%     \item 使用 |algorithm| 和 |fancyref| 添加算法流程或伪代码功能.
-%     \item 使用 |appendix| 添加插入附录功能.
+%     \item 使用 |geometry| 来控制纸张尺寸以及页边距大小．
+%     \item 使用 |hyperref| 添加书签超链接，并设置通过 Acrobat 打开的默认选项．
+%     \item 使用 |type1cm| 控制字号与行距，统一前缀 s (size)．
+%     \item 使用 |ifplatform| 控制不同平台下的字体．
+%     \item 使用 |fontspec| 以及 |xeCJK| 控制中英文字体，统一前缀 f (font),
+%           并且设置中文段落及换行风格．
+%     \item 使用 |indentfirst| 添加段首空格控制．
+%     \item 使用 |ulem| 添加下划线控制．
+%     \item 使用 |layouts| 添加页面具体尺寸信息．
+%     \item 使用 |titlesec| 和 |titletoc| 添加目录及标题控制．
+%     \item 使用 |fancyhdr| 和 |fancyref| 添加页眉及页脚控制．
+%     \item 使用 |natbib| 添加引用参考文献功能，并且设置中文上标引用格式．
+%     \item 使用 |enumerate| 和 |enumitem| 添加插入列表功能．
+%     \item 添加插入图表和整页 PDF 文件功能，并使用 |caption| 控制排版格式．
+%     \item 使用 |ntheorem| 添加插入定理环境功能．
+%     \item 使用 |listings| 添加插入源代码功能．
+%     \item 使用 |algorithm| 和 |fancyref| 添加算法流程或伪代码功能．
+%     \item 使用 |appendix| 添加插入附录功能．
+%     \item 使用 |nomencl| 和 |multicol| 添加分栏符号表功能．
 % \end{itemize}
 %
 %    \begin{macrocode}
@@ -677,7 +687,7 @@ int main()
     \hb@xt@ #1{\hss#2\hss}}\hspace{3pt}}                    %
 \let\coverunderline\dlmu@underline                          %
 %%-----------------------------------------------------------------------------%
-\RequirePackage{layouts}                                    % 文字分栏排版
+\RequirePackage{layouts}                                    % 页面具体尺寸信息
 %%-----------------------------------------------------------------------------%
 \RequirePackage[sf]{titlesec}                               % 章节标题格式
 \RequirePackage{titletoc}                                   % 目录格式
@@ -801,6 +811,38 @@ int main()
 \RequirePackage{algpseudocode}                              % 伪代码
 %%-----------------------------------------------------------------------------%
 \RequirePackage{appendix}                                   % 添加附录功能
+%%-----------------------------------------------------------------------------%
+\RequirePackage{nomencl}                                    % 添加符号表功能
+\RequirePackage{multicol}                                   % 页面具体尺寸信息
+\makenomenclature                                           %
+% code come from  @egreg
+% https://tex.stackexchange.com/questions/78764/two-column-nomenclature
+\@ifundefined{chapter}
+  {\def\wilh@nomsection{section}}
+  {\def\wilh@nomsection{chapter}}
+
+\def\thenomenclature{%
+  % \newlength{\npu@columnsep@save}
+  % \setlength{\npu@columnsep@save}{\columnsep}
+  % \setlength{\columnsep}{20pt}
+  % \begin{multicols}{2}[%
+      \csname\wilh@nomsection\endcsname*{\nomname}
+      \if@intoc\addcontentsline{toc}{\wilh@nomsection}{\nomname}\fi
+      \nompreamble % \raggedcolumns
+  % ]
+  \list{}{%
+    \labelsep=15pt
+    \labelwidth\nom@tempdim
+    \leftmargin\labelwidth
+    \advance\leftmargin\labelsep
+    \itemsep\nomitemsep
+    \let\makelabel\nomlabel}%
+}
+\def\endthenomenclature{%
+  \endlist
+  % \end{multicols}
+  % \setlength{\columnsep}{\npu@columnsep@save}
+  \nompostamble}
 %%=============================================================================%
 %    \end{macrocode}
 %
@@ -808,9 +850,9 @@ int main()
 % \subsection{引用设置及本地化处理}
 %
 % \begin{itemize}
-%     \item 修改引用提示文字
-%     \item 修改引用编号格式
-%     \item 本地化文档字符串处理
+%     \item 修改引用提示文字．
+%     \item 修改引用编号格式．
+%     \item 本地化文档字符串处理．
 % \end{itemize}
 %
 %    \begin{macrocode}
@@ -831,6 +873,7 @@ int main()
     \renewcommand{\proofname}{证明}                         %
     \renewcommand{\lstlistingname}{代码片段}                %
     \newcommand{\lstlistingautorefname}{代码片段}           %
+    \renewcommand{\nomname}{符号表}                         %
 \else                                                       % 英文引用提示文字
     \renewcommand{\figureautorefname}{Fig.}                 %
     \renewcommand{\tableautorefname}{Table}                 %
@@ -838,6 +881,7 @@ int main()
     \def\equationautorefname#1#2\null{Eq.#1(#2\null)}       %
     \renewcommand{\lstlistingname}{Code Snippet}            %
     \newcommand{\lstlistingautorefname}{Code Snippet}       %
+    \renewcommand{\nomname}{Symblos}                        %
 \fi                                                         %
 \if@npu@lang@chs                                            % 定制中文定理环境
     \newtheorem{theorem}{定理}[chapter]                     %
@@ -909,17 +953,17 @@ int main()
 % \subsection{中文占位符及个人信息填写}
 %
 % \begin{itemize}
-%     \item 人工录入中文标点符号.
-%     \item 添加中英文个人信息录入, 包括：
+%     \item 人工录入中文标点符号．
+%     \item 添加中英文个人信息录入，包括：
 %     \begin{itemize}
-%         \item 标题 |\title{中文}{English}|
-%         \item 作者 |\author{中文}{English}|
-%         \item 日期 |\date{中文}{English}|
-%         \item 学院 |\school{中文}{English}|
-%         \item 专业 |\major{中文}{English}|
-%         \item 导师 |\advisor{中文}{English}|
-%         \item 学号 |\studentnumber{数字}|
-%         \item 基金资助详情 |\funding{中文}{English}|
+%         \item 标题 |\title{中文}{English}|；
+%         \item 作者 |\author{中文}{English}|；
+%         \item 日期 |\date{中文}{English}|；
+%         \item 学院 |\school{中文}{English}|；
+%         \item 专业 |\major{中文}{English}|；
+%         \item 导师 |\advisor{中文}{English}|；
+%         \item 学号 |\studentnumber{数字}|；
+%         \item 基金资助详情 |\funding{中文}{English}|．
 %     \end{itemize}
 % \end{itemize}
 %
@@ -991,12 +1035,12 @@ int main()
 % \subsection{封皮页及中英文标题页}
 %
 % \begin{itemize}
-%     \item 输入 |\maketitle| 为文档添加封皮页、中英文标题页
-%     \item 命令 |\make@nwpu@coverpage| 为封皮页的具体实现
-%     \item 命令 |\make@nwpu@chs@title| 为中文标题页的具体实现
-%     \item 命令 |\make@nwpu@eng@title| 为英文标题页的具体实现
-%     \item 所有信息使用上一小节所设置的信息
-%     \item 标题如果需要分行可在 |\title| 中自行插入 |\\| 断句
+%     \item 输入 |\maketitle| 为文档添加封皮页、中英文标题页．
+%     \item 命令 |\make@nwpu@coverpage| 为封皮页的具体实现．
+%     \item 命令 |\make@nwpu@chs@title| 为中文标题页的具体实现．
+%     \item 命令 |\make@nwpu@eng@title| 为英文标题页的具体实现．
+%     \item 所有信息使用上一小节所设置的信息．
+%     \item 标题如果需要分行可在 |\title| 中自行插入 |\\| 断句．
 % \end{itemize}
 %
 %    \begin{macrocode}
@@ -1157,10 +1201,10 @@ int main()
 % \subsection{中英文摘要环境}
 %
 % \begin{itemize}
-%     \item 在 |abstract| 环境内填写文章中文摘要
-%     \item 在 |keywords| 环境内填写文章中文关键词
-%     \item 在 |engabstract| 环境内填写文章英文摘要
-%     \item 在 |engkeywords| 环境内填写文章英文关键词
+%     \item 在 |abstract| 环境内填写文章中文摘要．
+%     \item 在 |keywords| 环境内填写文章中文关键词．
+%     \item 在 |engabstract| 环境内填写文章英文摘要．
+%     \item 在 |engkeywords| 环境内填写文章英文关键词．
 % \end{itemize}
 %
 %    \begin{macrocode}
@@ -1192,9 +1236,10 @@ int main()
 % \subsection{目录页}
 %
 % \begin{itemize}
-%     \item 使用 |\tableofcontents| 添加总目录
-%     \item 使用 |\listoffigures| 添加图目录（学校并未要求）
-%     \item 使用 |\listoftables| 添加表目录（学校并未要求）
+%     \item 使用 |\tableofcontents| 添加总目录．
+%     \item 使用 |\listoffigures| 添加图目录（学校未做要求）．
+%     \item 使用 |\listoftables| 添加表目录（学校未做要求）．
+%     \item 使用 |\printnomenclature| 添加符号表（学校未做要求）．
 % \end{itemize}
 %
 %    \begin{macrocode}
@@ -1225,9 +1270,9 @@ int main()
 % \subsection{参考文献及附录处理}
 %
 % \begin{itemize}
-%     \item 通过命令 |\bibliography{filename}| 加入对应文件名的 bibtex 文献.
-%     \item 附录要求使用大写英文字母表示章节编号, 引用时使用小写英文字母.
-%     \item 定制目录及正文中章节名的格式.
+%     \item 通过命令 |\bibliography{filename}| 加入对应文件名的 bibtex 文献．
+%     \item 附录要求使用大写英文字母表示章节编号，引用时使用小写英文字母．
+%     \item 定制目录及正文中章节名的格式．
 % \end{itemize}
 %
 %    \begin{macrocode}
@@ -1277,9 +1322,9 @@ int main()
 % \subsection{附页部分}
 %
 % \begin{itemize}
-%     \item 在 |acknowledgements| 环境内填写致谢
-%     \item 在 |accomplishments| 环境内填写参加科研情况
-%     \item 使用 |\makestatement| 添加知识产权与原创性声明
+%     \item 在 |acknowledgements| 环境内填写致谢．
+%     \item 在 |accomplishments| 环境内填写参加科研情况．
+%     \item 使用 |\makestatement| 添加知识产权与原创性声明．
 % \end{itemize}
 %
 %    \begin{macrocode}

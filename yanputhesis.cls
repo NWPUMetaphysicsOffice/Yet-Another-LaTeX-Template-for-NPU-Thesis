@@ -138,7 +138,7 @@
     \hb@xt@ #1{\hss#2\hss}}\hspace{3pt}}                    %
 \let\coverunderline\dlmu@underline                          %
 %%-----------------------------------------------------------------------------%
-\RequirePackage{layouts}                                    % 文字分栏排版
+\RequirePackage{layouts}                                    % 页面具体尺寸信息
 %%-----------------------------------------------------------------------------%
 \RequirePackage[sf]{titlesec}                               % 章节标题格式
 \RequirePackage{titletoc}                                   % 目录格式
@@ -262,6 +262,36 @@
 \RequirePackage{algpseudocode}                              % 伪代码
 %%-----------------------------------------------------------------------------%
 \RequirePackage{appendix}                                   % 添加附录功能
+%%-----------------------------------------------------------------------------%
+\RequirePackage{nomencl}                                    % 添加符号表功能
+\RequirePackage{multicol}                                   % 页面具体尺寸信息
+\makenomenclature                                           %
+\@ifundefined{chapter}
+  {\def\wilh@nomsection{section}}
+  {\def\wilh@nomsection{chapter}}
+
+\def\thenomenclature{%
+  % \newlength{\npu@columnsep@save}
+  % \setlength{\npu@columnsep@save}{\columnsep}
+  % \setlength{\columnsep}{20pt}
+  % \begin{multicols}{2}[%
+      \csname\wilh@nomsection\endcsname*{\nomname}
+      \if@intoc\addcontentsline{toc}{\wilh@nomsection}{\nomname}\fi
+      \nompreamble % \raggedcolumns
+  % ]
+  \list{}{%
+    \labelsep=15pt
+    \labelwidth\nom@tempdim
+    \leftmargin\labelwidth
+    \advance\leftmargin\labelsep
+    \itemsep\nomitemsep
+    \let\makelabel\nomlabel}%
+}
+\def\endthenomenclature{%
+  \endlist
+  % \end{multicols}
+  % \setlength{\columnsep}{\npu@columnsep@save}
+  \nompostamble}
 %%=============================================================================%
 %%=============================================================================%
 %% 引用设置及本地化处理
@@ -280,6 +310,7 @@
     \renewcommand{\proofname}{证明}                         %
     \renewcommand{\lstlistingname}{代码片段}                %
     \newcommand{\lstlistingautorefname}{代码片段}           %
+    \renewcommand{\nomname}{符号表}                         %
 \else                                                       % 英文引用提示文字
     \renewcommand{\figureautorefname}{Fig.}                 %
     \renewcommand{\tableautorefname}{Table}                 %
@@ -287,6 +318,7 @@
     \def\equationautorefname#1#2\null{Eq.#1(#2\null)}       %
     \renewcommand{\lstlistingname}{Code Snippet}            %
     \newcommand{\lstlistingautorefname}{Code Snippet}       %
+    \renewcommand{\nomname}{Symblos}                        %
 \fi                                                         %
 \if@npu@lang@chs                                            % 定制中文定理环境
     \newtheorem{theorem}{定理}[chapter]                     %

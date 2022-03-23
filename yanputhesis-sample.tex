@@ -22,6 +22,7 @@
 %%-----------------------------------------------------------------------------%
 \usepackage{blindtext}                                      % 生成无意义文本
 \usepackage{metalogo}                                       % 软件标志
+\usepackage{amsmath}                                        % 基础数学库
 %%=============================================================================%
 %% 参考文献（也可以是独立文件）
 %%-----------------------------------------------------------------------------%
@@ -136,8 +137,9 @@
 \end{engabstract}                                           % 英文摘要结束
 %%-----------------------------------------------------------------------------%
 \tableofcontents                                            % 目录
-\listoffigures                                              % 图目录（学校并未要求）
-\listoftables                                               % 表目录（学校并未要求）
+\listoffigures                                              % 图目录（学校未做要求）
+\listoftables                                               % 表目录（学校未做要求）
+\printnomenclature                                          % 符号表（学校未做要求）
 %%-----------------------------------------------------------------------------%
 \mainmatter
 \sDefault
@@ -308,12 +310,16 @@ int main()
 
 这是一份附录，请放置一些独立的证明、源代码、或其他辅助资料．
 
+\nomenclature{$r$}{圆（或球）的半径}
+\nomenclature{$C$}{圆的周长}
+\nomenclature{$S$}{圆的面积}
+
 \begin{equation}
     C = 2 \pi r
 \end{equation}
 
 \begin{equation}
-    S = 4 \pi r^2
+    S = \pi r^2
 \end{equation}
 
 \cleardoublepage
@@ -322,12 +328,15 @@ int main()
 
 这是另一份附录，请放置一些独立的证明、源代码、或其他辅助资料．
 
+\nomenclature{$S_{\text{sphere}}$}{球的表面积}
+\nomenclature{$V_{\text{sphere}}$}{球的体积}
+
 \begin{equation}
-    S = \pi r^2
+    S_{\text{sphere}} = 4 \pi r^2
 \end{equation}
 
 \begin{equation}
-    V = \frac43 \pi r^3
+    V_{\text{sphere}} = \frac43 \pi r^3
 \end{equation}
 
 \cleardoublepage
@@ -341,9 +350,9 @@ int main()
 \end{acknowledgements}                                      % 致谢结束
 %%-----------------------------------------------------------------------------%
 \begin{accomplishments}                                     % 参加科研情况开始
-    [1] Shen S, Yang Z, Han F, et al．Peridynamic modeling with energy-based surface
-    correction for fracture simulation of random porous materials[J]．Theoretical
-    and Applied Fracture Mechanics, 2021, 114: 102987．
+    [1] Shen S, Yang Z, Han F, et al. Peridynamic modeling with energy-based surface
+    correction for fracture simulation of random porous materials[J]. Theoretical
+    and Applied Fracture Mechanics, 2021, 114: 102987.
 \end{accomplishments}                                       % 参加科研情况结束
 %%-----------------------------------------------------------------------------%
 \makestatement                                              % 知识产权与原创性声明

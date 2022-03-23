@@ -12,8 +12,8 @@ samplebib: close wipesample clean texsamplebib opensample
 
 makecls: $(MAIN).dtx
 	$(TEX) $<
-	makeindex -s gglo.ist -o $(MAIN).gls $(MAIN).glo
-	makeindex -s gind.ist -o $(MAIN).ind $(MAIN).idx
+	$(MKI) -s gglo.ist -o $(MAIN).gls $(MAIN).glo
+	$(MKI) -s gind.ist -o $(MAIN).ind $(MAIN).idx
 	$(TEX) $<
 	$(TEX) $<
 
@@ -40,11 +40,13 @@ endif
 
 texsample: $(MAIN)-sample.tex
 	$(TEX) $(TEXARGS) $<
+	$(MKI) $(MAIN)-sample.nlo -s nomencl.ist -o $(MAIN)-sample.nls
 	$(TEX) $(TEXARGS) $<
 
 texsamplebib: $(MAIN)-sample.tex
 	$(TEX) $(TEXARGS) $<
 	$(BIB) $(MAIN)-sample.aux
+	$(MKI) $(MAIN)-sample.nlo -s nomencl.ist -o $(MAIN)-sample.nls
 	$(TEX) $(TEXARGS) $<
 	$(TEX) $(TEXARGS) $<
 
@@ -60,7 +62,7 @@ close:
 clean:
 	$(RM) *.gls *.glo *.ind *.idx
 	$(RM) *.ilg *.aux *.toc *.aux
-	$(RM) *.hd *.out *.thm *.gz
+	$(RM) *.hd *.out *.thm *.gz *.nlo *.nls
 	$(RM) *.log *.lof *.lot *.bbl *.blg
 
 wipe:
