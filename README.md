@@ -78,31 +78,30 @@
     * `clean`：删除 `*.aux` 和其他缓存文件；
     * `wipe[sample]`：删除输出的 pdf 文件；
   * 对于 Linux 玩家而言，可参考上述功能，并在此 `makefile` 基础上稍作修改即可使用。
-* **预创建文件**
-  * 以下文件按照实际论文中出现顺序排序
+* **成品预览**
+  * 以下命令或环境按照实际论文中出现顺序排序
+  * 封皮页及标题页 `\maketitle`
+  * 中文摘要及关键字 `\begin{abstract} ... \begin{keywords} ... \end{keywords} \end{abstract}`
+  * 英文摘要及关键字 `\begin{engabstract} ... \begin{engkeywords} ... \end{engkeywords} \end{engabstract}`
+  * 参考文献 `\bibliography{reference}`
+  * 附录 `\appendix \section{附录} ...`
+  * 致谢 `\begin{acknowledgements} ... \end{acknowledgements}`
+  * 发表的学术论文和参加科研情况 `\begin{accomplishments} ... \end{accomplishments}`
+  * 原创性声明 `\makestatement`
 
-  |       |                    展示                     |                       展示                        |
-  | :---: | :-----------------------------------------: | :-----------------------------------------------: |
-  | 预览  |     ![coverpage](preview/coverpage.png)     |    ![frontpage_chs](preview/frontpage_chs.png)    |
-  | 说明  |              封面页（外封面）               |            中文标题页（题名页/内封面）            |
-  | 目录  |                `frontmatter`                |                   `frontmatter`                   |
-  | 文件  |               `coverpage.tex`               |                `frontpage_chs.tex`                |
-  | 预览  | ![frontpage_eng](preview/frontpage_eng.png) |     ![abstract_chs](preview/abstract_chs.png)     |
-  | 说明  |                 英文标题页                  |                     中文摘要                      |
-  | 目录  |                `frontmatter`                |                   `frontmatter`                   |
-  | 文件  |             `frontpage_eng.tex`             |                `abstract_chs.tex`                 |
-  | 预览  |  ![abstract_eng](preview/abstract_eng.png)  |       ![references](preview/references.png)       |
-  | 说明  |                  英文摘要                   |                     参考文献                      |
-  | 目录  |                `frontmatter`                |                   `references`                    |
-  | 文件  |             `abstract_eng.tex`              |                  `reference.bib`                  |
-  | 预览  |      ![appendix](preview/appendix.png)      | ![acknowledgements](preview/acknowledgements.png) |
-  | 说明  |                    附录                     |                       致谢                        |
-  | 目录  |                `backmatter`                 |                   `backmatter`                    |
-  | 文件  |               `appendix.tex`                |              `acknowledgements.tex`               |
-  | 预览  |        ![mywork](preview/mywork.png)        |        ![statement](preview/statement.png)        |
-  | 说明  |        发表的学术论文和参加科研情况         |                    原创性声明                     |
-  | 目录  |                `backmatter`                 |                   `backmatter`                    |
-  | 文件  |                `mywork.tex`                 |                  `statement.tex`                  |
+  |       |                      展示                       |                       展示                        |
+  | :---: | :---------------------------------------------: | :-----------------------------------------------: |
+  | 预览  |       ![coverpage](preview/coverpage.png)       |    ![frontpage_chs](preview/frontpage_chs.png)    |
+  | 说明  |                封面页（外封面）                 |            中文标题页（题名页/内封面）            |
+  | 预览  |   ![frontpage_eng](preview/frontpage_eng.png)   |     ![abstract_chs](preview/abstract_chs.png)     |
+  | 说明  |                   英文标题页                    |                     中文摘要                      |
+  | 预览  |    ![abstract_eng](preview/abstract_eng.png)    |       ![references](preview/references.png)       |
+  | 说明  |                    英文摘要                     |                     参考文献                      |
+  | 预览  |        ![appendix](preview/appendix.png)        | ![acknowledgements](preview/acknowledgements.png) |
+  | 说明  |                      附录                       |                       致谢                        |
+  | 预览  | ![accomplishments](preview/accomplishments.png) |        ![statement](preview/statement.png)        |
+  | 说明  |          发表的学术论文和参加科研情况           |                    原创性声明                     |
+
 * **格式符说明**
   * 字体大小（size）的控制命令统一前缀为 `s`
   * 字体格式（font）的控制命令统一前缀为 `f`
