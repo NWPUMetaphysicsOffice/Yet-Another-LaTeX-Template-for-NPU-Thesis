@@ -3,7 +3,7 @@
 ![Poster](poster.png)
 
 ![Status](https://img.shields.io/badge/status-complete-brightgreen.svg)
-![Version](https://img.shields.io/badge/version-v1.6.0.0214-674EA7.svg)
+![Version](https://img.shields.io/badge/version-v1.7.0.1031-674EA7.svg)
 [![License](https://img.shields.io/badge/license-GNU_General_Public_License_v3.0-blue.svg)](LICENSE)
 
 ![Support-PhD--Thesis](https://img.shields.io/badge/Support-PhD--Thesis-D11A2D.svg)
@@ -26,11 +26,33 @@
 4. 如有必要，修改 `makefile` 文件的 `MAIN` 选项为自己 `tex` 文档的文件名
 5. *make samplebib & Enjoy*
 
+## 基本信息录入
+
+```tex
+%%=============================================================================%
+%% 基本信息录入
+%%-----------------------------------------------------------------------------%
+\title{基于 LaTeX 排版的 \\ 西北工业大学论文模板}{          % 中英文标题
+    Yet Another Thesis Template of \\ Northwestern Polytechnical University
+}                                                           % 请自行断行
+\author{张三丰}{Sanfeng Zhang}                              % 姓名
+\date{2022年6月}{Jun 2022}                                  % 答辩日期
+\school{数学与统计学院}{School of Mathematics and Statistics}% 学院
+% 专业 博士请使用 Philosophy in XXXX，硕士只写 XXXX 即可
+\major{数学}{Philosophy in Mathematics}                     % 专业
+\advisor{李四海}{Sihai Li}                                  % 导师
+\studentnumber{2016123456}                                  % 学号
+\funding{本研究得到玄学基金（编号23336666）资助．}{         % 基金资助
+    The present work is supported by Funding of Metaphysics %
+    (Project No：23336666).}                                %
+%%=============================================================================%
+```
+
 ## 注意事项以及常见问题
 
 * **博士学位论文 or 硕士学位论文？**
   * 本模版默认为博士学位论文，并且兼容硕士学位论文，但是不兼容本科毕业设计论文（未来计划兼容）。
-  * 硕士如需使用，请使用编辑器搜索 `degree=phd` 标志，并修改 `phd` 文本为 `mst` 即可。
+  * 硕士如需使用，请使用编辑器搜索 `degree=phd` 标志，并修改 `phd` 文本为 `master` 即可。
   * 本科毕业设计论文请直接使用 [polossk/LaTeX-Template-For-NPU-Thesis](https://github.com/polossk/LaTeX-Template-For-NPU-Thesis) 模板，使用方式和本模板类似，不再赘述。
 * **字体问题**
   * 本模板使用的是 **Windows** 系统的自带字体（宋体、黑体、楷体、仿宋、Times New Roman、Consolas），Windows 环境下目前能保证字体的指向正确。

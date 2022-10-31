@@ -15,7 +15,7 @@
 %% 2005/12/01 or later.
 \NeedsTeXFormat{LaTeX2e}[2005/12/01]
 \ProvidesClass{yanputhesis}
-    [2022/02/18 v1.6.0 Yet Another NPU Thesis Template]
+    [2022/10/31 v1.7.0 Yet Another NPU Thesis Template]
 %%=============================================================================%
 %% 文档选项和基础文档类型控制
 %%-----------------------------------------------------------------------------%
@@ -84,7 +84,7 @@
     \newcommand\defaultSog{Adobe Song Std}                  % 宋体, 用于正文
     \newcommand\defaultHei{Adobe Heiti Std}                 % 黑体, 用于标题
     \newcommand\defaultKai{Adobe Kaiti Std}                 % 楷体, 一般用于强调
-    \newcommand\defaultFag{Adobe FangSong Std}              % 仿宋, 一般用于强调
+    \newcommand\defaultFag{Adobe Fangsong Std}              % 仿宋, 一般用于强调
 \else                                                       % 使用系统自带字体
     \ifwindows                                              % Windows 环境
         \newcommand\defaultSog{SimSun}                      % 宋体, 用于正文
@@ -168,7 +168,7 @@
 %%-----------------------------------------------------------------------------%
 \RequirePackage{fancyhdr}                                   % 页眉设置
 \RequirePackage{fancyref}                                   %
-\addtolength{\topmargin}{0.5cm}                             %
+\addtolength{\topmargin}{0.25cm}                            % 打印裁剪余量
 \newcommand{\npu@headrule}{                                 %
     \rlap{\rule[.7\baselineskip]{\headwidth}{3.4pt}}        %
     \vspace{-1.07\baselineskip}                             %
@@ -193,7 +193,8 @@
 \fi                                                         %
 %%-----------------------------------------------------------------------------%
 \RequirePackage[numbers, sort&compress]{natbib}             % 参考文献
-\newcommand{\ucite}[1]{$^{\mbox{\scriptsize\cite{#1}}}$}    % 上标引用形式
+\let\oldcite\cite                                           % 参考文献
+\renewcommand{\cite}[1]{\textsuperscript{\oldcite{#1}}}     % 上标引用形式
 %%-----------------------------------------------------------------------------%
 \RequirePackage{enumerate}                                  % 编号列表
 \RequirePackage{enumitem}                                   % 列表格式控制
@@ -216,8 +217,8 @@
 \DeclareCaptionFont{cWuhao}{\sWuhao}                        % 图表标题为五号
 \captionsetup[table]{labelfont=cWuhao,textfont=cWuhao}      %
 \captionsetup[figure]{labelfont=cWuhao,textfont=cWuhao}     %
-\captionsetup[subtable]{labelformat=simple}                 %
-\captionsetup[subfigure]{labelformat=simple}                %
+\captionsetup[subtable]{labelformat=simple, aboveskip=0pt}  %
+\captionsetup[subfigure]{labelformat=simple, aboveskip=0pt} %
 \let\oldtabular\tabular                                     % 表格内容为五号
 \renewcommand{\tabular}{\sWuhao\oldtabular}                 %
 \let\oldtabularx\tabularx                                   %
@@ -225,14 +226,39 @@
 \newcolumntype{C}{>{\centering\arraybackslash}X}            % 等宽居中
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}          % 等宽左对齐
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}           % 等宽右对齐
+\newcolumntype{Q}[1]{>{\raggedleft\let\newline\\%           % 指定宽度右对齐
+    \arraybackslash\hspace{0pt}}p{#1}}                      %
+\newcolumntype{O}[1]{>{\centering\let\newline\\%            % 指定宽度居中
+    \arraybackslash\hspace{0pt}}p{#1}}                      %
+\newcolumntype{P}[1]{>{\raggedright\let\newline\\%          % 指定宽度左对齐
+    \arraybackslash\hspace{0pt}}p{#1}}                      %
 \renewcommand{\arraystretch}{1.4}                           % 表格行高为 1.4 倍
 %%-----------------------------------------------------------------------------%
-\RequirePackage[amsthm, thmmarks]{ntheorem}                 % 定理环境格式
-\renewcommand{\qedsymbol}{$\blacksquare$}                   % 证毕符号 囗
-\renewenvironment{proof}[1][\proofname]{\par\pushQED{\qed}  % 证明环境
-    \normalfont\topsep{0pt}\partopsep{0pt}\trivlist\item[   %
-        \hspace{5\labelsep}\strong #1\@addpunct{:}          %
-    ]\ignorespaces}{\popQED\endtrivlist\@endpefalse}        %
+\RequirePackage[thmmarks]{ntheorem}                         % 定理环境格式
+\theorembodyfont{\normalfont\itshape}                       % 主体文字格式
+\theoremseparator{\quad}                                    % 标题与主体间隔
+\setlength\theorempreskipamount{0pt}                        % 节前空白大小
+\setlength\theorempostskipamount{0pt}                       % 节后空白大小
+{\theoremsymbol{\ensuremath{\square}}                       % 证明环境 囗
+\if@npu@lang@chs\newtheorem*{proof}{证明}\else\newtheorem*{proof}{Proof}\fi}
+\newcommand{\qedinEquation}{{\rlap{$\qquad\square$}}}       % 公式中添加证毕符号
+\if@npu@lang@chs                                            % 定制中文定理环境
+    \newtheorem{theorem}{定理}[chapter]                     %
+    \newtheorem{axiom}[theorem]{公理}                       %
+    \newtheorem{corollary}[theorem]{推论}                   %
+    \newtheorem{lemma}[theorem]{引理}                       %
+    \newtheorem{definition}[theorem]{定义}                  %
+    \newtheorem{example}[theorem]{例}                       %
+    \newtheorem{proposition}[theorem]{命题}                 %
+\else                                                       % 定制英文定理环境
+    \newtheorem{theorem}{Theorem}[chapter]                  %
+    \newtheorem{axiom}[theorem]{Axiom}                      %
+    \newtheorem{corollary}[theorem]{Corollary}              %
+    \newtheorem{lemma}[theorem]{Lemma}                      %
+    \newtheorem{definition}[theorem]{Definition}            %
+    \newtheorem{example}[theorem]{Example}                  %
+    \newtheorem{proposition}[theorem]{Proposition}          %
+\fi                                                         %
 %%-----------------------------------------------------------------------------%
 \RequirePackage{listings}                                   % 添加插入代码控制
 \lstset{                                                    % 代码样式
@@ -265,33 +291,24 @@
 %%-----------------------------------------------------------------------------%
 \RequirePackage{nomencl}                                    % 添加符号表功能
 \RequirePackage{multicol}                                   % 页面具体尺寸信息
-\makenomenclature                                           %
-\@ifundefined{chapter}
-  {\def\wilh@nomsection{section}}
-  {\def\wilh@nomsection{chapter}}
-
+\makenomenclature                                           % 单栏符号表
+\@ifundefined{chapter}{\def\npu@nomsec{section}}{\def\npu@nomsec{chapter}}
 \def\thenomenclature{%
-  % \newlength{\npu@columnsep@save}
-  % \setlength{\npu@columnsep@save}{\columnsep}
-  % \setlength{\columnsep}{20pt}
-  % \begin{multicols}{2}[%
-      \csname\wilh@nomsection\endcsname*{\nomname}
-      \if@intoc\addcontentsline{toc}{\wilh@nomsection}{\nomname}\fi
-      \nompreamble % \raggedcolumns
-  % ]
-  \list{}{%
-    \labelsep=15pt
-    \labelwidth\nom@tempdim
-    \leftmargin\labelwidth
-    \advance\leftmargin\labelsep
-    \itemsep\nomitemsep
-    \let\makelabel\nomlabel}%
+    % \newlength{\npu@columnsep@save}
+    % \setlength{\npu@columnsep@save}{\columnsep}
+    % \setlength{\columnsep}{20pt}
+    % \begin{multicols}{2}[%
+        \csname\npu@nomsec\endcsname*{\nomname}
+        \if@intoc\addcontentsline{toc}{\npu@nomsec}{\nomname}\fi
+        \nompreamble % \raggedcolumns
+    % ]
+    \list{}{\labelsep=15pt\labelwidth\nom@tempdim\leftmargin\labelwidth\advance
+        \leftmargin\labelsep\itemsep\nomitemsep\let\makelabel\nomlabel}%
 }
-\def\endthenomenclature{%
-  \endlist
-  % \end{multicols}
-  % \setlength{\columnsep}{\npu@columnsep@save}
-  \nompostamble}
+\def\endthenomenclature{\endlist
+    % \end{multicols}
+    % \setlength{\columnsep}{\npu@columnsep@save}
+    \nompostamble}
 %%=============================================================================%
 %%=============================================================================%
 %% 引用设置及本地化处理
@@ -307,7 +324,15 @@
     \renewcommand{\tableautorefname}{表}                    %
     \renewcommand{\appendixautorefname}{附录}               %
     \def\equationautorefname#1#2\null{式#1(#2\null)}        %
-    \renewcommand{\proofname}{证明}                         %
+    \renewcommand{\theoremautorefname}{定理}                %
+    \newcommand{\axiomautorefname}{公理}                    %
+    \newcommand{\corollaryautorefname}{推论}                %
+    \newcommand{\lemmaautorefname}{引理}                    %
+    \newcommand{\definitionautorefname}{定义}               %
+    \newcommand{\exampleautorefname}{例}                    %
+    \newcommand{\propositionautorefname}{命题}              %
+    \newcommand{\algorithmname}{算法}                       %
+    \newcommand{\algorithmautorefname}{算法}                %
     \renewcommand{\lstlistingname}{代码片段}                %
     \newcommand{\lstlistingautorefname}{代码片段}           %
     \renewcommand{\nomname}{符号表}                         %
@@ -318,30 +343,14 @@
     \def\equationautorefname#1#2\null{Eq.#1(#2\null)}       %
     \renewcommand{\lstlistingname}{Code Snippet}            %
     \newcommand{\lstlistingautorefname}{Code Snippet}       %
-    \renewcommand{\nomname}{Symblos}                        %
-\fi                                                         %
-\if@npu@lang@chs                                            % 定制中文定理环境
-    \newtheorem{theorem}{定理}[chapter]                     %
-    \newtheorem{axiom}[theorem]{公理}                       %
-    \newtheorem{corollary}[theorem]{推论}                   %
-    \newtheorem{lemma}[theorem]{引理}                       %
-    \newtheorem{definition}[theorem]{定义}                  %
-    \newtheorem{example}[theorem]{例}                       %
-    \newtheorem{proposition}[theorem]{命题}                 %
-\else                                                       % 定制英文定理环境
-    \newtheorem{theorem}{Theorem}[chapter]                  %
-    \newtheorem{axiom}[theorem]{Axiom}                      %
-    \newtheorem{corollary}[theorem]{Corollary}              %
-    \newtheorem{lemma}[theorem]{Lemma}                      %
-    \newtheorem{definition}[theorem]{Definition}            %
-    \newtheorem{example}[theorem]{Example}                  %
-    \newtheorem{proposition}[theorem]{Proposition}          %
+    \renewcommand{\nomname}{Symbols}                        %
 \fi                                                         %
 %%-----------------------------------------------------------------------------%
 \renewcommand{\chaptername}{\thechapter~~}                  % 章节名
 \renewcommand{\thefigure}{\thechapter-\arabic{figure}}      % 图编号格式
 \renewcommand{\thesubfigure}{(\alph{subfigure})}            % 子图编号格式
 \renewcommand{\thetable}{\thechapter-\arabic{table}}        % 图编号格式
+\renewcommand{\thealgorithm}{\thechapter.\arabic{algorithm}}% 算法编号格式
 \renewcommand{\theequation}{\thechapter-\arabic{equation}}  % 公式编号格式
 \renewcommand{\thetheorem}{\thechapter.\arabic{theorem}}    % 定理编号格式
 \renewcommand{\theaxiom}{\thechapter.\arabic{axiom}}        % 公理编号格式
@@ -351,7 +360,7 @@
 \renewcommand{\theexample}{\thechapter.\arabic{example}}    % 例子编号格式
 %%-----------------------------------------------------------------------------%
 \newcommand{\nwpu@chs@schoolname}{西北工业大学}             % 文档字符串设置
-\newcommand{\nwpu@eng@schoolname}{Northwestern Polytechnical University}                  %
+\newcommand{\nwpu@eng@schoolname}{Northwestern Polytechnical University}
 \if@npu@type@phd                                            % 博士学位名
     \newcommand{\nwpu@chs@degree}{博士}                     %
     \newcommand{\nwpu@eng@degree}{Doctor}                   %
@@ -414,7 +423,7 @@
 \newcommand{\nwpu@eng@advisor}{\chs@space}                  % 导师（英文）
 \newcommand{\nwpu@eng@funding}{\chs@space}                  % 基金赞助（英文）
 %%-----------------------------------------------------------------------------%
-\newcommand{\nwpu@uid}{2000123456}                          % 学号
+\newcommand{\nwpu@uid}{2000123456}                          % default 学号
 \newcommand{\nwpu@funding}{\chs@space}                      % 基金资助
 %%-----------------------------------------------------------------------------%
 \renewcommand{\title}[2]{                                   % 设置题目
@@ -650,6 +659,9 @@
 \let\old@bibliography\bibliography                          % 保护原有附录环境
 \renewcommand{\bibliography}[1]{                            %
     \phantomsection \addcontentsline{toc}{chapter}{参考文献}%
+    \renewcommand{\baselinestretch}{1.0}                    %
+    \fontsize{12pt}{13pt}\selectfont                        %
+    \setlength{\bibsep}{0.5ex}                              %
     \sDefault \bibliographystyle{nputhesis}                 % 参考文献格式
     \old@bibliography{#1} \cleardoublepage                  % 参考文献 bib 文件
 }                                                           %

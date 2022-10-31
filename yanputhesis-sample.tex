@@ -6,7 +6,7 @@
 %%
 %% yanputhesis.dtx  (with options: `sample')
 %% Copyright (C) 2022 by Shangkun Shen
-%% 
+%%
 %% It may be distributed and/or modified under the conditions of the LaTeX
 %% Project Public License, either version 1.3b of this license or (at your
 %% option) any later version. The latest version of this license is in
@@ -22,6 +22,7 @@
 %%-----------------------------------------------------------------------------%
 \usepackage{blindtext}                                      % 生成无意义文本
 \usepackage{metalogo}                                       % 软件标志
+\usepackage[binary-units=true]{siunitx}                     % 物理量单位
 \usepackage{amsmath}                                        % 基础数学库
 %%=============================================================================%
 %% 参考文献（也可以是独立文件）
@@ -104,7 +105,7 @@
 \author{张三丰}{Sanfeng Zhang}                              % 姓名
 \date{2022年6月}{Jun 2022}                                  % 答辩日期
 \school{数学与统计学院}{School of Mathematics and Statistics}% 学院
-\major{数学}{Philosophy in Mathematics}                     % 专业 博士请添加 Ph
+\major{数学}{Philosophy in Mathematics}                     % 专业 博士请使用 Philosophy in XXXX，硕士只写 XXXX 即可
 \advisor{李四海}{Sihai Li}                                  % 导师
 \studentnumber{2016123456}                                  % 学号
 \funding{本研究得到玄学基金（编号23336666）资助．}{         % 基金资助
@@ -130,9 +131,9 @@
 \end{abstract}                                              % 中文摘要结束
 %%-----------------------------------------------------------------------------%
 \begin{engabstract}                                         % 英文摘要开始
-    \noindent \blindtext                                        %
+    \noindent \blindtext                                    %
     \begin{engkeywords}                                     % 英文关键词开始
-        thesis, template, \LaTeX                                %
+        thesis, template, \LaTeX                            %
     \end{engkeywords}                                       % 英文关键词结束
 \end{engabstract}                                           % 英文摘要结束
 %%-----------------------------------------------------------------------------%
@@ -172,18 +173,18 @@ $$a_0+a_1+a_2=\sqrt{233}$$
 \section{参考文献的引用}
 
 \LaTeX{} 中要求参考文献使用 \lstinline`\cite` 进行参考引用，若论文要求中说明需在
-文字的右上角注明引用，请使用预定义好的命令 \lstinline`\ucite` 进行参考引用．举个
+文字的右上角注明引用，请使用命令 \lstinline`\cite` 进行参考引用．举个
 不恰当的例子，比如本论文模板的原版
-`LaTeX-Template-For-NPU-Thesis'\ucite{NWPUThesisLaTeXTemplate} 要求务必声明引用,
-同时预配置了插件 `math-symbols' \ucite{MathSymbolsinLaTeXbypolossk}．对组件的引
+`LaTeX-Template-For-NPU-Thesis'\cite{NWPUThesisLaTeXTemplate} 要求务必声明引用,
+同时预配置了插件 `math-symbols' \cite{MathSymbolsinLaTeXbypolossk}．对组件的引
 用是每一名科学工作者的基本素养（一本正经）．对于需要引用但是并不需要明确指明引用
 位置的文献，请使用 \lstinline`\nocite` 命令．
 
 在此同时感谢真正的 dalao 高德纳开发了全世界版本号最接近 $\pi$ 的软件
-\LaTeX \ucite{knuth1986the}\nocite{lamport1989latex}．
+\LaTeX \cite{knuth1986the}\nocite{lamport1989latex}．
 
-测试额外的引用文献 \ucite{szegedy2015going, shen2021peridynamic,
-    chen2014maiyuan}．其中最后一篇为中文文献．
+测试引用文献 \cite{szegedy2015going, shen2021peridynamic, chen2014maiyuan}．其中
+最后一篇为中文文献．
 
 \section{标点符号的选择}
 
@@ -229,6 +230,19 @@ $$a_0+a_1+a_2=\sqrt{233}$$
     \end{tabularx}
 \end{table}
 
+\begin{table}[!h]
+    \centering
+    \caption{指定宽度与对齐方式}
+    \label{my-label-2}
+    \begin{tabularx}{\textwidth}{|P{2cm}|O{3cm}|Q{4cm}|C}
+        \toprule
+        \SI{2}{\centi\metre} & \SI{3}{\centi\metre} & \SI{4}{\centi\metre} & Other \\ \midrule
+        1                    & 6                    & 7                    & 1     \\
+        2                    & 7                    & 9                    & 2     \\
+        3                    & 8                    & 11                   & 3     \\ \bottomrule
+    \end{tabularx}
+\end{table}
+
 \section{插图}
 
 请直接使用 \lstinline`figure` 环境，内部使用 \lstinline`includegraphics` 即可．
@@ -239,7 +253,7 @@ $$a_0+a_1+a_2=\sqrt{233}$$
 这是两幅插图．在这其中\autoref{subfig:example2-subfig1} 是第一幅子图，
 \autoref{subfig:example2-subfig2} 是第二幅子图．
 
-\begin{figure}[ht]
+\begin{figure}[htb]
     \centering
     \includegraphics[scale=0.2]{poster.png}
     \caption{
@@ -248,7 +262,7 @@ $$a_0+a_1+a_2=\sqrt{233}$$
     \label{fig:example}
 \end{figure}
 
-\begin{figure}[htp]
+\begin{figure}[htb]
     \centering
     \begin{minipage}[t]{0.96\textwidth}
         \centering
@@ -350,9 +364,7 @@ int main()
 \end{acknowledgements}                                      % 致谢结束
 %%-----------------------------------------------------------------------------%
 \begin{accomplishments}                                     % 参加科研情况开始
-    [1] Shen S, Yang Z, Han F, et al. Peridynamic modeling with energy-based surface
-    correction for fracture simulation of random porous materials[J]. Theoretical
-    and Applied Fracture Mechanics, 2021, 114: 102987.
+    [1] ...
 \end{accomplishments}                                       % 参加科研情况结束
 %%-----------------------------------------------------------------------------%
 \makestatement                                              % 知识产权与原创性声明
@@ -362,11 +374,11 @@ int main()
 \end{document}
 %%=============================================================================%
 
-%% 
+%%
 %% This work consists of the file  yanputhesis.dtx
 %% and the derived files           yanputhesis.ins,
 %%                                 yanputhesis.pdf,
 %%                                 yanputhesis.cls.
-%% 
+%%
 %%
 %% End of file `yanputhesis-sample.tex'.

@@ -90,7 +90,7 @@ and the derived files           yanputhesis.ins,
 %<class>\NeedsTeXFormat{LaTeX2e}[2005/12/01]
 %<class>\ProvidesClass{yanputhesis}
 %<*class>
-    [2022/02/18 v1.6.0 Yet Another NPU Thesis Template]
+    [2022/10/31 v1.7.0 Yet Another NPU Thesis Template]
 %</class>
 %
 %<*driver>
@@ -98,13 +98,17 @@ and the derived files           yanputhesis.ins,
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
+\newcommand{\markdtxchanges}[3]{{\scriptsize{\qquad\%{#1}({#2})：{#3}}}\changes{#1}{#2}{#3}}
 \begin{document}
     \DocInput{yanputhesis.dtx}
+    \IndexLayout
+    \PrintChanges
     \PrintIndex
 \end{document}
 %</driver>
 % \fi
 %
+% \changes{v1.7.0}{2022/10/31}{Major version, update the format}
 % \changes{v1.6.0}{2022/02/18}{Major version, package into cls file}
 % \changes{v1.5.0}{2020/04/28}{Major version, for Bachelors, Masters, and PhDs}
 % \changes{v1.4.0}{2018/03/15}{Update the format and the example file}
@@ -163,6 +167,7 @@ and the derived files           yanputhesis.ins,
 %%-----------------------------------------------------------------------------%
 \usepackage{blindtext}                                      % 生成无意义文本
 \usepackage{metalogo}                                       % 软件标志
+\usepackage[binary-units=true]{siunitx}                     % 物理量单位
 \usepackage{amsmath}                                        % 基础数学库
 %%=============================================================================%
 %% 参考文献（也可以是独立文件）
@@ -271,9 +276,9 @@ and the derived files           yanputhesis.ins,
 \end{abstract}                                              % 中文摘要结束
 %%-----------------------------------------------------------------------------%
 \begin{engabstract}                                         % 英文摘要开始
-    \noindent \blindtext                                        %
+    \noindent \blindtext                                    %
     \begin{engkeywords}                                     % 英文关键词开始
-        thesis, template, \LaTeX                                %
+        thesis, template, \LaTeX                            %
     \end{engkeywords}                                       % 英文关键词结束
 \end{engabstract}                                           % 英文摘要结束
 %%-----------------------------------------------------------------------------%
@@ -313,18 +318,18 @@ $$a_0+a_1+a_2=\sqrt{233}$$
 \section{参考文献的引用}
 
 \LaTeX{} 中要求参考文献使用 \lstinline`\cite` 进行参考引用，若论文要求中说明需在
-文字的右上角注明引用，请使用预定义好的命令 \lstinline`\ucite` 进行参考引用．举个
+文字的右上角注明引用，请使用命令 \lstinline`\cite` 进行参考引用．举个
 不恰当的例子，比如本论文模板的原版
-`LaTeX-Template-For-NPU-Thesis'\ucite{NWPUThesisLaTeXTemplate} 要求务必声明引用,
-同时预配置了插件 `math-symbols' \ucite{MathSymbolsinLaTeXbypolossk}．对组件的引
+`LaTeX-Template-For-NPU-Thesis'\cite{NWPUThesisLaTeXTemplate} 要求务必声明引用,
+同时预配置了插件 `math-symbols' \cite{MathSymbolsinLaTeXbypolossk}．对组件的引
 用是每一名科学工作者的基本素养（一本正经）．对于需要引用但是并不需要明确指明引用
 位置的文献，请使用 \lstinline`\nocite` 命令．
 
 在此同时感谢真正的 dalao 高德纳开发了全世界版本号最接近 $\pi$ 的软件
-\LaTeX \ucite{knuth1986the}\nocite{lamport1989latex}．
+\LaTeX \cite{knuth1986the}\nocite{lamport1989latex}．
 
-测试额外的引用文献 \ucite{szegedy2015going, shen2021peridynamic,
-    chen2014maiyuan}．其中最后一篇为中文文献．
+测试引用文献 \cite{szegedy2015going, shen2021peridynamic, chen2014maiyuan}．其中
+最后一篇为中文文献．
 
 \section{标点符号的选择}
 
@@ -370,6 +375,19 @@ $$a_0+a_1+a_2=\sqrt{233}$$
     \end{tabularx}
 \end{table}
 
+\begin{table}[!h]
+    \centering
+    \caption{指定宽度与对齐方式}
+    \label{my-label-2}
+    \begin{tabularx}{\textwidth}{|P{2cm}|O{3cm}|Q{4cm}|C}
+        \toprule
+        \SI{2}{\centi\metre} & \SI{3}{\centi\metre} & \SI{4}{\centi\metre} & Other \\ \midrule
+        1                    & 6                    & 7                    & 1     \\
+        2                    & 7                    & 9                    & 2     \\
+        3                    & 8                    & 11                   & 3     \\ \bottomrule
+    \end{tabularx}
+\end{table}
+
 \section{插图}
 
 请直接使用 \lstinline`figure` 环境，内部使用 \lstinline`includegraphics` 即可．
@@ -380,7 +398,7 @@ $$a_0+a_1+a_2=\sqrt{233}$$
 这是两幅插图．在这其中\autoref{subfig:example2-subfig1} 是第一幅子图，
 \autoref{subfig:example2-subfig2} 是第二幅子图．
 
-\begin{figure}[ht]
+\begin{figure}[htb]
     \centering
     \includegraphics[scale=0.2]{poster.png}
     \caption{
@@ -389,7 +407,7 @@ $$a_0+a_1+a_2=\sqrt{233}$$
     \label{fig:example}
 \end{figure}
 
-\begin{figure}[htp]
+\begin{figure}[htb]
     \centering
     \begin{minipage}[t]{0.96\textwidth}
         \centering
@@ -491,9 +509,7 @@ int main()
 \end{acknowledgements}                                      % 致谢结束
 %%-----------------------------------------------------------------------------%
 \begin{accomplishments}                                     % 参加科研情况开始
-    [1] Shen S, Yang Z, Han F, et al. Peridynamic modeling with energy-based surface
-    correction for fracture simulation of random porous materials[J]. Theoretical
-    and Applied Fracture Mechanics, 2021, 114: 102987.
+    [1] ...
 \end{accomplishments}                                       % 参加科研情况结束
 %%-----------------------------------------------------------------------------%
 \makestatement                                              % 知识产权与原创性声明
@@ -633,7 +649,7 @@ int main()
     \newcommand\defaultSog{Adobe Song Std}                  % 宋体, 用于正文
     \newcommand\defaultHei{Adobe Heiti Std}                 % 黑体, 用于标题
     \newcommand\defaultKai{Adobe Kaiti Std}                 % 楷体, 一般用于强调
-    \newcommand\defaultFag{Adobe FangSong Std}              % 仿宋, 一般用于强调
+    \newcommand\defaultFag{Adobe Fangsong Std}              % 仿宋, 一般用于强调
 \else                                                       % 使用系统自带字体
     \ifwindows                                              % Windows 环境
         \newcommand\defaultSog{SimSun}                      % 宋体, 用于正文
@@ -717,7 +733,10 @@ int main()
 %%-----------------------------------------------------------------------------%
 \RequirePackage{fancyhdr}                                   % 页眉设置
 \RequirePackage{fancyref}                                   %
-\addtolength{\topmargin}{0.5cm}                             %
+%    \end{macrocode}
+% \markdtxchanges{v1.7.0}{2022/10/31}{减少打印裁剪余量}
+%    \begin{macrocode}
+\addtolength{\topmargin}{0.25cm}                            % 打印裁剪余量
 \newcommand{\npu@headrule}{                                 %
     \rlap{\rule[.7\baselineskip]{\headwidth}{3.4pt}}        %
     \vspace{-1.07\baselineskip}                             %
@@ -742,7 +761,8 @@ int main()
 \fi                                                         %
 %%-----------------------------------------------------------------------------%
 \RequirePackage[numbers, sort&compress]{natbib}             % 参考文献
-\newcommand{\ucite}[1]{$^{\mbox{\scriptsize\cite{#1}}}$}    % 上标引用形式
+\let\oldcite\cite                                           % 参考文献
+\renewcommand{\cite}[1]{\textsuperscript{\oldcite{#1}}}     % 上标引用形式
 %%-----------------------------------------------------------------------------%
 \RequirePackage{enumerate}                                  % 编号列表
 \RequirePackage{enumitem}                                   % 列表格式控制
@@ -765,8 +785,11 @@ int main()
 \DeclareCaptionFont{cWuhao}{\sWuhao}                        % 图表标题为五号
 \captionsetup[table]{labelfont=cWuhao,textfont=cWuhao}      %
 \captionsetup[figure]{labelfont=cWuhao,textfont=cWuhao}     %
-\captionsetup[subtable]{labelformat=simple}                 %
-\captionsetup[subfigure]{labelformat=simple}                %
+%    \end{macrocode}
+% \markdtxchanges{v1.7.0}{2022/10/31}{更新子图、子表格式}
+%    \begin{macrocode}
+\captionsetup[subtable]{labelformat=simple, aboveskip=0pt}  %
+\captionsetup[subfigure]{labelformat=simple, aboveskip=0pt} %
 \let\oldtabular\tabular                                     % 表格内容为五号
 \renewcommand{\tabular}{\sWuhao\oldtabular}                 %
 \let\oldtabularx\tabularx                                   %
@@ -774,14 +797,45 @@ int main()
 \newcolumntype{C}{>{\centering\arraybackslash}X}            % 等宽居中
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}          % 等宽左对齐
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}           % 等宽右对齐
+%    \end{macrocode}
+% \markdtxchanges{v1.7.0}{2022/10/31}{提供指定宽度的左、右、居中对齐表格栏}
+%    \begin{macrocode}
+\newcolumntype{Q}[1]{>{\raggedleft\let\newline\\%           % 指定宽度右对齐
+    \arraybackslash\hspace{0pt}}p{#1}}                      %
+\newcolumntype{O}[1]{>{\centering\let\newline\\%            % 指定宽度居中
+    \arraybackslash\hspace{0pt}}p{#1}}                      %
+\newcolumntype{P}[1]{>{\raggedright\let\newline\\%          % 指定宽度左对齐
+    \arraybackslash\hspace{0pt}}p{#1}}                      %
 \renewcommand{\arraystretch}{1.4}                           % 表格行高为 1.4 倍
 %%-----------------------------------------------------------------------------%
-\RequirePackage[amsthm, thmmarks]{ntheorem}                 % 定理环境格式
-\renewcommand{\qedsymbol}{$\blacksquare$}                   % 证毕符号 囗
-\renewenvironment{proof}[1][\proofname]{\par\pushQED{\qed}  % 证明环境
-    \normalfont\topsep{0pt}\partopsep{0pt}\trivlist\item[   %
-        \hspace{5\labelsep}\strong #1\@addpunct{:}          %
-    ]\ignorespaces}{\popQED\endtrivlist\@endpefalse}        %
+%    \end{macrocode}
+% \markdtxchanges{v1.7.0}{2022/10/31}{更新定理环境格式以及证毕符号}
+%    \begin{macrocode}
+\RequirePackage[thmmarks]{ntheorem}                         % 定理环境格式
+\theorembodyfont{\normalfont\itshape}                       % 主体文字格式
+\theoremseparator{\quad}                                    % 标题与主体间隔
+\setlength\theorempreskipamount{0pt}                        % 节前空白大小
+\setlength\theorempostskipamount{0pt}                       % 节后空白大小
+{\theoremsymbol{\ensuremath{\square}}                       % 证明环境 囗
+\if@npu@lang@chs\newtheorem*{proof}{证明}\else\newtheorem*{proof}{Proof}\fi}
+\newcommand{\qedinEquation}{{\rlap{$\qquad\square$}}}       % 公式中添加证毕符号
+\if@npu@lang@chs                                            % 定制中文定理环境
+    \newtheorem{theorem}{定理}[chapter]                     %
+    \newtheorem{axiom}[theorem]{公理}                       %
+    \newtheorem{corollary}[theorem]{推论}                   %
+    \newtheorem{lemma}[theorem]{引理}                       %
+    \newtheorem{definition}[theorem]{定义}                  %
+    \newtheorem{example}[theorem]{例}                       %
+    \newtheorem{proposition}[theorem]{命题}                 %
+\else                                                       % 定制英文定理环境
+    \newtheorem{theorem}{Theorem}[chapter]                  %
+    \newtheorem{axiom}[theorem]{Axiom}                      %
+    \newtheorem{corollary}[theorem]{Corollary}              %
+    \newtheorem{lemma}[theorem]{Lemma}                      %
+    \newtheorem{definition}[theorem]{Definition}            %
+    \newtheorem{example}[theorem]{Example}                  %
+    \newtheorem{proposition}[theorem]{Proposition}          %
+\fi                                                         %
 %%-----------------------------------------------------------------------------%
 \RequirePackage{listings}                                   % 添加插入代码控制
 \lstset{                                                    % 代码样式
@@ -812,37 +866,30 @@ int main()
 %%-----------------------------------------------------------------------------%
 \RequirePackage{appendix}                                   % 添加附录功能
 %%-----------------------------------------------------------------------------%
+%    \end{macrocode}
+% \markdtxchanges{v1.7.0}{2022/10/31}{使用单栏符号表}
+%    \begin{macrocode}
 \RequirePackage{nomencl}                                    % 添加符号表功能
 \RequirePackage{multicol}                                   % 页面具体尺寸信息
-\makenomenclature                                           %
-% code come from  @egreg
+\makenomenclature                                           % 单栏符号表
 % https://tex.stackexchange.com/questions/78764/two-column-nomenclature
-\@ifundefined{chapter}
-  {\def\wilh@nomsection{section}}
-  {\def\wilh@nomsection{chapter}}
-
+\@ifundefined{chapter}{\def\npu@nomsec{section}}{\def\npu@nomsec{chapter}}
 \def\thenomenclature{%
-  % \newlength{\npu@columnsep@save}
-  % \setlength{\npu@columnsep@save}{\columnsep}
-  % \setlength{\columnsep}{20pt}
-  % \begin{multicols}{2}[%
-      \csname\wilh@nomsection\endcsname*{\nomname}
-      \if@intoc\addcontentsline{toc}{\wilh@nomsection}{\nomname}\fi
-      \nompreamble % \raggedcolumns
-  % ]
-  \list{}{%
-    \labelsep=15pt
-    \labelwidth\nom@tempdim
-    \leftmargin\labelwidth
-    \advance\leftmargin\labelsep
-    \itemsep\nomitemsep
-    \let\makelabel\nomlabel}%
+    % \newlength{\npu@columnsep@save}
+    % \setlength{\npu@columnsep@save}{\columnsep}
+    % \setlength{\columnsep}{20pt}
+    % \begin{multicols}{2}[%
+        \csname\npu@nomsec\endcsname*{\nomname}
+        \if@intoc\addcontentsline{toc}{\npu@nomsec}{\nomname}\fi
+        \nompreamble % \raggedcolumns
+    % ]
+    \list{}{\labelsep=15pt\labelwidth\nom@tempdim\leftmargin\labelwidth\advance
+        \leftmargin\labelsep\itemsep\nomitemsep\let\makelabel\nomlabel}%
 }
-\def\endthenomenclature{%
-  \endlist
-  % \end{multicols}
-  % \setlength{\columnsep}{\npu@columnsep@save}
-  \nompostamble}
+\def\endthenomenclature{\endlist
+    % \end{multicols}
+    % \setlength{\columnsep}{\npu@columnsep@save}
+    \nompostamble}
 %%=============================================================================%
 %    \end{macrocode}
 %
@@ -870,7 +917,18 @@ int main()
     \renewcommand{\tableautorefname}{表}                    %
     \renewcommand{\appendixautorefname}{附录}               %
     \def\equationautorefname#1#2\null{式#1(#2\null)}        %
-    \renewcommand{\proofname}{证明}                         %
+    \renewcommand{\theoremautorefname}{定理}                %
+    \newcommand{\axiomautorefname}{公理}                    %
+    \newcommand{\corollaryautorefname}{推论}                %
+    \newcommand{\lemmaautorefname}{引理}                    %
+    \newcommand{\definitionautorefname}{定义}               %
+    \newcommand{\exampleautorefname}{例}                    %
+    \newcommand{\propositionautorefname}{命题}              %
+%    \end{macrocode}
+% \markdtxchanges{v1.7.0}{2022/10/31}{补充算法的中文引用提示文字}
+%    \begin{macrocode}
+    \newcommand{\algorithmname}{算法}                       %
+    \newcommand{\algorithmautorefname}{算法}                %
     \renewcommand{\lstlistingname}{代码片段}                %
     \newcommand{\lstlistingautorefname}{代码片段}           %
     \renewcommand{\nomname}{符号表}                         %
@@ -881,30 +939,17 @@ int main()
     \def\equationautorefname#1#2\null{Eq.#1(#2\null)}       %
     \renewcommand{\lstlistingname}{Code Snippet}            %
     \newcommand{\lstlistingautorefname}{Code Snippet}       %
-    \renewcommand{\nomname}{Symblos}                        %
-\fi                                                         %
-\if@npu@lang@chs                                            % 定制中文定理环境
-    \newtheorem{theorem}{定理}[chapter]                     %
-    \newtheorem{axiom}[theorem]{公理}                       %
-    \newtheorem{corollary}[theorem]{推论}                   %
-    \newtheorem{lemma}[theorem]{引理}                       %
-    \newtheorem{definition}[theorem]{定义}                  %
-    \newtheorem{example}[theorem]{例}                       %
-    \newtheorem{proposition}[theorem]{命题}                 %
-\else                                                       % 定制英文定理环境
-    \newtheorem{theorem}{Theorem}[chapter]                  %
-    \newtheorem{axiom}[theorem]{Axiom}                      %
-    \newtheorem{corollary}[theorem]{Corollary}              %
-    \newtheorem{lemma}[theorem]{Lemma}                      %
-    \newtheorem{definition}[theorem]{Definition}            %
-    \newtheorem{example}[theorem]{Example}                  %
-    \newtheorem{proposition}[theorem]{Proposition}          %
+    \renewcommand{\nomname}{Symbols}                        %
 \fi                                                         %
 %%-----------------------------------------------------------------------------%
 \renewcommand{\chaptername}{\thechapter~~}                  % 章节名
 \renewcommand{\thefigure}{\thechapter-\arabic{figure}}      % 图编号格式
 \renewcommand{\thesubfigure}{(\alph{subfigure})}            % 子图编号格式
 \renewcommand{\thetable}{\thechapter-\arabic{table}}        % 图编号格式
+%    \end{macrocode}
+% \markdtxchanges{v1.7.0}{2022/10/31}{增加算法编号}
+%    \begin{macrocode}
+\renewcommand{\thealgorithm}{\thechapter.\arabic{algorithm}}% 算法编号格式
 \renewcommand{\theequation}{\thechapter-\arabic{equation}}  % 公式编号格式
 \renewcommand{\thetheorem}{\thechapter.\arabic{theorem}}    % 定理编号格式
 \renewcommand{\theaxiom}{\thechapter.\arabic{axiom}}        % 公理编号格式
@@ -914,7 +959,7 @@ int main()
 \renewcommand{\theexample}{\thechapter.\arabic{example}}    % 例子编号格式
 %%-----------------------------------------------------------------------------%
 \newcommand{\nwpu@chs@schoolname}{西北工业大学}             % 文档字符串设置
-\newcommand{\nwpu@eng@schoolname}{Northwestern Polytechnical University}                  %
+\newcommand{\nwpu@eng@schoolname}{Northwestern Polytechnical University}
 \if@npu@type@phd                                            % 博士学位名
     \newcommand{\nwpu@chs@degree}{博士}                     %
     \newcommand{\nwpu@eng@degree}{Doctor}                   %
@@ -997,7 +1042,7 @@ int main()
 \newcommand{\nwpu@eng@advisor}{\chs@space}                  % 导师（英文）
 \newcommand{\nwpu@eng@funding}{\chs@space}                  % 基金赞助（英文）
 %%-----------------------------------------------------------------------------%
-\newcommand{\nwpu@uid}{2000123456}                          % 学号
+\newcommand{\nwpu@uid}{2000123456}                          % default 学号
 \newcommand{\nwpu@funding}{\chs@space}                      % 基金资助
 %%-----------------------------------------------------------------------------%
 \renewcommand{\title}[2]{                                   % 设置题目
@@ -1279,9 +1324,15 @@ int main()
 %%=============================================================================%
 %% 参考文献及附录处理
 %%-----------------------------------------------------------------------------%
+%    \end{macrocode}
+% \markdtxchanges{v1.7.0}{2022/10/31}{减少参考文件条目间间隔}
+%    \begin{macrocode}
 \let\old@bibliography\bibliography                          % 保护原有附录环境
 \renewcommand{\bibliography}[1]{                            %
     \phantomsection \addcontentsline{toc}{chapter}{参考文献}%
+    \renewcommand{\baselinestretch}{1.0}                    %
+    \fontsize{12pt}{13pt}\selectfont                        %
+    \setlength{\bibsep}{0.5ex}                              %
     \sDefault \bibliographystyle{nputhesis}                 % 参考文献格式
     \old@bibliography{#1} \cleardoublepage                  % 参考文献 bib 文件
 }                                                           %
