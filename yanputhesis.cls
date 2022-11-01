@@ -15,7 +15,7 @@
 %% 2005/12/01 or later.
 \NeedsTeXFormat{LaTeX2e}[2005/12/01]
 \ProvidesClass{yanputhesis}
-    [2022/10/31 v1.7.0 Yet Another NPU Thesis Template]
+    [2022/11/01 v1.7.1 Yet Another NPU Thesis Template]
 %%=============================================================================%
 %% 文档选项和基础文档类型控制
 %%-----------------------------------------------------------------------------%
@@ -662,8 +662,7 @@
     \renewcommand{\baselinestretch}{1.0}                    %
     \fontsize{12pt}{13pt}\selectfont                        %
     \setlength{\bibsep}{0.5ex}                              %
-    \sDefault \bibliographystyle{nputhesis}                 % 参考文献格式
-    \old@bibliography{#1} \cleardoublepage                  % 参考文献 bib 文件
+    \sDefault \old@bibliography{#1} \cleardoublepage        % 参考文献 bib 文件
 }                                                           %
 %%-----------------------------------------------------------------------------%
 \let\old@appendix\appendix                                  % 保护原有附录环境

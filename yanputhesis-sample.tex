@@ -6,7 +6,7 @@
 %%
 %% yanputhesis.dtx  (with options: `sample')
 %% Copyright (C) 2022 by Shangkun Shen
-%%
+%% 
 %% It may be distributed and/or modified under the conditions of the LaTeX
 %% Project Public License, either version 1.3b of this license or (at your
 %% option) any later version. The latest version of this license is in
@@ -105,7 +105,7 @@
 \author{张三丰}{Sanfeng Zhang}                              % 姓名
 \date{2022年6月}{Jun 2022}                                  % 答辩日期
 \school{数学与统计学院}{School of Mathematics and Statistics}% 学院
-\major{数学}{Philosophy in Mathematics}                     % 专业 博士请使用 Philosophy in XXXX，硕士只写 XXXX 即可
+\major{数学}{Philosophy in Mathematics}                     % 专业 博士请添加 Ph
 \advisor{李四海}{Sihai Li}                                  % 导师
 \studentnumber{2016123456}                                  % 学号
 \funding{本研究得到玄学基金（编号23336666）资助．}{         % 基金资助
@@ -316,6 +316,7 @@ int main()
 %%=============================================================================%
 %% 参考文献以及附录
 %%-----------------------------------------------------------------------------%
+\bibliographystyle{nputhesis}                               % 参考文献格式
 \bibliography{reference}                                    % 参考文献
 \appendix
 \chapter{一份说明}
@@ -374,11 +375,11 @@ int main()
 \end{document}
 %%=============================================================================%
 
-%%
+%% 
 %% This work consists of the file  yanputhesis.dtx
 %% and the derived files           yanputhesis.ins,
 %%                                 yanputhesis.pdf,
 %%                                 yanputhesis.cls.
-%%
+%% 
 %%
 %% End of file `yanputhesis-sample.tex'.

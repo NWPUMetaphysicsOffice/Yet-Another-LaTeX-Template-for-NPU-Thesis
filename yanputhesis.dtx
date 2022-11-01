@@ -90,7 +90,7 @@ and the derived files           yanputhesis.ins,
 %<class>\NeedsTeXFormat{LaTeX2e}[2005/12/01]
 %<class>\ProvidesClass{yanputhesis}
 %<*class>
-    [2022/10/31 v1.7.0 Yet Another NPU Thesis Template]
+    [2022/11/01 v1.7.1 Yet Another NPU Thesis Template]
 %</class>
 %
 %<*driver>
@@ -461,6 +461,7 @@ int main()
 %%=============================================================================%
 %% 参考文献以及附录
 %%-----------------------------------------------------------------------------%
+\bibliographystyle{nputhesis}                               % 参考文献格式
 \bibliography{reference}                                    % 参考文献
 \appendix
 \chapter{一份说明}
@@ -1315,6 +1316,7 @@ int main()
 % \subsection{参考文献及附录处理}
 %
 % \begin{itemize}
+%     \item 通过命令 |\bibliographystyle{filename}| 设置参考文献格式．
 %     \item 通过命令 |\bibliography{filename}| 加入对应文件名的 bibtex 文献．
 %     \item 附录要求使用大写英文字母表示章节编号，引用时使用小写英文字母．
 %     \item 定制目录及正文中章节名的格式．
@@ -1333,8 +1335,10 @@ int main()
     \renewcommand{\baselinestretch}{1.0}                    %
     \fontsize{12pt}{13pt}\selectfont                        %
     \setlength{\bibsep}{0.5ex}                              %
-    \sDefault \bibliographystyle{nputhesis}                 % 参考文献格式
-    \old@bibliography{#1} \cleardoublepage                  % 参考文献 bib 文件
+%    \end{macrocode}
+% \markdtxchanges{v1.7.1}{2022/11/01}{取消默认参考文献格式设置}
+%    \begin{macrocode}
+    \sDefault \old@bibliography{#1} \cleardoublepage        % 参考文献 bib 文件
 }                                                           %
 %%-----------------------------------------------------------------------------%
 \let\old@appendix\appendix                                  % 保护原有附录环境

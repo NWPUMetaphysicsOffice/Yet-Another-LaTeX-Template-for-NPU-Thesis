@@ -3,7 +3,7 @@
 ![Poster](poster.png)
 
 ![Status](https://img.shields.io/badge/status-complete-brightgreen.svg)
-![Version](https://img.shields.io/badge/version-v1.7.0.1031-674EA7.svg)
+![Version](https://img.shields.io/badge/version-v1.7.1.1101-674EA7.svg)
 [![License](https://img.shields.io/badge/license-GNU_General_Public_License_v3.0-blue.svg)](LICENSE)
 
 ![Support-PhD--Thesis](https://img.shields.io/badge/Support-PhD--Thesis-D11A2D.svg)
@@ -54,6 +54,9 @@
   * 本模版默认为博士学位论文，并且兼容硕士学位论文，但是不兼容本科毕业设计论文（未来计划兼容）。
   * 硕士如需使用，请使用编辑器搜索 `degree=phd` 标志，并修改 `phd` 文本为 `master` 即可。
   * 本科毕业设计论文请直接使用 [polossk/LaTeX-Template-For-NPU-Thesis](https://github.com/polossk/LaTeX-Template-For-NPU-Thesis) 模板，使用方式和本模板类似，不再赘述。
+* **参考文献格式问题**
+  * 默认使用 `nputhesis.bst` [国标 GB/T 7714—2015 格式文件](https://github.com/zepinglee/gbt7714-bibtex-style)，请在 tex 文档中声明 `\bibliographystyle{nputhesis}`。
+  * **如果有专家评审问询到参考文献格式中为何会有多余的斜线（斜杠）**，请立即更换使用订正后的 `nputhesis-noslash.bst` 格式文件，如果有其他问题，请提交 issue，注明所引用的参考文献的类型以及对应的 `bibtex` 代码，最好展示出目前的输出结果与目标期望输出结果，方便我们帮助维护改正。
 * **字体问题**
   * 本模板使用的是 **Windows** 系统的自带字体（宋体、黑体、楷体、仿宋、Times New Roman、Consolas），Windows 环境下目前能保证字体的指向正确。
   * 本模板目前兼容 macOS 用户。请在编译的时候添加 `-shell-escape` 选项，以保证模板正确识别操作系统。若字体出现异常，在字体册应用中查看对应字体的英文名字（与 Windows 下的英文名字不同）后，请在 `settings/thesis-setting.tex` 中替换 **macOS** 环境下的字体即可。若出现故障，请发 issue 联系开发者团队以便修改相关配置，以帮助更多的 macOS 用户。
