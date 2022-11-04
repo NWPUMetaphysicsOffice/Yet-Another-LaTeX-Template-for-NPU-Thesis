@@ -1,25 +1,74 @@
 TEX      = xelatex
 BIB      = bibtex
-MAIN     = document
+MKI      = makeindex
+MAIN     = yanputhesis
+TEXARGS  = -synctex=1 -shell-escape
 
-target: close clean tex open
+main: close wipe clean makecls open
 
-tex: $(MAIN).tex
+sample: close wipesample clean texsample opensample
+
+samplebib: close wipesample clean texsamplebib opensample
+
+makecls: $(MAIN).dtx
 	$(TEX) $<
-	$(BIB) $(MAIN).aux
+	$(MKI) -s gglo.ist -o $(MAIN).gls $(MAIN).glo
+	$(MKI) -s gind.ist -o $(MAIN).ind $(MAIN).idx
 	$(TEX) $<
 	$(TEX) $<
+
+ifeq ($(OS), Windows_NT)
+    PLATFORM = Windows
+else
+    ifeq ($(shell uname), Darwin)
+        PLATFORM = MacOS
+    else
+        PLATFORM = Unix-Like
+    endif
+endif
+
+ifeq ($(PLATFORM), Windows)
+    RM = del /s /f
+    OPEN = cmd /c start
+    CLOSE = cmd /c taskkill /im Acrobat.exe /t /f
+else
+    RM = rm -rf
+    OPEN = open
+    PID = $$(ps -ef | grep AdobeAcrobat | grep -v grep | awk '{print $$2}')
+    CLOSE = kill -9 $(PID)
+endif
+
+texsample: $(MAIN)-sample.tex
+	$(TEX) $(TEXARGS) $<
+	$(MKI) $(MAIN)-sample.nlo -s nomencl.ist -o $(MAIN)-sample.nls
+	$(TEX) $(TEXARGS) $<
+
+texsamplebib: $(MAIN)-sample.tex
+	$(TEX) $(TEXARGS) $<
+	$(BIB) $(MAIN)-sample.aux
+	$(MKI) $(MAIN)-sample.nlo -s nomencl.ist -o $(MAIN)-sample.nls
+	$(TEX) $(TEXARGS) $<
+	$(TEX) $(TEXARGS) $<
 
 open: $(MAIN).pdf
-	cmd /c start $(MAIN).pdf
+	$(OPEN) $(MAIN).pdf
+
+opensample: $(MAIN)-sample.pdf
+	$(OPEN) $(MAIN)-sample.pdf
 
 close:
-	cmd /c taskkill /im Acrobat.exe /t /f || echo not find
+	@$(CLOSE) || echo not found
 
 clean:
-	del /s /f *.aux *.bbl *.blg *.log *.out *.gz *.toc *.thm *.fdb_latexmk *.fls *.acn *.glo *.ist
+	$(RM) *.gls *.glo *.ind *.idx
+	$(RM) *.ilg *.aux *.toc *.aux
+	$(RM) *.hd *.out *.thm *.gz *.nlo *.nls
+	$(RM) *.log *.lof *.lot *.bbl *.blg
 
 wipe:
-	del /f $(MAIN).pdf
+	$(RM) $(MAIN).pdf
 
-.PHONY: clean
+wipesample:
+	$(RM) $(MAIN)-sample.pdf
+
+.PHONY: open close clean wipe

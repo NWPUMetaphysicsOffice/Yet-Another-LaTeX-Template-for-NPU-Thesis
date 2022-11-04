@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-欢迎您对PaddlePaddle提出建议，非常感谢您对PaddlePaddle的贡献！
+欢迎您对Yet Another LaTeX Template for NPU Thesis提出建议，非常感谢您对本项目的贡献！
 在留下您的建议时，辛苦您同步提供如下信息：
 1. 代码版本(Code version)（留空则默认最新）：
 2. 操作系统 (OS)：
