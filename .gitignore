@@ -14,3 +14,6 @@
 *.lot
 *.DS_Store
 .vscode/settings.json
+*.idx
+*.nlo
+*.hd
