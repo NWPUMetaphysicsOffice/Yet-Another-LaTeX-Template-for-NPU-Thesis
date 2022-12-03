@@ -153,7 +153,7 @@
     \sHgXiaosi\thesubsection}{0.5em}{}{}                    %
 \titleformat{\subsubsection}[hang]{\fHei\bf}{               % 小标题: (4) 标题
     (\arabic{subsubsection})}{0.5em}{}{}                    %
-\titlespacing{\chapter}{0pt}{-8pt}{11pt}                    % 缩小标题之间缩进
+\titlespacing{\chapter}{0pt}{-2pt}{14pt}                    % 缩小标题之间缩进
 \titlespacing{\section}{0pt}{7pt}{0em}                      %
 \titlespacing{\subsection}{0pt}{6.5pt}{0em}                 %
 \titlespacing{\subsubsection}{0pt}{0.25em}{0pt}             %
@@ -233,6 +233,8 @@
 \newcolumntype{P}[1]{>{\raggedright\let\newline\\%          % 指定宽度左对齐
     \arraybackslash\hspace{0pt}}p{#1}}                      %
 \renewcommand{\arraystretch}{1.4}                           % 表格行高为 1.4 倍
+\setlength\heavyrulewidth{1.5pt}                            % 表格上下线宽 1.5 磅
+\setlength\lightrulewidth{1pt}                              % 表格中线宽 1.0 磅
 %%-----------------------------------------------------------------------------%
 \RequirePackage[thmmarks]{ntheorem}                         % 定理环境格式
 \theorembodyfont{\normalfont\itshape}                       % 主体文字格式
@@ -617,7 +619,7 @@
     \markboth{摘{\quad}要}{摘{\quad}要}                     %
 }{\vfill\sWuhao \noindent \nwpu@chs@funding \par \cleardoublepage}
 \newenvironment{keywords}{                                  %
-    \vspace{2\baselineskip} \par                            %
+    \vspace{1\baselineskip} \par                            %
     \noindent \textbf{关键词：}\quad}{}                     %
 %%-----------------------------------------------------------------------------%
 %% 英文摘要及关键词
@@ -628,7 +630,7 @@
     \markboth{Abstract}{ABSTRACT}                           %
 }{\vfill\sWuhao \noindent \nwpu@eng@funding \par \cleardoublepage}        %
 \newenvironment{engkeywords}{                               %
-    \vspace{2\baselineskip} \par                            %
+    \vspace{1\baselineskip} \par                            %
     \noindent \textbf{Key Words:}\quad}{}                   %
 %%=============================================================================%
 %%=============================================================================%
@@ -756,6 +758,7 @@
 \end{titlepage}
 }                                                           %
 %%=============================================================================%
+
 
 %% 
 %% This work consists of the file  yanputhesis.dtx
