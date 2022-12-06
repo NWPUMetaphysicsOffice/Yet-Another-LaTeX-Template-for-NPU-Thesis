@@ -6,7 +6,7 @@
 %%
 %% yanputhesis.dtx  (with options: `sample')
 %% Copyright (C) 2022 by Shangkun Shen
-%% 
+%%
 %% It may be distributed and/or modified under the conditions of the LaTeX
 %% Project Public License, either version 1.3b of this license or (at your
 %% option) any later version. The latest version of this license is in
@@ -106,9 +106,9 @@
 \date{2022年6月}{Jun 2022}                                  % 答辩日期
 \school{数学与统计学院}{School of Mathematics and Statistics}% 学院
 \major{数学}{Philosophy in Mathematics}                     % 专业 博士请添加 Ph
-\advisor{李四海}{Sihai Li}                                  % 导师
+\advisor{李四海{\enspace}教授}{Sihai Li}                    % 导师
 \studentnumber{2016123456}                                  % 学号
-\funding{本研究得到玄学基金（编号23336666）资助．}{         % 基金资助
+\funding{本研究得到玄学基金（编号23336666）资助。}{         % 基金资助
     The present work is supported by Funding of Metaphysics %
     (Project No：23336666).}                                %
 %%=============================================================================%
@@ -123,17 +123,17 @@
 %%-----------------------------------------------------------------------------%
 \begin{abstract}                                            % 中文摘要开始
     这是在西北工业大学本科毕业设计、硕博研究生毕业论文格式的要求下的一份 LaTeX
-    文档类模板．使用者无需额外修改格式控制细节，直接在所发布的样例基础上，修改章
-    节标题，撰写内容，即可完成毕业设计论文任务．            %
+    文档类模板。使用者无需额外修改格式控制细节，直接在所发布的样例基础上，修改章
+    节标题，撰写内容，即可完成毕业设计论文任务。            %
     \begin{keywords}                                        % 中文关键词开始
-        学位论文，模板，\LaTeX                              %
+        学位论文 \sep 模板 \sep \LaTeX                      %
     \end{keywords}                                          % 中文关键词结束
 \end{abstract}                                              % 中文摘要结束
 %%-----------------------------------------------------------------------------%
 \begin{engabstract}                                         % 英文摘要开始
     \noindent \blindtext                                    %
     \begin{engkeywords}                                     % 英文关键词开始
-        thesis, template, \LaTeX                            %
+        thesis \ensep template \ensep \LaTeX                %
     \end{engkeywords}                                       % 英文关键词结束
 \end{engabstract}                                           % 英文摘要结束
 %%-----------------------------------------------------------------------------%
@@ -155,11 +155,11 @@ emmmmm
 
 \section{公式}
 简单行内公式 $a+b=233$，超高公式会被压缩 $\frac{1}{2}=0.5$ 或者使用
-\lstinline`\displaystyle` 防止被压缩：$\displaystyle \frac{1}{2}=0.5$．
+\lstinline`\displaystyle` 防止被压缩：$\displaystyle \frac{1}{2}=0.5$。
 
 简单的不标号单行公式
 $$a_0+a_1+a_2=\sqrt{233}$$
-需要标号和起名的公式如\autoref{eq:eqtest} 所示．测试下 autoref \autoref{eq:eqtest}
+需要标号和起名的公式如\autoref{eq:eqtest} 所示。测试下 autoref \autoref{eq:eqtest}
 \begin{equation}
     \label{eq:eqtest}
     a_0 + a_1 + a_2 = \sqrt{233}
@@ -168,31 +168,31 @@ $$a_0+a_1+a_2=\sqrt{233}$$
 \section{特殊符号}
 
 用\href{http://detexify.kirelabs.org/classify.html}{
-    http://detexify.kirelabs.org/classify.html}画出来．
+    http://detexify.kirelabs.org/classify.html}画出来。
 
 \section{参考文献的引用}
 
 \LaTeX{} 中要求参考文献使用 \lstinline`\cite` 进行参考引用，若论文要求中说明需在
-文字的右上角注明引用，请使用命令 \lstinline`\cite` 进行参考引用．举个
+文字的右上角注明引用，请使用命令 \lstinline`\cite` 进行参考引用。举个
 不恰当的例子，比如本论文模板的原版
 `LaTeX-Template-For-NPU-Thesis'\cite{NWPUThesisLaTeXTemplate} 要求务必声明引用,
-同时预配置了插件 `math-symbols' \cite{MathSymbolsinLaTeXbypolossk}．对组件的引
-用是每一名科学工作者的基本素养（一本正经）．对于需要引用但是并不需要明确指明引用
-位置的文献，请使用 \lstinline`\nocite` 命令．
+同时预配置了插件 `math-symbols' \cite{MathSymbolsinLaTeXbypolossk}。对组件的引
+用是每一名科学工作者的基本素养（一本正经）。对于需要引用但是并不需要明确指明引用
+位置的文献，请使用 \lstinline`\nocite` 命令。
 
 在此同时感谢真正的 dalao 高德纳开发了全世界版本号最接近 $\pi$ 的软件
-\LaTeX \cite{knuth1986the}\nocite{lamport1989latex}．
+\LaTeX \cite{knuth1986the}\nocite{lamport1989latex}。
 
-测试引用文献 \cite{szegedy2015going, shen2021peridynamic, chen2014maiyuan}．其中
-最后一篇为中文文献．
+测试引用文献 \cite{szegedy2015going, shen2021peridynamic, chen2014maiyuan}。其中
+最后一篇为中文文献。
 
 \section{标点符号的选择}
 
 根据《中华人民共和国国家标准 GB/T 15834-1995》及《出版工作中的语言文字规范》中提
 及，“科学技术中文图书，如果涉及公式、算式较多，句号可以统一用英文句号‘．’，省略
-号用英文三个点的省略号‘…’”．如果您是中文的科技论文写作者，建议您使用全角英文句
-号“\lstinline`．`”间隔句子．如果是人文学科则可以不做处理．您也可以在一开始先使用
-中文句号‘。’，最后批量替换即可．
+号用英文三个点的省略号‘…’”。如果您是中文的科技论文写作者，建议您使用全角英文句
+号“\lstinline`．`”间隔句子。如果是人文学科则可以不做处理。您也可以在一开始先使用
+中文句号‘。’，最后批量替换即可。
 
 \section{萌新如何编译}
 
@@ -212,8 +212,8 @@ $$a_0+a_1+a_2=\sqrt{233}$$
 \section{表格}
 
 使用 \href{http://www.tablesgenerator.com/}{http://www.tablesgenerator.com/} 生
-成, 可粘贴Excel．效果如表\ref{my-label}所示．注意表中的字号（五号）和表格宽度（
-通栏）．外部请用 \lstinline`table` 环境, 内部使用 \lstinline`tabularx` 即可．
+成，可粘贴Excel。效果如表\ref{my-label}所示。注意表中的字号（五号）和表格宽度（
+通栏）。外部请用 \lstinline`table` 环境，内部使用 \lstinline`tabularx` 即可。
 
 \begin{table}[!h]
     \centering
@@ -245,13 +245,13 @@ $$a_0+a_1+a_2=\sqrt{233}$$
 
 \section{插图}
 
-请直接使用 \lstinline`figure` 环境，内部使用 \lstinline`includegraphics` 即可．
+请直接使用 \lstinline`figure` 环境，内部使用 \lstinline`includegraphics` 即可。
 如果需要多张子图排版，请在 \lstinline`figure` 环境内部使用 \lstinline`minipage`
-预先设置总的浮动体宽度，然后再使用 \lstinline`subfigure` 环境进行排版．
+预先设置总的浮动体宽度，然后再使用 \lstinline`subfigure` 环境进行排版。
 
-测试下文章内的图片引用．如\autoref{fig:example} 和\autoref{fig:example2} 所示，
-这是两幅插图．在这其中\autoref{subfig:example2-subfig1} 是第一幅子图，
-\autoref{subfig:example2-subfig2} 是第二幅子图．
+测试下文章内的图片引用。如\autoref{fig:example} 和\autoref{fig:example2} 所示，
+这是两幅插图。在这其中\autoref{subfig:example2-subfig1} 是第一幅子图，
+\autoref{subfig:example2-subfig2} 是第二幅子图。
 
 \begin{figure}[htb]
     \centering
@@ -283,10 +283,10 @@ $$a_0+a_1+a_2=\sqrt{233}$$
 
 \section{插入源代码}
 
-这里给出一个 Hello World 的样例，如\autoref{code:hello-world} 所示．
+这里给出一个 Hello World 的样例，如\autoref{code:hello-world} 所示。
 
 \begin{lstlisting}[language={C++}, label={code:hello-world},
-    caption={Hello\_World.cpp}]
+    caption={Hello World.cpp}]
 #include <iostream>
 using namespace std;
 
@@ -305,12 +305,12 @@ int main()
 而“\autoref{subfig:example2-subfig2}”表示引用图片的子图.为了方便引用以及作者阅读，
 本人强烈建议使用 \lstinline`autoref` 来统一处理引用问题，同时在每一个
 \lstinline`autoref` 添加提示语，如 \lstinline`fig` 和 \lstinline`tab` 分别表示插
-图和表格．
+图和表格。
 
 由于 \XeLaTeX 在处理中文时，会自动在中文之间添加空格，所以请放心地在编写文档时换
-行，防止某一行过长导致阅读时的不便．另外中英文之间的空格（包括命令）并未做严格限
-制．本文推荐除在不影响最终成文的结果这一前提下，为保持文档的美观与易读，请自行选
-择合适的编写方式．
+行，防止某一行过长导致阅读时的不便。另外中英文之间的空格（包括命令）并未做严格限
+制。本文推荐除在不影响最终成文的结果这一前提下，为保持文档的美观与易读，请自行选
+择合适的编写方式。
 
 \cleardoublepage
 %%=============================================================================%
@@ -323,7 +323,7 @@ int main()
 
 \section{测试附录子标题}
 
-这是一份附录，请放置一些独立的证明、源代码、或其他辅助资料．
+这是一份附录，请放置一些独立的证明、源代码、或其他辅助资料。
 
 \nomenclature{$r$}{圆（或球）的半径}
 \nomenclature{$C$}{圆的周长}
@@ -341,7 +341,7 @@ int main()
 
 \chapter{另一份说明}
 
-这是另一份附录，请放置一些独立的证明、源代码、或其他辅助资料．
+这是另一份附录，请放置一些独立的证明、源代码、或其他辅助资料。
 
 \nomenclature{$S_{\text{sphere}}$}{球的表面积}
 \nomenclature{$V_{\text{sphere}}$}{球的体积}
@@ -375,11 +375,12 @@ int main()
 \end{document}
 %%=============================================================================%
 
-%% 
+
+%%
 %% This work consists of the file  yanputhesis.dtx
 %% and the derived files           yanputhesis.ins,
 %%                                 yanputhesis.pdf,
 %%                                 yanputhesis.cls.
-%% 
+%%
 %%
 %% End of file `yanputhesis-sample.tex'.
