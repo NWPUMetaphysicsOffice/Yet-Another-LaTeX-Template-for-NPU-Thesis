@@ -15,11 +15,11 @@
 %% 2005/12/01 or later.
 \NeedsTeXFormat{LaTeX2e}[2005/12/01]
 \ProvidesClass{yanputhesis}
-    [2022/11/01 v1.7.1 Yet Another NPU Thesis Template]
+    [2022/12/05 v1.8.1 Yet Another NPU Thesis Template]
 %%=============================================================================%
 %% 文档选项和基础文档类型控制
 %%-----------------------------------------------------------------------------%
-\RequirePackage{xkeyval}
+\RequirePackage{xkeyval}                                    % 参数控制相关
 \newif\if@npu@lang@chs                                      % 中文版本标记
 \newif\if@npu@type@phd                                      % 博士版本标记
 \newif\if@npu@type@mst                                      % 硕士版本标记
@@ -42,13 +42,16 @@
 \ExecuteOptionsX{adobe=false}                               % 默认不用 Adobe 字体
 \ProcessOptionsX \relax                                     %
 \LoadClass[11pt, a4paper, openany, twoside]{book}           % 默认双面印刷
+\RequirePackage{etoolbox}                                   % LaTeX 补丁工具
+\RequirePackage{amssymb}                                    % AMS 数学符号
 %%=============================================================================%
 %%=============================================================================%
 %% 格式控制及组件控制
 %%-----------------------------------------------------------------------------%
 \RequirePackage{geometry}                                   % 纸张尺寸及页边距
 \geometry{a4paper,                                          % A4 纸张
-    left=2.5cm, right=2.5cm, top=2.54cm, bottom=2.54cm}     % 页边距
+    left=2.5cm, right=2.5cm, top=2.54cm, bottom=2.54cm,     % 页边距
+    headheight=0.53cm, headsep=0.51cm, footskip=0.79cm}     % 页眉页脚位置
 %%-----------------------------------------------------------------------------%
 \RequirePackage[                                            % 超链接设置
     unicode=true,                                           % 允许 Unicode
@@ -64,45 +67,45 @@
 }                                                           %
 %%-----------------------------------------------------------------------------%
 \RequirePackage{type1cm}                                    % 设置字号与行距
-\newcommand{\sChuhao}{\fontsize{42pt}{63pt}\selectfont}     % 初号, 1.5 倍
-\newcommand{\sYihao}{\fontsize{26pt}{36pt}\selectfont}      % 一号, 1.4 倍
-\newcommand{\sErhao}{\fontsize{22pt}{28pt}\selectfont}      % 二号, 1.25 倍
-\newcommand{\sXiaoer}{\fontsize{18pt}{18pt}\selectfont}     % 小二, 单倍
-\newcommand{\sSanhao}{\fontsize{16pt}{24pt}\selectfont}     % 三号, 1.5 倍
-\newcommand{\sXiaosan}{\fontsize{15pt}{22pt}\selectfont}    % 小三, 1.5 倍
-\newcommand{\sSihao}{\fontsize{14pt}{21pt}\selectfont}      % 四号, 1.5 倍
-\newcommand{\sHgXiaosi}{\fontsize{13pt}{19pt}\selectfont}   % 半小四, 1.5 倍
-\newcommand{\sLgXiaosi}{\fontsize{12.5pt}{13pt}\selectfont} % 半小四, 约 1 倍
-\newcommand{\sXiaosi}{\fontsize{12pt}{14.4pt}\selectfont}   % 小四, 1.2 倍
-\newcommand{\sLargeWuhao}{\fontsize{11pt}{11pt}\selectfont} % 大五, 单倍
-\newcommand{\sWuhao}{\fontsize{10.5pt}{10.5pt}\selectfont}  % 五号, 单倍
-\newcommand{\sXiaowu}{\fontsize{9pt}{9pt}\selectfont}       % 小五, 单倍
-\newcommand{\sDefault}{\fontsize{12pt}{20pt}\selectfont}    % 小四, 1.67 倍
+\newcommand{\sChuhao}{\fontsize{42pt}{63pt}\selectfont}     % 初号，1.5 倍
+\newcommand{\sYihao}{\fontsize{26pt}{36pt}\selectfont}      % 一号，1.4 倍
+\newcommand{\sErhao}{\fontsize{22pt}{28pt}\selectfont}      % 二号，1.25 倍
+\newcommand{\sXiaoer}{\fontsize{18pt}{18pt}\selectfont}     % 小二，单倍
+\newcommand{\sSanhao}{\fontsize{16pt}{24pt}\selectfont}     % 三号，1.5 倍
+\newcommand{\sXiaosan}{\fontsize{15pt}{22pt}\selectfont}    % 小三，1.5 倍
+\newcommand{\sSihao}{\fontsize{14pt}{21pt}\selectfont}      % 四号，1.5 倍
+\newcommand{\sHgXiaosi}{\fontsize{13pt}{19pt}\selectfont}   % 半小四，1.5 倍
+\newcommand{\sLgXiaosi}{\fontsize{12.5pt}{13pt}\selectfont} % 半小四，约 1 倍
+\newcommand{\sXiaosi}{\fontsize{12pt}{14.4pt}\selectfont}   % 小四，1.2 倍
+\newcommand{\sLargeWuhao}{\fontsize{11pt}{11pt}\selectfont} % 大五，单倍
+\newcommand{\sWuhao}{\fontsize{10.5pt}{10.5pt}\selectfont}  % 五号，单倍
+\newcommand{\sXiaowu}{\fontsize{9pt}{9pt}\selectfont}       % 小五，单倍
+\newcommand{\sDefault}{\fontsize{12pt}{20pt}\selectfont}    % 小四，1.67 倍
 %%-----------------------------------------------------------------------------%
 \RequirePackage{ifplatform}                                 % 跨平台字体控制依赖
 \if@npu@font@adobe                                          % 检测 Adobe 选项
-    \newcommand\defaultSog{Adobe Song Std}                  % 宋体, 用于正文
-    \newcommand\defaultHei{Adobe Heiti Std}                 % 黑体, 用于标题
-    \newcommand\defaultKai{Adobe Kaiti Std}                 % 楷体, 一般用于强调
-    \newcommand\defaultFag{Adobe Fangsong Std}              % 仿宋, 一般用于强调
+    \newcommand\defaultSog{Adobe Song Std}                  % 宋体，用于正文
+    \newcommand\defaultHei{Adobe Heiti Std}                 % 黑体，用于标题
+    \newcommand\defaultKai{Adobe Kaiti Std}                 % 楷体，一般用于强调
+    \newcommand\defaultFag{Adobe Fangsong Std}              % 仿宋，一般用于强调
 \else                                                       % 使用系统自带字体
     \ifwindows                                              % Windows 环境
-        \newcommand\defaultSog{SimSun}                      % 宋体, 用于正文
-        \newcommand\defaultHei{SimHei}                      % 黑体, 用于标题
-        \newcommand\defaultKai{KaiTi}                       % 楷体, 一般用于强调
-        \newcommand\defaultFag{FangSong}                    % 仿宋, 一般用于强调
+        \newcommand\defaultSog{SimSun}                      % 宋体，用于正文
+        \newcommand\defaultHei{SimHei}                      % 黑体，用于标题
+        \newcommand\defaultKai{KaiTi}                       % 楷体，一般用于强调
+        \newcommand\defaultFag{FangSong}                    % 仿宋，一般用于强调
     \fi                                                     %
     \ifmacosx                                               % macOS 环境
-        \newcommand\defaultSog{STSongti-SC-Regular}         % 宋体, 用于正文
-        \newcommand\defaultHei{STHeiti}                     % 黑体, 用于标题
-        \newcommand\defaultKai{STKaiti}                     % 楷体, 一般用于强调
-        \newcommand\defaultFag{STFangSong}                  % 仿宋, 一般用于强调
+        \newcommand\defaultSog{STSongti-SC-Regular}         % 宋体，用于正文
+        \newcommand\defaultHei{STHeiti}                     % 黑体，用于标题
+        \newcommand\defaultKai{STKaiti}                     % 楷体，一般用于强调
+        \newcommand\defaultFag{STFangSong}                  % 仿宋，一般用于强调
     \fi                                                     %
     \iflinux                                                % Linux 环境
-        \newcommand\defaultSog{SimSun}                      % 宋体, 用于正文
-        \newcommand\defaultHei{SimHei}                      % 黑体, 用于标题
-        \newcommand\defaultKai{KaiTi}                       % 楷体, 一般用于强调
-        \newcommand\defaultFag{FangSong}                    % 仿宋, 一般用于强调
+        \newcommand\defaultSog{SimSun}                      % 宋体，用于正文
+        \newcommand\defaultHei{SimHei}                      % 黑体，用于标题
+        \newcommand\defaultKai{KaiTi}                       % 楷体，一般用于强调
+        \newcommand\defaultFag{FangSong}                    % 仿宋，一般用于强调
     \fi                                                     %
 \fi                                                         %
 \newcommand\defaultEngFont{Times New Roman}                 % 英文文本默认字体
@@ -111,8 +114,8 @@
 \RequirePackage{fontspec}                                   % 设置字体
 \RequirePackage[SlantFont, BoldFont, CJKchecksingle]{xeCJK} % 设置中文字体
 \defaultfontfeatures{Mapping=tex-text}                      % 启用 TeX Ligatures
-\setCJKmainfont[ItalicFont=\defaultKai, BoldFont=\defaultHei]{\defaultSog}
-\setCJKsansfont[ItalicFont=\defaultKai, BoldFont=\defaultHei]{\defaultSog}
+\setCJKmainfont[ItalicFont=\defaultKai, AutoFakeBold]{\defaultSog}
+\setCJKsansfont[ItalicFont=\defaultKai, AutoFakeBold]{\defaultSog}
 \setCJKfamilyfont{song}{\defaultSog}                        % 设置 CJK 字体族
 \setCJKfamilyfont{hei}{\defaultHei}                         %
 \setCJKfamilyfont{kai}{\defaultKai}                         %
@@ -145,30 +148,43 @@
 \setcounter{secnumdepth}{3}                                 % 标题计数器深度
 \setcounter{tocdepth}{2}                                    % 目录中标题深度
 \titleformat{\chapter}[hang]{\normalfont\sSanhao\filcenter  %
-    \fHei\bf}{\fHei\sSanhao{\chaptertitlename}}{20pt}{      %
-    \sSanhao}                                               %
-\titleformat{\section}[hang]{\fHei\bf\sSihao}{              %
+    \fHei}{\fHei\sSanhao{\chaptertitlename}}{20pt}{\sSanhao}%
+\titleformat{\section}[hang]{\fHei\sSihao}{                 %
     \fHei\sSihao\thesection}{0.5em}{}{}                     %
-\titleformat{\subsection}[hang]{\fHei\bf\sHgXiaosi}{        %
+\titleformat{\subsection}[hang]{\fHei\sHgXiaosi}{           %
     \sHgXiaosi\thesubsection}{0.5em}{}{}                    %
-\titleformat{\subsubsection}[hang]{\fHei\bf}{               % 小标题: (4) 标题
+\titleformat{\subsubsection}[hang]{\fHei}{                  % 小标题: (4) 标题
     (\arabic{subsubsection})}{0.5em}{}{}                    %
 \titlespacing{\chapter}{0pt}{-2pt}{14pt}                    % 缩小标题之间缩进
 \titlespacing{\section}{0pt}{7pt}{0em}                      %
 \titlespacing{\subsection}{0pt}{6.5pt}{0em}                 %
 \titlespacing{\subsubsection}{0pt}{0.25em}{0pt}             %
+\titlespacing{\paragraph}{0pt}{0.25em}{0pt}                 %
 \dottedcontents{section}[1.16cm]{}{1.8em}{5pt}              % 定义目录中各级标题
 \dottedcontents{subsection}[2.00cm]{}{2.7em}{5pt}           % 之间的格式以及缩进
 \dottedcontents{subsubsection}[2.86cm]{}{3.4em}{5pt}        %
-\titlecontents{chapter}[0pt]{\fSong\sLgXiaosi\vspace{       %
-    0.5em}}{\contentsmargin{0pt}\fSong\makebox[0pt][l]{     %
-    \thecontentslabel}\hspace{1.5em}}{\contentsmargin{      %
-    0pt}\fSong}{\titlerule*[.5pc]{.}\contentspage}[         %
-    \vspace{0em}]                                           %
+\newcommand{\nwpu@chs@chaptercname}[1]{第 #1 章}            % 目录章节中文标题
+\newcommand{\nwpu@eng@chaptercname}[1]{Chapter #1}          % 目录章节英文标题
+\if@npu@lang@chs                                            % 中文本地化显示
+    \titlecontents{chapter}[0pt]{\fSong\sLgXiaosi\vspace{   %
+        0.5em}}{\contentsmargin{0pt}\fSong\makebox[0pt      %
+        ][l]{\nwpu@chs@chaptercname{\thecontentslabel}}\hspace{%
+        3.5em}}{\contentsmargin{0pt}\fSong}{\titlerule*[    %
+        .5pc]{.}\contentspage}[\vspace{0em}]                %
+\else                                                       %
+    \newlength{\contents@titlewidth}                        %
+    \newlength{\contents@appendixwidth}                     %
+    \settowidth{\contents@titlewidth}{\sLgXiaosi Chapter 000}%
+    \settowidth{\contents@appendixwidth}{\sLgXiaosi Appendix M00}
+    \titlecontents{chapter}[0pt]{\fSong\sLgXiaosi\vspace{   %
+        0.5em}}{\contentsmargin{0pt}\fSong\makebox[0pt      %
+        ][l]{\nwpu@eng@chaptercname{\thecontentslabel}}\hspace{%
+        \contents@titlewidth}}{\contentsmargin{0pt}\fSong}{
+        \titlerule*[.5pc]{.}\contentspage}[\vspace{0em}]    %
+\fi                                                         %
 %%-----------------------------------------------------------------------------%
 \RequirePackage{fancyhdr}                                   % 页眉设置
 \RequirePackage{fancyref}                                   %
-\addtolength{\topmargin}{0.25cm}                            % 打印裁剪余量
 \newcommand{\npu@headrule}{                                 %
     \rlap{\rule[.7\baselineskip]{\headwidth}{3.4pt}}        %
     \vspace{-1.07\baselineskip}                             %
@@ -179,8 +195,13 @@
     \if@fancyplain\let\headrulewidth\plainheadrulewidth\fi  %
     \npu@headrule                                           %
 }                                                           %
-\renewcommand{\chaptermark}[1]{                             % 章节页眉设置
-    \markboth{\thechapter~~ #1}{}}                          %
+\if@npu@lang@chs                                            % 中英文章节页眉设置
+\renewcommand{\chaptermark}[1]{                             %
+    \markboth{\nwpu@chs@chaptercname\thechapter~~ #1}{}}    %
+\else                                                       %
+\renewcommand{\chaptermark}[1]{                             %
+    \markboth{\nwpu@eng@chaptercname\thechapter~~ #1}{}}    %
+\fi                                                         %
 \pagestyle{fancyplain}                                      % 新增版式 fancyplain
 \fancyhf{}                                                  % 清空原有页眉页脚
 \fancyfoot[C, C]{\sWuhao{\thepage}}                         % 页脚中央显示页码
@@ -198,6 +219,7 @@
 %%-----------------------------------------------------------------------------%
 \RequirePackage{enumerate}                                  % 编号列表
 \RequirePackage{enumitem}                                   % 列表格式控制
+\setlist{nosep}                                             % 消除间距
 \setlist{noitemsep}                                         % 消除列表间距
 \setlist{nolistsep}                                         % 消除列表间距
 %%-----------------------------------------------------------------------------%
@@ -219,10 +241,8 @@
 \captionsetup[figure]{labelfont=cWuhao,textfont=cWuhao}     %
 \captionsetup[subtable]{labelformat=simple, aboveskip=0pt}  %
 \captionsetup[subfigure]{labelformat=simple, aboveskip=0pt} %
-\let\oldtabular\tabular                                     % 表格内容为五号
-\renewcommand{\tabular}{\sWuhao\oldtabular}                 %
-\let\oldtabularx\tabularx                                   %
-\renewcommand{\tabularx}{\sWuhao\oldtabularx}               %
+\AtBeginEnvironment{tabular}{\sWuhao}                       % 表格内容为五号
+\AtBeginEnvironment{tabularx}{\sWuhao}                      %
 \newcolumntype{C}{>{\centering\arraybackslash}X}            % 等宽居中
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}          % 等宽左对齐
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}           % 等宽右对齐
@@ -239,9 +259,18 @@
 \RequirePackage[thmmarks]{ntheorem}                         % 定理环境格式
 \theorembodyfont{\normalfont\itshape}                       % 主体文字格式
 \theoremseparator{\quad}                                    % 标题与主体间隔
-\setlength\theorempreskipamount{0pt}                        % 节前空白大小
-\setlength\theorempostskipamount{0pt}                       % 节后空白大小
-{\theoremsymbol{\ensuremath{\square}}                       % 证明环境 囗
+\setlength\topsep{0pt}                                      % 设置定理环境间距
+\theorempreskip{0pt}                                        % 节前空白大小
+\theorempostskip{0pt}                                       % 节后空白大小
+\def\thm@space@setup{                                       %
+    \thm@preskip=0pt                                        %
+    \thm@postskip=0pt}                                      %
+\AtBeginDocument{                                           %
+    \setlength{\abovedisplayskip}{0pt}                      %
+    \setlength{\belowdisplayskip}{0pt}                      %
+    \setlength{\abovedisplayshortskip}{0pt}                 %
+    \setlength{\belowdisplayshortskip}{0pt}}                %
+\theoremsymbol{\ensuremath{\square}                         % 证明环境 囗
 \if@npu@lang@chs\newtheorem*{proof}{证明}\else\newtheorem*{proof}{Proof}\fi}
 \newcommand{\qedinEquation}{{\rlap{$\qquad\square$}}}       % 公式中添加证毕符号
 \if@npu@lang@chs                                            % 定制中文定理环境
@@ -317,15 +346,17 @@
 %%-----------------------------------------------------------------------------%
 \if@npu@lang@chs                                            % 中文引用提示文字
     \renewcommand{\figurename}{图}                          %
+    \renewcommand{\figureautorefname}{图}                   %
     \renewcommand{\tablename}{表}                           %
+    \renewcommand{\tableautorefname}{表}                    %
     \renewcommand{\bibname}{参考文献}                       %
     \renewcommand{\contentsname}{目{\quad}录}               %
     \renewcommand{\listfigurename}{图目录}                  %
     \renewcommand{\listtablename}{表目录}                   %
-    \renewcommand{\figureautorefname}{图}                   %
-    \renewcommand{\tableautorefname}{表}                    %
     \renewcommand{\appendixautorefname}{附录}               %
     \def\equationautorefname#1#2\null{式#1(#2\null)}        %
+    \def\sectionautorefname#1#2\null{#2\null{ }节}          %
+    \def\subsectionautorefname#1#2\null{#2\null{ }小节}     %
     \renewcommand{\theoremautorefname}{定理}                %
     \newcommand{\axiomautorefname}{公理}                    %
     \newcommand{\corollaryautorefname}{推论}                %
@@ -335,24 +366,25 @@
     \newcommand{\propositionautorefname}{命题}              %
     \newcommand{\algorithmname}{算法}                       %
     \newcommand{\algorithmautorefname}{算法}                %
+    \floatname{algorithm}{算法}                             %
     \renewcommand{\lstlistingname}{代码片段}                %
     \newcommand{\lstlistingautorefname}{代码片段}           %
     \renewcommand{\nomname}{符号表}                         %
 \else                                                       % 英文引用提示文字
     \renewcommand{\figureautorefname}{Fig.}                 %
     \renewcommand{\tableautorefname}{Table}                 %
-    \renewcommand{\appendixautorefname}{Appendix}           %
     \def\equationautorefname#1#2\null{Eq.#1(#2\null)}       %
     \renewcommand{\lstlistingname}{Code Snippet}            %
     \newcommand{\lstlistingautorefname}{Code Snippet}       %
     \renewcommand{\nomname}{Symbols}                        %
 \fi                                                         %
 %%-----------------------------------------------------------------------------%
-\renewcommand{\chaptername}{\thechapter~~}                  % 章节名
+\renewcommand{\chaptername}{第 \thechapter 章}              % 章节名
 \renewcommand{\thefigure}{\thechapter-\arabic{figure}}      % 图编号格式
 \renewcommand{\thesubfigure}{(\alph{subfigure})}            % 子图编号格式
 \renewcommand{\thetable}{\thechapter-\arabic{table}}        % 图编号格式
 \renewcommand{\thealgorithm}{\thechapter.\arabic{algorithm}}% 算法编号格式
+\@addtoreset{algorithm}{chapter}                            % 按章节编号
 \renewcommand{\theequation}{\thechapter-\arabic{equation}}  % 公式编号格式
 \renewcommand{\thetheorem}{\thechapter.\arabic{theorem}}    % 定理编号格式
 \renewcommand{\theaxiom}{\thechapter.\arabic{axiom}}        % 公理编号格式
@@ -469,7 +501,7 @@
 \settowidth{\coverpage@detailwidth}{\sSanhao 申请学位日期}  %
 \begin{titlepage}                                           %
     \bfseries                                               %
-    \linespread{1.25}                                       % 1.25 倍行距
+    \renewcommand{\baselinestretch}{1.25}                   % 1.25 倍行距
     \begin{center}                                          %
         \hfill \fHei \sWuhao                                %
         \begin{minipage}{\coverpage@infowidth}              % 排版基本信息表
@@ -482,12 +514,11 @@
                 {学           \hfill           号} & \nwpu@uid \\ \hline
              \end{tabular}                                  %
         \end{minipage} \par                                 % 排版结束
-        \vspace{9cm} \fSong \sErhao                         %
-        \begin{minipage}[t]{2cm}                            % 排版标题
-            \hfill {\bfseries \sYihao 题目} \\              %
+        \vspace{21\baselineskip}                            % 21 * 10.5pt * 1.25
+        \fSong \sErhao \begin{minipage}[t]{2cm}             % 排版标题
+            \hfill {\fHei \sErhao 题目} \\                  %
         \end{minipage}                                      %
-        \fHei \sErhao                                       %
-        \setbox123=\hbox{                                   %
+        \fHei \sErhao \setbox123=\hbox{                     %
             \begin{minipage}[t]{12cm}                       %
                 \begin{center} \nwpu@chs@title \end{center} %
             \end{minipage}                                  %
@@ -501,22 +532,26 @@
             \end{minipage}                                  %
         }                                                   %
         \hspace{-0.5cm}                                     %
-        \copy123\kern-\wd123\box124 \fKai \sSanhao \par     % 排版结束
-        \vspace{3\baselineskip}                             % => 3 * 24pt * 1.25
-        \begin{minipage}{5cm}                               % 排版具体信息
-            {作者} \uline{\hfill \nwpu@chs@author \hfill}   %
+        \copy123\kern-\wd123\box124\par                     % 排版结束
+        \sWuhao \vspace{3\baselineskip}                     % 2 * 10.5pt * 1.25
+        \sSanhao \fSong \begin{minipage}{5cm}               % 排版具体信息
+            {\bf 作者} \uline{\hfill \bf \nwpu@chs@author \hfill}
         \end{minipage} \par                                 %
-        \vspace{2.5\baselineskip}                           % => 2.5 * 24pt * 1.25
-        \begin{minipage}{12.5cm}                            %
+        \sWuhao \vspace{4\baselineskip}                     % 3 * 10.5pt * 1.25
+        \sSanhao \fSong \begin{minipage}{12.5cm}            %
             \noindent                                       %
-            \makebox[\coverpage@detailwidth][s]{学科、专业}\hspace{0.2cm}
-            {\uline{\hfill \makebox{\fSong \nwpu@chs@major } \hfill}} \par
-            \vspace{0.5\baselineskip}                       % => 0.5 * 24pt * 1.25
-            \makebox[\coverpage@detailwidth][s]{指导教师}\hspace{0.2cm}
-            {\uline{\hfill \makebox{\fSong \nwpu@chs@advisor } \hfill}} \par
-            \vspace{0.5\baselineskip}                       % => 0.5 * 24pt * 1.25
-            \makebox[\coverpage@detailwidth][s]{申请学位日期}\hspace{0.2cm}
-            {\uline{\hfill \makebox{\fSong \nwpu@chs@date } \hfill}}
+            \makebox[\coverpage@detailwidth][s]{            %
+            \bf 学{\enspace}科{\enspace}专{\enspace}业}{    %
+            \uline{\hfill \makebox{\bf \nwpu@chs@major} \hfill}} \par
+            \makebox[\coverpage@detailwidth][s]{            %
+            \bf 指{\enspace}导{\enspace}教{\enspace}师}{    %
+            \uline{\hfill \makebox{\bf \nwpu@chs@advisor} \hfill}} \par
+            \makebox[\coverpage@detailwidth][s]{            %
+            \bf 培{\enspace}养{\enspace}单{\enspace}位}{    %
+            \uline{\hfill \makebox{\bf \nwpu@chs@school} \hfill}} \par
+            \makebox[\coverpage@detailwidth][s]{            %
+            \bf 申{\enspace}请{\enspace}日{\enspace}期}{    %
+            \uline{\hfill \makebox{\bf \nwpu@chs@date} \hfill}}
         \end{minipage}                                      % 排版结束
         \vspace{2.5\baselineskip}                           % => 2.5 * 24pt * 1.25
     \end{center}                                            %
@@ -532,15 +567,14 @@
 \newlength{\chstitle@hwidthb}                               % 小标题宽度
 \settowidth{\chstitle@hwidthb}{\sYihao\nwpu@chs@doctitle}   %
 \begin{titlepage}                                           %
-    \linespread{1.5} \fSong \sSanhao \par                   % 1.5 倍行距
-    \vspace{1\baselineskip}                                 % => 1 * 21pt * 1.5
+    \renewcommand{\baselinestretch}{1.5}                    % 1.5 倍行距
+    \fSong \sSanhao \par \vspace{1\baselineskip}            % 1 * 21pt * 1.5
     \begin{center}                                          %
         \makebox[1.41667\chstitle@hwidtha][s]{\sSanhao\nwpu@chs@schoolname} \par
         \vspace*{5mm}                                       %
         \makebox[1.41667\chstitle@hwidthb][s]{\sYihao\nwpu@chs@doctitle} \par
         \vspace*{5mm}                                       %
-        \sSihao （学位研究生）\par                          %
-        \vspace{6\baselineskip}                             % => 6 * 21pt * 1.5
+        \sSihao \par \vspace{6\baselineskip}                % 6 * 21pt * 1.5
         \fSong \sErhao                                      % 排版标题
         \begin{minipage}[t]{2cm} \hfill {题目：} \\ \end{minipage}
         \setbox123=\hbox{                                   %
@@ -558,12 +592,12 @@
         }                                                   %
         \hspace{-1cm}                                       %
         \copy123\kern-\wd123\box124 \fSong \sWuhao \par     % 排版结束
-        \vspace{7\baselineskip}                             % => 7 * 10.5pt * 1.5
-        \sSanhao 作{\qquad}者：\coverunderline[5.5cm]{\nwpu@chs@author} \\
+        \vspace{7\baselineskip}                             % 7 * 10.5pt * 1.5
         \sSanhao 学科专业：\coverunderline[5.5cm]{\nwpu@chs@major} \\
+        \sSanhao 作{\qquad}者：\coverunderline[5.5cm]{\nwpu@chs@author} \\
         \sSanhao 指导教师：\coverunderline[5.5cm]{\nwpu@chs@advisor} \\
         \fSong \sWuhao \par                                 %
-        \vspace{2\baselineskip}                             % => 2 * 10.5pt * 1.5
+        \vspace{2\baselineskip}                             % 2 * 10.5pt * 1.5
         \fSong \sSanhao \nwpu@chs@date                      %
     \end{center}                                            %
 \end{titlepage} \fSong \normalsize \newpage \clearpage      %
@@ -575,21 +609,20 @@
 \thispagestyle{empty}                                       % 清空页面格式
 \begin{titlepage}                                           %
     \linespread{1.2} \fEng \sXiaosan \par                   % 1.2 倍行距
-    \vspace{1\baselineskip}                                 % => 1 * 22pt * 1.2
+    \vspace{1\baselineskip}                                 % 1 * 22pt * 1.2
     \begin{center}                                          %
         \fEng \sErhao \textbf{\nwpu@eng@title} \par         %
         \fSong \sXiaoer \vspace{3\baselineskip}             %
         \fEng \sXiaosan \textbf{By} \par                    %
         \fEng \sXiaosan \textbf{\nwpu@eng@author} \par      %
-        \fSong \sXiaosan \vspace{1\baselineskip}            %
         \fEng \sXiaosan \textbf{Under the Supervision of Professor} \\
         \fEng \sXiaosan \textbf{\nwpu@eng@advisor} \par     %
-        \fSong \sSanhao \vspace{3\baselineskip}             %
+        \fSong \sSanhao \vspace{4\baselineskip}             %
         \fEng \sXiaosan A Dissertation Submitted to \\      %
         \fEng \sXiaosan {\nwpu@eng@schoolname} \\           %
         \fSong \sSanhao \vspace{1\baselineskip}             %
-        \fEng In partial fulfillment of the requirement \\  %
-        \fEng For the degree of \\                          %
+        \fEng In Partial Fulfillment of The Requirement \\  %
+        \fEng For The Degree of \\                          %
         \fEng {\nwpu@eng@degree} of \textbf{\nwpu@eng@major}%
         \fSong \sXiaosan \par \vspace{3\baselineskip}       %
         \fEng \sXiaosan Xi'an, P.R. China \\                %
@@ -614,10 +647,11 @@
 %% 中文摘要及关键词
 %%-----------------------------------------------------------------------------%
 \newenvironment{abstract}{                                  %
+    \newcommand{\sep}{\!；}                                 % 中文关键词间隔符
     \sDefault                                               %
     \chapter[摘{\quad}要]{摘{\quad}要}                      %
     \markboth{摘{\quad}要}{摘{\quad}要}                     %
-}{\vfill\sWuhao \noindent \nwpu@chs@funding \par \cleardoublepage}
+}{\vfill\sWuhao\noindent\nwpu@chs@funding\par\cleardoublepage}
 \newenvironment{keywords}{                                  %
     \vspace{1\baselineskip} \par                            %
     \noindent \textbf{关键词：}\quad}{}                     %
@@ -625,10 +659,11 @@
 %% 英文摘要及关键词
 %%-----------------------------------------------------------------------------%
 \newenvironment{engabstract}{                               %
+    \newcommand{\ensep}{\!; }                               % 英文关键词间隔符
     \sDefault                                               %
     \chapter[\textbf{ABSTRACT}]{Abstract}                   %
     \markboth{Abstract}{ABSTRACT}                           %
-}{\vfill\sWuhao \noindent \nwpu@eng@funding \par \cleardoublepage}        %
+}{\vfill\sWuhao\noindent\nwpu@eng@funding\par\cleardoublepage}
 \newenvironment{engkeywords}{                               %
     \vspace{1\baselineskip} \par                            %
     \noindent \textbf{Key Words:}\quad}{}                   %
@@ -667,33 +702,61 @@
     \sDefault \old@bibliography{#1} \cleardoublepage        % 参考文献 bib 文件
 }                                                           %
 %%-----------------------------------------------------------------------------%
+\patchcmd{\hyper@makecurrent}{%                             % 附录章节引用补丁
+    \ifx\Hy@param\Hy@chapterstring                          %
+        \let\Hy@param\Hy@chapapp\fi}{\iftoggle{inappendix}{%% 修复附录中章节引用
+        \@checkappendixparam{chapter}%                      %
+        \@checkappendixparam{section}%                      %
+        \@checkappendixparam{subsection}%                   %
+        \@checkappendixparam{subsubsection}%                %
+        \@checkappendixparam{paragraph}%                    %
+        \@checkappendixparam{subparagraph}%                 %
+    }{}}{}{\errmessage{failed to patch}}                    %
+\newcommand*{\@checkappendixparam}[1]{%                     %
+    \def\@checkappendixparamtmp{#1}%                        %
+    \ifx\Hy@param\@checkappendixparamtmp                    %
+        \let\Hy@param\Hy@appendixstring                     %
+    \fi}                                                    %
+\newtoggle{inappendix}\togglefalse{inappendix}              %
+\apptocmd{\appendix}{\toggletrue{inappendix}}{}{\errmessage{failed to patch}}
+\apptocmd{\subappendices}{\toggletrue{inappendix}}{}{\errmessage{failed to patch}}
+\appto\appendix{\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}}
+\appto\listoffigures{\addtocontents{lof}{\protect\setcounter{tocdepth}{1}}}
+\appto\listoftables{\addtocontents{lot}{\protect\setcounter{tocdepth}{1}}}
+%%-----------------------------------------------------------------------------%
+\newcommand{\nwpu@chs@appendixname}[1]{附录 #1}             % 目录附录中文标题
+\newcommand{\nwpu@eng@appendixname}[1]{Appendix #1}         % 目录附录英文标题
 \let\old@appendix\appendix                                  % 保护原有附录环境
 \renewcommand{\appendix}{                                   % 在原有基础上定制
     \old@appendix                                           %
     \setcounter{chapter}{0}                                 % 重置章节编号
+    \renewcommand{\nwpu@chs@chaptercname}{\nwpu@chs@appendixname}
+    \renewcommand{\nwpu@eng@chaptercname}{\nwpu@eng@appendixname}
     \if@npu@lang@chs                                        % 中文本地化显示
-        \renewcommand{\thechapter}{附录\Alph{chapter}}      %
-        \renewcommand{\appendixname}{附录}                  %
+        \renewcommand{\appendixname}{附录}                  % 目录
+        \titlecontents{chapter}[0pt]{\fSong\sLgXiaosi\vspace{%
+            0.5em}}{\contentsmargin{0pt}\fSong\makebox[0pt  %
+            ][l]{\nwpu@chs@appendixname{\thecontentslabel}}\hspace{%
+            3.5em}}{\contentsmargin{0pt}\fSong}{\titlerule*[%
+            .5pc]{.}\contentspage}[\vspace{0em}]            %
     \else                                                   % 英文使用默认环境
-        \renewcommand{\thechapter}{Appendix \Alph{chapter}} %
-        \renewcommand{\appendixname}{Appendix}              %
+        \titlecontents{chapter}[0pt]{\fSong\sLgXiaosi\vspace{%
+            0.5em}}{\contentsmargin{0pt}\fSong\makebox[0pt  %
+            ][l]{\nwpu@eng@appendixname{\thecontentslabel}}\hspace{%
+            \contents@appendixwidth}}{\contentsmargin{0pt}\fSong}{%
+            \titlerule*[.5pc]{.}\contentspage}[\vspace{0em}]%
     \fi                                                     %
-    \titleformat{\chapter}[hang]{\normalfont\sSanhao        %
-        \filcenter\fHei\bf}{\fHei\sSanhao{\thechapter}}{    %
-        20pt}{\sSanhao}                                     %
-    \titlecontents{chapter}[0pt]{\fSong\sLgXiaosi\vspace{   %
-        0.5em}}{\contentsmargin{0pt}\fSong\makebox[0pt][l]{ %
-        \thecontentslabel}\hspace{4em}}{\contentsmargin{    %
-        0pt}\fSong}{\titlerule*[.5pc]{.}\contentspage}[     %
-        \vspace{0em}]                                       %
+    \titleformat{\chapter}[hang]{\normalfont\sSanhao\filcenter\fHei
+        }{\fHei\sSanhao{\appendixname~\thechapter}}{20pt}{\sSanhao}
+    \renewcommand{\thechapter}{\Alph{chapter}}              %
     \renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}
     \renewcommand{\theequation}{\alph{chapter}-\arabic{equation}}
-    \renewcommand{\thetable}{\alph{chapter}-\arabic{table}}
+    \renewcommand{\thetable}{\alph{chapter}-\arabic{table}} %
     \renewcommand{\thefigure}{\alph{chapter}-\arabic{figure}}
     \renewcommand{\thetheorem}{\alph{chapter}.\arabic{theorem}}
-    \renewcommand{\theaxiom}{\alph{chapter}.\arabic{axiom}}
+    \renewcommand{\theaxiom}{\alph{chapter}.\arabic{axiom}} %
     \renewcommand{\thecorollary}{\alph{chapter}.\arabic{corollary}}
-    \renewcommand{\thelemma}{\alph{chapter}.\arabic{lemma}}
+    \renewcommand{\thelemma}{\alph{chapter}.\arabic{lemma}} %
     \renewcommand{\thedefinition}{\alph{chapter}.\arabic{definition}}
     \renewcommand{\theexample}{\alph{chapter}.\arabic{example}}
 }                                                           %
@@ -722,39 +785,53 @@
 %%-----------------------------------------------------------------------------%
 \newcommand{\makestatement}{                                % 知识产权与原创性声明
 \begin{titlepage}
-    \linespread{1.5}
-    \parskip=7pt
-    \vspace*{0pt}
-    \fSong\sSihao
-    \centerline{\bf 西北工业大学}
-    \centerline{\bf 学位论文知识产权声明书}
-    \fSong\sWuhao
-    本人完全了解学校有关保护知识产权的规定，即：研究生在校攻读学位期间论文工作的
-    知识产权单位属于西北工业大学。学校有权保留并向国家有关部门或机构送交论文的复
-    印件和电子版。本人允许论文被查阅和借阅。学校可以将本学位论文的全部或部分内容
-    编入有关数据库进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论
-    文。同时本人保证，毕业后结合学位论文研究课题再撰写的文章一律注明作者单位为西
-    北工业大学。\par
-    保密论文待解密后适用本声明。\par
-    学位论文作者签名{~:~}\underline{\qquad\qquad\qquad} \hfill
-    指导教师签名{~:~}\underline{\qquad\qquad\qquad} \par
-    \hspace*{3cm} {年\qquad 月\qquad 日} \hfill\hspace*{3cm} {年\qquad 月\qquad 日}
-    \vspace*{30pt} \par
-    \hbox to \hsize{\leaders\hbox to 1em{\hss--\hss}\hfill} \par
-    \vspace*{50pt}
-    \fSong\sSihao
-    \centerline{\bf 西北工业大学}
-    \centerline{\bf 学位论文原创性声明}
-    \fSong\sWuhao
-    秉承学校严谨的学风和优良的科学道德，本人郑重声明：所呈交的学位论文，是本人在
-    导师的指导下进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容和致
-    谢的地方外，本论文不包含任何其他个人或集体已经公开发表或撰写过的研究成果，不
-    包含本人或其他已申请学位或其他用途使用过的成果。对本文的研究做出重要贡献的个
-    人和集体，均已在文中以明确方式表明。\par
-    本人学位论文与资料若有不实，愿意承担一切相关的法律责任。\par
-    \hspace*{5.5cm}
-    \hfill 学位论文作者签名{~:~}\underline{\qquad\qquad\qquad}\par
-    \hfill\hspace*{8.5cm} {年\qquad 月\qquad 日}
+    \vspace*{-1.5mm}
+    \hspace*{4.5mm}
+    \begin{minipage}{149.5mm}
+        \begin{center}
+            \renewcommand{\baselinestretch}{1.5}\fSong\sSihao
+            \hspace*{3mm}{\bf 西北工业大学}\par
+            \hspace*{3mm}{\bf 学位论文知识产权声明书}\par
+        \end{center}
+        \vspace*{-3.5mm}
+        \renewcommand{\baselinestretch}{2.25}\fSong\sWuhao
+        {\qquad}本人完全了解学校有关保护知识产权的规定，即：研究生在校攻读学位期间论文工作的
+        知识产权单位属于西北工业大学。学校有权保留并向国家有关部门或机构送交论文的复印件
+        和电子版。本人允许论文被查阅和借阅。学校可以将本学位论文的全部或部分内容编入有关
+        数据库进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。同时本人
+        保证，毕业后结合学位论文研究课题再撰写的文章一律注明作者单位为西北工业大学。\par
+        {\qquad}本学位论文属于（在以下方框内打“√”）：\par
+        {\qquad}$\square$\hspace*{0.7em}保密论文，保密期（\hspace*{2.5em}年\hspace*{2.5em}月\hspace*{2.5em}日至\hspace*{2.5em}年\hspace*{2.5em}月\hspace*{2.5em}日）。\par
+        {\qquad}$\square$\hspace*{0.7em}公开论文。\par
+        {\qquad}~\par
+        {\qquad}学位论文作者签名{~:~}\underline{\qquad\qquad\qquad} \hfill
+        指导教师签名{~:~}\underline{\qquad\qquad\qquad} \par
+        \hspace*{8em}{年\hspace*{1.5em}月\hspace*{1.5em}日} \hfill\hspace*{12em} {年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}\par
+        {\qquad}~\par
+        \vspace*{2.1mm}
+        \hbox to \hsize{\leaders\hbox to 0.6em{\hss--\hss}\hfill} \par
+        \vspace*{-13mm}
+        {\qquad}~\par
+        \begin{center}
+            \renewcommand{\baselinestretch}{1.5}\fSong\sSihao
+            \hspace*{3mm}{\bf 西北工业大学}\par
+            \hspace*{3mm}{\bf 学位论文原创性声明}\par
+        \end{center}
+        \vspace*{1.2mm}
+        \hspace*{6mm}\begin{minipage}{141.5mm}
+            \renewcommand{\baselinestretch}{2.25}\fSong\sWuhao
+            {\qquad}秉承学校严谨的学风和优良的科学道德，本人郑重声明：所呈交的学位论文，是本
+            人在导师的指导下进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容
+            和致谢的地方外，本论文不包含任何其他个人或集体已经公开发表或撰写过的研究成果，
+            不包含本人或其他已申请学位或其他用途使用过的成果。对本文的研究做出重要贡献的
+            个人和集体，均已在文中以明确方式表明。\par
+            {\qquad}本人学位论文与资料若有不实，愿意承担一切相关的法律责任。\par
+            \vspace*{1.5mm}
+            \hspace*{21em}\hfill 学位论文作者签名{~:~}\underline{\qquad\qquad\quad}\par
+            \vspace*{2mm}
+            \hspace*{10em}\hfill {年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}
+        \end{minipage}
+    \end{minipage}
 \end{titlepage}
 }                                                           %
 %%=============================================================================%
