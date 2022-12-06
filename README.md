@@ -3,16 +3,18 @@
 ![Poster](poster.png)
 
 ![Status](https://img.shields.io/badge/status-complete-brightgreen.svg)
-![Version](https://img.shields.io/badge/version-v1.8.1.1206-674EA7.svg)
-[![License](https://img.shields.io/badge/license-GNU_General_Public_License_v3.0-blue.svg)](LICENSE)
+![PhD-Thesis](https://img.shields.io/badge/PhD-Thesis-D11A2D.svg)
+![Master-Thesis](https://img.shields.io/badge/Master-Thesis-1177B0.svg)
+![TeX-Template](https://img.shields.io/badge/TeX-Template-3D6117.svg?style=flat-square)
 
-![Support-PhD--Thesis](https://img.shields.io/badge/Support-PhD--Thesis-D11A2D.svg)
-![Support-Master--Thesis](https://img.shields.io/badge/Support-Master--Thesis-1177B0.svg)
-![TeXLive2021](https://img.shields.io/badge/TeXLive-2021-3D6117.svg)
+[![License](https://img.shields.io/badge/license-GNU_General_Public_License_v3.0-blue.svg)](LICENSE)
+![Version](https://img.shields.io/badge/version-v1.8.1.1206-674EA7.svg)
+
+![TeXLive>=2021](https://img.shields.io/badge/TeXLive-%3E=2021-3D6117.svg)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4159248.svg)](https://doi.org/10.5281/zenodo.4159248)
 
 [![](https://img.shields.io/github/last-commit/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis)](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/zipball/master)
-[![](https://img.shields.io/github/issues/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis)](https://github.com/x-magus/Yet-Another-LaTeX-Template-for-NPU-Thesis/issues)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4159248.svg)](https://doi.org/10.5281/zenodo.4159248)
+[![](https://img.shields.io/github/issues/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis)](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/issues)
 
 这是在西北工业大学硕博研究生毕业设计论文格式的要求下的一份 LaTeX 文档类型模板。使用者无需修改导言区文档类型，直接在发布版的基础上，修改章节标题，撰写内容，即可完成毕业设计论文任务。
 
@@ -134,17 +136,15 @@
 
 ## Copyright
 
-Use this code whatever you want, under the circumstances of acknowleged the
-GPL license this page below. Star this repository if you like, and it will
-be very generous of you!
+Use this code whatever you want, under the circumstances of acknowledging the GPL license on this page below. Star this repository if you like, and it will be very generous of you!
 
 ## License
 
-Copyright (c) 2016-2022 *NWPU Metaphysics Office* <https://github.com/NWPUMetaphysicsOffice>
+Copyright (c) 2016-2022 _NWPU Metaphysics Office_ <https://github.com/NWPUMetaphysicsOffice>
 
-This repo is under the license of **GNU General Public License v3.0**. Check [license](LICENSE) for details.
+This repo is under the license of **GNU General Public License v3.0**. Check the [license](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/blob/master/LICENSE "license") for details.
 
-The association *NWPU Metaphysics Office* is a club-like student group. The
+The association _NWPU Metaphysics Office_ is a club-like student group. The
 members are cfrpg, kidozh, njzwj, polossk, in alphabet order.
 
 ## 彩蛋
