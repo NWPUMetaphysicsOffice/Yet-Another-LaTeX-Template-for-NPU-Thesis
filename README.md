@@ -115,6 +115,7 @@
   * 在编译过程中，如果遇到卡在字体缓冲问题，请先关闭当前进程，并用管理员模式打开命令提示符（或终端），键入 `fc-cache -f -v` 强制刷新字体缓存即可
   * 模板成型于 **2022 年**。如果后期有任何格式上的变化，欢迎 *fork-modify-pull-request* 或者在 [issue](hhttps://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/issues) 中详细说明新旧格式之差异，我们乐意解决模板使用的问题
   * **恕制作者们不解答任何 LaTeX 使用问题**
+  * 如果需要改动，可能需要使用 `zhmakeindex` 来维护更新清单，请[下载](https://github.com/leo-liu/zhmakeindex/releases/tag/zhmakeindex-1.2)对应操作系统的可执行文件
 
 ## BibTeX
 
