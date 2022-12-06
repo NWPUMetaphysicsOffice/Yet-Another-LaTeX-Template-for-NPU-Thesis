@@ -3,7 +3,7 @@
 ![Poster](poster.png)
 
 ![Status](https://img.shields.io/badge/status-complete-brightgreen.svg)
-![Version](https://img.shields.io/badge/version-v1.7.1.1101-674EA7.svg)
+![Version](https://img.shields.io/badge/version-v1.8.1.1206-674EA7.svg)
 [![License](https://img.shields.io/badge/license-GNU_General_Public_License_v3.0-blue.svg)](LICENSE)
 
 ![Support-PhD--Thesis](https://img.shields.io/badge/Support-PhD--Thesis-D11A2D.svg)
@@ -16,7 +16,7 @@
 
 这是在西北工业大学硕博研究生毕业设计论文格式的要求下的一份 LaTeX 文档类型模板。使用者无需修改导言区文档类型，直接在发布版的基础上，修改章节标题，撰写内容，即可完成毕业设计论文任务。
 
-本 repo 主要基于开源库 [polossk/LaTeX-Template-For-NPU-Thesis](https://github.com/polossk/LaTeX-Template-For-NPU-Thesis) 之上修改而成，格式参照于 2014 年西北工业大学研究生院编写的[西北工业大学博士研究生学位论文编写规则（试用版）](http://gs.nwpu.edu.cn/info/1143/1139.htm)。
+本 repo 主要基于开源库 [polossk/LaTeX-Template-For-NPU-Thesis](https://github.com/polossk/LaTeX-Template-For-NPU-Thesis) 之上修改而成，格式参照于 2022 年西北工业大学研究生院编写的[西北工业大学研究生学位论文写作指南](https://gs.nwpu.edu.cn/info/2284/15346.htm)。
 
 ## 使用说明
 
@@ -40,7 +40,7 @@
 \school{数学与统计学院}{School of Mathematics and Statistics}% 学院
 % 专业 博士请使用 Philosophy in XXXX，硕士只写 XXXX 即可
 \major{数学}{Philosophy in Mathematics}                     % 专业
-\advisor{李四海}{Sihai Li}                                  % 导师
+\advisor{李四海{\enspace}教授}{Sihai Li}                    % 导师
 \studentnumber{2016123456}                                  % 学号
 \funding{本研究得到玄学基金（编号23336666）资助．}{         % 基金资助
     The present work is supported by Funding of Metaphysics %
@@ -61,7 +61,7 @@
   * 本模板使用的是 **Windows** 系统的自带字体（宋体、黑体、楷体、仿宋、Times New Roman、Consolas），Windows 环境下目前能保证字体的指向正确。
   * 本模板目前兼容 macOS 用户。请在编译的时候添加 `-shell-escape` 选项，以保证模板正确识别操作系统。若字体出现异常，在字体册应用中查看对应字体的英文名字（与 Windows 下的英文名字不同）后，请在 `settings/thesis-setting.tex` 中替换 **macOS** 环境下的字体即可。若出现故障，请发 issue 联系开发者团队以便修改相关配置，以帮助更多的 macOS 用户。
   * 关于 macOS 用户的**黑体**解决方案
-    * 非 Windows 操作系统的用户并没有取得 Windows 上黑体字体 `SimHei` 字体的授权，但是文章送审时你的评委老师的电脑极有可能是 Windows 的，但是其他黑体的表现（比如 macOS 自带的华文黑体系列）就会很奇怪（字体很挤、字重不统一等）。如果是面向送审，推荐从 Windows 上拷贝一整套字体（宋黑楷仿宋）然后将 `\ifmacosx` 后面的字体配置与 Windows 一致即可。
+    * 非 Windows 操作系统的用户并没有取得 Windows 上黑体字体 `SimHei` 字体的授权，然而文章送审时你的评委老师的电脑极有可能是 Windows 的，所以请务必注意。目前在 macOS 上，其他黑体的表现（比如 macOS 自带的华文黑体系列）很奇怪（字体很挤、字重不统一等）。如果是面向送审，推荐从 Windows 上拷贝一整套字体（宋黑楷仿宋）然后将 `\ifmacosx` 后面的字体配置与 Windows 一致即可。
     * 如果你觉得 Windows 上的字体也很丑不够美观，可以自行更换为其他开源或商用字体。比如开源的[思源宋体](https://github.com/adobe-fonts/source-han-serif)、[思源黑体](https://github.com/adobe-fonts/source-han-serif)，然后更新对应操作系统的字体配置。
     * 请注意，如果你的文章会被收录或者其他商业用途，建议使用开源字体或默认操作系统字体，以免不必要的麻烦。
   * 关于缺失等宽字体（默认 Consolas）的解决方案
@@ -115,6 +115,7 @@
   * 在编译过程中，如果遇到卡在字体缓冲问题，请先关闭当前进程，并用管理员模式打开命令提示符（或终端），键入 `fc-cache -f -v` 强制刷新字体缓存即可
   * 模板成型于 **2022 年**。如果后期有任何格式上的变化，欢迎 *fork-modify-pull-request* 或者在 [issue](hhttps://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/issues) 中详细说明新旧格式之差异，我们乐意解决模板使用的问题
   * **恕制作者们不解答任何 LaTeX 使用问题**
+  * 如果需要改动，可能需要使用 `zhmakeindex` 来维护更新清单，请[下载](https://github.com/leo-liu/zhmakeindex/releases/tag/zhmakeindex-1.2)对应操作系统的可执行文件
 
 ## BibTeX
 

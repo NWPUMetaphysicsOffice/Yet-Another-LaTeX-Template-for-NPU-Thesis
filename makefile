@@ -12,7 +12,7 @@ samplebib: close wipesample clean texsamplebib opensample
 
 makecls: $(MAIN).dtx
 	$(TEX) $<
-	$(MKI) -s gglo.ist -o $(MAIN).gls $(MAIN).glo
+	./zhmakeindex -s gglo.ist -o $(MAIN).gls $(MAIN).glo
 	$(MKI) -s gind.ist -o $(MAIN).ind $(MAIN).idx
 	$(TEX) $<
 	$(TEX) $<
