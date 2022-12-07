@@ -15,7 +15,7 @@
 %% 2005/12/01 or later.
 \NeedsTeXFormat{LaTeX2e}[2005/12/01]
 \ProvidesClass{yanputhesis}
-    [2022/12/05 v1.8.1 Yet Another NPU Thesis Template]
+    [2022/12/07 v1.8.2 Yet Another NPU Thesis Template]
 %%=============================================================================%
 %% 文档选项和基础文档类型控制
 %%-----------------------------------------------------------------------------%
@@ -270,7 +270,7 @@
     \setlength{\belowdisplayskip}{0pt}                      %
     \setlength{\abovedisplayshortskip}{0pt}                 %
     \setlength{\belowdisplayshortskip}{0pt}}                %
-\theoremsymbol{\ensuremath{\square}                         % 证明环境 囗
+{\theoremsymbol{\ensuremath{\square}}                       % 证明环境 囗
 \if@npu@lang@chs\newtheorem*{proof}{证明}\else\newtheorem*{proof}{Proof}\fi}
 \newcommand{\qedinEquation}{{\rlap{$\qquad\square$}}}       % 公式中添加证毕符号
 \if@npu@lang@chs                                            % 定制中文定理环境
@@ -553,7 +553,7 @@
             \bf 申{\enspace}请{\enspace}日{\enspace}期}{    %
             \uline{\hfill \makebox{\bf \nwpu@chs@date} \hfill}}
         \end{minipage}                                      % 排版结束
-        \vspace{2.5\baselineskip}                           % => 2.5 * 24pt * 1.25
+        \vspace{2.5\baselineskip}                           % 2.5 * 24pt * 1.25
     \end{center}                                            %
 \end{titlepage} \fSong \normalsize \newpage \clearpage      %
 }                                                           %
@@ -801,12 +801,15 @@
         数据库进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。同时本人
         保证，毕业后结合学位论文研究课题再撰写的文章一律注明作者单位为西北工业大学。\par
         {\qquad}本学位论文属于（在以下方框内打“√”）：\par
-        {\qquad}$\square$\hspace*{0.7em}保密论文，保密期（\hspace*{2.5em}年\hspace*{2.5em}月\hspace*{2.5em}日至\hspace*{2.5em}年\hspace*{2.5em}月\hspace*{2.5em}日）。\par
+        {\qquad}$\square$\hspace*{0.7em}保密论文，保密期
+        （\hspace*{2.5em}年\hspace*{2.5em}月\hspace*{2.5em}日
+        至\hspace*{2.5em}年\hspace*{2.5em}月\hspace*{2.5em}日）。\par
         {\qquad}$\square$\hspace*{0.7em}公开论文。\par
         {\qquad}~\par
-        {\qquad}学位论文作者签名{~:~}\underline{\qquad\qquad\qquad} \hfill
-        指导教师签名{~:~}\underline{\qquad\qquad\qquad} \par
-        \hspace*{8em}{年\hspace*{1.5em}月\hspace*{1.5em}日} \hfill\hspace*{12em} {年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}\par
+        {\qquad}学位论文作者签名{~:~}\underline{\qquad\qquad\qquad}\hfill
+        指导教师签名{~:~}\underline{\qquad\qquad\qquad}\par
+        \hspace*{8em}{年\hspace*{1.5em}月\hspace*{1.5em}日}\hfill
+        \hspace*{12em}{年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}\par
         {\qquad}~\par
         \vspace*{2.1mm}
         \hbox to \hsize{\leaders\hbox to 0.6em{\hss--\hss}\hfill} \par
@@ -829,7 +832,7 @@
             \vspace*{1.5mm}
             \hspace*{21em}\hfill 学位论文作者签名{~:~}\underline{\qquad\qquad\quad}\par
             \vspace*{2mm}
-            \hspace*{10em}\hfill {年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}
+            \hspace*{10em}\hfill{年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}
         \end{minipage}
     \end{minipage}
 \end{titlepage}
