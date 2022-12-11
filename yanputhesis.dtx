@@ -90,7 +90,7 @@ and the derived files           yanputhesis.ins,
 %<class>\NeedsTeXFormat{LaTeX2e}[2005/12/01]
 %<class>\ProvidesClass{yanputhesis}
 %<*class>
-    [2022/12/07 v1.8.2 Yet Another NPU Thesis Template]
+    [2022/12/11 v1.8.2 Yet Another NPU Thesis Template]
 %</class>
 %
 %<*driver>
@@ -886,7 +886,7 @@ int main()
     \setlength{\abovedisplayshortskip}{0pt}                 %
     \setlength{\belowdisplayshortskip}{0pt}}                %
 %    \end{macrocode}
-% \markdtxchanges{v1.8.2}{2022/12/07}{修复证明环境}
+% \markdtxchanges{v1.8.2}{2022/12/11}{修复证明环境}
 %    \begin{macrocode}
 {\theoremsymbol{\ensuremath{\square}}                       % 证明环境 囗
 \if@npu@lang@chs\newtheorem*{proof}{证明}\else\newtheorem*{proof}{Proof}\fi}
@@ -1439,7 +1439,7 @@ int main()
 %    \begin{macrocode}
 \let\old@bibliography\bibliography                          % 保护原有附录环境
 \renewcommand{\bibliography}[1]{                            %
-    \phantomsection \addcontentsline{toc}{chapter}{参考文献}%
+    \phantomsection\addcontentsline{toc}{chapter}{参考文献} %
     \renewcommand{\baselinestretch}{1.0}                    %
     \fontsize{12pt}{13pt}\selectfont                        %
     \setlength{\bibsep}{0.5ex}                              %
@@ -1536,6 +1536,10 @@ int main()
     \phantomsection\chapter*{\nwpu@page@ack}                %
     \markboth{\nwpu@page@ack}{\nwpu@page@ack}               %
     \addcontentsline{toc}{chapter}{\nwpu@page@ack}          %
+%    \end{macrocode}
+% \markdtxchanges{v1.8.2}{2022/12/11}{修复目录环境}
+%    \begin{macrocode}
+    \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}   %
 }{\par \cleardoublepage}                                    %
 %%-----------------------------------------------------------------------------%
 \newenvironment{accomplishments}{                           % 参加科研情况

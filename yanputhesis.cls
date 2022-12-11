@@ -15,7 +15,7 @@
 %% 2005/12/01 or later.
 \NeedsTeXFormat{LaTeX2e}[2005/12/01]
 \ProvidesClass{yanputhesis}
-    [2022/12/07 v1.8.2 Yet Another NPU Thesis Template]
+    [2022/12/11 v1.8.2 Yet Another NPU Thesis Template]
 %%=============================================================================%
 %% 文档选项和基础文档类型控制
 %%-----------------------------------------------------------------------------%
@@ -695,7 +695,7 @@
 %%-----------------------------------------------------------------------------%
 \let\old@bibliography\bibliography                          % 保护原有附录环境
 \renewcommand{\bibliography}[1]{                            %
-    \phantomsection \addcontentsline{toc}{chapter}{参考文献}%
+    \phantomsection\addcontentsline{toc}{chapter}{参考文献} %
     \renewcommand{\baselinestretch}{1.0}                    %
     \fontsize{12pt}{13pt}\selectfont                        %
     \setlength{\bibsep}{0.5ex}                              %
@@ -770,6 +770,7 @@
     \phantomsection\chapter*{\nwpu@page@ack}                %
     \markboth{\nwpu@page@ack}{\nwpu@page@ack}               %
     \addcontentsline{toc}{chapter}{\nwpu@page@ack}          %
+    \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}   %
 }{\par \cleardoublepage}                                    %
 %%-----------------------------------------------------------------------------%
 \newenvironment{accomplishments}{                           % 参加科研情况
