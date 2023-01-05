@@ -6,7 +6,7 @@
 %%
 %% yanputhesis.dtx  (with options: `class')
 %% Copyright (C) 2022 by Shangkun Shen
-%% 
+%%
 %% It may be distributed and/or modified under the conditions of the LaTeX
 %% Project Public License, either version 1.3b of this license or (at your
 %% option) any later version. The latest version of this license is in
@@ -15,7 +15,7 @@
 %% 2005/12/01 or later.
 \NeedsTeXFormat{LaTeX2e}[2005/12/01]
 \ProvidesClass{yanputhesis}
-    [2022/12/11 v1.8.2 Yet Another NPU Thesis Template]
+    [2023/01/05 v1.8.3 Yet Another NPU Thesis Template]
 %%=============================================================================%
 %% 文档选项和基础文档类型控制
 %%-----------------------------------------------------------------------------%
@@ -26,6 +26,7 @@
 \newif\if@npu@type@bcl                                      % 本科版本标记
 \newif\if@npu@output@blindreview                            % 盲评版本标记
 \newif\if@npu@font@adobe                                    % Adobe 字体标记
+\newif\if@npu@font@winfonts                                 % 强制使用 Win 字体
 \def\set@lang@chs{\@npu@lang@chstrue}                       % 设置中文版本
 \def\set@lang@eng{\@npu@lang@chsfalse}                      % 设置英文版本
 \def\set@type@phd{     \@npu@type@phdtrue\@npu@type@mstfalse\@npu@type@bclfalse}
@@ -35,15 +36,32 @@
 \DeclareOptionX{degree}[phd]{\csname set@type@#1\endcsname}
 \DeclareOptionX{blindreview}[true]{\csname @npu@output@blindreview#1\endcsname}
 \DeclareOptionX{adobe}[true]{\csname @npu@font@adobe#1\endcsname}
+\DeclareOptionX{winfonts}[true]{\csname @npu@font@winfonts#1\endcsname}
 \DeclareOptionX*{\PassOptionsToClass{\CurrentOption}{book}} % 传递参数到 book 类
 \ExecuteOptionsX{lang=chs}                                  % 默认为中文版本
 \ExecuteOptionsX{degree=phd}                                % 默认为博士版本
 \ExecuteOptionsX{blindreview=false}                         % 默认不开启盲评模式
 \ExecuteOptionsX{adobe=false}                               % 默认不用 Adobe 字体
+\ExecuteOptionsX{winfonts=false}                            % 默认不开启强制选项
 \ProcessOptionsX \relax                                     %
 \LoadClass[11pt, a4paper, openany, twoside]{book}           % 默认双面印刷
 \RequirePackage{etoolbox}                                   % LaTeX 补丁工具
 \RequirePackage{amssymb}                                    % AMS 数学符号
+%%=============================================================================%
+%%=============================================================================%
+%% 盲评版本的文字替换功能
+%%-----------------------------------------------------------------------------%
+\newcommand\@npu@replaceitwithblank[1]{{\setlength{%        % 替换成相同宽度空白
+    \fboxsep}{0pt}\colorbox{white}{\phantom{#1}}}}          %
+\newcommand\@npu@replaceitwithblack[1]{{\setlength{%        % 替换成涂黑方块
+    \fboxsep}{0pt}\colorbox{black}{\phantom{#1}}}}          %
+\newcommand\@npu@replaceitwithstars{ *** }                  % 替换成 3 个星号
+\newcommand{\blindreview}[1]{\if@npu@output@blindreview%    % 空白盲评标记
+    \@npu@replaceitwithblank{#1}\relax\else #1\fi}          %
+\newcommand{\blackbox}[1]{\if@npu@output@blindreview%       % 涂黑盲评标记
+    \@npu@replaceitwithblack{#1}\relax\else #1\fi}          %
+\newcommand{\markname}[1]{\if@npu@output@blindreview%       % 打星盲评标记
+    \@npu@replaceitwithstars\relax\else #1\fi}              %
 %%=============================================================================%
 %%=============================================================================%
 %% 格式控制及组件控制
@@ -83,29 +101,26 @@
 \newcommand{\sDefault}{\fontsize{12pt}{20pt}\selectfont}    % 小四，1.67 倍
 %%-----------------------------------------------------------------------------%
 \RequirePackage{ifplatform}                                 % 跨平台字体控制依赖
-\if@npu@font@adobe                                          % 检测 Adobe 选项
-    \newcommand\defaultSog{Adobe Song Std}                  % 宋体，用于正文
-    \newcommand\defaultHei{Adobe Heiti Std}                 % 黑体，用于标题
-    \newcommand\defaultKai{Adobe Kaiti Std}                 % 楷体，一般用于强调
-    \newcommand\defaultFag{Adobe Fangsong Std}              % 仿宋，一般用于强调
-\else                                                       % 使用系统自带字体
-    \ifwindows                                              % Windows 环境
-        \newcommand\defaultSog{SimSun}                      % 宋体，用于正文
-        \newcommand\defaultHei{SimHei}                      % 黑体，用于标题
-        \newcommand\defaultKai{KaiTi}                       % 楷体，一般用于强调
-        \newcommand\defaultFag{FangSong}                    % 仿宋，一般用于强调
-    \fi                                                     %
-    \ifmacosx                                               % macOS 环境
-        \newcommand\defaultSog{STSongti-SC-Regular}         % 宋体，用于正文
-        \newcommand\defaultHei{STHeiti}                     % 黑体，用于标题
-        \newcommand\defaultKai{STKaiti}                     % 楷体，一般用于强调
-        \newcommand\defaultFag{STFangSong}                  % 仿宋，一般用于强调
-    \fi                                                     %
-    \iflinux                                                % Linux 环境
-        \newcommand\defaultSog{SimSun}                      % 宋体，用于正文
-        \newcommand\defaultHei{SimHei}                      % 黑体，用于标题
-        \newcommand\defaultKai{KaiTi}                       % 楷体，一般用于强调
-        \newcommand\defaultFag{FangSong}                    % 仿宋，一般用于强调
+\newcommand\defaultSog{SimSun}                              % 宋体，用于正文
+\newcommand\defaultHei{SimHei}                              % 黑体，用于标题
+\newcommand\defaultKai{KaiTi}                               % 楷体，一般用于强调
+\newcommand\defaultFag{FangSong}                            % 仿宋，一般用于强调
+\if@npu@font@winfonts\relax                                 % 检测 winfonts 选项
+\else                                                       %
+    \if@npu@font@adobe                                      % 检测 Adobe 选项
+        \renewcommand\defaultSog{Adobe Song Std}            % 宋体，用于正文
+        \renewcommand\defaultHei{Adobe Heiti Std}           % 黑体，用于标题
+        \renewcommand\defaultKai{Adobe Kaiti Std}           % 楷体，一般用于强调
+        \renewcommand\defaultFag{Adobe Fangsong Std}        % 仿宋，一般用于强调
+    \else                                                   % 使用系统自带字体
+        \ifwindows\relax\fi                                 % Windows 使用默认字体
+        \iflinux\relax\fi                                   % Linux 使用默认字体
+        \ifmacosx                                           % macOS 环境
+            \renewcommand\defaultSog{STSongti-SC-Regular}   % 宋体，用于正文
+            \renewcommand\defaultHei{STHeiti}               % 黑体，用于标题
+            \renewcommand\defaultKai{STKaiti}               % 楷体，一般用于强调
+            \renewcommand\defaultFag{STFangSong}            % 仿宋，一般用于强调
+        \fi                                                 %
     \fi                                                     %
 \fi                                                         %
 \newcommand\defaultEngFont{Times New Roman}                 % 英文文本默认字体
@@ -654,7 +669,7 @@
 }{\vfill\sWuhao\noindent\nwpu@chs@funding\par\cleardoublepage}
 \newenvironment{keywords}{                                  %
     \vspace{1\baselineskip} \par                            %
-    \noindent \textbf{关键词：}\quad}{}                     %
+    \noindent \textbf{关键词：}}{}                          %
 %%-----------------------------------------------------------------------------%
 %% 英文摘要及关键词
 %%-----------------------------------------------------------------------------%
@@ -666,7 +681,7 @@
 }{\vfill\sWuhao\noindent\nwpu@eng@funding\par\cleardoublepage}
 \newenvironment{engkeywords}{                               %
     \vspace{1\baselineskip} \par                            %
-    \noindent \textbf{Key Words:}\quad}{}                   %
+    \noindent \textbf{Key Words:}}{}                        %
 %%=============================================================================%
 %%=============================================================================%
 %% 目录页
@@ -833,7 +848,7 @@
             \vspace*{1.5mm}
             \hspace*{21em}\hfill 学位论文作者签名{~:~}\underline{\qquad\qquad\quad}\par
             \vspace*{2mm}
-            \hspace*{10em}\hfill{年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}
+            \hspace*{10em}\hfill {年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}
         \end{minipage}
     \end{minipage}
 \end{titlepage}
@@ -841,11 +856,11 @@
 %%=============================================================================%
 
 
-%% 
+%%
 %% This work consists of the file  yanputhesis.dtx
 %% and the derived files           yanputhesis.ins,
 %%                                 yanputhesis.pdf,
 %%                                 yanputhesis.cls.
-%% 
+%%
 %%
 %% End of file `yanputhesis.cls'.

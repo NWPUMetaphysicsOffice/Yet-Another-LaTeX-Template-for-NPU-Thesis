@@ -90,7 +90,7 @@ and the derived files           yanputhesis.ins,
 %<class>\NeedsTeXFormat{LaTeX2e}[2005/12/01]
 %<class>\ProvidesClass{yanputhesis}
 %<*class>
-    [2022/12/11 v1.8.2 Yet Another NPU Thesis Template]
+    [2023/01/05 v1.8.3 Yet Another NPU Thesis Template]
 %</class>
 %
 %<*driver>
@@ -163,7 +163,16 @@ and the derived files           yanputhesis.ins,
 %%=============================================================================%
 %% 设置论文格式（学位、盲评、Adobe 字体）
 %%-----------------------------------------------------------------------------%
-\documentclass[lang=chs, degree=phd, blindreview=false, adobe=true]{yanputhesis}
+%% 博士、正常版本、不使用 Adobe 字体
+%% \documentclass[lang=chs, degree=phd, blindreview=false, adobe=false]{yanputhesis}
+%% 博士、盲评版本、不使用 Adobe 字体
+%% \documentclass[lang=chs, degree=phd, blindreview=true, adobe=false]{yanputhesis}
+%% 博士、正常版本、强制使用 Windows 系统字体
+\documentclass[lang=chs, degree=phd, blindreview=false, winfonts=true]{yanputhesis}
+%% 硕士、正常版本、不使用 Adobe 字体
+%% \documentclass[lang=chs, degree=master, blindreview=false, adobe=false]{yanputhesis}
+%% 硕士、盲评版本、不使用 Adobe 字体
+%% \documentclass[lang=chs, degree=master, blindreview=true, adobe=false]{yanputhesis}
 %%=============================================================================%
 %% 导言区：请自行添加额外宏包
 %%-----------------------------------------------------------------------------%
@@ -249,11 +258,11 @@ and the derived files           yanputhesis.ins,
 \title{基于 LaTeX 排版的 \\ 西北工业大学论文模板}{          % 中英文标题
     Yet Another Thesis Template of \\ Northwestern Polytechnical University
 }                                                           % 请自行断行
-\author{张三丰}{Sanfeng Zhang}                              % 姓名
+\author{\blindreview{张三丰}}{\blindreview{Sanfeng Zhang}}  % 姓名（添加盲评标记）
 \date{2022年6月}{Jun 2022}                                  % 答辩日期
 \school{数学与统计学院}{School of Mathematics and Statistics}% 学院
 \major{数学}{Philosophy in Mathematics}                     % 专业 博士请添加 Ph
-\advisor{李四海 \enspace 教授}{Sihai Li}                    % 导师
+\advisor{\blindreview{李四海}}{\blindreview{Sihai Li}}      % 导师（添加盲评标记）
 \studentnumber{2016123456}                                  % 学号
 \funding{本研究得到玄学基金（编号23336666）资助。}{         % 基金资助
     The present work is supported by Funding of Metaphysics %
@@ -322,8 +331,8 @@ $$a_0+a_1+a_2=\sqrt{233}$$
 \LaTeX{} 中要求参考文献使用 \lstinline`\cite` 进行参考引用，若论文要求中说明需在
 文字的右上角注明引用，请使用命令 \lstinline`\cite` 进行参考引用。举个
 不恰当的例子，比如本论文模板的原版
-`LaTeX-Template-For-NPU-Thesis'\cite{NWPUThesisLaTeXTemplate} 要求务必声明引用,
-同时预配置了插件 `math-symbols' \cite{MathSymbolsinLaTeXbypolossk}。对组件的引
+“LaTeX-Template-For-NPU-Thesis”\cite{NWPUThesisLaTeXTemplate} 要求务必声明引用,
+同时预配置了插件“math-symbols”\cite{MathSymbolsinLaTeXbypolossk}。对组件的引
 用是每一名科学工作者的基本素养（一本正经）。对于需要引用但是并不需要明确指明引用
 位置的文献，请使用 \lstinline`\nocite` 命令。
 
@@ -349,6 +358,23 @@ $$a_0+a_1+a_2=\sqrt{233}$$
     \item 使用自带的 TeXworks 打开 \lstinline`yanputhesis-sample.tex`
     \item 左上角下拉框选择工具
     \item 依次使用 \lstinline`XeLaTeX-BibTeX-XeLaTeX-XeLaTeX` 编译
+\end{enumerate}
+
+\section{如何生成盲评版本}
+
+\begin{enumerate}
+    \setlength{\itemsep}{0pt}
+    \item 在这份样例当中，已经将标题页可能用到的作者姓名、导师姓名添加了空白盲评标记 \lstinline`\blindreview{text}`。如果需要生成盲评版本，则需要将文档类型设置为 \lstinline`blindreview=true`，这样便可得到标题页不含作者与导师姓名的版本。
+    \item 在致谢中，除了导师名字之外，其他老师、同学的名字也应当隐去。同样可以将姓名添加空白盲评标记 \lstinline`\blindreview{text}` 来得到留空版本的结果。
+    \item 一般正文中不建议出现留空，因此推荐另外两种盲评标记，涂黑或者打星。使用 \lstinline`\blackbox{text}` 命令将姓名添加涂黑盲评标记，文本会替换为与文字相同长度的黑色方块，制造涂黑效果。或者使用 \lstinline`\markname{text}` 命令将姓名添加打星盲评标记，姓名将替换成 3 个星号“***”。
+    \item 下面给出示例（通过开启盲评选项查看效果）：
+    \begin{enumerate}
+        \setlength{\itemsep}{0pt}
+        \item 不添加任何盲评标记：“感谢某某某教授的悉心指导。”
+        \item 使用了空白盲评标记：“感谢\blindreview{某某某}教授的悉心指导。”
+        \item 使用了涂黑盲评标记：“感谢\blackbox{某某某}教授的悉心指导。”
+        \item 使用了打星盲评标记：“感谢\markname{某某某}教授的悉心指导。”
+    \end{enumerate}
 \end{enumerate}
 
 \cleardoublepage
@@ -551,6 +577,8 @@ int main()
 %     \item 声明选项 blindreview，用于生成盲评版本，并储存在对应的布尔变量上。
 %     \item 声明选项 adobe，用于指定模板使用 Adobe 中文字体生成（需自行准备宋体、
 %     黑体、楷体、仿宋字体文件）。
+%     \item 声明选项 winfonts，用于强制指定模板使用 Windows 系统的自带字体生成
+%     （需自行准备宋体、黑体、楷体、仿宋字体文件）。
 %     \item 本模板默认选项为中文博士非盲评版本，且不使用 Adobe 中文字体。
 %     \item 本模板使用 |etoolbox| 辅助修饰附录环境。
 %     \item 本模板使用 |amssymb| 提供必要数学符号。
@@ -568,6 +596,10 @@ int main()
 \newif\if@npu@type@bcl                                      % 本科版本标记
 \newif\if@npu@output@blindreview                            % 盲评版本标记
 \newif\if@npu@font@adobe                                    % Adobe 字体标记
+%    \end{macrocode}
+% \markdtxchanges{v1.8.3}{2023/01/06}{添加 winfonts 强制使用 Windows 字体选项}
+%    \begin{macrocode}
+\newif\if@npu@font@winfonts                                 % 强制使用 Win 字体
 \def\set@lang@chs{\@npu@lang@chstrue}                       % 设置中文版本
 \def\set@lang@eng{\@npu@lang@chsfalse}                      % 设置英文版本
 \def\set@type@phd{     \@npu@type@phdtrue\@npu@type@mstfalse\@npu@type@bclfalse}
@@ -577,11 +609,13 @@ int main()
 \DeclareOptionX{degree}[phd]{\csname set@type@#1\endcsname}
 \DeclareOptionX{blindreview}[true]{\csname @npu@output@blindreview#1\endcsname}
 \DeclareOptionX{adobe}[true]{\csname @npu@font@adobe#1\endcsname}
+\DeclareOptionX{winfonts}[true]{\csname @npu@font@winfonts#1\endcsname}
 \DeclareOptionX*{\PassOptionsToClass{\CurrentOption}{book}} % 传递参数到 book 类
 \ExecuteOptionsX{lang=chs}                                  % 默认为中文版本
 \ExecuteOptionsX{degree=phd}                                % 默认为博士版本
 \ExecuteOptionsX{blindreview=false}                         % 默认不开启盲评模式
 \ExecuteOptionsX{adobe=false}                               % 默认不用 Adobe 字体
+\ExecuteOptionsX{winfonts=false}                            % 默认不开启强制选项
 \ProcessOptionsX \relax                                     %
 \LoadClass[11pt, a4paper, openany, twoside]{book}           % 默认双面印刷
 %    \end{macrocode}
@@ -592,6 +626,39 @@ int main()
 % \markdtxchanges{v1.8.1}{2022/12/06}{添加数学符号}
 %    \begin{macrocode}
 \RequirePackage{amssymb}                                    % AMS 数学符号
+%%=============================================================================%
+%    \end{macrocode}
+%
+%^^A---------------------------------------------------------------------------%
+% \markdtxchanges{v1.8.3}{2023/01/06}{完善盲评版本的文字替换功能}
+% \subsection{盲评版本的文字替换功能}
+%
+% \begin{itemize}
+%     \item 使用 |\blindreview{text}| 命令将文本 |text| 添加空白盲评标记，当盲评
+%           开关 |blindreview=true| 打开时，该文本会替换为相同宽度的空白。
+%     \item 使用 |\blackbox{text}| 命令将文本 |text| 添加涂黑盲评标记（一般用于
+%           致谢中出现的姓名），当盲评开关 |blindreview=true| 打开时，该文本会替
+%           换为与文字相同长度的黑色方块，制造涂黑效果。
+%     \item 使用 |\markname{text}| 命令将文本 |text| 添加打星盲评标记（一般用于
+%           致谢中出现的姓名），当盲评开关 |blindreview=true| 打开时，该文本会替
+%           换为 3 个星号，例如“感谢 *** 老师的帮助”。
+% \end{itemize}
+%
+%    \begin{macrocode}
+%%=============================================================================%
+%% 盲评版本的文字替换功能
+%%-----------------------------------------------------------------------------%
+\newcommand\@npu@replaceitwithblank[1]{{\setlength{%        % 替换成相同宽度空白
+    \fboxsep}{0pt}\colorbox{white}{\phantom{#1}}}}          %
+\newcommand\@npu@replaceitwithblack[1]{{\setlength{%        % 替换成涂黑方块
+    \fboxsep}{0pt}\colorbox{black}{\phantom{#1}}}}          %
+\newcommand\@npu@replaceitwithstars{ *** }                  % 替换成 3 个星号
+\newcommand{\blindreview}[1]{\if@npu@output@blindreview%    % 空白盲评标记
+    \@npu@replaceitwithblank{#1}\relax\else #1\fi}          %
+\newcommand{\blackbox}[1]{\if@npu@output@blindreview%       % 涂黑盲评标记
+    \@npu@replaceitwithblack{#1}\relax\else #1\fi}          %
+\newcommand{\markname}[1]{\if@npu@output@blindreview%       % 打星盲评标记
+    \@npu@replaceitwithstars\relax\else #1\fi}              %
 %%=============================================================================%
 %    \end{macrocode}
 %
@@ -662,29 +729,29 @@ int main()
 \newcommand{\sDefault}{\fontsize{12pt}{20pt}\selectfont}    % 小四，1.67 倍
 %%-----------------------------------------------------------------------------%
 \RequirePackage{ifplatform}                                 % 跨平台字体控制依赖
-\if@npu@font@adobe                                          % 检测 Adobe 选项
-    \newcommand\defaultSog{Adobe Song Std}                  % 宋体，用于正文
-    \newcommand\defaultHei{Adobe Heiti Std}                 % 黑体，用于标题
-    \newcommand\defaultKai{Adobe Kaiti Std}                 % 楷体，一般用于强调
-    \newcommand\defaultFag{Adobe Fangsong Std}              % 仿宋，一般用于强调
-\else                                                       % 使用系统自带字体
-    \ifwindows                                              % Windows 环境
-        \newcommand\defaultSog{SimSun}                      % 宋体，用于正文
-        \newcommand\defaultHei{SimHei}                      % 黑体，用于标题
-        \newcommand\defaultKai{KaiTi}                       % 楷体，一般用于强调
-        \newcommand\defaultFag{FangSong}                    % 仿宋，一般用于强调
-    \fi                                                     %
-    \ifmacosx                                               % macOS 环境
-        \newcommand\defaultSog{STSongti-SC-Regular}         % 宋体，用于正文
-        \newcommand\defaultHei{STHeiti}                     % 黑体，用于标题
-        \newcommand\defaultKai{STKaiti}                     % 楷体，一般用于强调
-        \newcommand\defaultFag{STFangSong}                  % 仿宋，一般用于强调
-    \fi                                                     %
-    \iflinux                                                % Linux 环境
-        \newcommand\defaultSog{SimSun}                      % 宋体，用于正文
-        \newcommand\defaultHei{SimHei}                      % 黑体，用于标题
-        \newcommand\defaultKai{KaiTi}                       % 楷体，一般用于强调
-        \newcommand\defaultFag{FangSong}                    % 仿宋，一般用于强调
+%    \end{macrocode}
+% \markdtxchanges{v1.8.3}{2023/01/06}{默认字体为 Windows 系统自带版本}
+%    \begin{macrocode}
+\newcommand\defaultSog{SimSun}                              % 宋体，用于正文
+\newcommand\defaultHei{SimHei}                              % 黑体，用于标题
+\newcommand\defaultKai{KaiTi}                               % 楷体，一般用于强调
+\newcommand\defaultFag{FangSong}                            % 仿宋，一般用于强调
+\if@npu@font@winfonts\relax                                 % 检测 winfonts 选项
+\else                                                       %
+    \if@npu@font@adobe                                      % 检测 Adobe 选项
+        \renewcommand\defaultSog{Adobe Song Std}            % 宋体，用于正文
+        \renewcommand\defaultHei{Adobe Heiti Std}           % 黑体，用于标题
+        \renewcommand\defaultKai{Adobe Kaiti Std}           % 楷体，一般用于强调
+        \renewcommand\defaultFag{Adobe Fangsong Std}        % 仿宋，一般用于强调
+    \else                                                   % 使用系统自带字体
+        \ifwindows\relax\fi                                 % Windows 使用默认字体
+        \iflinux\relax\fi                                   % Linux 使用默认字体
+        \ifmacosx                                           % macOS 环境
+            \renewcommand\defaultSog{STSongti-SC-Regular}   % 宋体，用于正文
+            \renewcommand\defaultHei{STHeiti}               % 黑体，用于标题
+            \renewcommand\defaultKai{STKaiti}               % 楷体，一般用于强调
+            \renewcommand\defaultFag{STFangSong}            % 仿宋，一般用于强调
+        \fi                                                 %
     \fi                                                     %
 \fi                                                         %
 \newcommand\defaultEngFont{Times New Roman}                 % 英文文本默认字体
@@ -1363,9 +1430,10 @@ int main()
 \newenvironment{keywords}{                                  %
 %    \end{macrocode}
 % \markdtxchanges{v1.8.0}{2022/12/03}{摘要关键词之间空一行}
+% \markdtxchanges{v1.8.3}{2023/01/06}{关键词后不需要加空格}
 %    \begin{macrocode}
     \vspace{1\baselineskip} \par                            %
-    \noindent \textbf{关键词：}\quad}{}                     %
+    \noindent \textbf{关键词：}}{}                          %
 %%-----------------------------------------------------------------------------%
 %% 英文摘要及关键词
 %%-----------------------------------------------------------------------------%
@@ -1381,9 +1449,10 @@ int main()
 \newenvironment{engkeywords}{                               %
 %    \end{macrocode}
 % \markdtxchanges{v1.8.0}{2022/12/03}{摘要关键词之间空一行}
+% \markdtxchanges{v1.8.3}{2023/01/06}{关键词后不需要加空格}
 %    \begin{macrocode}
     \vspace{1\baselineskip} \par                            %
-    \noindent \textbf{Key Words:}\quad}{}                   %
+    \noindent \textbf{Key Words:}}{}                        %
 %%=============================================================================%
 %    \end{macrocode}
 %
@@ -1605,7 +1674,7 @@ int main()
             \vspace*{1.5mm}
             \hspace*{21em}\hfill 学位论文作者签名{~:~}\underline{\qquad\qquad\quad}\par
             \vspace*{2mm}
-            \hspace*{10em}\hfill{年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}
+            \hspace*{10em}\hfill {年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}
         \end{minipage}
     \end{minipage}
 \end{titlepage}
