@@ -6,7 +6,7 @@
 %%
 %% yanputhesis.dtx  (with options: `sample')
 %% Copyright (C) 2022 by Shangkun Shen
-%% 
+%%
 %% It may be distributed and/or modified under the conditions of the LaTeX
 %% Project Public License, either version 1.3b of this license or (at your
 %% option) any later version. The latest version of this license is in
@@ -16,7 +16,16 @@
 %%=============================================================================%
 %% 设置论文格式（学位、盲评、Adobe 字体）
 %%-----------------------------------------------------------------------------%
-\documentclass[lang=chs, degree=phd, blindreview=false, adobe=true]{yanputhesis}
+%% 博士、正常版本、不使用 Adobe 字体
+%% \documentclass[lang=chs, degree=phd, blindreview=false, adobe=false]{yanputhesis}
+%% 博士、盲评版本、不使用 Adobe 字体
+%% \documentclass[lang=chs, degree=phd, blindreview=true, adobe=false]{yanputhesis}
+%% 博士、正常版本、强制使用 Windows 系统字体
+\documentclass[lang=chs, degree=phd, blindreview=false, winfonts=true]{yanputhesis}
+%% 硕士、正常版本、不使用 Adobe 字体
+%% \documentclass[lang=chs, degree=master, blindreview=false, adobe=false]{yanputhesis}
+%% 硕士、盲评版本、不使用 Adobe 字体
+%% \documentclass[lang=chs, degree=master, blindreview=true, adobe=false]{yanputhesis}
 %%=============================================================================%
 %% 导言区：请自行添加额外宏包
 %%-----------------------------------------------------------------------------%
@@ -102,11 +111,11 @@
 \title{基于 LaTeX 排版的 \\ 西北工业大学论文模板}{          % 中英文标题
     Yet Another Thesis Template of \\ Northwestern Polytechnical University
 }                                                           % 请自行断行
-\author{张三丰}{Sanfeng Zhang}                              % 姓名
+\author{\blindreview{张三丰}}{\blindreview{Sanfeng Zhang}}  % 姓名（添加盲评标记）
 \date{2022年6月}{Jun 2022}                                  % 答辩日期
 \school{数学与统计学院}{School of Mathematics and Statistics}% 学院
 \major{数学}{Philosophy in Mathematics}                     % 专业 博士请添加 Ph
-\advisor{李四海 \enspace 教授}{Sihai Li}                    % 导师
+\advisor{\blindreview{李四海}}{\blindreview{Sihai Li}}      % 导师（添加盲评标记）
 \studentnumber{2016123456}                                  % 学号
 \funding{本研究得到玄学基金（编号23336666）资助。}{         % 基金资助
     The present work is supported by Funding of Metaphysics %
@@ -175,8 +184,8 @@ $$a_0+a_1+a_2=\sqrt{233}$$
 \LaTeX{} 中要求参考文献使用 \lstinline`\cite` 进行参考引用，若论文要求中说明需在
 文字的右上角注明引用，请使用命令 \lstinline`\cite` 进行参考引用。举个
 不恰当的例子，比如本论文模板的原版
-`LaTeX-Template-For-NPU-Thesis'\cite{NWPUThesisLaTeXTemplate} 要求务必声明引用,
-同时预配置了插件 `math-symbols' \cite{MathSymbolsinLaTeXbypolossk}。对组件的引
+“LaTeX-Template-For-NPU-Thesis”\cite{NWPUThesisLaTeXTemplate} 要求务必声明引用,
+同时预配置了插件“math-symbols”\cite{MathSymbolsinLaTeXbypolossk}。对组件的引
 用是每一名科学工作者的基本素养（一本正经）。对于需要引用但是并不需要明确指明引用
 位置的文献，请使用 \lstinline`\nocite` 命令。
 
@@ -202,6 +211,23 @@ $$a_0+a_1+a_2=\sqrt{233}$$
     \item 使用自带的 TeXworks 打开 \lstinline`yanputhesis-sample.tex`
     \item 左上角下拉框选择工具
     \item 依次使用 \lstinline`XeLaTeX-BibTeX-XeLaTeX-XeLaTeX` 编译
+\end{enumerate}
+
+\section{如何生成盲评版本}
+
+\begin{enumerate}
+    \setlength{\itemsep}{0pt}
+    \item 在这份样例当中，已经将标题页可能用到的作者姓名、导师姓名添加了空白盲评标记 \lstinline`\blindreview{text}`。如果需要生成盲评版本，则需要将文档类型设置为 \lstinline`blindreview=true`，这样便可得到标题页不含作者与导师姓名的版本。
+    \item 在致谢中，除了导师名字之外，其他老师、同学的名字也应当隐去。同样可以将姓名添加空白盲评标记 \lstinline`\blindreview{text}` 来得到留空版本的结果。
+    \item 一般正文中不建议出现留空，因此推荐另外两种盲评标记，涂黑或者打星。使用 \lstinline`\blackbox{text}` 命令将姓名添加涂黑盲评标记，文本会替换为与文字相同长度的黑色方块，制造涂黑效果。或者使用 \lstinline`\markname{text}` 命令将姓名添加打星盲评标记，姓名将替换成 3 个星号“***”。
+    \item 下面给出示例（通过开启盲评选项查看效果）：
+          \begin{enumerate}
+              \setlength{\itemsep}{0pt}
+              \item 不添加任何盲评标记：“感谢某某某教授的悉心指导。”
+              \item 使用了空白盲评标记：“感谢\blindreview{某某某}教授的悉心指导。”
+              \item 使用了涂黑盲评标记：“感谢\blackbox{某某某}教授的悉心指导。”
+              \item 使用了打星盲评标记：“感谢\markname{某某某}教授的悉心指导。”
+          \end{enumerate}
 \end{enumerate}
 
 \cleardoublepage
@@ -376,11 +402,11 @@ int main()
 %%=============================================================================%
 
 
-%% 
+%%
 %% This work consists of the file  yanputhesis.dtx
 %% and the derived files           yanputhesis.ins,
 %%                                 yanputhesis.pdf,
 %%                                 yanputhesis.cls.
-%% 
+%%
 %%
 %% End of file `yanputhesis-sample.tex'.
