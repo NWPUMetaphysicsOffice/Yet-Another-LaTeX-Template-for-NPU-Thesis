@@ -676,7 +676,7 @@
 \newenvironment{engabstract}{                               %
     \newcommand{\ensep}{\!; }                               % 英文关键词间隔符
     \sDefault                                               %
-    \chapter[\textbf{ABSTRACT}]{Abstract}                   %
+    \chapter[ABSTRACT]{\textbf{Abstract}}                   %
     \markboth{Abstract}{ABSTRACT}                           %
 }{\vfill\sWuhao\noindent\nwpu@eng@funding\par\cleardoublepage}
 \newenvironment{engkeywords}{                               %
