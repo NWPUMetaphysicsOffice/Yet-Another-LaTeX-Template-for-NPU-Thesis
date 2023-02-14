@@ -434,8 +434,10 @@
 %%-----------------------------------------------------------------------------%
 \if@npu@lang@chs                                            % 定制中文特殊页面
     \newcommand{\nwpu@page@ack}{致{\quad}谢}                %
-    \newcommand{\nwpu@page@acp}{攻读{\nwpu@chs@degree}学位期%
-        间发表的学术论文和参加科研情况}                     %
+%     \newcommand{\nwpu@page@acp}{攻读{\nwpu@chs@degree}学位期
+%         间发表的学术论文和参加科研情况}                     
+    \newcommand{\nwpu@page@acp}{在学期间发表的学术成果和参加科研情况}
+
 \else                                                       % 定制英文特殊页面
     \newcommand{\nwpu@page@ack}{Acknowledgements}           %
     \newcommand{\nwpu@page@acp}{Published Papers and        %
