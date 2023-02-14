@@ -147,7 +147,7 @@
 \XeTeXlinebreakskip = 0pt plus 1pt                          % 换行逻辑的弹性大小
 %%-----------------------------------------------------------------------------%
 \RequirePackage{indentfirst}                                % 段首空格设置
-\setlength\parindent{2em}                                   % 段首空格长度
+\setlength\parindent{24pt}                                   % 段首空格长度
 \setlength\parskip{0pt}                                     % 段落间距
 \renewcommand{\baselinestretch}{1.0}                        % 行距
 %%-----------------------------------------------------------------------------%
