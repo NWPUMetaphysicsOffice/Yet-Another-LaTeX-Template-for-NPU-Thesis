@@ -6,7 +6,7 @@
 %%
 %% yanputhesis.dtx  (with options: `class')
 %% Copyright (C) 2022 by Shangkun Shen
-%%
+%% 
 %% It may be distributed and/or modified under the conditions of the LaTeX
 %% Project Public License, either version 1.3b of this license or (at your
 %% option) any later version. The latest version of this license is in
@@ -15,7 +15,7 @@
 %% 2005/12/01 or later.
 \NeedsTeXFormat{LaTeX2e}[2005/12/01]
 \ProvidesClass{yanputhesis}
-    [2023/01/05 v1.8.3 Yet Another NPU Thesis Template]
+    [2023/03/02 v1.8.4 Yet Another NPU Thesis Template]
 %%=============================================================================%
 %% 文档选项和基础文档类型控制
 %%-----------------------------------------------------------------------------%
@@ -147,7 +147,7 @@
 \XeTeXlinebreakskip = 0pt plus 1pt                          % 换行逻辑的弹性大小
 %%-----------------------------------------------------------------------------%
 \RequirePackage{indentfirst}                                % 段首空格设置
-\setlength\parindent{24pt}                                   % 段首空格长度
+\setlength\parindent{24pt}                                  % 段首空格长度
 \setlength\parskip{0pt}                                     % 段落间距
 \renewcommand{\baselinestretch}{1.0}                        % 行距
 %%-----------------------------------------------------------------------------%
@@ -434,10 +434,8 @@
 %%-----------------------------------------------------------------------------%
 \if@npu@lang@chs                                            % 定制中文特殊页面
     \newcommand{\nwpu@page@ack}{致{\quad}谢}                %
-%     \newcommand{\nwpu@page@acp}{攻读{\nwpu@chs@degree}学位期
-%         间发表的学术论文和参加科研情况}                     
-    \newcommand{\nwpu@page@acp}{在学期间发表的学术成果和参加科研情况}
-
+    \newcommand{\nwpu@page@acp}{在学期间发表的学术成果和参加%
+        科研情况}                                           %
 \else                                                       % 定制英文特殊页面
     \newcommand{\nwpu@page@ack}{Acknowledgements}           %
     \newcommand{\nwpu@page@acp}{Published Papers and        %
@@ -858,11 +856,11 @@
 %%=============================================================================%
 
 
-%%
+%% 
 %% This work consists of the file  yanputhesis.dtx
 %% and the derived files           yanputhesis.ins,
 %%                                 yanputhesis.pdf,
 %%                                 yanputhesis.cls.
-%%
+%% 
 %%
 %% End of file `yanputhesis.cls'.
