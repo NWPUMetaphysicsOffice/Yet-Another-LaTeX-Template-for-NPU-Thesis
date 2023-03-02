@@ -205,7 +205,7 @@ FUNCTION {bbl.pages.colon}
 
 FUNCTION {bbl.wide.space} { "\quad " }
 
-FUNCTION {bbl.slash} { "\allowbreak " } %% Modified by polossk, 2022-11-01: no need for double slash
+FUNCTION {bbl.slash} { ". \allowbreak " } %% Modified by polossk, 2022-11-01: no need for double slash
 % FUNCTION {bbl.slash} { "//\allowbreak " }
 
 FUNCTION {bbl.sine.loco}
