@@ -15,7 +15,7 @@
 %% 2005/12/01 or later.
 \NeedsTeXFormat{LaTeX2e}[2005/12/01]
 \ProvidesClass{yanputhesis}
-    [2023/03/02 v1.8.4 Yet Another NPU Thesis Template]
+    [2023/03/03 v1.8.4 Yet Another NPU Thesis Template]
 %%=============================================================================%
 %% 文档选项和基础文档类型控制
 %%-----------------------------------------------------------------------------%
@@ -123,7 +123,8 @@
         \fi                                                 %
     \fi                                                     %
 \fi                                                         %
-\newcommand\defaultEngFont{Times New Roman}                 % 英文文本默认字体
+\newcommand\defaultEngFont{Times New Roman}                 % 英文文本默认字体%    \end{macrocode}
+\newcommand\defaultEngSansFont{\defaultHei}                 % 英文 Sans 字体
 \newcommand\codeFont{Consolas}                              % 等宽英文默认字体
 %%-----------------------------------------------------------------------------%
 \RequirePackage{fontspec}                                   % 设置字体
@@ -136,6 +137,7 @@
 \setCJKfamilyfont{kai}{\defaultKai}                         %
 \setCJKfamilyfont{fang}{\defaultFag}                        %
 \setCJKfamilyfont{eng}{\defaultEngFont}                     %
+\setsansfont{\defaultEngSansFont}                           %
 \setmonofont{\codeFont}                                     %
 \setmainfont{\defaultEngFont}                               %
 \newcommand{\fSong}{\CJKfamily{song}}                       % 宋体: fSong
@@ -153,7 +155,7 @@
 %%-----------------------------------------------------------------------------%
 \RequirePackage{ulem}                                       % 下划线
 \newcommand\dlmu@underline[2][5cm]{\hspace{1pt}\underline{  %
-    \hb@xt@ #1{\hss#2\hss}}\hspace{3pt}}                    %
+        \hb@xt@ #1{\hss#2\hss}}\hspace{3pt}}                %
 \let\coverunderline\dlmu@underline                          %
 %%-----------------------------------------------------------------------------%
 \RequirePackage{layouts}                                    % 页面具体尺寸信息
@@ -163,12 +165,12 @@
 \setcounter{secnumdepth}{3}                                 % 标题计数器深度
 \setcounter{tocdepth}{2}                                    % 目录中标题深度
 \titleformat{\chapter}[hang]{\normalfont\sSanhao\filcenter  %
-    \fHei}{\fHei\sSanhao{\chaptertitlename}}{20pt}{\sSanhao}%
-\titleformat{\section}[hang]{\fHei\sSihao}{                 %
-    \fHei\sSihao\thesection}{0.5em}{}{}                     %
-\titleformat{\subsection}[hang]{\fHei\sHgXiaosi}{           %
-    \sHgXiaosi\thesubsection}{0.5em}{}{}                    %
-\titleformat{\subsubsection}[hang]{\fHei}{                  % 小标题: (4) 标题
+    \sffamily\fHei}{\sffamily\fHei\sSanhao{\chaptertitlename}}{20pt}{\sSanhao}%
+\titleformat{\section}[hang]{\sffamily\fHei\sSihao}{        %
+    \sffamily\fHei\sSihao\thesection}{0.5em}{}{}            %
+\titleformat{\subsection}[hang]{\sffamily\fHei\sHgXiaosi}{  %
+    \sffamily\fHei\sHgXiaosi\thesubsection}{0.5em}{}{}      %
+\titleformat{\subsubsection}[hang]{\sffamily\fHei}{         % 小标题: (4) 标题
     (\arabic{subsubsection})}{0.5em}{}{}                    %
 \titlespacing{\chapter}{0pt}{-2pt}{14pt}                    % 缩小标题之间缩进
 \titlespacing{\section}{0pt}{7pt}{0em}                      %
@@ -182,19 +184,19 @@
 \newcommand{\nwpu@eng@chaptercname}[1]{Chapter #1}          % 目录章节英文标题
 \if@npu@lang@chs                                            % 中文本地化显示
     \titlecontents{chapter}[0pt]{\fSong\sLgXiaosi\vspace{   %
-        0.5em}}{\contentsmargin{0pt}\fSong\makebox[0pt      %
+            0.5em}}{\contentsmargin{0pt}\fSong\makebox[0pt  %
         ][l]{\nwpu@chs@chaptercname{\thecontentslabel}}\hspace{%
-        3.5em}}{\contentsmargin{0pt}\fSong}{\titlerule*[    %
-        .5pc]{.}\contentspage}[\vspace{0em}]                %
+            3.5em}}{\contentsmargin{0pt}\fSong}{\titlerule*[%
+            .5pc]{.}\contentspage}[\vspace{0em}]            %
 \else                                                       %
     \newlength{\contents@titlewidth}                        %
     \newlength{\contents@appendixwidth}                     %
     \settowidth{\contents@titlewidth}{\sLgXiaosi Chapter 000}%
     \settowidth{\contents@appendixwidth}{\sLgXiaosi Appendix M00}
     \titlecontents{chapter}[0pt]{\fSong\sLgXiaosi\vspace{   %
-        0.5em}}{\contentsmargin{0pt}\fSong\makebox[0pt      %
+            0.5em}}{\contentsmargin{0pt}\fSong\makebox[0pt  %
         ][l]{\nwpu@eng@chaptercname{\thecontentslabel}}\hspace{%
-        \contents@titlewidth}}{\contentsmargin{0pt}\fSong}{
+            \contents@titlewidth}}{\contentsmargin{0pt}\fSong}{
         \titlerule*[.5pc]{.}\contentspage}[\vspace{0em}]    %
 \fi                                                         %
 %%-----------------------------------------------------------------------------%
@@ -211,11 +213,11 @@
     \npu@headrule                                           %
 }                                                           %
 \if@npu@lang@chs                                            % 中英文章节页眉设置
-\renewcommand{\chaptermark}[1]{                             %
-    \markboth{\nwpu@chs@chaptercname\thechapter~~ #1}{}}    %
+    \renewcommand{\chaptermark}[1]{                         %
+        \markboth{\nwpu@chs@chaptercname\thechapter~~ #1}{}}%
 \else                                                       %
-\renewcommand{\chaptermark}[1]{                             %
-    \markboth{\nwpu@eng@chaptercname\thechapter~~ #1}{}}    %
+    \renewcommand{\chaptermark}[1]{                         %
+        \markboth{\nwpu@eng@chaptercname\thechapter~~ #1}{}}%
 \fi                                                         %
 \pagestyle{fancyplain}                                      % 新增版式 fancyplain
 \fancyhf{}                                                  % 清空原有页眉页脚
@@ -262,11 +264,11 @@
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}          % 等宽左对齐
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}           % 等宽右对齐
 \newcolumntype{Q}[1]{>{\raggedleft\let\newline\\%           % 指定宽度右对齐
-    \arraybackslash\hspace{0pt}}p{#1}}                      %
+        \arraybackslash\hspace{0pt}}p{#1}}                  %
 \newcolumntype{O}[1]{>{\centering\let\newline\\%            % 指定宽度居中
-    \arraybackslash\hspace{0pt}}p{#1}}                      %
+        \arraybackslash\hspace{0pt}}p{#1}}                  %
 \newcolumntype{P}[1]{>{\raggedright\let\newline\\%          % 指定宽度左对齐
-    \arraybackslash\hspace{0pt}}p{#1}}                      %
+        \arraybackslash\hspace{0pt}}p{#1}}                  %
 \renewcommand{\arraystretch}{1.4}                           % 表格行高为 1.4 倍
 \setlength\heavyrulewidth{1.5pt}                            % 表格上下线宽 1.5 磅
 \setlength\lightrulewidth{1pt}                              % 表格中线宽 1.0 磅
@@ -286,7 +288,7 @@
     \setlength{\abovedisplayshortskip}{0pt}                 %
     \setlength{\belowdisplayshortskip}{0pt}}                %
 {\theoremsymbol{\ensuremath{\square}}                       % 证明环境 囗
-\if@npu@lang@chs\newtheorem*{proof}{证明}\else\newtheorem*{proof}{Proof}\fi}
+    \if@npu@lang@chs\newtheorem*{proof}{证明}\else\newtheorem*{proof}{Proof}\fi}
 \newcommand{\qedinEquation}{{\rlap{$\qquad\square$}}}       % 公式中添加证毕符号
 \if@npu@lang@chs                                            % 定制中文定理环境
     \newtheorem{theorem}{定理}[chapter]                     %
@@ -662,10 +664,10 @@
 %% 中文摘要及关键词
 %%-----------------------------------------------------------------------------%
 \newenvironment{abstract}{                                  %
-    \newcommand{\sep}{\!；}                                 % 中文关键词间隔符
-    \sDefault                                               %
-    \chapter[摘{\quad}要]{摘{\quad}要}                      %
-    \markboth{摘{\quad}要}{摘{\quad}要}                     %
+\newcommand{\sep}{\!；}                                     % 中文关键词间隔符
+\sDefault                                                   %
+\chapter[摘{\quad}要]{摘{\quad}要}                          %
+\markboth{摘{\quad}要}{摘{\quad}要}                         %
 }{\vfill\sWuhao\noindent\nwpu@chs@funding\par\cleardoublepage}
 \newenvironment{keywords}{                                  %
     \vspace{1\baselineskip} \par                            %
@@ -676,8 +678,8 @@
 \newenvironment{engabstract}{                               %
     \newcommand{\ensep}{\!; }                               % 英文关键词间隔符
     \sDefault                                               %
-    \chapter[ABSTRACT]{\textbf{Abstract}}                   %
-    \markboth{Abstract}{ABSTRACT}                           %
+\chapter[ABSTRACT]{\selectfont\rmfamily\fEng\textbf{Abstract}}%
+\markboth{Abstract}{ABSTRACT}                           %
 }{\vfill\sWuhao\noindent\nwpu@eng@funding\par\cleardoublepage}
 \newenvironment{engkeywords}{                               %
     \vspace{1\baselineskip} \par                            %
@@ -761,8 +763,8 @@
             \contents@appendixwidth}}{\contentsmargin{0pt}\fSong}{%
             \titlerule*[.5pc]{.}\contentspage}[\vspace{0em}]%
     \fi                                                     %
-    \titleformat{\chapter}[hang]{\normalfont\sSanhao\filcenter\fHei
-        }{\fHei\sSanhao{\appendixname~\thechapter}}{20pt}{\sSanhao}
+    \titleformat{\chapter}[hang]{\normalfont\sSanhao\filcenter\sffamily\fHei}{%
+    \sffamily\fHei\sSanhao{\appendixname~\thechapter}}{20pt}{\sSanhao}
     \renewcommand{\thechapter}{\Alph{chapter}}              %
     \renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}
     \renewcommand{\theequation}{\alph{chapter}-\arabic{equation}}

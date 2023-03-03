@@ -90,7 +90,7 @@ and the derived files           yanputhesis.ins,
 %<class>\NeedsTeXFormat{LaTeX2e}[2005/12/01]
 %<class>\ProvidesClass{yanputhesis}
 %<*class>
-    [2023/03/02 v1.8.4 Yet Another NPU Thesis Template]
+    [2023/03/03 v1.8.4 Yet Another NPU Thesis Template]
 %</class>
 %
 %<*driver>
@@ -519,7 +519,9 @@ int main()
 \bibliographystyle{nputhesis-noslash}                       % 参考文献改进格式
 \bibliography{reference}                                    % 参考文献
 \appendix
-\chapter{一份说明}
+\chapter{一份说明 顺便测试英文标题 Title}
+
+强烈不推荐英文标题！仅供测试，擅自使用后果自负。
 
 \section{测试附录子标题}
 
@@ -781,7 +783,10 @@ int main()
         \fi                                                 %
     \fi                                                     %
 \fi                                                         %
-\newcommand\defaultEngFont{Times New Roman}                 % 英文文本默认字体
+\newcommand\defaultEngFont{Times New Roman}                 % 英文文本默认字体%    \end{macrocode}
+% \markdtxchanges{v1.8.4}{2023/03/02}{新增英文 Sans 字体}
+%    \begin{macrocode}
+\newcommand\defaultEngSansFont{\defaultHei}                 % 英文 Sans 字体
 \newcommand\codeFont{Consolas}                              % 等宽英文默认字体
 %%-----------------------------------------------------------------------------%
 \RequirePackage{fontspec}                                   % 设置字体
@@ -797,6 +802,10 @@ int main()
 \setCJKfamilyfont{kai}{\defaultKai}                         %
 \setCJKfamilyfont{fang}{\defaultFag}                        %
 \setCJKfamilyfont{eng}{\defaultEngFont}                     %
+%    \end{macrocode}
+% \markdtxchanges{v1.8.4}{2023/03/02}{新增英文 Sans 字体}
+%    \begin{macrocode}
+\setsansfont{\defaultEngSansFont}                           %
 \setmonofont{\codeFont}                                     %
 \setmainfont{\defaultEngFont}                               %
 \newcommand{\fSong}{\CJKfamily{song}}                       % 宋体: fSong
@@ -817,7 +826,7 @@ int main()
 %%-----------------------------------------------------------------------------%
 \RequirePackage{ulem}                                       % 下划线
 \newcommand\dlmu@underline[2][5cm]{\hspace{1pt}\underline{  %
-    \hb@xt@ #1{\hss#2\hss}}\hspace{3pt}}                    %
+        \hb@xt@ #1{\hss#2\hss}}\hspace{3pt}}                %
 \let\coverunderline\dlmu@underline                          %
 %%-----------------------------------------------------------------------------%
 \RequirePackage{layouts}                                    % 页面具体尺寸信息
@@ -828,14 +837,15 @@ int main()
 \setcounter{tocdepth}{2}                                    % 目录中标题深度
 %    \end{macrocode}
 % \markdtxchanges{v1.8.1}{2022/12/06}{标题字体格式修改}
+% \markdtxchanges{v1.8.4}{2023/03/02}{补充修改标题编号字体为黑体}
 %    \begin{macrocode}
 \titleformat{\chapter}[hang]{\normalfont\sSanhao\filcenter  %
-    \fHei}{\fHei\sSanhao{\chaptertitlename}}{20pt}{\sSanhao}%
-\titleformat{\section}[hang]{\fHei\sSihao}{                 %
-    \fHei\sSihao\thesection}{0.5em}{}{}                     %
-\titleformat{\subsection}[hang]{\fHei\sHgXiaosi}{           %
-    \sHgXiaosi\thesubsection}{0.5em}{}{}                    %
-\titleformat{\subsubsection}[hang]{\fHei}{                  % 小标题: (4) 标题
+    \sffamily\fHei}{\sffamily\fHei\sSanhao{\chaptertitlename}}{20pt}{\sSanhao}%
+\titleformat{\section}[hang]{\sffamily\fHei\sSihao}{        %
+    \sffamily\fHei\sSihao\thesection}{0.5em}{}{}            %
+\titleformat{\subsection}[hang]{\sffamily\fHei\sHgXiaosi}{  %
+    \sffamily\fHei\sHgXiaosi\thesubsection}{0.5em}{}{}      %
+\titleformat{\subsubsection}[hang]{\sffamily\fHei}{         % 小标题: (4) 标题
     (\arabic{subsubsection})}{0.5em}{}{}                    %
 %    \end{macrocode}
 % \markdtxchanges{v1.8.0}{2022/12/03}{增加大标题行间距}
@@ -858,19 +868,19 @@ int main()
 \newcommand{\nwpu@eng@chaptercname}[1]{Chapter #1}          % 目录章节英文标题
 \if@npu@lang@chs                                            % 中文本地化显示
     \titlecontents{chapter}[0pt]{\fSong\sLgXiaosi\vspace{   %
-        0.5em}}{\contentsmargin{0pt}\fSong\makebox[0pt      %
+            0.5em}}{\contentsmargin{0pt}\fSong\makebox[0pt  %
         ][l]{\nwpu@chs@chaptercname{\thecontentslabel}}\hspace{%
-        3.5em}}{\contentsmargin{0pt}\fSong}{\titlerule*[    %
-        .5pc]{.}\contentspage}[\vspace{0em}]                %
+            3.5em}}{\contentsmargin{0pt}\fSong}{\titlerule*[%
+            .5pc]{.}\contentspage}[\vspace{0em}]            %
 \else                                                       %
     \newlength{\contents@titlewidth}                        %
     \newlength{\contents@appendixwidth}                     %
     \settowidth{\contents@titlewidth}{\sLgXiaosi Chapter 000}%
     \settowidth{\contents@appendixwidth}{\sLgXiaosi Appendix M00}
     \titlecontents{chapter}[0pt]{\fSong\sLgXiaosi\vspace{   %
-        0.5em}}{\contentsmargin{0pt}\fSong\makebox[0pt      %
+            0.5em}}{\contentsmargin{0pt}\fSong\makebox[0pt  %
         ][l]{\nwpu@eng@chaptercname{\thecontentslabel}}\hspace{%
-        \contents@titlewidth}}{\contentsmargin{0pt}\fSong}{
+            \contents@titlewidth}}{\contentsmargin{0pt}\fSong}{
         \titlerule*[.5pc]{.}\contentspage}[\vspace{0em}]    %
 \fi                                                         %
 %%-----------------------------------------------------------------------------%
@@ -890,11 +900,11 @@ int main()
 % \markdtxchanges{v1.8.1}{2022/12/06}{章节页眉设置}
 %    \begin{macrocode}
 \if@npu@lang@chs                                            % 中英文章节页眉设置
-\renewcommand{\chaptermark}[1]{                             %
-    \markboth{\nwpu@chs@chaptercname\thechapter~~ #1}{}}    %
+    \renewcommand{\chaptermark}[1]{                         %
+        \markboth{\nwpu@chs@chaptercname\thechapter~~ #1}{}}%
 \else                                                       %
-\renewcommand{\chaptermark}[1]{                             %
-    \markboth{\nwpu@eng@chaptercname\thechapter~~ #1}{}}    %
+    \renewcommand{\chaptermark}[1]{                         %
+        \markboth{\nwpu@eng@chaptercname\thechapter~~ #1}{}}%
 \fi                                                         %
 \pagestyle{fancyplain}                                      % 新增版式 fancyplain
 \fancyhf{}                                                  % 清空原有页眉页脚
@@ -950,11 +960,11 @@ int main()
 % \markdtxchanges{v1.7.0}{2022/10/31}{提供指定宽度的左、右、居中对齐表格栏}
 %    \begin{macrocode}
 \newcolumntype{Q}[1]{>{\raggedleft\let\newline\\%           % 指定宽度右对齐
-    \arraybackslash\hspace{0pt}}p{#1}}                      %
+        \arraybackslash\hspace{0pt}}p{#1}}                  %
 \newcolumntype{O}[1]{>{\centering\let\newline\\%            % 指定宽度居中
-    \arraybackslash\hspace{0pt}}p{#1}}                      %
+        \arraybackslash\hspace{0pt}}p{#1}}                  %
 \newcolumntype{P}[1]{>{\raggedright\let\newline\\%          % 指定宽度左对齐
-    \arraybackslash\hspace{0pt}}p{#1}}                      %
+        \arraybackslash\hspace{0pt}}p{#1}}                  %
 \renewcommand{\arraystretch}{1.4}                           % 表格行高为 1.4 倍
 %    \end{macrocode}
 % \markdtxchanges{v1.8.0}{2022/12/03}{设置表格线宽}
@@ -986,7 +996,7 @@ int main()
 % \markdtxchanges{v1.8.2}{2022/12/11}{修复证明环境}
 %    \begin{macrocode}
 {\theoremsymbol{\ensuremath{\square}}                       % 证明环境 囗
-\if@npu@lang@chs\newtheorem*{proof}{证明}\else\newtheorem*{proof}{Proof}\fi}
+    \if@npu@lang@chs\newtheorem*{proof}{证明}\else\newtheorem*{proof}{Proof}\fi}
 \newcommand{\qedinEquation}{{\rlap{$\qquad\square$}}}       % 公式中添加证毕符号
 \if@npu@lang@chs                                            % 定制中文定理环境
     \newtheorem{theorem}{定理}[chapter]                     %
@@ -1455,10 +1465,10 @@ int main()
 %    \end{macrocode}
 % \markdtxchanges{v1.8.1}{2022/12/06}{增加中文关键词间隔符}
 %    \begin{macrocode}
-    \newcommand{\sep}{\!；}                                 % 中文关键词间隔符
-    \sDefault                                               %
-    \chapter[摘{\quad}要]{摘{\quad}要}                      %
-    \markboth{摘{\quad}要}{摘{\quad}要}                     %
+\newcommand{\sep}{\!；}                                     % 中文关键词间隔符
+\sDefault                                                   %
+\chapter[摘{\quad}要]{摘{\quad}要}                          %
+\markboth{摘{\quad}要}{摘{\quad}要}                         %
 }{\vfill\sWuhao\noindent\nwpu@chs@funding\par\cleardoublepage}
 \newenvironment{keywords}{                                  %
 %    \end{macrocode}
@@ -1478,9 +1488,10 @@ int main()
     \sDefault                                               %
 %    \end{macrocode}
 % \markdtxchanges{v1.8.4}{2023/02/10}{修复英文摘要标题格式}
+% \markdtxchanges{v1.8.4}{2023/03/02}{强制英文摘要标题为衬线体}
 %    \begin{macrocode}
-    \chapter[ABSTRACT]{\textbf{Abstract}}                   %
-    \markboth{Abstract}{ABSTRACT}                           %
+\chapter[ABSTRACT]{\selectfont\rmfamily\fEng\textbf{Abstract}}%
+\markboth{Abstract}{ABSTRACT}                           %
 }{\vfill\sWuhao\noindent\nwpu@eng@funding\par\cleardoublepage}
 \newenvironment{engkeywords}{                               %
 %    \end{macrocode}
@@ -1606,8 +1617,8 @@ int main()
             \contents@appendixwidth}}{\contentsmargin{0pt}\fSong}{%
             \titlerule*[.5pc]{.}\contentspage}[\vspace{0em}]%
     \fi                                                     %
-    \titleformat{\chapter}[hang]{\normalfont\sSanhao\filcenter\fHei
-        }{\fHei\sSanhao{\appendixname~\thechapter}}{20pt}{\sSanhao}
+    \titleformat{\chapter}[hang]{\normalfont\sSanhao\filcenter\sffamily\fHei}{%
+    \sffamily\fHei\sSanhao{\appendixname~\thechapter}}{20pt}{\sSanhao}
     \renewcommand{\thechapter}{\Alph{chapter}}              %
     \renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}
     \renewcommand{\theequation}{\alph{chapter}-\arabic{equation}}
