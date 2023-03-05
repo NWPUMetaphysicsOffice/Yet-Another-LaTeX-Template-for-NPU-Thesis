@@ -8,7 +8,7 @@
 ![TeX-Template](https://img.shields.io/badge/TeX-Template-3D6117.svg?style=flat-square)
 
 [![License](https://img.shields.io/badge/license-GNU_General_Public_License_v3.0-blue.svg)](LICENSE)
-![Version](https://img.shields.io/badge/version-v1.8.1.1206-674EA7.svg)
+![Version](https://img.shields.io/badge/version-v1.8.4.0304-674EA7.svg)
 
 ![TeXLive>=2021](https://img.shields.io/badge/TeXLive-%3E=2021-3D6117.svg)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4159248.svg)](https://doi.org/10.5281/zenodo.4159248)
