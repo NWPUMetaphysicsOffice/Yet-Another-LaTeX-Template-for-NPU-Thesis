@@ -90,7 +90,7 @@ and the derived files           yanputhesis.ins,
 %<class>\NeedsTeXFormat{LaTeX2e}[2005/12/01]
 %<class>\ProvidesClass{yanputhesis}
 %<*class>
-    [2023/03/03 v1.8.4 Yet Another NPU Thesis Template]
+    [2023/03/04 v1.8.4 Yet Another NPU Thesis Template]
 %</class>
 %
 %<*driver>
@@ -297,6 +297,20 @@ and the derived files           yanputhesis.ins,
 \frontmatter                                                % 前言部分
 \maketitle                                                  % 封皮页及标题页
 %%-----------------------------------------------------------------------------%
+\makeCommitteePage{                                         % 学位论文评阅人
+    \reviewers{\fullBlindReview{5}}                         % 和答辩委员会名单
+    \committee{2023 年 x 月 y 日}{
+        \defenseChair{赵钱孙}{教授}{西北工业大学}
+        \committeeMember{周吴郑}{教授}{西北工业大学}
+        \committeeMember{冯陈褚}{教授}{西北工业大学}
+        \committeeMember{蒋沈韩}{教授}{西北工业大学}
+        \committeeMember{朱秦尤}{教授}{西北工业大学}
+        \committeeMember{何吕施}{教授}{西北工业大学}
+        \committeeMember{孔曹严}{教授}{西北工业大学}
+        \defenseSecretary{金魏陶}{教授}{西北工业大学}
+    }
+}
+%%-----------------------------------------------------------------------------%
 \begin{abstract}                                            % 中文摘要开始
     这是在西北工业大学本科毕业设计、硕博研究生毕业论文格式的要求下的一份 LaTeX
     文档类模板。使用者无需额外修改格式控制细节，直接在所发布的样例基础上，修改章
@@ -384,24 +398,84 @@ $$a_0+a_1+a_2=\sqrt{233}$$
 \begin{enumerate}
     \setlength{\itemsep}{0pt}
     \item 在这份样例当中，已经将标题页可能用到的作者姓名、导师姓名添加了空白盲评
-    标记 \lstinline`\blindreview{text}`。如果需要生成盲评版本，则需要将文档类型
-    设置为 \lstinline`blindreview=true`，这样便可得到标题页不含作者与导师姓名的
-    版本。
+          标记 \lstinline`\blindreview{text}`。如果需要生成盲评版本，则需要将文档类型
+          设置为 \lstinline`blindreview=true`，这样便可得到标题页不含作者与导师姓名的
+          版本。
     \item 在致谢中，除了导师名字之外，其他老师、同学的名字也应当隐去。同样可以将
-    姓名添加空白盲评标记 \lstinline`\blindreview{text}` 来得到留空版本的结果。
+          姓名添加空白盲评标记 \lstinline`\blindreview{text}` 来得到留空版本的结果。
     \item 一般正文中不建议出现留空，因此推荐另外两种盲评标记，涂黑或者打星。使用
-    \lstinline`\blackbox{text}` 命令将姓名添加涂黑盲评标记，文本会替换为与文字相
-    同长度的黑色方块，制造涂黑效果。或者使用 \lstinline`\markname{text}` 命令将
-    姓名添加打星盲评标记，姓名将替换成 3 个星号“***”。
+          \lstinline`\blackbox{text}` 命令将姓名添加涂黑盲评标记，文本会替换为与文字相
+          同长度的黑色方块，制造涂黑效果。或者使用 \lstinline`\markname{text}` 命令将
+          姓名添加打星盲评标记，姓名将替换成 3 个星号“***”。
     \item 下面给出示例（通过开启盲评选项查看效果）：
-    \begin{enumerate}
-        \setlength{\itemsep}{0pt}
-        \item 不添加任何盲评标记：“感谢某某某教授的悉心指导。”
-        \item 使用了空白盲评标记：“感谢\blindreview{某某某}教授的悉心指导。”
-        \item 使用了涂黑盲评标记：“感谢\blackbox{某某某}教授的悉心指导。”
-        \item 使用了打星盲评标记：“感谢\markname{某某某}教授的悉心指导。”
-    \end{enumerate}
+          \begin{enumerate}
+              \setlength{\itemsep}{0pt}
+              \item 不添加任何盲评标记：“感谢某某某教授的悉心指导。”
+              \item 使用了空白盲评标记：“感谢\blindreview{某某某}教授的悉心指导。”
+              \item 使用了涂黑盲评标记：“感谢\blackbox{某某某}教授的悉心指导。”
+              \item 使用了打星盲评标记：“感谢\markname{某某某}教授的悉心指导。”
+          \end{enumerate}
 \end{enumerate}
+
+\section{如何生成学位论文评阅人和答辩委员会名单}
+
+\begin{enumerate}
+    \setlength{\itemsep}{0pt}
+    \item 在这份样例当中，已经预设置了盲评学位论文评阅人和答辩委员会名单，实现代码可
+          参考\autoref{code:makeBlindReviewerCommitteePage} 所示，明审版本可参考
+          \autoref{code:makeOpenReviewerCommitteePage} 所示。
+    \item 在学位论文评阅人名单中分为两种情况，即盲评与明审。请根据自身情况填写评
+          委信息。如果是盲评，使用命令 \lstinline`\fullBlindReview{num}` 来生成
+          盲评表格，其中参数 \lstinline`num` 表示盲评专家人数，一般是 3 或 5 人。
+          如果是明审，使用命令 \lstinline`\expert{name}{title}{university}`
+          登记评委信息，其中参数 \lstinline`name`、\lstinline`title`、
+          \lstinline`university` 分别为专家的姓名、职称、学校。
+    \item 答辩委员会需登记四个信息：答辩时间、答辩主席、答辩评委以及答辩秘书。其
+          中，答辩时间为 \lstinline`\committee` 命令后的第一个参数，其余分别使用
+          \lstinline`\defenseChair`、\lstinline`\committeeMember`、
+          \lstinline`\defenseSecretary` 命令登记专家个人信息，用法与
+          \lstinline`\expert` 命令一致。
+\end{enumerate}
+
+\begin{lstlisting}[language={TeX}, label={code:makeBlindReviewerCommitteePage},
+    caption={盲评样例 makeBlindReviewerCommitteePage.tex}]
+\makeCommitteePage{
+    \reviewers{\fullBlindReview{5}}
+    \committee{2023 年 x 月 y 日}{
+        \defenseChair{赵钱孙}{教授}{西北工业大学}
+        \committeeMember{周吴郑}{教授}{西北工业大学}
+        \committeeMember{冯陈褚}{教授}{西北工业大学}
+        \committeeMember{蒋沈韩}{教授}{西北工业大学}
+        \committeeMember{朱秦尤}{教授}{西北工业大学}
+        \committeeMember{何吕施}{教授}{西北工业大学}
+        \committeeMember{孔曹严}{教授}{西北工业大学}
+        \defenseSecretary{金魏陶}{教授}{西北工业大学}
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language={TeX}, label={code:makeOpenReviewerCommitteePage},
+    caption={明审样例 makeOpenReviewerCommitteePage.tex}]
+\makeCommitteePage{
+    \reviewers{
+        \expert{周吴郑}{教授}{西北工业大学}
+        \expert{冯陈褚}{教授}{西北工业大学}
+        \expert{蒋沈韩}{教授}{西北工业大学}
+        \expert{朱秦尤}{教授}{西北工业大学}
+        \expert{何吕施}{教授}{西北工业大学}
+    }
+    \committee{2023 年 x 月 y 日}{
+        \defenseChair{赵钱孙}{教授}{西北工业大学}
+        \committeeMember{周吴郑}{教授}{西北工业大学}
+        \committeeMember{冯陈褚}{教授}{西北工业大学}
+        \committeeMember{蒋沈韩}{教授}{西北工业大学}
+        \committeeMember{朱秦尤}{教授}{西北工业大学}
+        \committeeMember{何吕施}{教授}{西北工业大学}
+        \committeeMember{孔曹严}{教授}{西北工业大学}
+        \defenseSecretary{金魏陶}{教授}{西北工业大学}
+    }
+}
+\end{lstlisting}
 
 \cleardoublepage
 
@@ -678,16 +752,16 @@ int main()
 %% 盲评版本的文字替换功能
 %%-----------------------------------------------------------------------------%
 \newcommand\@npu@replaceitwithblank[1]{{\setlength{%        % 替换成相同宽度空白
-    \fboxsep}{0pt}\colorbox{white}{\phantom{#1}}}}          %
+                \fboxsep}{0pt}\colorbox{white}{\phantom{#1}}}}
 \newcommand\@npu@replaceitwithblack[1]{{\setlength{%        % 替换成涂黑方块
-    \fboxsep}{0pt}\colorbox{black}{\phantom{#1}}}}          %
+                \fboxsep}{0pt}\colorbox{black}{\phantom{#1}}}}
 \newcommand\@npu@replaceitwithstars{ *** }                  % 替换成 3 个星号
 \newcommand{\blindreview}[1]{\if@npu@output@blindreview%    % 空白盲评标记
-    \@npu@replaceitwithblank{#1}\relax\else #1\fi}          %
+        \@npu@replaceitwithblank{#1}\relax\else #1\fi}      %
 \newcommand{\blackbox}[1]{\if@npu@output@blindreview%       % 涂黑盲评标记
-    \@npu@replaceitwithblack{#1}\relax\else #1\fi}          %
+        \@npu@replaceitwithblack{#1}\relax\else #1\fi}      %
 \newcommand{\markname}[1]{\if@npu@output@blindreview%       % 打星盲评标记
-    \@npu@replaceitwithstars\relax\else #1\fi}              %
+        \@npu@replaceitwithstars\relax\else #1\fi}          %
 %%=============================================================================%
 %    \end{macrocode}
 %
@@ -1058,9 +1132,9 @@ int main()
     % \setlength{\npu@columnsep@save}{\columnsep}
     % \setlength{\columnsep}{20pt}
     % \begin{multicols}{2}[%
-        \csname\npu@nomsec\endcsname*{\nomname}
-        \if@intoc\addcontentsline{toc}{\npu@nomsec}{\nomname}\fi
-        \nompreamble % \raggedcolumns
+    \csname\npu@nomsec\endcsname*{\nomname}
+    \if@intoc\addcontentsline{toc}{\npu@nomsec}{\nomname}\fi
+    \nompreamble % \raggedcolumns
     % ]
     \list{}{\labelsep=15pt\labelwidth\nom@tempdim\leftmargin\labelwidth\advance
         \leftmargin\labelsep\itemsep\nomitemsep\let\makelabel\nomlabel}%
@@ -1272,7 +1346,7 @@ int main()
 %%=============================================================================%
 %    \end{macrocode}
 %
-% \subsection{封皮页及中英文标题页}
+% \subsection{封皮页与中英文标题页}
 %
 % \begin{itemize}
 %     \item 输入 |\maketitle| 为文档添加封皮页、中英文标题页。
@@ -1291,68 +1365,68 @@ int main()
 % \markdtxchanges{v1.8.1}{2022/12/06}{更新封皮页版式}
 %    \begin{macrocode}
 \newcommand{\make@nwpu@coverpage}{                          % 设置封皮页
-\thispagestyle{empty}                                       % 清空页面格式
-\newlength{\coverpage@infowidth}                            % 基本信息表格宽度
-\settowidth{\coverpage@infowidth}{\sWuhao 学校代码~:~ 2000000000}
-\newlength{\coverpage@detailwidth}                          % 具体信息对齐宽度
-\settowidth{\coverpage@detailwidth}{\sSanhao 申请学位日期}  %
-\begin{titlepage}                                           %
-    \bfseries                                               %
-    \renewcommand{\baselinestretch}{1.25}                   % 1.25 倍行距
-    \begin{center}                                          %
-        \hfill \fHei \sWuhao                                %
-        \begin{minipage}{\coverpage@infowidth}              % 排版基本信息表
-            \vspace{.5cm}                                   %
-            \renewcommand\arraystretch{1.2}                 %
-            \begin{tabular}{|c|c|}\hline                    %
-                {学 \hfill 校 \hfill 代 \hfill 码} & 10699     \\ \hline
-                {分   \hfill    类    \hfill   号} & O242      \\ \hline
-                {密           \hfill           级} & 公开      \\ \hline
-                {学           \hfill           号} & \nwpu@uid \\ \hline
-             \end{tabular}                                  %
-        \end{minipage} \par                                 % 排版结束
-        \vspace{21\baselineskip}                            % 21 * 10.5pt * 1.25
-        \fSong \sErhao \begin{minipage}[t]{2cm}             % 排版标题
-            \hfill {\fHei \sErhao 题目} \\                  %
-        \end{minipage}                                      %
-        \fHei \sErhao \setbox123=\hbox{                     %
-            \begin{minipage}[t]{12cm}                       %
-                \begin{center} \nwpu@chs@title \end{center} %
+    \thispagestyle{empty}                                   % 清空页面格式
+    \newlength{\coverpage@infowidth}                        % 基本信息表格宽度
+    \settowidth{\coverpage@infowidth}{\sWuhao 学校代码~:~ 2000000000}
+    \newlength{\coverpage@detailwidth}                      % 具体信息对齐宽度
+    \settowidth{\coverpage@detailwidth}{\sSanhao 申请学位日期}
+    \begin{titlepage}                                       %
+        \bfseries                                           %
+        \renewcommand{\baselinestretch}{1.25}               % 1.25 倍行距
+        \begin{center}                                      %
+            \hfill \fHei \sWuhao                            %
+            \begin{minipage}{\coverpage@infowidth}          % 排版基本信息表
+                \vspace{.5cm}                               %
+                \renewcommand\arraystretch{1.2}             %
+                \begin{tabular}{|c|c|}\hline                %
+                    {学 \hfill 校 \hfill 代 \hfill 码} & 10699     \\ \hline
+                    {分   \hfill    类    \hfill   号} & O242      \\ \hline
+                    {密           \hfill           级} & 公开      \\ \hline
+                    {学           \hfill           号} & \nwpu@uid \\ \hline
+                \end{tabular}                               %
+            \end{minipage} \par                             % 排版结束
+            \vspace{21\baselineskip}                        % 21 * 10.5pt * 1.25
+            \fSong \sErhao \begin{minipage}[t]{2cm}         % 排版标题
+                \hfill {\fHei \sErhao 题目} \\              %
             \end{minipage}                                  %
-        }                                                   %
-        \setbox124=\hbox{                                   %
-            \begin{minipage}[t]{12cm}                       %
-                \begin{center}                              %
-                    \uline{\hfill\quad\hfill} \\            %
-                    \uline{\hfill\quad\hfill} \\            %
-                \end{center}                                %
-            \end{minipage}                                  %
-        }                                                   %
-        \hspace{-0.5cm}                                     %
-        \copy123\kern-\wd123\box124\par                     % 排版结束
-        \sWuhao \vspace{3\baselineskip}                     % 2 * 10.5pt * 1.25
-        \sSanhao \fSong \begin{minipage}{5cm}               % 排版具体信息
-            {\bf 作者} \uline{\hfill \bf \nwpu@chs@author \hfill}
-        \end{minipage} \par                                 %
-        \sWuhao \vspace{4\baselineskip}                     % 3 * 10.5pt * 1.25
-        \sSanhao \fSong \begin{minipage}{12.5cm}            %
-            \noindent                                       %
-            \makebox[\coverpage@detailwidth][s]{            %
-            \bf 学{\enspace}科{\enspace}专{\enspace}业}{    %
-            \uline{\hfill \makebox{\bf \nwpu@chs@major} \hfill}} \par
-            \makebox[\coverpage@detailwidth][s]{            %
-            \bf 指{\enspace}导{\enspace}教{\enspace}师}{    %
-            \uline{\hfill \makebox{\bf \nwpu@chs@advisor} \hfill}} \par
-            \makebox[\coverpage@detailwidth][s]{            %
-            \bf 培{\enspace}养{\enspace}单{\enspace}位}{    %
-            \uline{\hfill \makebox{\bf \nwpu@chs@school} \hfill}} \par
-            \makebox[\coverpage@detailwidth][s]{            %
-            \bf 申{\enspace}请{\enspace}日{\enspace}期}{    %
-            \uline{\hfill \makebox{\bf \nwpu@chs@date} \hfill}}
-        \end{minipage}                                      % 排版结束
-        \vspace{2.5\baselineskip}                           % 2.5 * 24pt * 1.25
-    \end{center}                                            %
-\end{titlepage} \fSong \normalsize \newpage \clearpage      %
+            \fHei \sErhao \setbox123=\hbox{                 %
+                \begin{minipage}[t]{12cm}                   %
+                    \begin{center} \nwpu@chs@title \end{center}
+                \end{minipage}                              %
+            }                                               %
+            \setbox124=\hbox{                               %
+                \begin{minipage}[t]{12cm}                   %
+                    \begin{center}                          %
+                        \uline{\hfill\quad\hfill} \\        %
+                        \uline{\hfill\quad\hfill} \\        %
+                    \end{center}                            %
+                \end{minipage}                              %
+            }                                               %
+            \hspace{-0.5cm}                                 %
+            \copy123\kern-\wd123\box124\par                 % 排版结束
+            \sWuhao \vspace{3\baselineskip}                 % 2 * 10.5pt * 1.25
+            \sSanhao \fSong \begin{minipage}{5cm}           % 排版具体信息
+                {\bf 作者} \uline{\hfill \bf \nwpu@chs@author \hfill}
+            \end{minipage} \par                             %
+            \sWuhao \vspace{4\baselineskip}                 % 3 * 10.5pt * 1.25
+            \sSanhao \fSong \begin{minipage}{12.5cm}        %
+                \noindent                                   %
+                \makebox[\coverpage@detailwidth][s]{        %
+                \bf 学{\enspace}科{\enspace}专{\enspace}业}{%
+                \uline{\hfill \makebox{\bf \nwpu@chs@major} \hfill}} \par
+                \makebox[\coverpage@detailwidth][s]{        %
+                \bf 指{\enspace}导{\enspace}教{\enspace}师}{%
+                \uline{\hfill \makebox{\bf \nwpu@chs@advisor} \hfill}} \par
+                \makebox[\coverpage@detailwidth][s]{        %
+                \bf 培{\enspace}养{\enspace}单{\enspace}位}{%
+                \uline{\hfill \makebox{\bf \nwpu@chs@school} \hfill}} \par
+                \makebox[\coverpage@detailwidth][s]{        %
+                \bf 申{\enspace}请{\enspace}日{\enspace}期}{%
+                \uline{\hfill \makebox{\bf \nwpu@chs@date} \hfill}}
+            \end{minipage}                                  % 排版结束
+            \vspace{2.5\baselineskip}                       % 2.5 * 24pt * 1.25
+        \end{center}                                        %
+    \end{titlepage} \fSong \normalsize \newpage \clearpage  %
 }                                                           %
 %%-----------------------------------------------------------------------------%
 %% 中文标题页
@@ -1361,46 +1435,46 @@ int main()
 % \markdtxchanges{v1.8.1}{2022/12/06}{更新中文标题页版式}
 %    \begin{macrocode}
 \newcommand{\make@nwpu@chs@title}{                          % 设置中文标题页
-\thispagestyle{empty}                                       % 清空页面格式
-\newlength{\chstitle@hwidtha}                               % 大标题宽度
-\settowidth{\chstitle@hwidtha}{\sSanhao\nwpu@chs@schoolname}%
-\newlength{\chstitle@hwidthb}                               % 小标题宽度
-\settowidth{\chstitle@hwidthb}{\sYihao\nwpu@chs@doctitle}   %
-\begin{titlepage}                                           %
-    \renewcommand{\baselinestretch}{1.5}                    % 1.5 倍行距
-    \fSong \sSanhao \par \vspace{1\baselineskip}            % 1 * 21pt * 1.5
-    \begin{center}                                          %
-        \makebox[1.41667\chstitle@hwidtha][s]{\sSanhao\nwpu@chs@schoolname} \par
-        \vspace*{5mm}                                       %
-        \makebox[1.41667\chstitle@hwidthb][s]{\sYihao\nwpu@chs@doctitle} \par
-        \vspace*{5mm}                                       %
-        \sSihao \par \vspace{6\baselineskip}                % 6 * 21pt * 1.5
-        \fSong \sErhao                                      % 排版标题
-        \begin{minipage}[t]{2cm} \hfill {题目：} \\ \end{minipage}
-        \setbox123=\hbox{                                   %
-            \begin{minipage}[t]{12cm}                       %
-                \begin{center} \nwpu@chs@title \end{center} %
-            \end{minipage}                                  %
-        }                                                   %
-        \setbox124=\hbox{                                   %
-            \begin{minipage}[t]{12cm}                       %
-                \begin{center}                              %
-                    \uline{\hfill\quad\hfill} \\            %
-                    \uline{\hfill\quad\hfill} \\            %
-                \end{center}                                %
-            \end{minipage}                                  %
-        }                                                   %
-        \hspace{-1cm}                                       %
-        \copy123\kern-\wd123\box124 \fSong \sWuhao \par     % 排版结束
-        \vspace{7\baselineskip}                             % 7 * 10.5pt * 1.5
-        \sSanhao 学科专业：\coverunderline[5.5cm]{\nwpu@chs@major} \\
-        \sSanhao 作{\qquad}者：\coverunderline[5.5cm]{\nwpu@chs@author} \\
-        \sSanhao 指导教师：\coverunderline[5.5cm]{\nwpu@chs@advisor} \\
-        \fSong \sWuhao \par                                 %
-        \vspace{2\baselineskip}                             % 2 * 10.5pt * 1.5
-        \fSong \sSanhao \nwpu@chs@date                      %
-    \end{center}                                            %
-\end{titlepage} \fSong \normalsize \newpage \clearpage      %
+    \thispagestyle{empty}                                   % 清空页面格式
+    \newlength{\chstitle@hwidtha}                           % 大标题宽度
+    \settowidth{\chstitle@hwidtha}{\sSanhao\nwpu@chs@schoolname}
+    \newlength{\chstitle@hwidthb}                           % 小标题宽度
+    \settowidth{\chstitle@hwidthb}{\sYihao\nwpu@chs@doctitle}
+    \begin{titlepage}                                       %
+        \renewcommand{\baselinestretch}{1.5}                % 1.5 倍行距
+        \fSong \sSanhao \par \vspace{1\baselineskip}        % 1 * 21pt * 1.5
+        \begin{center}                                      %
+            \makebox[1.41667\chstitle@hwidtha][s]{\sSanhao\nwpu@chs@schoolname} \par
+            \vspace*{5mm}                                   %
+            \makebox[1.41667\chstitle@hwidthb][s]{\sYihao\nwpu@chs@doctitle} \par
+            \vspace*{5mm}                                   %
+            \sSihao \par \vspace{6\baselineskip}            % 6 * 21pt * 1.5
+            \fSong \sErhao                                  % 排版标题
+            \begin{minipage}[t]{2cm} \hfill {题目：} \\ \end{minipage}
+            \setbox123=\hbox{                               %
+                \begin{minipage}[t]{12cm}                   %
+                    \begin{center} \nwpu@chs@title \end{center}
+                \end{minipage}                              %
+            }                                               %
+            \setbox124=\hbox{                               %
+                \begin{minipage}[t]{12cm}                   %
+                    \begin{center}                          %
+                        \uline{\hfill\quad\hfill} \\        %
+                        \uline{\hfill\quad\hfill} \\        %
+                    \end{center}                            %
+                \end{minipage}                              %
+            }                                               %
+            \hspace{-1cm}                                   %
+            \copy123\kern-\wd123\box124 \fSong \sWuhao \par % 排版结束
+            \vspace{7\baselineskip}                         % 7 * 10.5pt * 1.5
+            \sSanhao 学科专业：\coverunderline[5.5cm]{\nwpu@chs@major} \\
+            \sSanhao 作{\qquad}者：\coverunderline[5.5cm]{\nwpu@chs@author} \\
+            \sSanhao 指导教师：\coverunderline[5.5cm]{\nwpu@chs@advisor} \\
+            \fSong \sWuhao \par                             %
+            \vspace{2\baselineskip}                         % 2 * 10.5pt * 1.5
+            \fSong \sSanhao \nwpu@chs@date                  %
+        \end{center}                                        %
+    \end{titlepage} \fSong \normalsize \newpage \clearpage  %
 }                                                           %
 %%-----------------------------------------------------------------------------%
 %% 英文标题页
@@ -1409,30 +1483,30 @@ int main()
 % \markdtxchanges{v1.8.1}{2022/12/06}{更新英文标题页版式}
 %    \begin{macrocode}
 \newcommand{\make@nwpu@eng@title}{                          % 设置英文标题页
-\thispagestyle{empty}                                       % 清空页面格式
-\begin{titlepage}                                           %
-    \linespread{1.2} \fEng \sXiaosan \par                   % 1.2 倍行距
-    \vspace{1\baselineskip}                                 % 1 * 22pt * 1.2
-    \begin{center}                                          %
-        \fEng \sErhao \textbf{\nwpu@eng@title} \par         %
-        \fSong \sXiaoer \vspace{3\baselineskip}             %
-        \fEng \sXiaosan \textbf{By} \par                    %
-        \fEng \sXiaosan \textbf{\nwpu@eng@author} \par      %
-        \fEng \sXiaosan \textbf{Under the Supervision of Professor} \\
-        \fEng \sXiaosan \textbf{\nwpu@eng@advisor} \par     %
-        \fSong \sSanhao \vspace{4\baselineskip}             %
-        \fEng \sXiaosan A Dissertation Submitted to \\      %
-        \fEng \sXiaosan {\nwpu@eng@schoolname} \\           %
-        \fSong \sSanhao \vspace{1\baselineskip}             %
-        \fEng In Partial Fulfillment of The Requirement \\  %
-        \fEng For The Degree of \\                          %
-        \fEng {\nwpu@eng@degree} of \textbf{\nwpu@eng@major}%
-        \fSong \sXiaosan \par \vspace{3\baselineskip}       %
-        \fEng \sXiaosan Xi'an, P.R. China \\                %
-        \fEng \sXiaosan {\nwpu@eng@date}                    %
-    \end{center}                                            %
-\end{titlepage} \fSong \normalsize \newpage                 %
-\thispagestyle{empty} \cleardoublepage                      %
+    \thispagestyle{empty}                                   % 清空页面格式
+    \begin{titlepage}                                       %
+        \linespread{1.2} \fEng \sXiaosan \par               % 1.2 倍行距
+        \vspace{1\baselineskip}                             % 1 * 22pt * 1.2
+        \begin{center}                                      %
+            \fEng \sErhao \textbf{\nwpu@eng@title} \par     %
+            \fSong \sXiaoer \vspace{3\baselineskip}         %
+            \fEng \sXiaosan \textbf{By} \par                %
+            \fEng \sXiaosan \textbf{\nwpu@eng@author} \par  %
+            \fEng \sXiaosan \textbf{Under the Supervision of Professor} \\
+            \fEng \sXiaosan \textbf{\nwpu@eng@advisor} \par %
+            \fSong \sSanhao \vspace{4\baselineskip}         %
+            \fEng \sXiaosan A Dissertation Submitted to \\  %
+            \fEng \sXiaosan {\nwpu@eng@schoolname} \\       %
+            \fSong \sSanhao \vspace{1\baselineskip}         %
+            \fEng In Partial Fulfillment of The Requirement \\
+            \fEng For The Degree of \\                      %
+            \fEng {\nwpu@eng@degree} of \textbf{\nwpu@eng@major}
+            \fSong \sXiaosan \par \vspace{3\baselineskip}   %
+            \fEng \sXiaosan Xi'an, P.R. China \\            %
+            \fEng \sXiaosan {\nwpu@eng@date}                %
+        \end{center}                                        %
+    \end{titlepage} \fSong \normalsize \newpage             %
+    \thispagestyle{empty} \cleardoublepage                  %
 }                                                           %
 %%-----------------------------------------------------------------------------%
 %% 生成标题页
@@ -1441,10 +1515,78 @@ int main()
     \make@nwpu@coverpage                                    % 封皮页
     \make@nwpu@chs@title                                    % 中文标题页
     \make@nwpu@eng@title                                    % 英文标题页
-    \pagenumbering{Roman}                                   % 页码使用大写罗马字母
-    \setcounter{page}{1}                                    % 页码从 1 开始
-    \renewcommand{\baselinestretch}{1.0}                    % 默认单倍行距
 }                                                           %
+%%=============================================================================%
+%    \end{macrocode}
+%
+% \subsection{学位论文评阅人和答辩委员会名单}
+%
+% \begin{itemize}
+%     \item 在 |\makeCommitteePage| 命令填写学位论文评阅人和答辩委员会名单。
+%     \item 在 |\reviewers| 命令填写学位论文评阅人名单。
+%     \item 在 |\committee| 命令填写答辩委员会名单。
+%     \item 命令 |\npu@replicate{time}{\command{...}}| 可将 |\command{...}| 的内
+%           容重复 |time| 次。
+% \end{itemize}
+% \markdtxchanges{v1.8.4}{2023/03/04}{新增学位论文评阅人和答辩委员会名单}
+%    \begin{macrocode}
+%%=============================================================================%
+%% 学位论文评阅人和答辩委员会名单
+%%-----------------------------------------------------------------------------%
+\catcode `\@ = 11\relax
+\def\npu@replicate#1{\expandafter\npu@replicate@aux\romannumeral\number #1000Q{}}
+\def\npu@replicate@aux#1{\csname npu@replicate@aux@#1\endcsname}
+\long\def\npu@replicate@aux@m#1Q#2#3{\npu@replicate@aux#1Q{#2#3}{#3}}
+\long\def\npu@replicate@aux@Q#1#2{#1}
+%%-----------------------------------------------------------------------------%
+\newcommand{\npu@text}[1]{\relax\sDefault{#1}}
+\newcommand{\expert}[3]{\npu@text{#1} & \npu@text{#2} & \npu@text{#3} \\ }
+\newcommand{\expertBlindReview}{\expert{全盲评阅}{无}{无}}
+\newcommand{\fullBlindReview}[1]{\npu@replicate{#1}{\expertBlindReview}}
+\newcommand{\defenseDate}[1]{\sDefault\textbf{答辩日期}%
+    & \multicolumn{3}{c}{\sDefault{#1}} \\ }
+\newcommand{\defenseChair}[3]{\sDefault\textbf{主席} & \expert{#1}{#2}{#3} }
+\newcommand{\committeeMember}[3]{\sDefault\textbf{委员} & \expert{#1}{#2}{#3} }
+\newcommand{\defenseSecretary}[3]{\sDefault\textbf{秘书} & \expert{#1}{#2}{#3} }
+%%-----------------------------------------------------------------------------%
+\newcommand{\makeCommitteePage}[1]{                         %
+    \thispagestyle{empty}                                   % 清空页面格式
+    \begin{titlepage}                                       %
+        \linespread{1.2} \fEng \sXiaosan \par               % 1.2 倍行距
+        \vspace{1\baselineskip}                             % 1 * 22pt * 1.2
+        \begin{center}                                      %
+            \fHei \sSanhao {学位论文评阅人和答辩委员会名单} \par
+            #1\relax                                        %
+        \end{center}                                        %
+    \end{titlepage} \fSong \normalsize \newpage             %
+    \thispagestyle{empty} \cleardoublepage}                 %
+%%-----------------------------------------------------------------------------%
+\newcommand{\reviewers}[1]{                                 %
+    \fSong \sDefault \vspace{\baselineskip}                 %
+    \fSong \sSihao \vspace{0.3\baselineskip}                %
+    \fHei \sSihao {学位论文评阅人名单} \par                 %
+    \fSong \sSihao \vspace{0.3\baselineskip}                %
+    \let\oldarraystretch=\arraystretch                      %
+    \renewcommand{\arraystretch}{2.10}                      %
+    \begin{tabularx}{15.27cm}{O{3.71cm}O{2.83cm}O{8.73cm}}  %
+        \expert{\textbf{姓名}}{\textbf{职称}}{\textbf{工作单位}}
+        #1\relax                                            %
+    \end{tabularx}                                          %
+    \renewcommand{\arraystretch}{\oldarraystretch}}         %
+%%-----------------------------------------------------------------------------%
+\newcommand{\committee}[2]{                                 %
+    \fSong \sDefault \vspace{\baselineskip}                 %
+    \fSong \sSihao \vspace{0.3\baselineskip}                %
+    \fHei \sSihao {答辩委员会名单} \par                     %
+    \fSong \sSihao \vspace{0.3\baselineskip}                %
+    \let\oldarraystretch=\arraystretch                      %
+    \renewcommand{\arraystretch}{2.10}                      %
+    \begin{tabularx}{15.44cm}{O{3.76cm}O{2.68cm}O{2.25cm}O{6.75cm}}
+        \defenseDate{#1} \sDefault\textbf{答辩委员会} &     %
+        \expert{\textbf{姓名}}{\textbf{职称}}{\textbf{工作单位}}
+        #2\relax                                            %
+    \end{tabularx}                                          %
+    \renewcommand{\arraystretch}{\oldarraystretch}}         %
 %%=============================================================================%
 %    \end{macrocode}
 %
@@ -1465,6 +1607,9 @@ int main()
 %    \end{macrocode}
 % \markdtxchanges{v1.8.1}{2022/12/06}{增加中文关键词间隔符}
 %    \begin{macrocode}
+\pagenumbering{Roman}                                       % 页码使用大写罗马字母
+\setcounter{page}{1}                                        % 页码从 1 开始
+\renewcommand{\baselinestretch}{1.0}                        % 默认单倍行距
 \newcommand{\sep}{\!；}                                     % 中文关键词间隔符
 \sDefault                                                   %
 \chapter[摘{\quad}要]{摘{\quad}要}                          %
@@ -1490,8 +1635,8 @@ int main()
 % \markdtxchanges{v1.8.4}{2023/02/10}{修复英文摘要标题格式}
 % \markdtxchanges{v1.8.4}{2023/03/02}{强制英文摘要标题为衬线体}
 %    \begin{macrocode}
-\chapter[ABSTRACT]{\selectfont\rmfamily\fEng\textbf{Abstract}}%
-\markboth{Abstract}{ABSTRACT}                           %
+    \chapter[ABSTRACT]{\selectfont\rmfamily\fEng\textbf{Abstract}}%
+    \markboth{Abstract}{ABSTRACT}                           %
 }{\vfill\sWuhao\noindent\nwpu@eng@funding\par\cleardoublepage}
 \newenvironment{engkeywords}{                               %
 %    \end{macrocode}
@@ -1673,58 +1818,58 @@ int main()
 % \markdtxchanges{v1.8.1}{2022/12/06}{更新知识产权与原创性声明版式}
 %    \begin{macrocode}
 \newcommand{\makestatement}{                                % 知识产权与原创性声明
-\begin{titlepage}
-    \vspace*{-1.5mm}
-    \hspace*{4.5mm}
-    \begin{minipage}{149.5mm}
-        \begin{center}
-            \renewcommand{\baselinestretch}{1.5}\fSong\sSihao
-            \hspace*{3mm}{\bf 西北工业大学}\par
-            \hspace*{3mm}{\bf 学位论文知识产权声明书}\par
-        \end{center}
-        \vspace*{-3.5mm}
-        \renewcommand{\baselinestretch}{2.25}\fSong\sWuhao
-        {\qquad}本人完全了解学校有关保护知识产权的规定，即：研究生在校攻读学位期间论文工作的
-        知识产权单位属于西北工业大学。学校有权保留并向国家有关部门或机构送交论文的复印件
-        和电子版。本人允许论文被查阅和借阅。学校可以将本学位论文的全部或部分内容编入有关
-        数据库进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。同时本人
-        保证，毕业后结合学位论文研究课题再撰写的文章一律注明作者单位为西北工业大学。\par
-        {\qquad}本学位论文属于（在以下方框内打“√”）：\par
-        {\qquad}$\square$\hspace*{0.7em}保密论文，保密期
-        （\hspace*{2.5em}年\hspace*{2.5em}月\hspace*{2.5em}日
-        至\hspace*{2.5em}年\hspace*{2.5em}月\hspace*{2.5em}日）。\par
-        {\qquad}$\square$\hspace*{0.7em}公开论文。\par
-        {\qquad}~\par
-        {\qquad}学位论文作者签名{~:~}\underline{\qquad\qquad\qquad}\hfill
-        指导教师签名{~:~}\underline{\qquad\qquad\qquad}\par
-        \hspace*{8em}{年\hspace*{1.5em}月\hspace*{1.5em}日}\hfill
-        \hspace*{12em}{年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}\par
-        {\qquad}~\par
-        \vspace*{2.1mm}
-        \hbox to \hsize{\leaders\hbox to 0.6em{\hss--\hss}\hfill} \par
-        \vspace*{-13mm}
-        {\qquad}~\par
-        \begin{center}
-            \renewcommand{\baselinestretch}{1.5}\fSong\sSihao
-            \hspace*{3mm}{\bf 西北工业大学}\par
-            \hspace*{3mm}{\bf 学位论文原创性声明}\par
-        \end{center}
-        \vspace*{1.2mm}
-        \hspace*{6mm}\begin{minipage}{141.5mm}
+    \begin{titlepage}
+        \vspace*{-1.5mm}
+        \hspace*{4.5mm}
+        \begin{minipage}{149.5mm}
+            \begin{center}
+                \renewcommand{\baselinestretch}{1.5}\fSong\sSihao
+                \hspace*{3mm}{\bf 西北工业大学}\par
+                \hspace*{3mm}{\bf 学位论文知识产权声明书}\par
+            \end{center}
+            \vspace*{-3.5mm}
             \renewcommand{\baselinestretch}{2.25}\fSong\sWuhao
-            {\qquad}秉承学校严谨的学风和优良的科学道德，本人郑重声明：所呈交的学位论文，是本
-            人在导师的指导下进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容
-            和致谢的地方外，本论文不包含任何其他个人或集体已经公开发表或撰写过的研究成果，
-            不包含本人或其他已申请学位或其他用途使用过的成果。对本文的研究做出重要贡献的
-            个人和集体，均已在文中以明确方式表明。\par
-            {\qquad}本人学位论文与资料若有不实，愿意承担一切相关的法律责任。\par
-            \vspace*{1.5mm}
-            \hspace*{21em}\hfill 学位论文作者签名{~:~}\underline{\qquad\qquad\quad}\par
-            \vspace*{2mm}
-            \hspace*{10em}\hfill {年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}
+            {\qquad}本人完全了解学校有关保护知识产权的规定，即：研究生在校攻读学位期间论文工作的
+            知识产权单位属于西北工业大学。学校有权保留并向国家有关部门或机构送交论文的复印件
+            和电子版。本人允许论文被查阅和借阅。学校可以将本学位论文的全部或部分内容编入有关
+            数据库进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。同时本人
+            保证，毕业后结合学位论文研究课题再撰写的文章一律注明作者单位为西北工业大学。\par
+            {\qquad}本学位论文属于（在以下方框内打“√”）：\par
+            {\qquad}$\square$\hspace*{0.7em}保密论文，保密期
+            （\hspace*{2.5em}年\hspace*{2.5em}月\hspace*{2.5em}日
+            至\hspace*{2.5em}年\hspace*{2.5em}月\hspace*{2.5em}日）。\par
+            {\qquad}$\square$\hspace*{0.7em}公开论文。\par
+            {\qquad}~\par
+            {\qquad}学位论文作者签名{~:~}\underline{\qquad\qquad\qquad}\hfill
+            指导教师签名{~:~}\underline{\qquad\qquad\qquad}\par
+            \hspace*{8em}{年\hspace*{1.5em}月\hspace*{1.5em}日}\hfill
+            \hspace*{12em}{年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}\par
+            {\qquad}~\par
+            \vspace*{2.1mm}
+            \hbox to \hsize{\leaders\hbox to 0.6em{\hss--\hss}\hfill} \par
+            \vspace*{-13mm}
+            {\qquad}~\par
+            \begin{center}
+                \renewcommand{\baselinestretch}{1.5}\fSong\sSihao
+                \hspace*{3mm}{\bf 西北工业大学}\par
+                \hspace*{3mm}{\bf 学位论文原创性声明}\par
+            \end{center}
+            \vspace*{1.2mm}
+            \hspace*{6mm}\begin{minipage}{141.5mm}
+                \renewcommand{\baselinestretch}{2.25}\fSong\sWuhao
+                {\qquad}秉承学校严谨的学风和优良的科学道德，本人郑重声明：所呈交的学位论文，是本
+                人在导师的指导下进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容
+                和致谢的地方外，本论文不包含任何其他个人或集体已经公开发表或撰写过的研究成果，
+                不包含本人或其他已申请学位或其他用途使用过的成果。对本文的研究做出重要贡献的
+                个人和集体，均已在文中以明确方式表明。\par
+                {\qquad}本人学位论文与资料若有不实，愿意承担一切相关的法律责任。\par
+                \vspace*{1.5mm}
+                \hspace*{21em}\hfill 学位论文作者签名{~:~}\underline{\qquad\qquad\quad}\par
+                \vspace*{2mm}
+                \hspace*{10em}\hfill {年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}
+            \end{minipage}
         \end{minipage}
-    \end{minipage}
-\end{titlepage}
+    \end{titlepage}
 }                                                           %
 %%=============================================================================%
 %</class>
