@@ -123,7 +123,7 @@
         \fi                                                 %
     \fi                                                     %
 \fi                                                         %
-\newcommand\defaultEngFont{Times New Roman}                 % 英文文本默认字体%    \end{macrocode}
+\newcommand\defaultEngFont{Times New Roman}                 % 英文文本默认字体
 \newcommand\defaultEngSansFont{\defaultHei}                 % 英文 Sans 字体
 \newcommand\codeFont{Consolas}                              % 等宽英文默认字体
 %%-----------------------------------------------------------------------------%
@@ -166,11 +166,11 @@
 \setcounter{tocdepth}{2}                                    % 目录中标题深度
 \titleformat{\chapter}[hang]{\normalfont\sSanhao\filcenter  %
     \sffamily\fHei}{\sffamily\fHei\sSanhao{\chaptertitlename}}{20pt}{\sSanhao}%
-\titleformat{\section}[hang]{\sffamily\fHei\sSihao}{        %
+\titleformat{\section}[hang]{\sffamily\fHei\sSihao}{%       %
     \sffamily\fHei\sSihao\thesection}{0.5em}{}{}            %
-\titleformat{\subsection}[hang]{\sffamily\fHei\sHgXiaosi}{  %
+\titleformat{\subsection}[hang]{\sffamily\fHei\sHgXiaosi}{% %
     \sffamily\fHei\sHgXiaosi\thesubsection}{0.5em}{}{}      %
-\titleformat{\subsubsection}[hang]{\sffamily\fHei}{         % 小标题: (4) 标题
+\titleformat{\subsubsection}[hang]{\sffamily\fHei}{%        % 小标题: (4) 标题
     (\arabic{subsubsection})}{0.5em}{}{}                    %
 \titlespacing{\chapter}{0pt}{-2pt}{14pt}                    % 缩小标题之间缩进
 \titlespacing{\section}{0pt}{7pt}{0em}                      %
