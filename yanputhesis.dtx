@@ -857,7 +857,8 @@ int main()
         \fi                                                 %
     \fi                                                     %
 \fi                                                         %
-\newcommand\defaultEngFont{Times New Roman}                 % 英文文本默认字体%    \end{macrocode}
+\newcommand\defaultEngFont{Times New Roman}                 % 英文文本默认字体
+%    \end{macrocode}
 % \markdtxchanges{v1.8.4}{2023/03/02}{新增英文 Sans 字体}
 %    \begin{macrocode}
 \newcommand\defaultEngSansFont{\defaultHei}                 % 英文 Sans 字体
@@ -915,11 +916,14 @@ int main()
 %    \begin{macrocode}
 \titleformat{\chapter}[hang]{\normalfont\sSanhao\filcenter  %
     \sffamily\fHei}{\sffamily\fHei\sSanhao{\chaptertitlename}}{20pt}{\sSanhao}%
-\titleformat{\section}[hang]{\sffamily\fHei\sSihao}{        %
+%    \end{macrocode}
+% \markdtxchanges{v1.8.5}{2023/03/06}{小标题取消首行缩进}
+%    \begin{macrocode}
+\titleformat{\section}[hang]{\sffamily\fHei\sSihao}{%       %
     \sffamily\fHei\sSihao\thesection}{0.5em}{}{}            %
-\titleformat{\subsection}[hang]{\sffamily\fHei\sHgXiaosi}{  %
+\titleformat{\subsection}[hang]{\sffamily\fHei\sHgXiaosi}{% %
     \sffamily\fHei\sHgXiaosi\thesubsection}{0.5em}{}{}      %
-\titleformat{\subsubsection}[hang]{\sffamily\fHei}{         % 小标题: (4) 标题
+\titleformat{\subsubsection}[hang]{\sffamily\fHei}{%        % 小标题: (4) 标题
     (\arabic{subsubsection})}{0.5em}{}{}                    %
 %    \end{macrocode}
 % \markdtxchanges{v1.8.0}{2022/12/03}{增加大标题行间距}
