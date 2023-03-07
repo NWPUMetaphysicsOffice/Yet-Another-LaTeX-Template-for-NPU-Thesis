@@ -20,6 +20,11 @@
 
 本 repo 主要基于开源库 [polossk/LaTeX-Template-For-NPU-Thesis](https://github.com/polossk/LaTeX-Template-For-NPU-Thesis) 之上修改而成，格式参照于 2022 年西北工业大学研究生院编写的[西北工业大学研究生学位论文写作指南](https://gs.nwpu.edu.cn/info/2284/15346.htm)。
 
+目前项目主要由 @polossk 维护，发布版本可能会有一些不影响阅读与送审的小问题。如果有相关格式更正需求，请发布 issue 催更，我们将对模板 bug 发布更新。
+
+* master 分支，发布累积更新后的版本，当前版本 [v1.8.4](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/releases)
+* polossk-dev 分支，由 @polossk 维护的开发分支，用于及时发布更新补丁，当前版本 v1.8.5.0307 [下载链接](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/archive/refs/heads/polossk-dev.zip)
+
 ## 使用说明
 
 1. 下载这个项目的 zip 包到到本地
@@ -80,6 +85,8 @@
   * 如果有其他字体的需求，也可以自行更改 `yanputhesis.cls` 中 `\newcommand\codeFont{Consolas}` 为其他字体，例如修改为 `\newcommand\codeFont{Source Code Pro}` 以使用 `Source Code Pro` 字体。
 * **Q：有没有 Overleaf 版本？**
   * 也许可以通过本 repo 在 Overleaf 上建立一个项目，但是可能会遇到字体问题，请再三斟酌。
+* **Q：这个编译报错了 balabala，怎么解决？**
+  * 请优先检索过往 issue 查看是否已有人提及相关解决方案。其次请确认是模板的 bug，我们将及时发布补丁。如果是其他问题，恕我们精力有限不能一一答复，建议善用搜索引擎或 ChatGPT。
 * **Q：编译时卡顿了，怎么解决？**
   * 对于 Windows 电脑，如果在编译过程中遇到卡在字体缓冲问题，请先关闭当前进程，并用管理员模式打开命令提示符（或终端），键入 `fc-cache -f -v` 强制刷新字体缓存即可
 * **Q：LaTeX 怎么调整公式大小/公式换行/怎么加粗？**
@@ -137,9 +144,9 @@
 
 本模板的实现参考了目前仍在维护的模板，这些模板的贡献者有（按姓氏排序）:
 
-* 西工大玄学办：Shangkun Shen(@polossk)，Zhihe Wang(@cfrpg)，Jiduo Zhang(@kidozh)，Weijia Zhang(@njzwj)；
-* 西北工业大学理学院数学系：Yiqiang Li(@lyq105)，Zongze Yang(@lrtfm)；
-* GitHub 热心网友：@likunyao，Wei Wang(@WilmerWang)；
+* 西工大玄学办：Shangkun Shen (@polossk)，Zhihe Wang (@cfrpg)，Jiduo Zhang (@kidozh)，Weijia Zhang (@njzwj)；
+* 西北工业大学数学与统计学院：Yiqiang Li (@lyq105)，Ying Liu，Jiashu Lu，Zongze Yang (@lrtfm)；
+* GitHub 热心网友：Li Kunyao (@likunyao)，@neilwth，@wayne17，Wei Wang (@WilmerWang)。
 
 ## 如何参与该项目
 
@@ -148,6 +155,15 @@
   * 如果您已经光速修复了 bug，欢迎提交 pull-request 至 public-dev 分支当中，我们会及时将您的代码与更新日志一同合并至 master 分支，并署名鸣谢
   * 如果需要改动，您可能需要使用 `zhmakeindex` 来维护更新清单，请[下载](https://github.com/leo-liu/zhmakeindex/releases/tag/zhmakeindex-1.2)对应操作系统的可执行文件
 
+## 如何赞助该项目（钞能力催更
+
+<del>如果本项目对您的顺利毕业有那么一点点的帮助，希望您慷慨解囊。</del>
+
+开个玩笑。玄学办不拒绝您的合法资助，并且会公示您的资助金额与后续用途。目前支持扫码赞助，欢迎有条件的同学、老师请玄学办的小伙伴喝咖啡:)
+<p align="center">
+<img src="https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/raw/Sponsorships/wechat_donate_appcode.jpg" width="30%"/>
+<img src="https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/raw/Sponsorships/alipay_donate_qrcode_polossk.jpg" width="30%"/>
+</p>
 
 ## BibTeX
 
