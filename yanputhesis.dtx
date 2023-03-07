@@ -90,7 +90,7 @@ and the derived files           yanputhesis.ins,
 %<class>\NeedsTeXFormat{LaTeX2e}[2005/12/01]
 %<class>\ProvidesClass{yanputhesis}
 %<*class>
-    [2023/03/04 v1.8.4 Yet Another NPU Thesis Template]
+    [2023/03/07 v1.8.5 Yet Another NPU Thesis Template]
 %</class>
 %
 %<*driver>
@@ -1586,7 +1586,7 @@ int main()
     \let\oldarraystretch=\arraystretch                      %
     \renewcommand{\arraystretch}{2.10}                      %
     \begin{tabularx}{15.44cm}{O{3.76cm}O{2.68cm}O{2.25cm}O{6.75cm}}
-        \defenseDate{#1} \sDefault\textbf{答辩委员会} &     %
+        \defenseDate{#1} \sDefault\textbf{答辩委员会} & %   %
         \expert{\textbf{姓名}}{\textbf{职称}}{\textbf{工作单位}}
         #2\relax                                            %
     \end{tabularx}                                          %
@@ -1754,20 +1754,20 @@ int main()
     \renewcommand{\nwpu@eng@chaptercname}{\nwpu@eng@appendixname}
     \if@npu@lang@chs                                        % 中文本地化显示
         \renewcommand{\appendixname}{附录}                  % 目录
-        \titlecontents{chapter}[0pt]{\fSong\sLgXiaosi\vspace{%
-            0.5em}}{\contentsmargin{0pt}\fSong\makebox[0pt  %
-            ][l]{\nwpu@chs@appendixname{\thecontentslabel}}\hspace{%
-            3.5em}}{\contentsmargin{0pt}\fSong}{\titlerule*[%
-            .5pc]{.}\contentspage}[\vspace{0em}]            %
+        \titlecontents{chapter}[0pt]{\fSong\sLgXiaosi\vspace{0.5em}}{%
+            \contentsmargin{0pt}\fSong\makebox[0pt][l]{%    %
+                \nwpu@chs@appendixname{\thecontentslabel}}\hspace{3.5em}}{%
+            \contentsmargin{0pt}\fSong}{\titlerule*[.5pc]{.}%
+            \contentspage}[\vspace{0em}]                    %
     \else                                                   % 英文使用默认环境
-        \titlecontents{chapter}[0pt]{\fSong\sLgXiaosi\vspace{%
-            0.5em}}{\contentsmargin{0pt}\fSong\makebox[0pt  %
-            ][l]{\nwpu@eng@appendixname{\thecontentslabel}}\hspace{%
-            \contents@appendixwidth}}{\contentsmargin{0pt}\fSong}{%
+        \titlecontents{chapter}[0pt]{\fSong\sLgXiaosi\vspace{0.5em}}{%
+            \contentsmargin{0pt}\fSong\makebox[0pt][l]{%    %
+                \nwpu@eng@appendixname{\thecontentslabel}}\hspace{%
+                \contents@appendixwidth}}{\contentsmargin{0pt}\fSong}{%
             \titlerule*[.5pc]{.}\contentspage}[\vspace{0em}]%
     \fi                                                     %
     \titleformat{\chapter}[hang]{\normalfont\sSanhao\filcenter\sffamily\fHei}{%
-    \sffamily\fHei\sSanhao{\appendixname~\thechapter}}{20pt}{\sSanhao}
+        \sffamily\fHei\sSanhao{\appendixname~\thechapter}}{20pt}{\sSanhao}
     \renewcommand{\thechapter}{\Alph{chapter}}              %
     \renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}
     \renewcommand{\theequation}{\alph{chapter}-\arabic{equation}}
@@ -1820,60 +1820,60 @@ int main()
 %%-----------------------------------------------------------------------------%
 %    \end{macrocode}
 % \markdtxchanges{v1.8.1}{2022/12/06}{更新知识产权与原创性声明版式}
+% \markdtxchanges{v1.8.5}{2023/03/07}{微调知识产权与原创性声明版式}
 %    \begin{macrocode}
 \newcommand{\makestatement}{                                % 知识产权与原创性声明
-    \begin{titlepage}
-        \vspace*{-1.5mm}
-        \hspace*{4.5mm}
-        \begin{minipage}{149.5mm}
-            \begin{center}
-                \renewcommand{\baselinestretch}{1.5}\fSong\sSihao
-                \hspace*{3mm}{\bf 西北工业大学}\par
-                \hspace*{3mm}{\bf 学位论文知识产权声明书}\par
-            \end{center}
-            \vspace*{-3.5mm}
-            \renewcommand{\baselinestretch}{2.25}\fSong\sWuhao
-            {\qquad}本人完全了解学校有关保护知识产权的规定，即：研究生在校攻读学位期间论文工作的
-            知识产权单位属于西北工业大学。学校有权保留并向国家有关部门或机构送交论文的复印件
-            和电子版。本人允许论文被查阅和借阅。学校可以将本学位论文的全部或部分内容编入有关
-            数据库进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。同时本人
-            保证，毕业后结合学位论文研究课题再撰写的文章一律注明作者单位为西北工业大学。\par
-            {\qquad}本学位论文属于（在以下方框内打“√”）：\par
-            {\qquad}$\square$\hspace*{0.7em}保密论文，保密期
-            （\hspace*{2.5em}年\hspace*{2.5em}月\hspace*{2.5em}日
-            至\hspace*{2.5em}年\hspace*{2.5em}月\hspace*{2.5em}日）。\par
-            {\qquad}$\square$\hspace*{0.7em}公开论文。\par
-            {\qquad}~\par
-            {\qquad}学位论文作者签名{~:~}\underline{\qquad\qquad\qquad}\hfill
-            指导教师签名{~:~}\underline{\qquad\qquad\qquad}\par
-            \hspace*{8em}{年\hspace*{1.5em}月\hspace*{1.5em}日}\hfill
-            \hspace*{12em}{年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}\par
-            {\qquad}~\par
-            \vspace*{2.1mm}
-            \hbox to \hsize{\leaders\hbox to 0.6em{\hss--\hss}\hfill} \par
-            \vspace*{-13mm}
-            {\qquad}~\par
-            \begin{center}
-                \renewcommand{\baselinestretch}{1.5}\fSong\sSihao
-                \hspace*{3mm}{\bf 西北工业大学}\par
-                \hspace*{3mm}{\bf 学位论文原创性声明}\par
-            \end{center}
-            \vspace*{1.2mm}
-            \hspace*{6mm}\begin{minipage}{141.5mm}
-                \renewcommand{\baselinestretch}{2.25}\fSong\sWuhao
-                {\qquad}秉承学校严谨的学风和优良的科学道德，本人郑重声明：所呈交的学位论文，是本
-                人在导师的指导下进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容
-                和致谢的地方外，本论文不包含任何其他个人或集体已经公开发表或撰写过的研究成果，
-                不包含本人或其他已申请学位或其他用途使用过的成果。对本文的研究做出重要贡献的
-                个人和集体，均已在文中以明确方式表明。\par
-                {\qquad}本人学位论文与资料若有不实，愿意承担一切相关的法律责任。\par
-                \vspace*{1.5mm}
-                \hspace*{21em}\hfill 学位论文作者签名{~:~}\underline{\qquad\qquad\quad}\par
-                \vspace*{2mm}
-                \hspace*{10em}\hfill {年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}
-            \end{minipage}
+\begin{titlepage}
+    \vspace*{-1.5mm}
+    \begin{minipage}{149.6mm}
+        \begin{center}
+            \renewcommand{\baselinestretch}{1.5}\fSong\sSihao\par
+            {\bf 西北工业大学}\par
+            {\bf 学位论文知识产权声明书}\par
+        \end{center}
+        \renewcommand{\baselinestretch}{2.22}\fSong\fontsize{10.6pt}{10.6pt}\selectfont
+        {\qquad}本人完全了解学校有关保护知识产权的规定，即：研究生在校攻读学位期间论文工作的
+        知识产权单位属于西北工业大学。学校有权保留并向国家有关部门或机构送交论文的复印件
+        和电子版。本人允许论文被查阅和借阅。学校可以将本学位论文的全部或部分内容编入有关
+        数据库进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。同时本人
+        保证，毕业后结合学位论文研究课题再撰写的文章一律注明作者单位为西北工业大学。\par
+        {\qquad}本学位论文属于（在以下方框内打“√”）：\par
+        {\qquad}$\square$\hspace*{0.7em}保密论文，保密期
+        （\hspace*{2.5em}年\hspace*{2.5em}月\hspace*{2.5em}日
+        至\hspace*{2.5em}年\hspace*{2.5em}月\hspace*{2.5em}日）。\par
+        {\qquad}$\square$\hspace*{0.7em}公开论文。\par
+        {\qquad}~\par
+        {\qquad}学位论文作者签名{~:~}\underline{\qquad\qquad\qquad}\hfill
+        指导教师签名{~:~}\underline{\qquad\qquad\qquad}\par
+        \hspace*{8em}{年\hspace*{1.5em}月\hspace*{1.5em}日}\hfill
+        \hspace*{12em}{年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}\par
+        {\qquad}~\par
+        \vspace*{2.1mm}
+        \hbox to \hsize{\leaders\hbox to 0.6em{\hss--\hss}\hfill} \par
+        \vspace*{-13mm}
+        {\qquad}~\par
+        \vspace*{2mm}
+        \begin{center}
+            \renewcommand{\baselinestretch}{1.45}\fSong\sSihao
+            {\bf 西北工业大学}\par
+            {\bf 学位论文原创性声明}\par
+        \end{center}
+        \vspace*{4mm}
+        \hspace*{6mm}\begin{minipage}{141.6mm}
+            \renewcommand{\baselinestretch}{2.22}\fSong\fontsize{10.6pt}{10.6pt}\selectfont
+            {\qquad}\mbox{秉承学校严谨的学风和优良的科学道德，本人郑重声明：所呈交的学位论文，是本}
+            \mbox{人在导师的指导下进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容}
+            \mbox{和致谢的地方外，本论文不包含任何其他个人或集体已经公开发表或撰写过的研究成果，}
+            \mbox{不包含本人或其他已申请学位或其他用途使用过的成果。对本文的研究做出重要贡献的}
+            \mbox{个人和集体，均已在文中以明确方式表明。}\par
+            {\qquad}本人学位论文与资料若有不实，愿意承担一切相关的法律责任。\par
+            \vspace*{1.5mm}
+            \hspace*{21em}\hfill 学位论文作者签名{~:~}\underline{\qquad\qquad\quad}\par
+            \vspace*{2mm}
+            \hspace*{10em}\hfill {年\hspace*{1.5em}月\hspace*{1.5em}日}\hspace*{1.5em}
         \end{minipage}
-    \end{titlepage}
+    \end{minipage}
+\end{titlepage}
 }                                                           %
 %%=============================================================================%
 %</class>
