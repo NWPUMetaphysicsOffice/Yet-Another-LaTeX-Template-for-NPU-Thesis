@@ -78,7 +78,7 @@
 * **Q：我是 macOS 用户，为什么我的黑体与别人的不一样？**
   * 这是由于 macOS 用户的黑体字体 `STHeiti` 与 Windows 上黑体字体 `SimHei` 本质上是两种不同的字体，因此部分汉字的显示效果有差异。目前非 Windows 操作系统的用户并没有取得 Windows 上黑体字体 `SimHei` 字体的授权，所以需要另外下载或拷贝使用。
   * 在文章送审时，你的评委老师的电脑极有可能是 Windows 的，所以为了避免字体显示问题（如文字很挤、字重不统一等），建议从 Windows 上拷贝一整套字体（宋黑楷仿宋），然后在文档类中添加选项 `winfonts=true` 以强制使用 Windows 字体。
-  * 如果你觉得 Windows 上的字体也很丑不够美观，可以自行更换为其他开源或商用字体。比如开源的[思源宋体](https://github.com/adobe-fonts/source-han-serif)、[思源黑体](https://github.com/adobe-fonts/source-han-serif)，然后更新对应操作系统的字体配置。
+  * 如果你觉得 Windows 上的字体也很丑不够美观，可以自行更换为其他开源或商用字体。比如开源的[思源宋体](https://github.com/adobe-fonts/source-han-serif)、[思源黑体](https://github.com/adobe-fonts/source-han-sans)，然后更新对应操作系统的字体配置。
   * 请注意，如果你的文章会被收录或者其他商业用途，建议使用开源字体或默认操作系统字体，以避免不必要的麻烦。
 * **Q：我没有等宽字体（默认 Consolas），应该怎么办？**
   * 非 Windows 操作系统的用户（包括 macOS 与 Linux 用户）需要安装 Consolas 字体后使用，字体文件存放于 `fonts/` 文件夹中。
