@@ -770,7 +770,7 @@
 %%-----------------------------------------------------------------------------%
 \let\old@bibliography\bibliography                          % 保护原有附录环境
 \renewcommand{\bibliography}[1]{                            %
-    \phantomsection\addcontentsline{toc}{chapter}{参考文献} %
+    \phantomsection\addcontentsline{toc}{chapter}{\bibname} %
     \renewcommand{\baselinestretch}{1.0}                    %
     \fontsize{12pt}{13pt}\selectfont                        %
     \setlength{\bibsep}{0.5ex}                              %
