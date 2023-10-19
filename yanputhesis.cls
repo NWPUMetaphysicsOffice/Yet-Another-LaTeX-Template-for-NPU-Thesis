@@ -431,8 +431,8 @@
     \newcommand{\nwpu@chs@doctitle}{{\nwpu@chs@degree}学位论文}
     \newcommand{\nwpu@chs@header}{\nwpu@chs@schoolname\nwpu@chs@doctitle}
 \fi                                                         %
-\newcommand{\nwpu@eng@doctitle}{\nwpu@eng@degree Thesis}    % 英文文档名和页眉
-\newcommand{\nwpu@eng@header}{\nwpu@eng@doctitle of \nwpu@eng@schoolname}
+\newcommand{\nwpu@eng@doctitle}{{\nwpu@eng@degree} Thesis}    % 英文文档名和页眉
+\newcommand{\nwpu@eng@header}{{\nwpu@eng@doctitle} of {\nwpu@eng@schoolname}}
 %%-----------------------------------------------------------------------------%
 \if@npu@lang@chs                                            % 定制中文特殊页面
     \newcommand{\nwpu@page@ack}{致{\quad}谢}                %
