@@ -71,7 +71,8 @@
   * 如果你觉得 Windows 上的字体也很丑不够美观，可以自行更换为其他开源或商用字体。比如开源的[思源宋体](https://github.com/adobe-fonts/source-han-serif)、[思源黑体](https://github.com/adobe-fonts/source-han-sans)，然后更新对应操作系统的字体配置。
   * 请注意，如果你的文章会被收录或者其他商业用途，建议使用开源字体或默认操作系统字体，以避免不必要的麻烦。
 * **Q：我没有等宽字体（默认 Consolas），应该怎么办？**
-  * 非 Windows 操作系统的用户（包括 macOS 与 Linux 用户）需要安装 Consolas 字体后使用，字体文件存放于 `fonts/` 文件夹中。
+  * 非 Windows 操作系统的用户（包括 macOS 与 Linux 用户）需要安装 Consolas 字体后使用，字体文件存放于 `fonts/English-Fonts/` 文件夹中。
+  * `fonts` 文件夹与 [Fonts-For-NPU-Thesis-Template](https://github.com/NWPUMetaphysicsOffice/Fonts-For-NPU-Thesis-Template) 项目保持同步，可通过执行更新命令 `git submodule update --init --recursive` 来获取最新版本。
   * 如果有其他字体的需求，也可以自行更改 `yanputhesis.cls` 中 `\newcommand\codeFont{Consolas}` 为其他字体，例如修改为 `\newcommand\codeFont{Source Code Pro}` 以使用 `Source Code Pro` 字体。
 * **Q：有没有 Overleaf 版本？**
   * 也许可以通过本 repo 在 Overleaf 上建立一个项目，但是可能会遇到字体问题，请再三斟酌。
