@@ -2,7 +2,7 @@
 
 ![Poster][poster]
 
-![Status](https://img.shields.io/badge/status-complete-brightgreen.svg) ![PhD-Thesis](https://img.shields.io/badge/PhD-Thesis-D11A2D.svg) ![Master-Thesis](https://img.shields.io/badge/Master-Thesis-1177B0.svg) ![TeX-Template](https://img.shields.io/badge/TeX-Template-3D6117.svg?style=flat-square) [![License](https://img.shields.io/badge/license-GNU_General_Public_License_v3.0-blue.svg)](LICENSE) ![Version](https://img.shields.io/badge/version-v1.8.4.0304-674EA7.svg)
+![Status](https://img.shields.io/badge/status-complete-brightgreen.svg) ![PhD-Thesis](https://img.shields.io/badge/PhD-Thesis-D11A2D.svg) ![Master-Thesis](https://img.shields.io/badge/Master-Thesis-1177B0.svg) ![TeX-Template](https://img.shields.io/badge/TeX-Template-3D6117.svg?style=flat-square) [![License](https://img.shields.io/badge/license-GNU_General_Public_License_v3.0-blue.svg)](LICENSE) ![Version](https://img.shields.io/badge/version-v1.8.5.0307-674EA7.svg)
 
 ![TeXLive>=2021](https://img.shields.io/badge/TeXLive-%3E=2021-3D6117.svg) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4159248.svg)](https://doi.org/10.5281/zenodo.4159248) [![](https://img.shields.io/github/last-commit/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis)](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/zipball/master) [![](https://img.shields.io/github/issues/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis)](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/issues)
 
@@ -12,7 +12,7 @@
 
 目前项目主要由 @polossk 维护，发布版本可能会有一些不影响阅读与送审的小问题。如果有相关格式更正需求，请发布 issue 催更，我们将对模板 bug 发布更新。
 
-* master 分支，发布累积更新后的版本，当前版本 [v1.8.4](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/releases)
+* master 分支，发布累积更新后的版本，当前版本 [v1.8.5](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/releases)
 * polossk-dev 分支，由 @polossk 维护的开发分支，用于及时发布更新补丁，当前版本 v1.8.5.0307 [下载链接](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/archive/refs/heads/polossk-dev.zip)
 
 ## 使用说明
@@ -134,7 +134,7 @@
 
 本模板的实现参考了目前仍在维护的模板，这些模板的贡献者有（按姓氏排序）:
 
-* 西工大玄学办：Shangkun Shen (@polossk)，Zhihe Wang (@cfrpg)，Jiduo Zhang (@kidozh)，Weijia Zhang (@njzwj)；
+* 西工大玄学办：Congzhuo Fang (@CongzhuoFang), Shangkun Shen (@polossk)，Zhihe Wang (@cfrpg)，Jiduo Zhang (@kidozh)，Lin Zhang (@DrLinZhang), Weijia Zhang (@njzwj)；
 * 西北工业大学数学与统计学院：Yiqiang Li (@lyq105)，Ying Liu，Jiashu Lu，Zongze Yang (@lrtfm)；
 * GitHub 热心网友：Li Kunyao (@likunyao)，@neilwth，@wayne17，Wei Wang (@WilmerWang)。
 

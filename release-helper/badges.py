@@ -7,7 +7,7 @@ badges_urls = [
     r"https://img.shields.io/badge/TeX-Template-3D6117.svg?style=flat-square",
     r"https://img.shields.io/badge/license-GNU_General_Public_License_v3.0-blue.svg?style=flat-square",
     r"https://img.shields.io/badge/TeXLive-%3E=2021-3D6117.svg?style=flat-square",
-    r"https://img.shields.io/badge/version-v1.8.1.1206-674EA7.svg?style=flat-square",
+    r"https://img.shields.io/badge/version-v1.8.5.0307-674EA7.svg?style=flat-square",
     r"https://img.shields.io/badge/DOI-10.5281%2Fzenodo.4159248-blue.svg?style=flat-square"
 ]
 
