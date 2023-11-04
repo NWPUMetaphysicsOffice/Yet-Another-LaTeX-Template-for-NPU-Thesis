@@ -2,7 +2,7 @@
 
 ![Poster][poster]
 
-![Status](https://img.shields.io/badge/status-complete-brightgreen.svg) ![PhD-Thesis](https://img.shields.io/badge/PhD-Thesis-D11A2D.svg) ![Master-Thesis](https://img.shields.io/badge/Master-Thesis-1177B0.svg) ![TeX-Template](https://img.shields.io/badge/TeX-Template-3D6117.svg?style=flat-square) [![License](https://img.shields.io/badge/license-GNU_General_Public_License_v3.0-blue.svg)](LICENSE) ![Version](https://img.shields.io/badge/version-v1.8.4.0304-674EA7.svg)
+![Status](https://img.shields.io/badge/status-complete-brightgreen.svg) ![PhD-Thesis](https://img.shields.io/badge/PhD-Thesis-D11A2D.svg) ![Master-Thesis](https://img.shields.io/badge/Master-Thesis-1177B0.svg) ![TeX-Template](https://img.shields.io/badge/TeX-Template-3D6117.svg?style=flat-square) [![License](https://img.shields.io/badge/license-GNU_General_Public_License_v3.0-blue.svg)](LICENSE) ![Version](https://img.shields.io/badge/version-v1.8.5.0307-674EA7.svg)
 
 ![TeXLive>=2021](https://img.shields.io/badge/TeXLive-%3E=2021-3D6117.svg) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4159248.svg)](https://doi.org/10.5281/zenodo.4159248) [![](https://img.shields.io/github/last-commit/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis)](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/zipball/master) [![](https://img.shields.io/github/issues/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis)](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/issues)
 
@@ -12,7 +12,7 @@
 
 目前项目主要由 @polossk 维护，发布版本可能会有一些不影响阅读与送审的小问题。如果有相关格式更正需求，请发布 issue 催更，我们将对模板 bug 发布更新。
 
-* master 分支，发布累积更新后的版本，当前版本 [v1.8.4](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/releases)
+* master 分支，发布累积更新后的版本，当前版本 [v1.8.5](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/releases)
 * polossk-dev 分支，由 @polossk 维护的开发分支，用于及时发布更新补丁，当前版本 v1.8.5.0307 [下载链接](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/archive/refs/heads/polossk-dev.zip)
 
 ## 使用说明
@@ -68,10 +68,11 @@
 * **Q：我是 macOS 用户，为什么我的黑体与别人的不一样？**
   * 这是由于 macOS 用户的黑体字体 `STHeiti` 与 Windows 上黑体字体 `SimHei` 本质上是两种不同的字体，因此部分汉字的显示效果有差异。目前非 Windows 操作系统的用户并没有取得 Windows 上黑体字体 `SimHei` 字体的授权，所以需要另外下载或拷贝使用。
   * 在文章送审时，你的评委老师的电脑极有可能是 Windows 的，所以为了避免字体显示问题（如文字很挤、字重不统一等），建议从 Windows 上拷贝一整套字体（宋黑楷仿宋），然后在文档类中添加选项 `winfonts=true` 以强制使用 Windows 字体。
-  * 如果你觉得 Windows 上的字体也很丑不够美观，可以自行更换为其他开源或商用字体。比如开源的[思源宋体](https://github.com/adobe-fonts/source-han-serif)、[思源黑体](https://github.com/adobe-fonts/source-han-serif)，然后更新对应操作系统的字体配置。
+  * 如果你觉得 Windows 上的字体也很丑不够美观，可以自行更换为其他开源或商用字体。比如开源的[思源宋体](https://github.com/adobe-fonts/source-han-serif)、[思源黑体](https://github.com/adobe-fonts/source-han-sans)，然后更新对应操作系统的字体配置。
   * 请注意，如果你的文章会被收录或者其他商业用途，建议使用开源字体或默认操作系统字体，以避免不必要的麻烦。
 * **Q：我没有等宽字体（默认 Consolas），应该怎么办？**
-  * 非 Windows 操作系统的用户（包括 macOS 与 Linux 用户）需要安装 Consolas 字体后使用，字体文件存放于 `fonts/` 文件夹中。
+  * 非 Windows 操作系统的用户（包括 macOS 与 Linux 用户）需要安装 Consolas 字体后使用，字体文件存放于 `fonts/English-Fonts/` 文件夹中。
+  * `fonts` 文件夹与 [Fonts-For-NPU-Thesis-Template](https://github.com/NWPUMetaphysicsOffice/Fonts-For-NPU-Thesis-Template) 项目保持同步，可通过执行更新命令 `git submodule update --init --recursive` 来获取最新版本。
   * 如果有其他字体的需求，也可以自行更改 `yanputhesis.cls` 中 `\newcommand\codeFont{Consolas}` 为其他字体，例如修改为 `\newcommand\codeFont{Source Code Pro}` 以使用 `Source Code Pro` 字体。
 * **Q：有没有 Overleaf 版本？**
   * 也许可以通过本 repo 在 Overleaf 上建立一个项目，但是可能会遇到字体问题，请再三斟酌。
@@ -134,7 +135,7 @@
 
 本模板的实现参考了目前仍在维护的模板，这些模板的贡献者有（按姓氏排序）:
 
-* 西工大玄学办：Shangkun Shen (@polossk)，Zhihe Wang (@cfrpg)，Jiduo Zhang (@kidozh)，Weijia Zhang (@njzwj)；
+* 西工大玄学办：Congzhuo Fang (@CongzhuoFang), Shangkun Shen (@polossk)，Zhihe Wang (@cfrpg)，Jiduo Zhang (@kidozh)，Lin Zhang (@DrLinZhang), Weijia Zhang (@njzwj)；
 * 西北工业大学数学与统计学院：Yiqiang Li (@lyq105)，Ying Liu，Jiashu Lu，Zongze Yang (@lrtfm)；
 * GitHub 热心网友：Li Kunyao (@likunyao)，@neilwth，@wayne17，Wei Wang (@WilmerWang)。
 
@@ -189,15 +190,15 @@ members are cfrpg, kidozh, njzwj, polossk, in alphabet order.
 
 ## 打赏记录
 
-> 截止 2023 年 6 月 6 日，共收到赞赏 4 次，累积收款 28.08 元，感谢各位大佬的资助！
+> 截止 2023 年 11 月 4 日，共收到赞赏 5 次，累积收款 37.96 元，感谢各位大佬的资助！
 
-| 时间                  | 平台    |  金额     | 昵称     | 单号                              | 留言备注                           |
-|---------------------|-------|---------|--------|---------------------------------|--------------------------------|
-| 2023年3月7日 13:12:59  | 微信赞赏码 |  ¥6.66  | c****w | 10001081012023030719120****6288 |                                |
-| 2023年4月27日 12:05:45 | 微信赞赏码 |  ¥4.88  | 逍****歌 | 10001081012023042715108****6929 |                                |
-| 2023年5月9日 15:57:16  | 微信赞赏码 |  ¥9.88  | N****l | 10001081012023050918126****5891 | 辛苦大佬维护latex npu thesis！赞助一杯瑞幸！ |
-| 2023年6月5日 10:44:51  | 微信赞赏码 |  ¥6.66  | 无名大侠   | 10001081012023060515131****6258 | 赞                              |
-
+| 时间                   | 平台       | 金额  | 昵称         | 单号                                | 留言备注                                     |
+| ---------------------- | ---------- | ----- | ------------ | ----------------------------------- | -------------------------------------------- |
+| 2023年11月1日 11:02:57 | 微信赞赏码 | ¥9.88 | 邹\*\*       | 10001081012023110117122\*\*\*\*6936 | 感谢                                         |
+| 2023年6月5日 10:44:51  | 微信赞赏码 | ¥6.66 | 无名大侠     | 10001081012023060515131\*\*\*\*6258 | 赞                                           |
+| 2023年5月9日 15:57:16  | 微信赞赏码 | ¥9.88 | N\*\*\*\*l   | 10001081012023050918126\*\*\*\*5891 | 辛苦大佬维护latex npu thesis！赞助一杯瑞幸！ |
+| 2023年4月27日 12:05:45 | 微信赞赏码 | ¥4.88 | 逍\*\*\*\*歌 | 10001081012023042715108\*\*\*\*6929 |                                              |
+| 2023年3月7日 13:12:59  | 微信赞赏码 | ¥6.66 | c\*\*\*\*w   | 10001081012023030719120\*\*\*\*6288 |                                              |
 
 [poster]: https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/raw/master/poster.png
 [coverpage]: https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/raw/master/preview/coverpage.png

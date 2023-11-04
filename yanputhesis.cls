@@ -83,6 +83,7 @@
     pdfstartview={FitH},                                    % 适合窗口宽度
     pdfnewwindow=true,                                      % 以新窗口打开链接
 }                                                           %
+\RequirePackage{bookmark}                                   %
 %%-----------------------------------------------------------------------------%
 \RequirePackage{type1cm}                                    % 设置字号与行距
 \newcommand{\sChuhao}{\fontsize{42pt}{63pt}\selectfont}     % 初号，1.5 倍
@@ -749,7 +750,8 @@
 \let\old@toc\tableofcontents                                % 目录
 \renewcommand{\tableofcontents}{                            %
     \sDefault\phantomsection                                %
-    \addcontentsline{toc}{chapter}{\contentsname}           %
+    % \addcontentsline{toc}{chapter}{\contentsname}           %
+    \bookmark[dest=\HyperLocalCurrentHref, level=0]{\contentsname}
     \old@toc \cleardoublepage                               %
 }                                                           %
 \let\old@lof\listoffigures                                  % 图目录
