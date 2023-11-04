@@ -1,20 +1,10 @@
 # Yet Another NPU Thesis Template
 
-![Poster](poster.png)
+![Poster][poster]
 
-![Status](https://img.shields.io/badge/status-complete-brightgreen.svg)
-![PhD-Thesis](https://img.shields.io/badge/PhD-Thesis-D11A2D.svg)
-![Master-Thesis](https://img.shields.io/badge/Master-Thesis-1177B0.svg)
-![TeX-Template](https://img.shields.io/badge/TeX-Template-3D6117.svg?style=flat-square)
+![Status](https://img.shields.io/badge/status-complete-brightgreen.svg) ![PhD-Thesis](https://img.shields.io/badge/PhD-Thesis-D11A2D.svg) ![Master-Thesis](https://img.shields.io/badge/Master-Thesis-1177B0.svg) ![TeX-Template](https://img.shields.io/badge/TeX-Template-3D6117.svg?style=flat-square) [![License](https://img.shields.io/badge/license-GNU_General_Public_License_v3.0-blue.svg)](LICENSE) ![Version](https://img.shields.io/badge/version-v1.8.4.0304-674EA7.svg)
 
-[![License](https://img.shields.io/badge/license-GNU_General_Public_License_v3.0-blue.svg)](LICENSE)
-![Version](https://img.shields.io/badge/version-v1.8.4.0304-674EA7.svg)
-
-![TeXLive>=2021](https://img.shields.io/badge/TeXLive-%3E=2021-3D6117.svg)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4159248.svg)](https://doi.org/10.5281/zenodo.4159248)
-
-[![](https://img.shields.io/github/last-commit/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis)](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/zipball/master)
-[![](https://img.shields.io/github/issues/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis)](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/issues)
+![TeXLive>=2021](https://img.shields.io/badge/TeXLive-%3E=2021-3D6117.svg) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4159248.svg)](https://doi.org/10.5281/zenodo.4159248) [![](https://img.shields.io/github/last-commit/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis)](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/zipball/master) [![](https://img.shields.io/github/issues/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis)](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/issues)
 
 这是在西北工业大学硕博研究生学位论文格式的要求下的一份 $\LaTeX$ 文档类模板，通过使用 `yanputhesis` 文档类来完成学位论文，也可直接在发布示例文件的基础上，修改章节标题，撰写内容，即可完成学位论文任务。
 
@@ -116,20 +106,20 @@
 * 发表的学术论文和参加科研情况 `\begin{accomplishments} ... \end{accomplishments}`
 * 原创性声明 `\makestatement`
 
-  |       |                      展示                       |                       展示                        |
-  | :---: | :---------------------------------------------: | :-----------------------------------------------: |
-  | 预览  |       ![coverpage](preview/coverpage.png)       |    ![frontpage_chs](preview/frontpage_chs.png)    |
-  | 说明  |                封面页（外封面）                 |            中文标题页（题名页/内封面）            |
-  | 预览  |   ![frontpage_eng](preview/frontpage_eng.png)   |     ![abstract_chs](preview/abstract_chs.png)     |
-  | 说明  |                   英文标题页                    |                     中文摘要                      |
-  | 预览  |    ![abstract_eng](preview/abstract_eng.png)    |       ![references](preview/references.png)       |
-  | 说明  |                    英文摘要                     |                     参考文献                      |
-  | 预览  |        ![appendix](preview/appendix.png)        | ![acknowledgements](preview/acknowledgements.png) |
-  | 说明  |                      附录                       |                       致谢                        |
-  | 预览  | ![accomplishments](preview/accomplishments.png) |        ![statement](preview/statement.png)        |
-  | 说明  |                  参加科研情况                   |                    原创性声明                     |
-  | 预览  |  ![blindreview_on](preview/blindreview_on.png)  |  ![blindreview_off](preview/blindreview_off.png)  |
-  | 说明  |                    开启盲评                     |                   默认关闭盲评                    |
+  |       |                展示                 |                 展示                  |
+  | :---: | :---------------------------------: | :-----------------------------------: |
+  | 预览  |       ![Coverpage][coverpage]       |    ![Frontpage_Chs][frontpage_chs]    |
+  | 说明  |          封面页（外封面）           |      中文标题页（题名页/内封面）      |
+  | 预览  |   ![Frontpage_Eng][frontpage_eng]   |     ![Abstract_Chs][abstract_chs]     |
+  | 说明  |             英文标题页              |               中文摘要                |
+  | 预览  |    ![Abstract_Eng][abstract_eng]    |       ![References][references]       |
+  | 说明  |              英文摘要               |               参考文献                |
+  | 预览  |        ![Appendix][appendix]        | ![Acknowledgements][acknowledgements] |
+  | 说明  |                附录                 |                 致谢                  |
+  | 预览  | ![Accomplishments][accomplishments] |        ![Statement][statement]        |
+  | 说明  |            参加科研情况             |              原创性声明               |
+  | 预览  |  ![Blindreview_On][blindreview_on]  |  ![Blindreview_Off][blindreview_off]  |
+  | 说明  |              开启盲评               |             默认关闭盲评              |
 
 ## 其他注意事项
 
@@ -155,7 +145,7 @@
   * 如果您已经光速修复了 bug，欢迎提交 pull-request 至 public-dev 分支当中，我们会及时将您的代码与更新日志一同合并至 master 分支，并署名鸣谢
   * 如果需要改动，您可能需要使用 `zhmakeindex` 来维护更新清单，请[下载](https://github.com/leo-liu/zhmakeindex/releases/tag/zhmakeindex-1.2)对应操作系统的可执行文件
 
-## 如何赞助该项目（钞能力催更
+## 如何赞助该项目<del>（钞能力催更）<del>
 
 <del>如果本项目对您的顺利毕业有那么一点点的帮助，希望您慷慨解囊。</del>
 
@@ -195,4 +185,30 @@ members are cfrpg, kidozh, njzwj, polossk, in alphabet order.
 
 ## 彩蛋
 
-* ![Support-PhD--Thesis](https://img.shields.io/badge/Support-PhD--Thesis-D11A2D.svg) ![Support-Master--Thesis](https://img.shields.io/badge/Support-Master--Thesis-1177B0.svg) 分别对应着博士服与硕士服的颜色。
+* ![PhD-Thesis](https://img.shields.io/badge/PhD-Thesis-D11A2D.svg) ![Master-Thesis](https://img.shields.io/badge/Master-Thesis-1177B0.svg) 分别对应着博士服与硕士服的颜色。
+
+## 打赏记录
+
+> 截止 2023 年 6 月 6 日，共收到赞赏 4 次，累积收款 28.08 元，感谢各位大佬的资助！
+
+| 时间                   | 平台       | 金额  | 昵称     | 单号                            | 留言备注                                     |
+| ---------------------- | ---------- | ----- | -------- | ------------------------------- | -------------------------------------------- |
+| 2023年3月7日 13:12:59  | 微信赞赏码 | ¥6.66 | c****w   | 10001081012023030719120****6288 |                                              |
+| 2023年4月27日 12:05:45 | 微信赞赏码 | ¥4.88 | 逍****歌 | 10001081012023042715108****6929 |                                              |
+| 2023年5月9日 15:57:16  | 微信赞赏码 | ¥9.88 | N****l   | 10001081012023050918126****5891 | 辛苦大佬维护latex npu thesis！赞助一杯瑞幸！ |
+| 2023年6月5日 10:44:51  | 微信赞赏码 | ¥6.66 | 无名大侠 | 10001081012023060515131****6258 | 赞                                           |
+
+
+[poster]: https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/raw/master/poster.png
+[coverpage]: https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/raw/master/preview/coverpage.png
+[frontpage_chs]: https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/raw/master/preview/frontpage_chs.png
+[frontpage_eng]: https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/raw/master/preview/frontpage_eng.png
+[abstract_chs]: https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/raw/master/preview/abstract_chs.png
+[abstract_eng]: https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/raw/master/preview/abstract_eng.png
+[references]: https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/raw/master/preview/references.png
+[appendix]: https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/raw/master/preview/appendix.png
+[acknowledgements]: https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/raw/master/preview/acknowledgements.png
+[accomplishments]: https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/raw/master/preview/accomplishments.png
+[statement]: https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/raw/master/preview/statement.png
+[blindreview_on]: https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/raw/master/preview/blindreview_on.png
+[blindreview_off]: https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/raw/master/preview/blindreview_off.png
