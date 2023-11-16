@@ -94,7 +94,17 @@
     * `clean`：删除 `*.aux` 和其他缓存文件；
     * `wipe[sample]`：删除输出的 pdf 文件；
   * 对于 Linux 玩家而言，可参考上述功能，并在此 `makefile` 基础上稍作修改即可使用。
-
+* **Q：关于中文标题页和英文标题页排版太靠上的问题**
+  * 尝试修改yanputhesis.cls中的设置中文标题页, 将  
+     ```latex
+      \fSong \sSanhao \par \vspace{1\baselineskip} % 1 * 21pt * 1.5
+     ```
+    修改为 
+     ```latex
+      \fSong \sSanhao \par \vspace*{2\baselineskip} % 1 * 21pt * 1.5
+     ```
+     加星号强制输出空行, 后续可以自行调节
+     
 ## 成品预览
 
 以下命令或环境按照实际论文中出现顺序排序：
