@@ -20,10 +20,12 @@ makecls: $(MAIN).dtx
 ifeq ($(OS), Windows_NT)
     PLATFORM = Windows
 else
-    ifeq ($(shell uname), Darwin)
+    UNAME := $(shell uname)
+    ifeq ($(UNAME), Darwin)
         PLATFORM = MacOS
-    else
-        PLATFORM = Unix-Like
+    endif
+    ifeq ($(UNAME), Linux)
+        PLATFORM = Linux
     endif
 endif
 
@@ -32,10 +34,18 @@ ifeq ($(PLATFORM), Windows)
     OPEN = cmd /c start
     CLOSE = cmd /c taskkill /im Acrobat.exe /t /f
 else
-    RM = rm -rf
-    OPEN = open
-    PID = $$(ps -ef | grep AdobeAcrobat | grep -v grep | awk '{print $$2}')
-    CLOSE = kill -9 $(PID)
+    ifeq ($(PLATFORM), MacOS)
+        RM = rm -rf
+        OPEN = open
+        PID = $$(ps -ef | grep AdobeAcrobat | grep -v grep | awk '{print $$2}')
+        CLOSE = kill -9 $(PID)
+    endif
+    ifeq ($(PLATFORM), Linux)	
+        RM = rm -rf
+        OPEN = xdg-open
+        PID = $$(ps -ef | grep evince | grep -v grep | awk '{print $$2}')
+        CLOSE = kill -9 $(PID)
+    endif
 endif
 
 texsample: $(MAIN)-sample.tex
