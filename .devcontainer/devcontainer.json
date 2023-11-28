@@ -1,0 +1,46 @@
+{
+    "name": "texlive",
+    "dockerComposeFile": ["docker-compose.yml"],
+    "service": "vscode",
+    "runServices": ["vscode"],
+    "shutdownAction": "stopCompose",
+    "workspaceFolder": "/workspace",
+    "mounts": [
+        "source=${localWorkspaceFolder}/fonts,target=/usr/share/fonts/my_fonts,type=bind,consistency=cached"
+      ],
+    "postCreateCommand": "fc-cache -fv",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "james-yu.latex-workshop",
+                // Git
+                "eamodio.gitlens",
+                // Other helpers
+                "shardulm94.trailing-spaces",
+                "stkb.rewrap", // rewrap comments after n characters on one line
+                // Other
+                "vscode-icons-team.vscode-icons"
+            ],
+            "settings": {
+                // General settings
+                "files.eol": "\n",
+                // Latex settings
+                "latex-workshop.linting.chktex.enabled": true,
+                "latex-workshop.linting.chktex.exec.path": "chktex",
+                "latex-workshop.latex.clean.subfolder.enabled": true,
+                "latex-workshop.latex.autoClean.run": "onBuilt",
+                "editor.formatOnSave": true,
+                "files.associations": {
+                    "*.tex": "latex"
+                },
+                "latex-workshop.latexindent.path": "latexindent",
+                "latex-workshop.latexindent.args": [
+                    "-c",
+                    "%DIR%/",
+                    "%TMPFILE%",
+                    "-y=defaultIndent: '%INDENT%'"
+                ]
+            }
+        }
+    }
+}
