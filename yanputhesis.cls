@@ -255,10 +255,10 @@
 \RequirePackage{setspace}                                   % 空白长度控制
 \RequirePackage{ragged2e}                                   % 对齐
 \DeclareCaptionFont{cWuhao}{\sWuhao}                        % 图表标题为五号
-\captionsetup[table]{labelfont=cWuhao,textfont=cWuhao}      %
-\captionsetup[figure]{labelfont=cWuhao,textfont=cWuhao}     %
-\captionsetup[subtable]{labelformat=simple, aboveskip=0pt}  %
-\captionsetup[subfigure]{labelformat=simple, aboveskip=0pt} %
+\captionsetup[table]{labelfont=cWuhao,textfont=cWuhao, aboveskip=10pt, belowskip=0pt}      %
+\captionsetup[figure]{labelfont=cWuhao,textfont=cWuhao, aboveskip=10pt, belowskip=0pt}     %
+\captionsetup[subtable]{labelformat=simple, aboveskip=10pt, belowskip=-5pt}  %
+\captionsetup[subfigure]{labelformat=simple, aboveskip=10pt, belowskip=-5pt}%
 \AtBeginEnvironment{tabular}{\sWuhao}                       % 表格内容为五号
 \AtBeginEnvironment{tabularx}{\sWuhao}                      %
 \newcolumntype{C}{>{\centering\arraybackslash}X}            % 等宽居中
