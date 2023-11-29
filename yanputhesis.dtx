@@ -541,12 +541,12 @@ $$a_0+a_1+a_2=\sqrt{233}$$
         \centering
         \begin{subfigure}[t]{0.47\textwidth}
             \centering
-            \includegraphics[scale=0.1]{poster.png}
+            \includegraphics[scale=0.12]{poster.png}
             \caption{\label{subfig:example2-subfig1}}
         \end{subfigure}
         \begin{subfigure}[t]{0.47\textwidth}
             \centering
-            \includegraphics[scale=0.1]{poster.png}
+            \includegraphics[scale=0.12]{poster.png}
             \caption{\label{subfig:example2-subfig2}}
         \end{subfigure}
     \end{minipage}
@@ -796,7 +796,7 @@ int main()
 %%-----------------------------------------------------------------------------%
 \RequirePackage{geometry}                                   % 纸张尺寸及页边距
 %    \end{macrocode}
-% \markdtxchanges{v1.8.1}{2022/12/06}{摘要关键词之间空一行}
+% \markdtxchanges{v1.8.5}{2023/11/29}{微调页眉页脚设置}
 %    \begin{macrocode}
 \geometry{a4paper,                                          % A4 纸张
     left=2.5cm, right=2.5cm, top=2.54cm, bottom=2.54cm,     % 页边距
@@ -1020,13 +1020,16 @@ int main()
 \RequirePackage{setspace}                                   % 空白长度控制
 \RequirePackage{ragged2e}                                   % 对齐
 \DeclareCaptionFont{cWuhao}{\sWuhao}                        % 图表标题为五号
-\captionsetup[table]{labelfont=cWuhao,textfont=cWuhao}      %
-\captionsetup[figure]{labelfont=cWuhao,textfont=cWuhao}     %
+\captionsetup[table]{labelfont=cWuhao,textfont=cWuhao, aboveskip=10pt, belowskip=0pt}      %
+\captionsetup[figure]{labelfont=cWuhao,textfont=cWuhao, aboveskip=10pt, belowskip=0pt}     %
 %    \end{macrocode}
 % \markdtxchanges{v1.7.0}{2022/10/31}{更新子图、子表格式}
 %    \begin{macrocode}
-\captionsetup[subtable]{labelformat=simple, aboveskip=0pt}  %
-\captionsetup[subfigure]{labelformat=simple, aboveskip=0pt} %
+\captionsetup[subtable]{labelformat=simple, aboveskip=10pt, belowskip=-5pt}  %
+%    \end{macrocode}
+% \markdtxchanges{v1.8.5}{2023/11/29}{更新子图与子图标题间距}
+%    \begin{macrocode}
+\captionsetup[subfigure]{labelformat=simple, aboveskip=10pt, belowskip=-5pt}%
 %    \end{macrocode}
 % \markdtxchanges{v1.8.1}{2022/12/06}{重写表格内容为五号格式语句}
 %    \begin{macrocode}
