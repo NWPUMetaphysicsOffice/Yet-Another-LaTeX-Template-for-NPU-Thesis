@@ -1,3 +1,6 @@
 [submodule "fonts"]
 	path = fonts
 	url = https://github.com/NWPUMetaphysicsOffice/Fonts-For-NPU-Thesis-Template
+[submodule "Sponsorships"]
+	path = Sponsorships
+	url = https://github.com/NWPUMetaphysicsOffice/Sponsorships.git
