@@ -60,7 +60,7 @@ close:
 	@$(CLOSE) || echo not found
 
 clean:
-	$(RM) *.gls *.glo *.ind *.idx
+	$(RM) *.gls *.glo *.ind yanputhesis.idx
 	$(RM) *.ilg *.aux *.toc *.aux
 	$(RM) *.hd *.out *.thm *.gz *.nlo *.nls
 	$(RM) *.log *.lof *.lot *.bbl *.blg
