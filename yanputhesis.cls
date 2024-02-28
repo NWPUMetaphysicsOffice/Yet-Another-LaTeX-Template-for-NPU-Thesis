@@ -432,8 +432,8 @@
     \newcommand{\nwpu@chs@doctitle}{{\nwpu@chs@degree}学位论文}
     \newcommand{\nwpu@chs@header}{\nwpu@chs@schoolname\nwpu@chs@doctitle}
 \fi                                                         %
-\newcommand{\nwpu@eng@doctitle}{\nwpu@eng@degree Thesis}    % 英文文档名和页眉
-\newcommand{\nwpu@eng@header}{\nwpu@eng@doctitle of \nwpu@eng@schoolname}
+\newcommand{\nwpu@eng@doctitle}{{\nwpu@eng@degree} Thesis}    % 英文文档名和页眉
+\newcommand{\nwpu@eng@header}{{\nwpu@eng@doctitle} of {\nwpu@eng@schoolname}}
 %%-----------------------------------------------------------------------------%
 \if@npu@lang@chs                                            % 定制中文特殊页面
     \newcommand{\nwpu@page@ack}{致{\quad}谢}                %
@@ -772,7 +772,7 @@
 %%-----------------------------------------------------------------------------%
 \let\old@bibliography\bibliography                          % 保护原有附录环境
 \renewcommand{\bibliography}[1]{                            %
-    \phantomsection\addcontentsline{toc}{chapter}{参考文献} %
+    \phantomsection\addcontentsline{toc}{chapter}{\bibname} %
     \renewcommand{\baselinestretch}{1.0}                    %
     \fontsize{12pt}{13pt}\selectfont                        %
     \setlength{\bibsep}{0.5ex}                              %
