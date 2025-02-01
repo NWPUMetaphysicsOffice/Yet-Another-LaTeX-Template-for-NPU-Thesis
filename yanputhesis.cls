@@ -827,15 +827,15 @@
         \sffamily\fHei\sSanhao{\appendixname~\thechapter}}{20pt}{\sSanhao}
     \renewcommand{\thechapter}{\Alph{chapter}}              %
     \renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}
-    \renewcommand{\theequation}{\alph{chapter}-\arabic{equation}}
-    \renewcommand{\thetable}{\alph{chapter}-\arabic{table}} %
-    \renewcommand{\thefigure}{\alph{chapter}-\arabic{figure}}
-    \renewcommand{\thetheorem}{\alph{chapter}.\arabic{theorem}}
-    \renewcommand{\theaxiom}{\alph{chapter}.\arabic{axiom}} %
-    \renewcommand{\thecorollary}{\alph{chapter}.\arabic{corollary}}
-    \renewcommand{\thelemma}{\alph{chapter}.\arabic{lemma}} %
-    \renewcommand{\thedefinition}{\alph{chapter}.\arabic{definition}}
-    \renewcommand{\theexample}{\alph{chapter}.\arabic{example}}
+    \renewcommand{\theequation}{\Alph{chapter}-\arabic{equation}}
+    \renewcommand{\thetable}{\Alph{chapter}-\arabic{table}} %
+    \renewcommand{\thefigure}{\Alph{chapter}-\arabic{figure}}
+    \renewcommand{\thetheorem}{\Alph{chapter}.\arabic{theorem}}
+    \renewcommand{\theaxiom}{\Alph{chapter}.\arabic{axiom}} %
+    \renewcommand{\thecorollary}{\Alph{chapter}.\arabic{corollary}}
+    \renewcommand{\thelemma}{\Alph{chapter}.\arabic{lemma}} %
+    \renewcommand{\thedefinition}{\Alph{chapter}.\arabic{definition}}
+    \renewcommand{\theexample}{\Alph{chapter}.\arabic{example}}
 }                                                           %
 %%=============================================================================%
 %%=============================================================================%
