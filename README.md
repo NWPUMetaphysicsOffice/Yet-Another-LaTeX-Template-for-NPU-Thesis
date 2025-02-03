@@ -105,6 +105,8 @@
       \fSong \sSanhao \par \vspace*{2\baselineskip} % 1 * 21pt * 1.5
      ```
      加星号强制输出空行, 后续可以自行调节
+* **Q:为什么缩略语和术语表不显示**
+  * 在编译前请使用`makeglossaries`命令完成对于缩略语和术语表的预编译。
 
 ## 成品预览
 
