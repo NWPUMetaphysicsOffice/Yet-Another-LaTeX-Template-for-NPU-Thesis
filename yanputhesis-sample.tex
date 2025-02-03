@@ -14,18 +14,18 @@
 %% and version 1.3b or later is part of all distributions of LaTeX version
 %% 2005/12/01 or later.
 %%=============================================================================%
-%% 设置论文格式（学位、盲评、Adobe 字体）
+%% 设置论文格式（学位、学位类型、盲评、Adobe 字体）
 %%-----------------------------------------------------------------------------%
-%% 博士、正常版本、不使用 Adobe 字体
-%% \documentclass[lang=chs, degree=phd, blindreview=false, adobe=false]{yanputhesis}
-%% 博士、盲评版本、不使用 Adobe 字体
-%% \documentclass[lang=chs, degree=phd, blindreview=true, adobe=false]{yanputhesis}
-%% 博士、正常版本、强制使用 Windows 系统字体
-\documentclass[lang=chs, degree=phd, blindreview=false, winfonts=true]{yanputhesis}
-%% 硕士、正常版本、不使用 Adobe 字体
-%% \documentclass[lang=chs, degree=master, blindreview=false, adobe=false]{yanputhesis}
-%% 硕士、盲评版本、不使用 Adobe 字体
-%% \documentclass[lang=chs, degree=master, blindreview=true, adobe=false]{yanputhesis}
+%% 博士、学术学位、正常版本、不使用 Adobe 字体
+%% \documentclass[lang=chs, degree=phd, blindreview=false, adobe=false, academic=true]{yanputhesis}
+%% 博士、专业学位、盲评版本、不使用 Adobe 字体
+%% \documentclass[lang=chs, degree=phd, blindreview=true, adobe=false, academic=false]{yanputhesis}
+%% 博士、学术学位、正常版本、强制使用 Windows 系统字体
+\documentclass[lang=chs, degree=phd, blindreview=false, winfonts=true, academic=true]{yanputhesis}
+%% 硕士、学术学位、正常版本、不使用 Adobe 字体
+%% \documentclass[lang=chs, degree=master, blindreview=false, adobe=false, academic=true]{yanputhesis}
+%% 硕士、专业学位、盲评版本、不使用 Adobe 字体
+%% \documentclass[lang=chs, degree=master, blindreview=true, adobe=false, academic=false]{yanputhesis}
 %%=============================================================================%
 %% 导言区：请自行添加额外宏包
 %%-----------------------------------------------------------------------------%

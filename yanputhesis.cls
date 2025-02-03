@@ -24,6 +24,7 @@
 \newif\if@npu@type@phd                                      % 博士版本标记
 \newif\if@npu@type@mst                                      % 硕士版本标记
 \newif\if@npu@type@bcl                                      % 本科版本标记
+\newif\if@npu@academic										% 学术学位标记
 \newif\if@npu@output@blindreview                            % 盲评版本标记
 \newif\if@npu@font@adobe                                    % Adobe 字体标记
 \newif\if@npu@font@winfonts                                 % 强制使用 Win 字体
@@ -37,9 +38,11 @@
 \DeclareOptionX{blindreview}[true]{\csname @npu@output@blindreview#1\endcsname}
 \DeclareOptionX{adobe}[true]{\csname @npu@font@adobe#1\endcsname}
 \DeclareOptionX{winfonts}[true]{\csname @npu@font@winfonts#1\endcsname}
+\DeclareOptionX{academic}[true]{\csname @npu@academic#1\endcsname}
 \DeclareOptionX*{\PassOptionsToClass{\CurrentOption}{book}} % 传递参数到 book 类
 \ExecuteOptionsX{lang=chs}                                  % 默认为中文版本
 \ExecuteOptionsX{degree=phd}                                % 默认为博士版本
+\ExecuteOptionsX{academic=true}                             % 默认为学术型硕博
 \ExecuteOptionsX{blindreview=false}                         % 默认不开启盲评模式
 \ExecuteOptionsX{adobe=false}                               % 默认不用 Adobe 字体
 \ExecuteOptionsX{winfonts=false}                            % 默认不开启强制选项
@@ -106,7 +109,7 @@
 \newcommand\defaultHei{SimHei}                              % 黑体，用于标题
 \newcommand\defaultKai{KaiTi}                               % 楷体，一般用于强调
 \newcommand\defaultFag{FangSong}                            % 仿宋，一般用于强调
-\if@npu@font@winfonts\relax                                 % 检测 winfonts 选项
+\if@npu@font@winfonts\relax                                 % 检测 de 选项
 \else                                                       %
     \if@npu@font@adobe                                      % 检测 Adobe 选项
         \renewcommand\defaultSog{Adobe Song Std}            % 宋体，用于正文
@@ -432,8 +435,16 @@
     \newcommand{\nwpu@chs@doctitle}{{\nwpu@chs@degree}学位论文}
     \newcommand{\nwpu@chs@header}{\nwpu@chs@schoolname\nwpu@chs@doctitle}
 \fi                                                         %
+\if@npu@academic											% 控制内封模板的首项名称
+	\newcommand{\nwpu@chs@innerCoverFirstOption}{学科专业}	 % 学术学位应该是学科专业
+	\newcommand{\nwpu@chs@outerCoverFirstOption}{学{\enspace}科{\enspace}专{\enspace}业}
+\else
+	\newcommand{\nwpu@chs@innerCoverFirstOption}{专业领域}	 % 专业学位应该是专业领域
+	\newcommand{\nwpu@chs@outerCoverFirstOption}{专{\enspace}业{\enspace}领{\enspace}域}
+\fi
 \newcommand{\nwpu@eng@doctitle}{\nwpu@eng@degree Thesis}    % 英文文档名和页眉
 \newcommand{\nwpu@eng@header}{\nwpu@eng@doctitle of \nwpu@eng@schoolname}
+
 %%-----------------------------------------------------------------------------%
 \if@npu@lang@chs                                            % 定制中文特殊页面
     \newcommand{\nwpu@page@ack}{致{\quad}谢}                %
@@ -559,7 +570,7 @@
             \sSanhao \fSong \begin{minipage}{12.5cm}        %
                 \noindent                                   %
                 \makebox[\coverpage@detailwidth][s]{        %
-                \bf 学{\enspace}科{\enspace}专{\enspace}业}{%
+                \bf \nwpu@chs@outerCoverFirstOption}{%
                 \uline{\hfill \makebox{\bf \nwpu@chs@major} \hfill}} \par
                 \makebox[\coverpage@detailwidth][s]{        %
                 \bf 指{\enspace}导{\enspace}教{\enspace}师}{%
@@ -611,7 +622,7 @@
             \hspace{-1cm}                                   %
             \copy123\kern-\wd123\box124 \fSong \sWuhao \par % 排版结束
             \vspace{7\baselineskip}                         % 7 * 10.5pt * 1.5
-            \sSanhao 学科专业：\coverunderline[5.5cm]{\nwpu@chs@major} \\
+            \sSanhao \nwpu@chs@innerCoverFirstOption：\coverunderline[5.5cm]{\nwpu@chs@major} \\
             \sSanhao 作{\qquad}者：\coverunderline[5.5cm]{\nwpu@chs@author} \\
             \sSanhao 指导教师：\coverunderline[5.5cm]{\nwpu@chs@advisor} \\
             \fSong \sWuhao \par                             %
