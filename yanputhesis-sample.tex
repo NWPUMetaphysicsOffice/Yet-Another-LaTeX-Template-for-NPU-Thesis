@@ -33,6 +33,16 @@
 \usepackage{metalogo}                                       % 软件标志
 \usepackage[binary-units=true]{siunitx}                     % 物理量单位
 \usepackage{amsmath}                                        % 基础数学库
+\usepackage[acronym]{glossaries}							% 缩略表库
+%%=============================================================================%
+%% 缩略语（也可以是独立文件）
+%%-----------------------------------------------------------------------------%
+\newacronym{npu}{西工大}{西北工业大学}
+\newglossaryentry{massEnergyFunc}{
+	name = 质能方程,
+	description = 一种阐述能量与质量间相互关系的理论物理学公式
+}
+\makeglossaries
 %%=============================================================================%
 %% 参考文献（也可以是独立文件）
 %%-----------------------------------------------------------------------------%
@@ -127,6 +137,7 @@
 \school{数学与统计学院}{School of Mathematics and Statistics}% 学院
 \major{数学}{Philosophy in Mathematics}                     % 专业 博士请添加 Ph
 \advisor{\blindreview{李四海}}{\blindreview{Sihai Li}}      % 导师（添加盲评标记）
+\advisorAcademicRank{教授}{Professor}						  % 导师中英学术职位（教授 Professor、副教授 Associate Professor、研究员 Researcher 和讲师 Lecturer）
 \studentnumber{2016123456}                                  % 学号
 \funding{本研究得到玄学基金（编号23336666）资助。}{         % 基金资助
     The present work is supported by Funding of Metaphysics %
@@ -172,6 +183,9 @@
 \end{engabstract}                                           % 英文摘要结束
 %%-----------------------------------------------------------------------------%
 \tableofcontents                                            % 目录
+\phantomsection\addcontentsline{toc}{chapter}{缩写表}		  % 缩写表（学校未做要求）
+\printglossary[type=\acronymtype,title=缩写表]				  % 缩写表（学校未做要求）
+\printglossary[title=术语表]								  % 术语表（学校未做要求）
 \listoffigures                                              % 图目录（学校未做要求）
 \listoftables                                               % 表目录（学校未做要求）
 \printnomenclature                                          % 符号表（学校未做要求）
@@ -198,6 +212,10 @@ $$a_0+a_1+a_2=\sqrt{233}$$
     \label{eq:eqtest}
     a_0 + a_1 + a_2 = \sqrt{233}
 \end{equation}
+
+\section{术语}
+
+在使用术语和缩略的时候可以使用\lstinline`\gls`命令：例如：术语\gls{massEnergyFunc}及缩略\gls{npu}。
 
 \section{特殊符号}
 

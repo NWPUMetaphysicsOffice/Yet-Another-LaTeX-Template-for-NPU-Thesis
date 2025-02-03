@@ -39,6 +39,7 @@
 % 专业 博士请使用 Philosophy in XXXX，硕士只写 XXXX 即可
 \major{数学}{Philosophy in Mathematics}                     % 专业
 \advisor{\blindreview{李四海}}{\blindreview{Sihai Li}}      % 导师（添加盲评标记）
+\advisorAcademicRank{教授}{Professor}						  % 导师中英学术职位（教授 Professor、副教授 Associate Professor、研究员 Researcher 和讲师 Lecturer）
 \studentnumber{2016123456}                                  % 学号
 \funding{本研究得到玄学基金（编号23336666）资助．}{         % 基金资助
     The present work is supported by Funding of Metaphysics %
@@ -105,6 +106,8 @@
       \fSong \sSanhao \par \vspace*{2\baselineskip} % 1 * 21pt * 1.5
      ```
      加星号强制输出空行, 后续可以自行调节
+* **Q:为什么缩略语和术语表不显示**
+  * 在编译前请使用`makeglossaries`命令完成对于缩略语和术语表的预编译。
 
 ## 成品预览
 

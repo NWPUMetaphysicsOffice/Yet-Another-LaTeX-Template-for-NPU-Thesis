@@ -189,6 +189,16 @@ and the derived files           yanputhesis.ins,
 \usepackage{metalogo}                                       % 软件标志
 \usepackage[binary-units=true]{siunitx}                     % 物理量单位
 \usepackage{amsmath}                                        % 基础数学库
+\usepackage[acronym]{glossaries}							% 缩略表库
+%%=============================================================================%
+%% 缩略语（也可以是独立文件）
+%%-----------------------------------------------------------------------------%
+\newacronym{npu}{西工大}{西北工业大学}
+\newglossaryentry{massEnergyFunc}{
+	name = 质能方程,
+	description = 一种阐述能量与质量间相互关系的理论物理学公式
+}
+\makeglossaries
 %%=============================================================================%
 %% 参考文献（也可以是独立文件）
 %%-----------------------------------------------------------------------------%
@@ -283,6 +293,7 @@ and the derived files           yanputhesis.ins,
 \school{数学与统计学院}{School of Mathematics and Statistics}% 学院
 \major{数学}{Philosophy in Mathematics}                     % 专业 博士请添加 Ph
 \advisor{\blindreview{李四海}}{\blindreview{Sihai Li}}      % 导师（添加盲评标记）
+\advisorAcademicRank{教授}{Professor}						  % 导师中英学术职位（教授 Professor、副教授 Associate Professor、研究员 Researcher 和讲师 Lecturer）
 \studentnumber{2016123456}                                  % 学号
 \funding{本研究得到玄学基金（编号23336666）资助。}{         % 基金资助
     The present work is supported by Funding of Metaphysics %
@@ -354,6 +365,10 @@ $$a_0+a_1+a_2=\sqrt{233}$$
     \label{eq:eqtest}
     a_0 + a_1 + a_2 = \sqrt{233}
 \end{equation}
+
+\section{术语}
+
+在使用术语和缩略的时候可以使用\lstinline`\gls`命令：例如：术语\gls{massEnergyFunc}及缩略\gls{npu}。
 
 \section{特殊符号}
 
@@ -1319,6 +1334,7 @@ int main()
 \newcommand{\nwpu@chs@school}{\chs@space}                   % 学院（中文）
 \newcommand{\nwpu@chs@major}{\chs@space}                    % 专业（中文）
 \newcommand{\nwpu@chs@advisor}{\chs@space}                  % 导师（中文）
+\newcommand{\nwpu@chs@advisorAcademicRank}{\chs@space}      % 导师职称（中文）
 \newcommand{\nwpu@chs@funding}{\chs@space}                  % 基金赞助（中文）
 %%-----------------------------------------------------------------------------%
 \newcommand{\nwpu@eng@title}{\chs@space}                    % 标题（英文）
@@ -1327,6 +1343,7 @@ int main()
 \newcommand{\nwpu@eng@school}{\chs@space}                   % 学院（英文）
 \newcommand{\nwpu@eng@major}{\chs@space}                    % 专业（英文）
 \newcommand{\nwpu@eng@advisor}{\chs@space}                  % 导师（英文）
+\newcommand{\nwpu@eng@advisorAcademicRank}{\chs@space}      % 导师职称（英文）
 \newcommand{\nwpu@eng@funding}{\chs@space}                  % 基金赞助（英文）
 %%-----------------------------------------------------------------------------%
 \newcommand{\nwpu@uid}{2000123456}                          % default 学号
@@ -1356,6 +1373,10 @@ int main()
     \renewcommand{\nwpu@chs@advisor}{#1}                    %
     \renewcommand{\nwpu@eng@advisor}{#2}                    %
 }                                                           %
+\newcommand{\advisorAcademicRank}[2]{                       % 导师学术等级
+	\renewcommand{\nwpu@chs@advisorAcademicRank}{#1}        %
+	\renewcommand{\nwpu@eng@advisorAcademicRank}{#2}        %
+}  
 \newcommand{\funding}[2]{                                   % 设置基金资助
     \renewcommand{\nwpu@chs@funding}{#1}                    %
     \renewcommand{\nwpu@eng@funding}{#2}                    %
@@ -1434,7 +1455,7 @@ int main()
                 \uline{\hfill \makebox{\bf \nwpu@chs@major} \hfill}} \par
                 \makebox[\coverpage@detailwidth][s]{        %
                 \bf 指{\enspace}导{\enspace}教{\enspace}师}{%
-                \uline{\hfill \makebox{\bf \nwpu@chs@advisor} \hfill}} \par
+                \uline{\hfill \makebox{\bf \nwpu@chs@advisor\nwpu@chs@advisorAcademicRank} \hfill}} \par
                 \makebox[\coverpage@detailwidth][s]{        %
                 \bf 培{\enspace}养{\enspace}单{\enspace}位}{%
                 \uline{\hfill \makebox{\bf \nwpu@chs@school} \hfill}} \par
@@ -1487,7 +1508,7 @@ int main()
             \vspace{7\baselineskip}                         % 7 * 10.5pt * 1.5
             \sSanhao \nwpu@chs@innerCoverFirstOption：\coverunderline[5.5cm]{\nwpu@chs@major} \\
             \sSanhao 作{\qquad}者：\coverunderline[5.5cm]{\nwpu@chs@author} \\
-            \sSanhao 指导教师：\coverunderline[5.5cm]{\nwpu@chs@advisor} \\
+            \sSanhao 指导教师：\coverunderline[5.5cm]{\nwpu@chs@advisor\nwpu@chs@advisorAcademicRank} \\
             \fSong \sWuhao \par                             %
             \vspace{2\baselineskip}                         % 2 * 10.5pt * 1.5
             \fSong \sSanhao \nwpu@chs@date                  %
@@ -1510,7 +1531,7 @@ int main()
             \fSong \sXiaoer \vspace{3\baselineskip}         %
             \fEng \sXiaosan \textbf{By} \par                %
             \fEng \sXiaosan \textbf{\nwpu@eng@author} \par  %
-            \fEng \sXiaosan \textbf{Under the Supervision of Professor} \\
+            \fEng \sXiaosan \textbf{Under the Supervision of \nwpu@eng@advisorAcademicRank} \\
             \fEng \sXiaosan \textbf{\nwpu@eng@advisor} \par %
             \fSong \sSanhao \vspace{4\baselineskip}         %
             \fEng \sXiaosan A Dissertation Submitted to \\  %
