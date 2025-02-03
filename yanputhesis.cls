@@ -476,6 +476,7 @@
 \newcommand{\nwpu@chs@school}{\chs@space}                   % 学院（中文）
 \newcommand{\nwpu@chs@major}{\chs@space}                    % 专业（中文）
 \newcommand{\nwpu@chs@advisor}{\chs@space}                  % 导师（中文）
+\newcommand{\nwpu@chs@advisorAcademicRank}{\chs@space}      % 导师职称（中文）
 \newcommand{\nwpu@chs@funding}{\chs@space}                  % 基金赞助（中文）
 %%-----------------------------------------------------------------------------%
 \newcommand{\nwpu@eng@title}{\chs@space}                    % 标题（英文）
@@ -484,6 +485,7 @@
 \newcommand{\nwpu@eng@school}{\chs@space}                   % 学院（英文）
 \newcommand{\nwpu@eng@major}{\chs@space}                    % 专业（英文）
 \newcommand{\nwpu@eng@advisor}{\chs@space}                  % 导师（英文）
+\newcommand{\nwpu@eng@advisorAcademicRank}{\chs@space}      % 导师职称（英文）
 \newcommand{\nwpu@eng@funding}{\chs@space}                  % 基金赞助（英文）
 %%-----------------------------------------------------------------------------%
 \newcommand{\nwpu@uid}{2000123456}                          % default 学号
@@ -513,10 +515,14 @@
     \renewcommand{\nwpu@chs@advisor}{#1}                    %
     \renewcommand{\nwpu@eng@advisor}{#2}                    %
 }                                                           %
+\newcommand{\advisorAcademicRank}[2]{                       % 导师学术等级
+	\renewcommand{\nwpu@chs@advisorAcademicRank}{#1}        %
+	\renewcommand{\nwpu@eng@advisorAcademicRank}{#2}        %
+}  
 \newcommand{\funding}[2]{                                   % 设置基金资助
     \renewcommand{\nwpu@chs@funding}{#1}                    %
     \renewcommand{\nwpu@eng@funding}{#2}                    %
-}                                                           %
+}                                                           %  
 \newcommand{\studentnumber}[1]{\renewcommand{\nwpu@uid}{#1}}% 设置学号
 %%=============================================================================%
 %%=============================================================================%
@@ -574,7 +580,7 @@
                 \uline{\hfill \makebox{\bf \nwpu@chs@major} \hfill}} \par
                 \makebox[\coverpage@detailwidth][s]{        %
                 \bf 指{\enspace}导{\enspace}教{\enspace}师}{%
-                \uline{\hfill \makebox{\bf \nwpu@chs@advisor} \hfill}} \par
+                \uline{\hfill \makebox{\bf \nwpu@chs@advisor\nwpu@chs@advisorAcademicRank} \hfill}} \par
                 \makebox[\coverpage@detailwidth][s]{        %
                 \bf 培{\enspace}养{\enspace}单{\enspace}位}{%
                 \uline{\hfill \makebox{\bf \nwpu@chs@school} \hfill}} \par
@@ -624,7 +630,7 @@
             \vspace{7\baselineskip}                         % 7 * 10.5pt * 1.5
             \sSanhao \nwpu@chs@innerCoverFirstOption：\coverunderline[5.5cm]{\nwpu@chs@major} \\
             \sSanhao 作{\qquad}者：\coverunderline[5.5cm]{\nwpu@chs@author} \\
-            \sSanhao 指导教师：\coverunderline[5.5cm]{\nwpu@chs@advisor} \\
+            \sSanhao 指导教师：\coverunderline[5.5cm]{\nwpu@chs@advisor\nwpu@chs@advisorAcademicRank} \\
             \fSong \sWuhao \par                             %
             \vspace{2\baselineskip}                         % 2 * 10.5pt * 1.5
             \fSong \sSanhao \nwpu@chs@date                  %
@@ -644,7 +650,7 @@
             \fSong \sXiaoer \vspace{3\baselineskip}         %
             \fEng \sXiaosan \textbf{By} \par                %
             \fEng \sXiaosan \textbf{\nwpu@eng@author} \par  %
-            \fEng \sXiaosan \textbf{Under the Supervision of Professor} \\
+            \fEng \sXiaosan \textbf{Under the Supervision of \nwpu@eng@advisorAcademicRank} \\
             \fEng \sXiaosan \textbf{\nwpu@eng@advisor} \par %
             \fSong \sSanhao \vspace{4\baselineskip}         %
             \fEng \sXiaosan A Dissertation Submitted to \\  %
