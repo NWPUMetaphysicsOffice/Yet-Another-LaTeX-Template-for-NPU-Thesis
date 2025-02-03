@@ -20,7 +20,7 @@
 1. 下载这个项目的 zip 包到到本地
 2. 确保您的 TeX 版本为**不低于 Texlive 2021 版本**
 3. 直接对 `yanputhesis-sample.tex` 文件进行修改，对应的摘要、章节内容、附录文件均已经默认生成，在此基础上加以修改即可
-4. 如有必要，也可以请仿照 `yanputhesis-sample.tex` 的文件格式，在**导言区**使用 `\documentclass[lang=chs, degree=phd, blindreview=false, adobe=false]{yanputhesis}` 来直接设置文档格式
+4. 如有必要，也可以请仿照 `yanputhesis-sample.tex` 的文件格式，在**导言区**使用 `\documentclass[lang=chs, degree=phd, blindreview=false, adobe=false, academic=true]{yanputhesis}` 来直接设置文档格式
 5. 如有必要，修改 `makefile` 文件的 `MAIN` 选项为自己 `tex` 文档的文件名
 6. *make samplebib & Enjoy*
 
@@ -49,8 +49,9 @@
 ## 常见问题 Q&A
 
 * **Q：博士学位论文 or 硕士学位论文？**
-  * 本模版**默认**为博士学位论文，并且**兼容**硕士学位论文。目前不兼容本科毕业设计论文（未来计划兼容）。
+  * 本模版**默认**为学术博士学位论文，并且**兼容**硕士学位论文。目前不兼容本科毕业设计论文（未来计划兼容）。
   * 硕士如需使用，请使用编辑器搜索 `degree=phd` 标志，并修改 `phd` 为 `master` 即可。
+  * 专业型学位，请使用编辑器搜索 `academic=true` 标志，并修改 `true` 为 `false` 即可，留空默认提供学术型学位。
   * 本科毕业设计论文推荐直接使用 [polossk/LaTeX-Template-For-NPU-Thesis](https://github.com/polossk/LaTeX-Template-For-NPU-Thesis) 模板，该模板的格式控制均集成在 `setting.tex` 文件当中，更方便初学者使用与学习。
 * **Q：参考文献的格式是哪个标准下的？**
   * 默认使用 `nputhesis.bst` [国标 GB/T 7714—2015 格式文件](https://github.com/zepinglee/gbt7714-bibtex-style)，请在 tex 文档中声明 `\bibliographystyle{nputhesis}`。
