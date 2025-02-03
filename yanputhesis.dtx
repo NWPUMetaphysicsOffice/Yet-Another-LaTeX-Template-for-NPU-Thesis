@@ -170,18 +170,18 @@ and the derived files           yanputhesis.ins,
 %    \begin{macrocode}
 %<*sample>
 %%=============================================================================%
-%% 设置论文格式（学位、盲评、Adobe 字体）
+%% 设置论文格式（学位、学位类型、盲评、Adobe 字体）
 %%-----------------------------------------------------------------------------%
-%% 博士、正常版本、不使用 Adobe 字体
-%% \documentclass[lang=chs, degree=phd, blindreview=false, adobe=false]{yanputhesis}
-%% 博士、盲评版本、不使用 Adobe 字体
-%% \documentclass[lang=chs, degree=phd, blindreview=true, adobe=false]{yanputhesis}
-%% 博士、正常版本、强制使用 Windows 系统字体
-\documentclass[lang=chs, degree=phd, blindreview=false, winfonts=true]{yanputhesis}
-%% 硕士、正常版本、不使用 Adobe 字体
-%% \documentclass[lang=chs, degree=master, blindreview=false, adobe=false]{yanputhesis}
-%% 硕士、盲评版本、不使用 Adobe 字体
-%% \documentclass[lang=chs, degree=master, blindreview=true, adobe=false]{yanputhesis}
+%% 博士、学术学位、正常版本、不使用 Adobe 字体
+%% \documentclass[lang=chs, degree=phd, blindreview=false, adobe=false, academic=true]{yanputhesis}
+%% 博士、专业学位、盲评版本、不使用 Adobe 字体
+%% \documentclass[lang=chs, degree=phd, blindreview=true, adobe=false, academic=false]{yanputhesis}
+%% 博士、学术学位、正常版本、强制使用 Windows 系统字体
+\documentclass[lang=chs, degree=phd, blindreview=false, winfonts=true, academic=true]{yanputhesis}
+%% 硕士、学术学位、正常版本、不使用 Adobe 字体
+%% \documentclass[lang=chs, degree=master, blindreview=false, adobe=false, academic=true]{yanputhesis}
+%% 硕士、专业学位、盲评版本、不使用 Adobe 字体
+%% \documentclass[lang=chs, degree=master, blindreview=true, adobe=false, academic=false]{yanputhesis}
 %%=============================================================================%
 %% 导言区：请自行添加额外宏包
 %%-----------------------------------------------------------------------------%
@@ -697,6 +697,7 @@ int main()
 \newif\if@npu@type@phd                                      % 博士版本标记
 \newif\if@npu@type@mst                                      % 硕士版本标记
 \newif\if@npu@type@bcl                                      % 本科版本标记
+\newif\if@npu@academic										% 学术学位标记
 \newif\if@npu@output@blindreview                            % 盲评版本标记
 \newif\if@npu@font@adobe                                    % Adobe 字体标记
 %    \end{macrocode}
@@ -713,9 +714,11 @@ int main()
 \DeclareOptionX{blindreview}[true]{\csname @npu@output@blindreview#1\endcsname}
 \DeclareOptionX{adobe}[true]{\csname @npu@font@adobe#1\endcsname}
 \DeclareOptionX{winfonts}[true]{\csname @npu@font@winfonts#1\endcsname}
+\DeclareOptionX{academic}[true]{\csname @npu@academic#1\endcsname}
 \DeclareOptionX*{\PassOptionsToClass{\CurrentOption}{book}} % 传递参数到 book 类
 \ExecuteOptionsX{lang=chs}                                  % 默认为中文版本
 \ExecuteOptionsX{degree=phd}                                % 默认为博士版本
+\ExecuteOptionsX{academic=true}                             % 默认为学术型硕博
 \ExecuteOptionsX{blindreview=false}                         % 默认不开启盲评模式
 \ExecuteOptionsX{adobe=false}                               % 默认不用 Adobe 字体
 \ExecuteOptionsX{winfonts=false}                            % 默认不开启强制选项
@@ -1253,6 +1256,13 @@ int main()
     \newcommand{\nwpu@chs@doctitle}{{\nwpu@chs@degree}学位论文}
     \newcommand{\nwpu@chs@header}{\nwpu@chs@schoolname\nwpu@chs@doctitle}
 \fi                                                         %
+\if@npu@academic											% 控制内封模板的首项名称
+	\newcommand{\nwpu@chs@innerCoverFirstOption}{学科专业}	 % 学术学位应该是学科专业
+	\newcommand{\nwpu@chs@outerCoverFirstOption}{学{\enspace}科{\enspace}专{\enspace}业}
+\else
+	\newcommand{\nwpu@chs@innerCoverFirstOption}{专业领域}	 % 专业学位应该是专业领域
+	\newcommand{\nwpu@chs@outerCoverFirstOption}{专{\enspace}业{\enspace}领{\enspace}域}
+\fi
 \newcommand{\nwpu@eng@doctitle}{\nwpu@eng@degree Thesis}    % 英文文档名和页眉
 \newcommand{\nwpu@eng@header}{\nwpu@eng@doctitle of \nwpu@eng@schoolname}
 %%-----------------------------------------------------------------------------%
@@ -1420,7 +1430,7 @@ int main()
             \sSanhao \fSong \begin{minipage}{12.5cm}        %
                 \noindent                                   %
                 \makebox[\coverpage@detailwidth][s]{        %
-                \bf 学{\enspace}科{\enspace}专{\enspace}业}{%
+                \bf \nwpu@chs@outerCoverFirstOption}{%
                 \uline{\hfill \makebox{\bf \nwpu@chs@major} \hfill}} \par
                 \makebox[\coverpage@detailwidth][s]{        %
                 \bf 指{\enspace}导{\enspace}教{\enspace}师}{%
@@ -1475,7 +1485,7 @@ int main()
             \hspace{-1cm}                                   %
             \copy123\kern-\wd123\box124 \fSong \sWuhao \par % 排版结束
             \vspace{7\baselineskip}                         % 7 * 10.5pt * 1.5
-            \sSanhao 学科专业：\coverunderline[5.5cm]{\nwpu@chs@major} \\
+            \sSanhao \nwpu@chs@innerCoverFirstOption：\coverunderline[5.5cm]{\nwpu@chs@major} \\
             \sSanhao 作{\qquad}者：\coverunderline[5.5cm]{\nwpu@chs@author} \\
             \sSanhao 指导教师：\coverunderline[5.5cm]{\nwpu@chs@advisor} \\
             \fSong \sWuhao \par                             %
