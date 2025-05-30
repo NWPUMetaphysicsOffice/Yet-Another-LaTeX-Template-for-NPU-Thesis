@@ -1148,7 +1148,7 @@ int main()
 %    \end{macrocode}
 % \markdtxchanges{v1.7.0}{2022/10/31}{使用单栏符号表}
 %    \begin{macrocode}
-\RequirePackage{nomencl}                                    % 添加符号表功能
+\RequirePackage[intoc]{nomencl}                             % 添加符号表功能
 \RequirePackage{multicol}                                   % 页面具体尺寸信息
 \makenomenclature                                           % 单栏符号表
 % https://tex.stackexchange.com/questions/78764/two-column-nomenclature
@@ -1159,6 +1159,7 @@ int main()
     % \setlength{\columnsep}{20pt}
     % \begin{multicols}{2}[%
     \csname\npu@nomsec\endcsname*{\nomname}
+    \@mkboth{\nomname}{\nomname}%
     \if@intoc\addcontentsline{toc}{\npu@nomsec}{\nomname}\fi
     \nompreamble % \raggedcolumns
     % ]
