@@ -658,7 +658,7 @@
             \fSong \sSanhao \vspace{1\baselineskip}         %
             \fEng In Partial Fulfillment of The Requirement \\
             \fEng For The Degree of \\                      %
-            \fEng {\nwpu@eng@degree} of \textbf{\nwpu@eng@major}
+            \fEng {\nwpu@eng@degree} of \if@npu@type@mst\nwpu@eng@major\else\textbf{\nwpu@eng@major}\fi
             \fSong \sXiaosan \par \vspace{3\baselineskip}   %
             \fEng \sXiaosan Xi'an, P.R. China \\            %
             \fEng \sXiaosan {\nwpu@eng@date}                %
