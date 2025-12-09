@@ -646,7 +646,7 @@
         \linespread{1.2} \fEng \sXiaosan \par               % 1.2 倍行距
         \vspace{1\baselineskip}                             % 1 * 22pt * 1.2
         \begin{center}                                      %
-            \fEng \sErhao \textbf{\nwpu@eng@title} \par     %
+            \fEng \sErhao \textbf{Title:\nwpu@eng@title} \par     %
             \fSong \sXiaoer \vspace{3\baselineskip}         %
             \fEng \sXiaosan \textbf{By} \par                %
             \fEng \sXiaosan \textbf{\nwpu@eng@author} \par  %
