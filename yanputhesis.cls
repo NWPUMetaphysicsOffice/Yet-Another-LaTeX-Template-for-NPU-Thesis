@@ -646,7 +646,7 @@
         \linespread{1.2} \fEng \sXiaosan \par               % 1.2 倍行距
         \vspace{1\baselineskip}                             % 1 * 22pt * 1.2
         \begin{center}                                      %
-            \fEng \sErhao \textbf{\nwpu@eng@title} \par     %
+            \fEng \sErhao \textbf{Title:\nwpu@eng@title} \par     %
             \fSong \sXiaoer \vspace{3\baselineskip}         %
             \fEng \sXiaosan \textbf{By} \par                %
             \fEng \sXiaosan \textbf{\nwpu@eng@author} \par  %
@@ -658,7 +658,7 @@
             \fSong \sSanhao \vspace{1\baselineskip}         %
             \fEng In Partial Fulfillment of The Requirement \\
             \fEng For The Degree of \\                      %
-            \fEng {\nwpu@eng@degree} of \textbf{\nwpu@eng@major}
+            \fEng {\nwpu@eng@degree} of \if@npu@type@mst\nwpu@eng@major\else\textbf{\nwpu@eng@major}\fi
             \fSong \sXiaosan \par \vspace{3\baselineskip}   %
             \fEng \sXiaosan Xi'an, P.R. China \\            %
             \fEng \sXiaosan {\nwpu@eng@date}                %
