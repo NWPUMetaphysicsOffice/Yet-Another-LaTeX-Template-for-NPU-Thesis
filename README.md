@@ -8,16 +8,17 @@
 
 这是在西北工业大学硕博研究生学位论文格式的要求下的一份 $\LaTeX$ 文档类模板，通过使用 `yanputhesis` 文档类来完成学位论文，也可直接在发布示例文件的基础上，修改章节标题，撰写内容，即可完成学位论文任务。
 
-本 repo 主要基于开源库 [polossk/LaTeX-Template-For-NPU-Thesis](https://github.com/polossk/LaTeX-Template-For-NPU-Thesis) 之上修改而成，格式参照于 2022 年西北工业大学研究生院编写的[西北工业大学研究生学位论文写作指南](https://gs.nwpu.edu.cn/info/2284/15346.htm)。
+本 repo 主要基于开源库 [polossk/LaTeX-Template-For-NPU-Thesis](https://github.com/polossk/LaTeX-Template-For-NPU-Thesis) 之上修改而成，格式参照于 2025 年西北工业大学研究生院编写的[西北工业大学研究生学位论文写作指南](https://gs.nwpu.edu.cn/info/2283/30467.htm)。
 
 目前项目主要由 @polossk 维护，发布版本可能会有一些不影响阅读与送审的小问题。如果有相关格式更正需求，请发布 issue 催更，我们将对模板 bug 发布更新。
 
-* master 分支，发布累积更新后的版本，当前版本 [v1.8.5](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/releases)
-* polossk-dev 分支，由 @polossk 维护的开发分支，用于及时发布更新补丁，当前版本 v1.8.5.0307 [下载链接](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/archive/refs/heads/polossk-dev.zip)
+* ~~master 分支，发布累积更新后的版本，当前版本 [v1.8.5](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/releases)~~
+* ~~polossk-dev 分支，由 @polossk 维护的开发分支，用于及时发布更新补丁，当前版本 v1.8.5.0307 [下载链接](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/archive/refs/heads/polossk-dev.zip)~~
+* 以上两个版本目前暂未继续维护，请直接下载仓库最新版代码
 
 ## 使用说明
 
-1. 下载这个项目的 zip 包到到本地
+1. 下载这个项目的 zip 包或直接克隆到本地
 2. 确保您的 TeX 版本为**不低于 Texlive 2021 版本**
 3. 直接对 `yanputhesis-sample.tex` 文件进行修改，对应的摘要、章节内容、附录文件均已经默认生成，在此基础上加以修改即可
 4. 如有必要，也可以请仿照 `yanputhesis-sample.tex` 的文件格式，在**导言区**使用 `\documentclass[lang=chs, degree=phd, blindreview=false, adobe=false, academic=true]{yanputhesis}` 来直接设置文档格式
