@@ -603,7 +603,7 @@
     \settowidth{\chstitle@hwidthb}{\sYihao\nwpu@chs@doctitle}
     \begin{titlepage}                                       %
         \renewcommand{\baselinestretch}{1.5}                % 1.5 倍行距
-        \fSong \sSanhao \par \vspace{1\baselineskip}        % 1 * 21pt * 1.5
+        \fSong \sSanhao \par \vspace*{0.5\baselineskip}     % 0.5 * 21pt * 1.5
         \begin{center}                                      %
             \makebox[1.41667\chstitle@hwidtha][s]{\sSanhao\nwpu@chs@schoolname} \par
             \vspace*{5mm}                                   %
@@ -644,14 +644,15 @@
     \thispagestyle{empty}                                   % 清空页面格式
     \begin{titlepage}                                       %
         \linespread{1.2} \fEng \sXiaosan \par               % 1.2 倍行距
-        \vspace{1\baselineskip}                             % 1 * 22pt * 1.2
-        \begin{center}                                      %
-            \fEng \sErhao \textbf{Title:\nwpu@eng@title} \par     %
+        \vspace*{1\baselineskip}                             % 1 * 22pt * 1.2
+        \begin{center}
+            \fEng \sErhao \textbf{Title:}                                     %
+            \fEng \sSanhao \nwpu@eng@title \par     %
             \fSong \sXiaoer \vspace{3\baselineskip}         %
             \fEng \sXiaosan \textbf{By} \par                %
-            \fEng \sXiaosan \textbf{\nwpu@eng@author} \par  %
+            \fEng \sXiaosan \nwpu@eng@author \par  %
             \fEng \sXiaosan \textbf{Under the Supervision of \nwpu@eng@advisorAcademicRank} \\
-            \fEng \sXiaosan \textbf{\nwpu@eng@advisor} \par %
+            \fEng \sXiaosan \nwpu@eng@advisor \par %
             \fSong \sSanhao \vspace{4\baselineskip}         %
             \fEng \sXiaosan A Dissertation Submitted to \\  %
             \fEng \sXiaosan {\nwpu@eng@schoolname} \\       %

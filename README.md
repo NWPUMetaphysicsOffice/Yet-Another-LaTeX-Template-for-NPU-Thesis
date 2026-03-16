@@ -35,7 +35,7 @@
     Yet Another Thesis Template of \\ Northwestern Polytechnical University
 }                                                           % 请自行断行
 \author{\blindreview{张三丰}}{\blindreview{Sanfeng Zhang}}  % 姓名（添加盲评标记）
-\date{2022年6月}{Jun 2022}                                  % 答辩日期
+\date{2022年6月}{Jun/2022}                                  % 答辩日期
 \school{数学与统计学院}{School of Mathematics and Statistics}% 学院
 % 专业 博士请使用 Philosophy in XXXX，硕士只写 XXXX 即可
 \major{数学}{Philosophy in Mathematics}                     % 专业
