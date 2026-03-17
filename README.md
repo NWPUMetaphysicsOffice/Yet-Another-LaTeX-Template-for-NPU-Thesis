@@ -16,6 +16,10 @@
 * ~~polossk-dev 分支，由 @polossk 维护的开发分支，用于及时发布更新补丁，当前版本 v1.8.5.0307 [下载链接](https://github.com/NWPUMetaphysicsOffice/Yet-Another-LaTeX-Template-for-NPU-Thesis/archive/refs/heads/polossk-dev.zip)~~
 * 以上两个版本目前暂未继续维护，请直接下载仓库最新版代码
 
+## 社区派生项目
+
+* [nwputhesis](https://github.com/1195343015/nwputhesis) - 修正多项格式问题，新增彩色封面，模块化文件结构更易上手，跨平台字体支持，VS Code 开箱即用，已通过 2026 年学校最终版提交。
+
 ## 使用说明
 
 1. 下载这个项目的 zip 包或直接克隆到本地
