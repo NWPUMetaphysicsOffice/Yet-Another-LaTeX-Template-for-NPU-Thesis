@@ -341,7 +341,7 @@
 %%-----------------------------------------------------------------------------%
 \RequirePackage{appendix}                                   % 添加附录功能
 %%-----------------------------------------------------------------------------%
-\RequirePackage{nomencl}                                    % 添加符号表功能
+\RequirePackage[intoc]{nomencl}                             % 添加符号表功能
 \RequirePackage{multicol}                                   % 页面具体尺寸信息
 \makenomenclature                                           % 单栏符号表
 \@ifundefined{chapter}{\def\npu@nomsec{section}}{\def\npu@nomsec{chapter}}
@@ -351,6 +351,7 @@
     % \setlength{\columnsep}{20pt}
     % \begin{multicols}{2}[%
     \csname\npu@nomsec\endcsname*{\nomname}
+    \@mkboth{\nomname}{\nomname}%
     \if@intoc\addcontentsline{toc}{\npu@nomsec}{\nomname}\fi
     \nompreamble % \raggedcolumns
     % ]
